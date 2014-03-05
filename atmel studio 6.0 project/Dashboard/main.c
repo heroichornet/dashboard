@@ -8,9 +8,11 @@
 #include <avr/io.h>
 
 
-int function(void)
-{
-    //TODO:: Please write your application code
 
+
+int main(void)
+{
+    
+	
     return 0;
 }
