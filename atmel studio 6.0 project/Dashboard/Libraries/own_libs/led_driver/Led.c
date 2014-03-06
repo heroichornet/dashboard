@@ -12,20 +12,25 @@
 #include "Led.h"
 
 void led_init(void){
-	/*To Do: set data direction to output */
+	
+	uint8_t i;
+	
+	for(i=0;i<LED_NUMBER;i++){
+		LED_DD(LED_PORT(i))|=(0x01)<<(LED_PIN(i));
+	}
 	
 }
 
 void led_set(uint8_t led_id){	
-	loop_until_bit_is_set(LED_PORT(led_id),LED_ADDRESS(led_id));
+	LED_PORT(led_id))|=(0x01)<<LED_PIN(led_id);
 }
 
 void led_clear(uint8_t led_id){
-	loop_until_bit_is_clear(LED_PORT(led_id),LED_ADDRESS(led_id));	
+	LED_PORT(led_id))|=(0x01)&LED_PIN(led_id);
 }
 
 void led_toggle(uint8_t led_id){
-	if(bit_is_set(LED_PORT(led_id),LED_ADDRESS(led_id))){
+	if(led_is_set(led_id)){
 		led_clear(led_id);
 	}else{
 		led_set(led_id);
@@ -53,7 +58,7 @@ uint16_t led_state_return(void){
 }
 
 uint8_t led_is_set(uint8_t led_id){
-	return bit_is_set(LED_PORT(led_id),LED_ADDRESS(led_id));
+	return LED_PORT(led_id)&((0x01)<<LED_PIN(led_id));
 }
 
 
