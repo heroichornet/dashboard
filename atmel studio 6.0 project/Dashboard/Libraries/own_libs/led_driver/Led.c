@@ -13,12 +13,13 @@
 
 void led_init(void){
 	
-	/* ToDo: mark pins as output*/
-	
 	
 	uint8_t i;
 
 	for(i=0;i<LED_NUMBER;i++){
+		/* set data direction to output*/
+		LED_DD(i)|=(0x01)<<LED_PIN(i);
+		/* turn on led */
 		LED_PORT(i)|=(0x01)<<LED_PIN(i);
 	}
 
