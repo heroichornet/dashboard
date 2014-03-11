@@ -113,6 +113,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Libraries" />
+    <Folder Include="Libraries\aux_libs" />
+    <Folder Include="Libraries\aux_libs\includes" />
+    <Folder Include="Libraries\aux_libs\sources" />
     <Folder Include="Libraries\own_libs" />
     <Folder Include="Libraries\own_libs\common" />
     <Folder Include="Libraries\own_libs\led_driver" />

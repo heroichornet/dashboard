@@ -32,6 +32,9 @@ OUTPUT_FILE_DEP:=
 # Every subdirectory with source files must be described here
 SUBDIRS :=  \
 ../Libraries \
+../Libraries/aux_libs \
+../Libraries/aux_libs/includes \
+../Libraries/aux_libs/sources \
 ../Libraries/own_libs \
 ../Libraries/own_libs/common \
 ../Libraries/own_libs/led_driver \
