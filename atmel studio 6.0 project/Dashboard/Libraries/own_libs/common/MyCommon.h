@@ -10,15 +10,6 @@
 #define MYCOMMON_H_
 
 
-/* ToDo: define needed config registeds */
-
-/* CLOCK CONFIG */
-/* ToDo: define clock control registers */
-
-
-void display_init();
-void display_deinit();
-
 
 
 

@@ -9,7 +9,7 @@
 #include "MyCommon.h"
 
 
-void display_init(){
+void Main_init(){
 	/* ToDo: set MCU Control registers */
 	
 	/* init drivers */
@@ -22,6 +22,6 @@ void display_init(){
 		
 }
 
-void display_deinit(){
+void Main_deinit(){
 	
 }
