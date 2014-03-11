@@ -26,36 +26,38 @@ uint16_t led_state;
 #define LED_ID_OK 10
 #define LED_ID_START 11
 
-#define LED_PIN(LED_ID_AMS)  1
-#define LED_PIN(LED_ID_TV) 1
-#define LED_PIN(LED_ID_TC) 2
-#define LED_PIN(LED_ID_RECUP) 3
-#define LED_PIN(LED_ID_KOBI) 4
-#define LED_PIN(LED_ID_AD) 2
-#define LED_PIN(LED_ID_LV_LOW) 4
-#define LED_PIN(LED_ID_LV_AMS) 1
-#define LED_PIN(LED_ID_IMD) 0
-#define LED_PIN(LED_ID_BRAKE) 1
-#define LED_PIN(LED_ID_OK) 0
-#define LED_PIN(LED_ID_START) 7
-
-#define LED_PORT(LED_ID_AMS) C
-#define LED_PORT(LED_ID_TV) A
-#define LED_PORT(LED_ID_TC) A
-#define LED_PORT(LED_ID_RECUP) A
-#define LED_PORT(LED_ID_KOBI) A
-#define LED_PORT(LED_ID_AD) G
-#define LED_PORT(LED_ID_LV_LOW) C
-#define LED_PORT(LED_ID_AMS) C
-#define LED_PORT(LED_ID_IMD) C
-#define LED_PORT(LED_ID_BRAKE) G
-#define LED_PORT(LED_ID_OK) G
-#define LED_PORT(LED_ID_START) D
-
-#define LED_DD(port) DDR##port##
 
 
+#define LED_PIN_AMS  0
+#define LED_PIN_TV 1
+#define LED_PIN_TC 2
+#define LED_PIN_RECUP 3
+#define LED_PIN_KOBI 4
+#define LED_PIN_AD 2
+#define LED_PIN_LV_LOW 4
+#define LED_PIN_LV_AMS 1
+#define LED_PIN_IMD 0
+#define LED_PIN_BRAKE 1
+#define LED_PIN_OK 0
+#define LED_PIN_START 7
 
+#define LED_PORT_AMS PORTC
+#define LED_PORT_TV PORTA
+#define LED_PORT_TC PORTA
+#define LED_PORT_RECUP PORTA
+#define LED_PORT_KOBI PORTA
+#define LED_PORT_AD PORTG
+#define LED_PORT_LV_LOW PORTC
+#define LED_PORT_LV_AMS PORTC
+#define LED_PORT_IMD PORTC
+#define LED_PORT_BRAKE PORTG
+#define LED_PORT_OK PORTG
+#define LED_PORT_START PORTD
+
+
+#define LED_PORT(LED_ID_AMS) LED_PORT_AMS
+
+#define LED_PIN(LED_ID_AMS) LED_PIN_AMS
 
 
 void led_init(void);

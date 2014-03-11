@@ -37,13 +37,16 @@ SUBDIRS :=  \
 ../Libraries/own_libs/led_driver \
 ../Libraries/own_libs/button_driver \
 ../Libraries/own_libs/buzzer_driver \
-../Libraries/own_libs/vfd_display/
+../Libraries/own_libs/vfd_driver
 
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../Libraries/own_libs/button_driver/Button.c \
+../Libraries/own_libs/buzzer_driver/Buzzer.c \
+../Libraries/own_libs/common/MyCommon.c \
 ../Libraries/own_libs/led_driver/Led.c \
-../Libraries/own_libs/vfd_display/Display.c \
+../Libraries/own_libs/vfd_driver/Display.c \
 ../main.c
 
 
@@ -54,26 +57,38 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+Libraries/own_libs/button_driver/Button.o \
+Libraries/own_libs/buzzer_driver/Buzzer.o \
+Libraries/own_libs/common/MyCommon.o \
 Libraries/own_libs/led_driver/Led.o \
-Libraries/own_libs/vfd_display/Display.o \
+Libraries/own_libs/vfd_driver/Display.o \
 main.o
 
 
 OBJS_AS_ARGS +=  \
+Libraries/own_libs/button_driver/Button.o \
+Libraries/own_libs/buzzer_driver/Buzzer.o \
+Libraries/own_libs/common/MyCommon.o \
 Libraries/own_libs/led_driver/Led.o \
-Libraries/own_libs/vfd_display/Display.o \
+Libraries/own_libs/vfd_driver/Display.o \
 main.o
 
 
 C_DEPS +=  \
+Libraries/own_libs/button_driver/Button.d \
+Libraries/own_libs/buzzer_driver/Buzzer.d \
+Libraries/own_libs/common/MyCommon.d \
 Libraries/own_libs/led_driver/Led.d \
-Libraries/own_libs/vfd_display/Display.d \
+Libraries/own_libs/vfd_driver/Display.d \
 main.d
 
 
 C_DEPS_AS_ARGS +=  \
+Libraries/own_libs/button_driver/Button.d \
+Libraries/own_libs/buzzer_driver/Buzzer.d \
+Libraries/own_libs/common/MyCommon.d \
 Libraries/own_libs/led_driver/Led.d \
-Libraries/own_libs/vfd_display/Display.d \
+Libraries/own_libs/vfd_driver/Display.d \
 main.d
 
 
@@ -93,13 +108,37 @@ OUTPUT_FILE_DEP:= ./makedep.mk
 
 
 
+
+
+
+
+
+
+Libraries/own_libs/button_driver/%.o: ../Libraries/own_libs/button_driver/%.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : (AVR_8_bit_GNU_Toolchain_3.4.1_830) 4.6.2
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\AVRGCC\3.4.1.95\AVRToolchain\bin\avr-gcc.exe$(QUOTE) -funsigned-char -funsigned-bitfields -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"  -mmcu=at90can128   -o"$@" "$<" 
+	@echo Finished building: $<
+
+Libraries/own_libs/buzzer_driver/%.o: ../Libraries/own_libs/buzzer_driver/%.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : (AVR_8_bit_GNU_Toolchain_3.4.1_830) 4.6.2
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\AVRGCC\3.4.1.95\AVRToolchain\bin\avr-gcc.exe$(QUOTE) -funsigned-char -funsigned-bitfields -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"  -mmcu=at90can128   -o"$@" "$<" 
+	@echo Finished building: $<
+
+Libraries/own_libs/common/%.o: ../Libraries/own_libs/common/%.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : (AVR_8_bit_GNU_Toolchain_3.4.1_830) 4.6.2
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\AVRGCC\3.4.1.95\AVRToolchain\bin\avr-gcc.exe$(QUOTE) -funsigned-char -funsigned-bitfields -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"  -mmcu=at90can128   -o"$@" "$<" 
+	@echo Finished building: $<
+
 Libraries/own_libs/led_driver/%.o: ../Libraries/own_libs/led_driver/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : (AVR_8_bit_GNU_Toolchain_3.4.1_830) 4.6.2
 	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\AVRGCC\3.4.1.95\AVRToolchain\bin\avr-gcc.exe$(QUOTE) -funsigned-char -funsigned-bitfields -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"  -mmcu=at90can128   -o"$@" "$<" 
 	@echo Finished building: $<
 
-Libraries/own_libs/vfd_display/%.o: ../Libraries/own_libs/vfd_display/%.c
+Libraries/own_libs/vfd_driver/%.o: ../Libraries/own_libs/vfd_driver/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : (AVR_8_bit_GNU_Toolchain_3.4.1_830) 4.6.2
 	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\AVRGCC\3.4.1.95\AVRToolchain\bin\avr-gcc.exe$(QUOTE) -funsigned-char -funsigned-bitfields -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"  -mmcu=at90can128   -o"$@" "$<" 

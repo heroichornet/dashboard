@@ -77,16 +77,34 @@
     <OutputType>StaticLibrary</OutputType>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Libraries\own_libs\button_driver\Button.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Libraries\own_libs\button_driver\Button.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Libraries\own_libs\buzzer_driver\Buzzer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Libraries\own_libs\buzzer_driver\Buzzer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Libraries\own_libs\common\MyCommon.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Libraries\own_libs\common\MyCommon.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Libraries\own_libs\led_driver\Led.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Libraries\own_libs\led_driver\Led.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Libraries\own_libs\vfd_display\Display.c">
+    <Compile Include="Libraries\own_libs\vfd_driver\Display.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Libraries\own_libs\vfd_display\Display.h">
+    <Compile Include="Libraries\own_libs\vfd_driver\Display.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
@@ -100,7 +118,7 @@
     <Folder Include="Libraries\own_libs\led_driver" />
     <Folder Include="Libraries\own_libs\button_driver" />
     <Folder Include="Libraries\own_libs\buzzer_driver" />
-    <Folder Include="Libraries\own_libs\vfd_display\" />
+    <Folder Include="Libraries\own_libs\vfd_driver" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

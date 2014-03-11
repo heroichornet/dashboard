@@ -3,6 +3,9 @@
  *
  *  Created on: Jan 22, 2014
  *      Author: michael
+ *
+ *	This Library can be used to 
+ *
  */
 
 #include <stdint.h>
