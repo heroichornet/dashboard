@@ -5,14 +5,12 @@
  *  Author: michael
  */ 
 
-#include <avr/io.h>
+#include "Libraries/aux_libs/"
 
-
-
-
-int main(void)
-{
-    
-	
-    return 0;
+int main(void){
+	main_nit();
+	while(1){
+		wdt_reset();
+		EventHandleEvent();
+	}
 }

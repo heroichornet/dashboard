@@ -6,9 +6,17 @@
  */ 
 
 
+#include <avr/io.h>
+#include "../../aux_libs/includes/F_i.h"
+#include "../../aux_libs/includes/GlobalIncludes.h"
+
+
+
 #ifndef MYCOMMON_H_
 #define MYCOMMON_H_
 
+void main_init(void);
+void main_deinit(void);
 
 
 

@@ -33,8 +33,8 @@ OUTPUT_FILE_DEP:=
 SUBDIRS :=  \
 ../Libraries \
 ../Libraries/aux_libs \
-../Libraries/aux_libs/includes \
-../Libraries/aux_libs/sources \
+../Libraries/aux_libs/includes/ \
+../Libraries/aux_libs/sources/ \
 ../Libraries/own_libs \
 ../Libraries/own_libs/common \
 ../Libraries/own_libs/led_driver \
@@ -45,6 +45,14 @@ SUBDIRS :=  \
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../Libraries/aux_libs/sources/adc.c \
+../Libraries/aux_libs/sources/CAN.c \
+../Libraries/aux_libs/sources/can_drv.c \
+../Libraries/aux_libs/sources/can_lib.c \
+../Libraries/aux_libs/sources/Error.c \
+../Libraries/aux_libs/sources/Event.c \
+../Libraries/aux_libs/sources/Timer.c \
+../Libraries/aux_libs/sources/WatchDog.c \
 ../Libraries/own_libs/button_driver/Button.c \
 ../Libraries/own_libs/buzzer_driver/Buzzer.c \
 ../Libraries/own_libs/common/MyCommon.c \
@@ -60,6 +68,14 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+Libraries/aux_libs/sources/adc.o \
+Libraries/aux_libs/sources/CAN.o \
+Libraries/aux_libs/sources/can_drv.o \
+Libraries/aux_libs/sources/can_lib.o \
+Libraries/aux_libs/sources/Error.o \
+Libraries/aux_libs/sources/Event.o \
+Libraries/aux_libs/sources/Timer.o \
+Libraries/aux_libs/sources/WatchDog.o \
 Libraries/own_libs/button_driver/Button.o \
 Libraries/own_libs/buzzer_driver/Buzzer.o \
 Libraries/own_libs/common/MyCommon.o \
@@ -69,6 +85,14 @@ main.o
 
 
 OBJS_AS_ARGS +=  \
+Libraries/aux_libs/sources/adc.o \
+Libraries/aux_libs/sources/CAN.o \
+Libraries/aux_libs/sources/can_drv.o \
+Libraries/aux_libs/sources/can_lib.o \
+Libraries/aux_libs/sources/Error.o \
+Libraries/aux_libs/sources/Event.o \
+Libraries/aux_libs/sources/Timer.o \
+Libraries/aux_libs/sources/WatchDog.o \
 Libraries/own_libs/button_driver/Button.o \
 Libraries/own_libs/buzzer_driver/Buzzer.o \
 Libraries/own_libs/common/MyCommon.o \
@@ -78,6 +102,14 @@ main.o
 
 
 C_DEPS +=  \
+Libraries/aux_libs/sources/adc.d \
+Libraries/aux_libs/sources/CAN.d \
+Libraries/aux_libs/sources/can_drv.d \
+Libraries/aux_libs/sources/can_lib.d \
+Libraries/aux_libs/sources/Error.d \
+Libraries/aux_libs/sources/Event.d \
+Libraries/aux_libs/sources/Timer.d \
+Libraries/aux_libs/sources/WatchDog.d \
 Libraries/own_libs/button_driver/Button.d \
 Libraries/own_libs/buzzer_driver/Buzzer.d \
 Libraries/own_libs/common/MyCommon.d \
@@ -87,6 +119,14 @@ main.d
 
 
 C_DEPS_AS_ARGS +=  \
+Libraries/aux_libs/sources/adc.d \
+Libraries/aux_libs/sources/CAN.d \
+Libraries/aux_libs/sources/can_drv.d \
+Libraries/aux_libs/sources/can_lib.d \
+Libraries/aux_libs/sources/Error.d \
+Libraries/aux_libs/sources/Event.d \
+Libraries/aux_libs/sources/Timer.d \
+Libraries/aux_libs/sources/WatchDog.d \
 Libraries/own_libs/button_driver/Button.d \
 Libraries/own_libs/buzzer_driver/Buzzer.d \
 Libraries/own_libs/common/MyCommon.d \
@@ -116,6 +156,28 @@ OUTPUT_FILE_DEP:= ./makedep.mk
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Libraries/aux_libs/sources/%.o: ../Libraries/aux_libs/sources/%.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : (AVR_8_bit_GNU_Toolchain_3.4.1_830) 4.6.2
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\AVRGCC\3.4.1.95\AVRToolchain\bin\avr-gcc.exe$(QUOTE) -funsigned-char -funsigned-bitfields -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"  -mmcu=at90can128   -o"$@" "$<" 
+	@echo Finished building: $<
 
 Libraries/own_libs/button_driver/%.o: ../Libraries/own_libs/button_driver/%.c
 	@echo Building file: $<

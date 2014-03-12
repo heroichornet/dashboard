@@ -1,6 +1,8 @@
-Libraries/own_libs/common/MyCommon.d Libraries/own_libs/common/MyCommon.o: \
- ../Libraries/own_libs/common/MyCommon.c \
- ../Libraries/own_libs/common/MyCommon.h \
+Libraries/aux_libs/sources/WatchDog.d \
+ Libraries/aux_libs/sources/WatchDog.o: \
+ ../Libraries/aux_libs/sources/WatchDog.c \
+ ../Libraries/aux_libs/sources/../includes/WatchDog.h \
+ c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/wdt.h \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/io.h \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/sfr_defs.h \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/inttypes.h \
@@ -13,35 +15,34 @@ Libraries/own_libs/common/MyCommon.d Libraries/own_libs/common/MyCommon.o: \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/version.h \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/fuse.h \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/lock.h \
- ../Libraries/own_libs/common/../../aux_libs/includes/F_i.h \
- ../Libraries/own_libs/common/../../aux_libs/includes/compiler.h \
- ../Libraries/own_libs/common/../../aux_libs/includes/GlobalIncludes.h \
+ ../Libraries/aux_libs/sources/../includes/GlobalIncludes.h \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/interrupt.h \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/eeprom.h \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/include/stddef.h \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/util/atomic.h \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/util/twi.h \
- ../Libraries/own_libs/common/../../aux_libs/includes/config.h \
- ../Libraries/own_libs/common/../../aux_libs/includes/..\includes\GlobalIncludes.h \
- ../Libraries/own_libs/common/../../aux_libs/includes/Watchdog.h \
- c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/wdt.h \
- ../Libraries/own_libs/common/../../aux_libs/includes/GlobalIncludes.h \
- ../Libraries/own_libs/common/../../aux_libs/includes/Event.h \
- ../Libraries/own_libs/common/../../aux_libs/includes/can_drv.h \
- ../Libraries/own_libs/common/../../aux_libs/includes/can_lib.h \
- ../Libraries/own_libs/common/../../aux_libs/includes/..\includes\can_drv.h \
- ../Libraries/own_libs/common/../../aux_libs/includes/..\includes\at90can_drv.h \
- ../Libraries/own_libs/common/../../aux_libs/includes/..\includes\compiler.h \
- ../Libraries/own_libs/common/../../aux_libs/includes/CAN.h \
- ../Libraries/own_libs/common/../../aux_libs/includes/..\includes\adc_drv.h \
- ../Libraries/own_libs/common/../../aux_libs/includes/..\includes\/config.h \
- ../Libraries/own_libs/common/../../aux_libs/includes/..\includes\/compiler.h \
- ../Libraries/own_libs/common/../../aux_libs/includes/..\includes\/dvk90can1_board.h \
- ../Libraries/own_libs/common/../../aux_libs/includes/..\includes\CAN.h \
- ../Libraries/own_libs/common/../../aux_libs/includes/Error.h \
- ../Libraries/own_libs/common/../../aux_libs/includes/Timer.h
+ ../Libraries/aux_libs/sources/../includes/compiler.h \
+ ../Libraries/aux_libs/sources/../includes/config.h \
+ ../Libraries/aux_libs/sources/../includes/..\includes\GlobalIncludes.h \
+ ../Libraries/aux_libs/sources/../includes/Watchdog.h \
+ ../Libraries/aux_libs/sources/../includes/Event.h \
+ ../Libraries/aux_libs/sources/../includes/can_drv.h \
+ ../Libraries/aux_libs/sources/../includes/can_lib.h \
+ ../Libraries/aux_libs/sources/../includes/..\includes\can_drv.h \
+ ../Libraries/aux_libs/sources/../includes/..\includes\at90can_drv.h \
+ ../Libraries/aux_libs/sources/../includes/..\includes\compiler.h \
+ ../Libraries/aux_libs/sources/../includes/CAN.h \
+ ../Libraries/aux_libs/sources/../includes/..\includes\adc_drv.h \
+ ../Libraries/aux_libs/sources/../includes/..\includes\/config.h \
+ ../Libraries/aux_libs/sources/../includes/..\includes\/compiler.h \
+ ../Libraries/aux_libs/sources/../includes/..\includes\/dvk90can1_board.h \
+ ../Libraries/aux_libs/sources/../includes/..\includes\CAN.h \
+ ../Libraries/aux_libs/sources/../includes/Error.h \
+ ../Libraries/aux_libs/sources/../includes/Timer.h
 
-../Libraries/own_libs/common/MyCommon.h:
+../Libraries/aux_libs/sources/../includes/WatchDog.h:
+
+c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/wdt.h:
 
 c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/io.h:
 
@@ -67,11 +68,7 @@ c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.
 
 c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/lock.h:
 
-../Libraries/own_libs/common/../../aux_libs/includes/F_i.h:
-
-../Libraries/own_libs/common/../../aux_libs/includes/compiler.h:
-
-../Libraries/own_libs/common/../../aux_libs/includes/GlobalIncludes.h:
+../Libraries/aux_libs/sources/../includes/GlobalIncludes.h:
 
 c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/interrupt.h:
 
@@ -83,40 +80,38 @@ c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.
 
 c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/util/twi.h:
 
-../Libraries/own_libs/common/../../aux_libs/includes/config.h:
+../Libraries/aux_libs/sources/../includes/compiler.h:
 
-../Libraries/own_libs/common/../../aux_libs/includes/..\includes\GlobalIncludes.h:
+../Libraries/aux_libs/sources/../includes/config.h:
 
-../Libraries/own_libs/common/../../aux_libs/includes/Watchdog.h:
+../Libraries/aux_libs/sources/../includes/..\includes\GlobalIncludes.h:
 
-c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/wdt.h:
+../Libraries/aux_libs/sources/../includes/Watchdog.h:
 
-../Libraries/own_libs/common/../../aux_libs/includes/GlobalIncludes.h:
+../Libraries/aux_libs/sources/../includes/Event.h:
 
-../Libraries/own_libs/common/../../aux_libs/includes/Event.h:
+../Libraries/aux_libs/sources/../includes/can_drv.h:
 
-../Libraries/own_libs/common/../../aux_libs/includes/can_drv.h:
+../Libraries/aux_libs/sources/../includes/can_lib.h:
 
-../Libraries/own_libs/common/../../aux_libs/includes/can_lib.h:
+../Libraries/aux_libs/sources/../includes/..\includes\can_drv.h:
 
-../Libraries/own_libs/common/../../aux_libs/includes/..\includes\can_drv.h:
+../Libraries/aux_libs/sources/../includes/..\includes\at90can_drv.h:
 
-../Libraries/own_libs/common/../../aux_libs/includes/..\includes\at90can_drv.h:
+../Libraries/aux_libs/sources/../includes/..\includes\compiler.h:
 
-../Libraries/own_libs/common/../../aux_libs/includes/..\includes\compiler.h:
+../Libraries/aux_libs/sources/../includes/CAN.h:
 
-../Libraries/own_libs/common/../../aux_libs/includes/CAN.h:
+../Libraries/aux_libs/sources/../includes/..\includes\adc_drv.h:
 
-../Libraries/own_libs/common/../../aux_libs/includes/..\includes\adc_drv.h:
+../Libraries/aux_libs/sources/../includes/..\includes\/config.h:
 
-../Libraries/own_libs/common/../../aux_libs/includes/..\includes\/config.h:
+../Libraries/aux_libs/sources/../includes/..\includes\/compiler.h:
 
-../Libraries/own_libs/common/../../aux_libs/includes/..\includes\/compiler.h:
+../Libraries/aux_libs/sources/../includes/..\includes\/dvk90can1_board.h:
 
-../Libraries/own_libs/common/../../aux_libs/includes/..\includes\/dvk90can1_board.h:
+../Libraries/aux_libs/sources/../includes/..\includes\CAN.h:
 
-../Libraries/own_libs/common/../../aux_libs/includes/..\includes\CAN.h:
+../Libraries/aux_libs/sources/../includes/Error.h:
 
-../Libraries/own_libs/common/../../aux_libs/includes/Error.h:
-
-../Libraries/own_libs/common/../../aux_libs/includes/Timer.h:
+../Libraries/aux_libs/sources/../includes/Timer.h:

@@ -67,6 +67,7 @@
         <avrgcc.linker.libraries.LibrarySearchPaths>
           <ListValues>
             <Value>../Libraries</Value>
+            <Value>../Libraries/aux_libs/includes</Value>
           </ListValues>
         </avrgcc.linker.libraries.LibrarySearchPaths>
         <avrgcc.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcc.assembler.debugging.DebugLevel>
@@ -77,6 +78,78 @@
     <OutputType>StaticLibrary</OutputType>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Libraries\aux_libs\includes\adc.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Libraries\aux_libs\includes\adc_drv.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Libraries\aux_libs\includes\at90can_drv.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Libraries\aux_libs\includes\CAN.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Libraries\aux_libs\includes\can_drv.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Libraries\aux_libs\includes\can_lib.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Libraries\aux_libs\includes\compiler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Libraries\aux_libs\includes\config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Libraries\aux_libs\includes\dvk90can1_board.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Libraries\aux_libs\includes\Error.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Libraries\aux_libs\includes\Event.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Libraries\aux_libs\includes\FCALC_Frequency.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Libraries\aux_libs\includes\F_i.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Libraries\aux_libs\includes\GlobalIncludes.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Libraries\aux_libs\includes\Timer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Libraries\aux_libs\includes\WatchDog.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Libraries\aux_libs\sources\adc.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Libraries\aux_libs\sources\CAN.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Libraries\aux_libs\sources\can_drv.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Libraries\aux_libs\sources\can_lib.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Libraries\aux_libs\sources\Error.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Libraries\aux_libs\sources\Event.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Libraries\aux_libs\sources\Timer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Libraries\aux_libs\sources\WatchDog.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Libraries\own_libs\button_driver\Button.c">
       <SubType>compile</SubType>
     </Compile>
@@ -114,8 +187,8 @@
   <ItemGroup>
     <Folder Include="Libraries" />
     <Folder Include="Libraries\aux_libs" />
-    <Folder Include="Libraries\aux_libs\includes" />
-    <Folder Include="Libraries\aux_libs\sources" />
+    <Folder Include="Libraries\aux_libs\includes\" />
+    <Folder Include="Libraries\aux_libs\sources\" />
     <Folder Include="Libraries\own_libs" />
     <Folder Include="Libraries\own_libs\common" />
     <Folder Include="Libraries\own_libs\led_driver" />
