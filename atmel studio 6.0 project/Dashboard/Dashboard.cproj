@@ -78,123 +78,115 @@
     <OutputType>StaticLibrary</OutputType>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Libraries\aux_libs\includes\adc.h">
+    <Compile Include="includes\adc.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Libraries\aux_libs\includes\adc_drv.h">
+    <Compile Include="includes\adc_drv.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Libraries\aux_libs\includes\at90can_drv.h">
+    <Compile Include="includes\at90can_drv.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Libraries\aux_libs\includes\CAN.h">
+    <Compile Include="includes\Button.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Libraries\aux_libs\includes\can_drv.h">
+    <Compile Include="includes\Buzzer.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Libraries\aux_libs\includes\can_lib.h">
+    <Compile Include="includes\CAN.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Libraries\aux_libs\includes\compiler.h">
+    <Compile Include="includes\can_drv.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Libraries\aux_libs\includes\config.h">
+    <Compile Include="includes\can_lib.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Libraries\aux_libs\includes\dvk90can1_board.h">
+    <Compile Include="includes\compiler.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Libraries\aux_libs\includes\Error.h">
+    <Compile Include="includes\config.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Libraries\aux_libs\includes\Event.h">
+    <Compile Include="includes\Display.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Libraries\aux_libs\includes\FCALC_Frequency.h">
+    <Compile Include="includes\dvk90can1_board.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Libraries\aux_libs\includes\F_i.h">
+    <Compile Include="includes\Error.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Libraries\aux_libs\includes\GlobalIncludes.h">
+    <Compile Include="includes\Event.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Libraries\aux_libs\includes\Timer.h">
+    <Compile Include="includes\FCALC_Frequency.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Libraries\aux_libs\includes\WatchDog.h">
+    <Compile Include="includes\F_i.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Libraries\aux_libs\sources\adc.c">
+    <Compile Include="includes\GlobalIncludes.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Libraries\aux_libs\sources\CAN.c">
+    <Compile Include="includes\Led.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Libraries\aux_libs\sources\can_drv.c">
+    <Compile Include="includes\MyCommon.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Libraries\aux_libs\sources\can_lib.c">
+    <Compile Include="includes\Timer.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Libraries\aux_libs\sources\Error.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Libraries\aux_libs\sources\Event.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Libraries\aux_libs\sources\Timer.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Libraries\aux_libs\sources\WatchDog.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Libraries\own_libs\button_driver\Button.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Libraries\own_libs\button_driver\Button.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Libraries\own_libs\buzzer_driver\Buzzer.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Libraries\own_libs\buzzer_driver\Buzzer.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Libraries\own_libs\common\MyCommon.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Libraries\own_libs\common\MyCommon.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Libraries\own_libs\led_driver\Led.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Libraries\own_libs\led_driver\Led.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Libraries\own_libs\vfd_driver\Display.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Libraries\own_libs\vfd_driver\Display.h">
+    <Compile Include="includes\WatchDog.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="sources\adc.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sources\Button.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sources\Buzzer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sources\CAN.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sources\can_drv.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sources\can_lib.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sources\Display.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sources\Error.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sources\Event.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sources\Led.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sources\MyCommon.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sources\Timer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sources\WatchDog.c">
+      <SubType>compile</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Libraries" />
-    <Folder Include="Libraries\aux_libs" />
-    <Folder Include="Libraries\aux_libs\includes\" />
-    <Folder Include="Libraries\aux_libs\sources\" />
-    <Folder Include="Libraries\own_libs" />
-    <Folder Include="Libraries\own_libs\common" />
-    <Folder Include="Libraries\own_libs\led_driver" />
-    <Folder Include="Libraries\own_libs\button_driver" />
-    <Folder Include="Libraries\own_libs\buzzer_driver" />
-    <Folder Include="Libraries\own_libs\vfd_driver" />
+    <Folder Include="includes" />
+    <Folder Include="sources" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

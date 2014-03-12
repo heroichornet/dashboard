@@ -5,10 +5,10 @@
  *  Author: michael
  */ 
 
-#include "Libraries/aux_libs/"
+#include "includes/MyCommon.h"
 
 int main(void){
-	main_nit();
+	main_init();
 	while(1){
 		wdt_reset();
 		EventHandleEvent();
