@@ -85,8 +85,9 @@
 #define MCM_REAR	(3)
 #define MCM_HVBOX	(4)
 #define MCM_AD	(5)
+#define DASHBOARD (6)
 
-#define MCM MCM_REAR
+#define MCM DASHBOARD
 
 #if MCM==MCM_FRONT
 	#define HAS_CAN_RX 0
@@ -275,6 +276,107 @@
 	#endif
 #endif
 
+
+#if MCM==MCM_HVBOX
+	#define HAS_CAN_RX 1
+	#define HAS_200HZ 0
+	#define HAS_100HZ 0
+	#define HAS_10HZ 1
+	#define HAS_ADC 0
+	
+	#define IO_PORTB_OR (0x0C)
+	#define IO_PORTB_AND ~(0x02)
+	#define IO_PORTD_OR (0x01)
+	#define IO_PORTD_AND ~(0x02)
+	#define IO_PORTE_OR (0x91)
+	#define IO_PORTE_AND ~(0x62)
+	
+	#define CAN_TX_10_ID	(0x401)
+	#define CAN_TX_10_LEN	(5)
+	static union MCM_HVBOX_TX_10_un{
+		U8 dataBuf[CAN_TX_10_LEN];
+		struct MCM_RAER_TX_10_st {
+			U8 IMD;
+			U8 BPD;
+			U8 HVDI;
+			U8 MS;
+			U8 errorCode;
+		} dataStruct;
+	} mcm_hvbox_10_data;
+	static st_cmd_t mcm_hvbox_10_tx;
+
+	#if HAS_CAN_RX
+		#define CAN_RX_ID	(0x402)
+		#define CAN_RX_LEN	(3)
+		static union MCM_HVBOX_RX_un{
+			U8 dataBuf[CAN_RX_LEN];
+			struct MCM_HVBOX_RX_st{
+				U8 preCharge;
+				U8 AIRp;
+				U8 Fan1;
+				U8 Fan2;
+				U8 showBPD;
+			} dataStruct;
+		} mcm_hvbox_rx_data;
+		static st_cmd_t mcm_hvbox_rx;
+	#endif
+#endif
+
+
+
+#if MCM==DASHBOARD
+#define HAS_CAN_RX 1
+#define HAS_200HZ 0
+#define HAS_100HZ 0
+#define HAS_10HZ 1
+#define HAS_ADC 0
+/*
+/* ToDo: Mit Morris anpassen, damit Parameter stimmen
+
+#define IO_PORTB_OR (0x0C)
+#define IO_PORTB_AND ~(0x02)
+#define IO_PORTD_OR (0x01)
+#define IO_PORTD_AND ~(0x02)
+#define IO_PORTE_OR (0x91)
+#define IO_PORTE_AND ~(0x62)
+*/
+#define CAN_TX_10_ID	(0x401)
+#define CAN_TX_10_LEN	(5)
+static union Dashboard_TX_10_un{
+	U8 dataBuf[CAN_TX_10_LEN];
+	struct Dashboard_TX_10_st {
+		U8 IMD;
+		U8 BPD;
+		U8 HVDI;
+		U8 MS;
+		U8 errorCode;
+	} dataStruct;
+} dashboad_10_data;
+static st_cmd_t dashboard_10_tx;
+
+#if HAS_CAN_RX
+#define CAN_RX_ID	(0x402)
+#define CAN_RX_LEN	(3)
+
+
+static union Dashboard_RX_un{
+	U8 dataBuf[CAN_RX_LEN];
+	struct MCM_HVBOX_RX_st{
+		U8 preCharge;
+		U8 AIRp;
+		U8 Fan1;
+		U8 Fan2;
+		U8 showBPD;
+	} dataStruct;
+} dashboard_rx_data;
+static st_cmd_t dashboard_rx;
+
+#endif
+
+
+
+
+#endif
 /* +--------------------------------+ */
 /* | Modulübergreifende Variablen	| */
 /* +--------------------------------+ */

@@ -9,9 +9,9 @@
 #ifndef BUZZER_H_
 #define BUZZER_H_
 
-#define BUZZER_PIN 0x00
-#define BUZZER_PORT 0x00
-#define BUZZER_DD(port) DDR##port
+#define BUZZER_PIN (0x00)
+#define BUZZER_PORT (PORTA)
+#define BUZZER_DD (DDRA) PUD 
 
 void buzzer_init(void);
 void buzzer_on(void);
