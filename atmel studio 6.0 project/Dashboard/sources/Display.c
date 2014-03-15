@@ -71,7 +71,7 @@ void display_test(void){
 
 
 void display_init(void){
-	SM1_Enable();
+//	SM1_Enable();
 	
 }
 

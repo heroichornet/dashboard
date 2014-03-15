@@ -6,4 +6,40 @@
  */ 
 
 #include <stdint.h>
+#include <avr/io.h>
 #include "../includes/Buzzer.h"
+
+void buzzer_init( void )
+{
+	BUZZER_DD|=(0x01)<<BUZZER_PIN;
+	BUZZER_PORT&=~(0x01)<<BUZZER_PIN;
+}
+
+void buzzer_on( void )
+{
+	BUZZER_PORT|=(0x01)<<BUZZER_PIN;
+}
+
+void buzzer_off( void )
+{
+	BUZZER_PORT&=~(0x01)<<BUZZER_PIN;
+}
+
+void buzzer_buzz( uint8_t time_ms )
+{
+	/* QUICK shitty implementation */
+	/* ToDO use timer */
+	
+	buzzer_on();
+	int i;
+	for(i=0;i<time_ms*100;i++){
+		
+	}
+	
+	buzzer_off();
+}
+
+void buzzer_puls( uint8_t freq_ms, uint8_t time_ms )
+{
+	
+}

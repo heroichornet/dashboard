@@ -331,7 +331,7 @@
 #define HAS_10HZ 1
 #define HAS_ADC 0
 /*
-/* ToDo: Mit Morris anpassen, damit Parameter stimmen
+ ToDo: Mit Morris anpassen, damit Parameter stimmen
 
 #define IO_PORTB_OR (0x0C)
 #define IO_PORTB_AND ~(0x02)

@@ -6,12 +6,13 @@
  */ 
 
 
+
 #ifndef BUZZER_H_
 #define BUZZER_H_
 
 #define BUZZER_PIN (0x00)
 #define BUZZER_PORT (PORTA)
-#define BUZZER_DD (DDRA) PUD 
+#define BUZZER_DD (DDRA)
 
 void buzzer_init(void);
 void buzzer_on(void);
