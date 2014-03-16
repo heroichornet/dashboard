@@ -5,15 +5,11 @@
  *  Author: michael
  */ 
 
-
-#include <avr/io.h>
-#include "../includes/F_i.h"
-#include "../includes/GlobalIncludes.h"
-
-
-
 #ifndef MYCOMMON_H_
 #define MYCOMMON_H_
+
+
+#include <avr/io.h>
 
 void main_init(void);
 void main_deinit(void);

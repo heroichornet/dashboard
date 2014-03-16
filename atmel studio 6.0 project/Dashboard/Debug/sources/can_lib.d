@@ -41,6 +41,7 @@ sources/can_lib.d sources/can_lib.o: ../sources/can_lib.c \
  ../sources/..\includes\/..\includes\/Error.h \
  ../sources/..\includes\/..\includes\/CAN.h \
  ../sources/..\includes\/..\includes\/Timer.h \
+ ../sources/..\includes\/..\includes\/Buzzer.h \
  ../sources/..\includes\can_lib.h ../sources/..\includes\can_drv.h
 
 ../sources/..\includes\config.h:
@@ -126,6 +127,8 @@ c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.
 ../sources/..\includes\/..\includes\/CAN.h:
 
 ../sources/..\includes\/..\includes\/Timer.h:
+
+../sources/..\includes\/..\includes\/Buzzer.h:
 
 ../sources/..\includes\can_lib.h:
 

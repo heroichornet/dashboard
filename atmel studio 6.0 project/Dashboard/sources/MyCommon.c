@@ -10,29 +10,35 @@
 #include "../includes/GlobalIncludes.h"
 
 
+/* Note to I/O Pin Registers */
+/* DDRxn high = Output
+/* DDRxn low  = Input
+/* PORTxn high = pull up, if Input  
+/* PORTxn low = no pull up, if Input
+/* PORTxn high = driven high, if output
+/* PORTxn low = driven low, if output
+*/
+
 void main_init(){
-	//LED
-	DDRA=DDRA|0x08;
-	PORTA=PORTA&(~0x08);
+
+	/* Init Ports */
+	// Default Pin config for PORT A,B,C,D,E,F (Input with pull up)
+	DDRA=0x00;
+	DDRB=0x00;
+	DDRC=0x00;
+	DDRE=0x00;
+	DDRF=0x00;
+	DDRG&=~(0b00011111); // Port G Pins 7,8 and 6 not written
 	
-	#ifdef IO_PORTB_OR
-	DDRB|=IO_PORTB_OR;
-	DDRB&=IO_PORTB_AND;
-	PORTB&=(~IO_PORTB_OR);
-	#endif
+	PORTA=0xFF;
+	PORTB=0xFF;
+	PORTC=0xFF;
+	PORTD=0xFF;
+	PORTE=0xFF;
+	PORTF=0xFF;
+	PORTG|=(0b00011111); // Port G Pins 7,8 and 6 not written
 	
-	#ifdef IO_PORTD_OR
-	DDRD|=IO_PORTD_OR;
-	DDRD&=IO_PORTD_AND;
-	PORTD&=(~IO_PORTD_OR);
-	#endif
-	
-	#ifdef IO_PORTE_OR
-	DDRE|=IO_PORTE_OR;
-	DDRE&=IO_PORTE_AND;
-	PORTE&=(~IO_PORTE_OR);
-	#endif
-	
+	/*
 	CANInit();
 	
 	#if HAS_200HZ|HAS_100HZ
@@ -65,6 +71,11 @@ void main_init(){
 	
 	EventAddEvent(EVENT_INIT);
 	
+	*/
+	
+	#if HAS_BUZZER
+		buzzer_init();	
+	#endif
 		
 }
 

@@ -38,6 +38,7 @@ sources/Error.d sources/Error.o: ../sources/Error.c \
  ../sources/../includes/..\includes\/..\includes\/CAN.h \
  ../sources/../includes/..\includes\/..\includes\/Error.h \
  ../sources/../includes/..\includes\/..\includes\/Timer.h \
+ ../sources/../includes/..\includes\/..\includes\/Buzzer.h \
  ../sources/../includes/..\includes\/compiler.h \
  ../sources/../includes/..\includes\/dvk90can1_board.h \
  ../sources/../includes/..\includes\CAN.h \
@@ -122,6 +123,8 @@ c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.
 ../sources/../includes/..\includes\/..\includes\/Error.h:
 
 ../sources/../includes/..\includes\/..\includes\/Timer.h:
+
+../sources/../includes/..\includes\/..\includes\/Buzzer.h:
 
 ../sources/../includes/..\includes\/compiler.h:
 

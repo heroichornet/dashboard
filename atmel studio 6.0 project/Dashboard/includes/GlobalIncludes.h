@@ -9,6 +9,8 @@
 #ifndef GlobalIncludes_H_
 #define GlobalIncludes_H_
 
+
+
 /* +--------------------------------+ */
 /* | Libraries						| */
 /* +--------------------------------+ */
@@ -32,6 +34,8 @@
 #include "CAN.h"
 #include "Error.h"
 #include "Timer.h"
+#include "Buzzer.h"
+
 
 /* +--------------------------------+ */
 /* | Definitionen					| */
@@ -84,8 +88,8 @@
 #define MCM_LVBOX	(2)
 #define MCM_REAR	(3)
 #define MCM_HVBOX	(4)
-#define MCM_AD	(5)
-#define DASHBOARD (6)
+#define MCM_AD		(5)
+#define DASHBOARD	(6)
 
 #define MCM DASHBOARD
 
@@ -325,21 +329,17 @@
 
 
 #if MCM==DASHBOARD
-#define HAS_CAN_RX 1
-#define HAS_200HZ 0
-#define HAS_100HZ 0
-#define HAS_10HZ 1
-#define HAS_ADC 0
-/*
- ToDo: Mit Morris anpassen, damit Parameter stimmen
 
-#define IO_PORTB_OR (0x0C)
-#define IO_PORTB_AND ~(0x02)
-#define IO_PORTD_OR (0x01)
-#define IO_PORTD_AND ~(0x02)
-#define IO_PORTE_OR (0x91)
-#define IO_PORTE_AND ~(0x62)
-*/
+/* ToDo: mit föhn konfigurieren */
+
+#define HAS_CAN_RX	1
+#define HAS_200HZ	0
+#define HAS_100HZ	0
+#define HAS_10HZ	1
+#define HAS_ADC		0
+
+
+
 #define CAN_TX_10_ID	(0x401)
 #define CAN_TX_10_LEN	(5)
 static union Dashboard_TX_10_un{

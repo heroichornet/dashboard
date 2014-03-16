@@ -32,7 +32,8 @@ sources/Event.d sources/Event.o: ../sources/Event.c \
  ../sources/../includes/..\includes\/compiler.h \
  ../sources/../includes/..\includes\/dvk90can1_board.h \
  ../sources/../includes/..\includes\CAN.h ../sources/../includes/Error.h \
- ../sources/../includes/Timer.h ../sources/../includes/adc.h \
+ ../sources/../includes/Timer.h ../sources/../includes/Buzzer.h \
+ ../sources/../includes/adc.h \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/util/delay.h \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/util/delay_basic.h \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/math.h \
@@ -115,6 +116,8 @@ c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.
 ../sources/../includes/Error.h:
 
 ../sources/../includes/Timer.h:
+
+../sources/../includes/Buzzer.h:
 
 ../sources/../includes/adc.h:
 

@@ -10,6 +10,7 @@
 #ifndef BUZZER_H_
 #define BUZZER_H_
 
+#define HAS_BUZZER (1)
 #define BUZZER_PIN (0x00)
 #define BUZZER_PORT (PORTA)
 #define BUZZER_DD (DDRA)

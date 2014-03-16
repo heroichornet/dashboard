@@ -6,23 +6,21 @@
  */ 
 
 #include <stdlib.h>
-//#include "includes/MyCommon.h"
+#include "includes/MyCommon.h"
+#include "includes/GlobalIncludes.h"
 
 int main(void){
 	
+	main_init();
+	
+	while(1){	
 
+		//wdt_reset();
+		//EventHandleEvent();
 	
-	buzzer_init();
-	
-	while(1){
-		buzzer_buzz();
-	}	
-	/*
-	while(1){
-		wdt_reset();
-		EventHandleEvent();
-	}
-	*/
+	};
+
+	main_deinit();
 	
 	return 0;
 }
