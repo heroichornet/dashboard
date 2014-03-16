@@ -36,7 +36,7 @@ sources/adc.d sources/adc.o: ../sources/adc.c \
  ../sources/..\includes\/..\includes\CAN.h \
  ../sources/..\includes\/Error.h ../sources/..\includes\/CAN.h \
  ../sources/..\includes\/Timer.h ../sources/..\includes\/Buzzer.h \
- ../sources/..\includes\adc.h \
+ ../sources/..\includes\/Led.h ../sources/..\includes\adc.h \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/util/delay.h \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/util/delay_basic.h \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/math.h
@@ -126,6 +126,8 @@ c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.
 ../sources/..\includes\/Timer.h:
 
 ../sources/..\includes\/Buzzer.h:
+
+../sources/..\includes\/Led.h:
 
 ../sources/..\includes\adc.h:
 

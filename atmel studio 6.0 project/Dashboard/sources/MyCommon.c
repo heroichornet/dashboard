@@ -76,6 +76,10 @@ void main_init(){
 	#if HAS_BUZZER
 		buzzer_init();	
 	#endif
+	
+	#if HAS_LEDS
+		led_init();
+	#endif
 		
 }
 

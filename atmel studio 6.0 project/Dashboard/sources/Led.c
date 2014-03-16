@@ -35,7 +35,7 @@ void led_set(uint8_t led_id){
 }
 
 void led_clear(uint8_t led_id){
-	LED_PORT(led_id)|=(0x01)&LED_PIN(led_id);
+	LED_PORT(led_id)&=~((0x01)<<LED_PIN(led_id));
 }
 
 

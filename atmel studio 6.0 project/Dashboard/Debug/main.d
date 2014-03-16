@@ -31,7 +31,7 @@ main.d main.o: .././main.c \
  .././includes/..\includes\/compiler.h \
  .././includes/..\includes\/dvk90can1_board.h \
  .././includes/..\includes\CAN.h .././includes/Error.h \
- .././includes/Timer.h .././includes/Buzzer.h
+ .././includes/Timer.h .././includes/Buzzer.h .././includes/Led.h
 
 c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/stdlib.h:
 
@@ -114,3 +114,5 @@ c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.
 .././includes/Timer.h:
 
 .././includes/Buzzer.h:
+
+.././includes/Led.h:

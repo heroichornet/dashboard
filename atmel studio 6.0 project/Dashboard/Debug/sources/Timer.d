@@ -36,7 +36,8 @@ sources/Timer.d sources/Timer.o: ../sources/Timer.c \
  ../sources/..\includes\/..\includes\/dvk90can1_board.h \
  ../sources/..\includes\/..\includes\CAN.h \
  ../sources/..\includes\/Error.h ../sources/..\includes\/CAN.h \
- ../sources/..\includes\/Timer.h ../sources/..\includes\/Buzzer.h
+ ../sources/..\includes\/Timer.h ../sources/..\includes\/Buzzer.h \
+ ../sources/..\includes\/Led.h
 
 c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/io.h:
 
@@ -127,3 +128,5 @@ c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.
 ../sources/..\includes\/Timer.h:
 
 ../sources/..\includes\/Buzzer.h:
+
+../sources/..\includes\/Led.h:

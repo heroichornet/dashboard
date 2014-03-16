@@ -13,8 +13,11 @@ int main(void){
 	
 	main_init();
 	
-	while(1){	
-
+	while(1){
+		
+		led_state_set(0xFFFF);
+		led_state_set(0x0000);
+		
 		//wdt_reset();
 		//EventHandleEvent();
 	

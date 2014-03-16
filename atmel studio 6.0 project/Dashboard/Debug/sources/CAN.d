@@ -40,6 +40,7 @@ sources/CAN.d sources/CAN.o: ../sources/CAN.c \
  ../sources/..\includes\/..\includes\/CAN.h \
  ../sources/..\includes\/..\includes\/Timer.h \
  ../sources/..\includes\/..\includes\/Buzzer.h \
+ ../sources/..\includes\/..\includes\/Led.h \
  ../sources/..\includes\/compiler.h \
  ../sources/..\includes\/dvk90can1_board.h ../sources/..\includes\CAN.h
 
@@ -126,6 +127,8 @@ c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.
 ../sources/..\includes\/..\includes\/Timer.h:
 
 ../sources/..\includes\/..\includes\/Buzzer.h:
+
+../sources/..\includes\/..\includes\/Led.h:
 
 ../sources/..\includes\/compiler.h:
 
