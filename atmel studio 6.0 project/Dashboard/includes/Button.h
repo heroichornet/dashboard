@@ -2,7 +2,7 @@
  * Button.h
  *
  * Created: 06.03.2014 09:56:42
- *  Author: michael
+ * Author: michael
  */ 
 
 

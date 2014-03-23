@@ -41,8 +41,6 @@ sources/can_drv.d sources/can_drv.o: ../sources/can_drv.c \
  ../sources/..\includes\/..\includes\/Error.h \
  ../sources/..\includes\/..\includes\/CAN.h \
  ../sources/..\includes\/..\includes\/Timer.h \
- ../sources/..\includes\/..\includes\/Buzzer.h \
- ../sources/..\includes\/..\includes\/Led.h \
  ../sources/..\includes\can_drv.h ../sources/..\includes\at90can_drv.h \
  ../sources/..\includes\compiler.h
 
@@ -129,10 +127,6 @@ c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.
 ../sources/..\includes\/..\includes\/CAN.h:
 
 ../sources/..\includes\/..\includes\/Timer.h:
-
-../sources/..\includes\/..\includes\/Buzzer.h:
-
-../sources/..\includes\/..\includes\/Led.h:
 
 ../sources/..\includes\can_drv.h:
 

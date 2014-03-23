@@ -22,8 +22,8 @@ sources/MyCommon.d sources/MyCommon.o: ../sources/MyCommon.c \
  ../sources/../includes/..\includes\GlobalIncludes.h \
  ../sources/../includes/Watchdog.h \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/wdt.h \
- ../sources/../includes/GlobalIncludes.h ../sources/../includes/Event.h \
- ../sources/../includes/can_drv.h ../sources/../includes/can_lib.h \
+ ../sources/../includes/Event.h ../sources/../includes/can_drv.h \
+ ../sources/../includes/can_lib.h \
  ../sources/../includes/..\includes\can_drv.h \
  ../sources/../includes/..\includes\at90can_drv.h \
  ../sources/../includes/..\includes\compiler.h \
@@ -33,7 +33,7 @@ sources/MyCommon.d sources/MyCommon.o: ../sources/MyCommon.c \
  ../sources/../includes/..\includes\/compiler.h \
  ../sources/../includes/..\includes\/dvk90can1_board.h \
  ../sources/../includes/..\includes\CAN.h ../sources/../includes/Error.h \
- ../sources/../includes/Timer.h ../sources/../includes/AD.h
+ ../sources/../includes/Timer.h ../sources/../includes/GlobalIncludes.h
 
 ../sources/../includes/MyCommon.h:
 
@@ -83,8 +83,6 @@ c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.
 
 c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/wdt.h:
 
-../sources/../includes/GlobalIncludes.h:
-
 ../sources/../includes/Event.h:
 
 ../sources/../includes/can_drv.h:
@@ -113,4 +111,4 @@ c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.
 
 ../sources/../includes/Timer.h:
 
-../sources/../includes/AD.h:
+../sources/../includes/GlobalIncludes.h:

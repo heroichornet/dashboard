@@ -22,8 +22,7 @@ main.d main.o: .././main.c \
  .././includes/compiler.h .././includes/config.h \
  .././includes/..\includes\GlobalIncludes.h .././includes/Watchdog.h \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/wdt.h \
- .././includes/GlobalIncludes.h .././includes/Event.h \
- .././includes/can_drv.h .././includes/can_lib.h \
+ .././includes/Event.h .././includes/can_drv.h .././includes/can_lib.h \
  .././includes/..\includes\can_drv.h \
  .././includes/..\includes\at90can_drv.h \
  .././includes/..\includes\compiler.h .././includes/CAN.h \
@@ -31,7 +30,7 @@ main.d main.o: .././main.c \
  .././includes/..\includes\/compiler.h \
  .././includes/..\includes\/dvk90can1_board.h \
  .././includes/..\includes\CAN.h .././includes/Error.h \
- .././includes/Timer.h .././includes/AD.h
+ .././includes/Timer.h .././includes/GlobalIncludes.h
 
 c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/stdlib.h:
 
@@ -83,8 +82,6 @@ c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.
 
 c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/wdt.h:
 
-.././includes/GlobalIncludes.h:
-
 .././includes/Event.h:
 
 .././includes/can_drv.h:
@@ -113,4 +110,4 @@ c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.
 
 .././includes/Timer.h:
 
-.././includes/AD.h:
+.././includes/GlobalIncludes.h:

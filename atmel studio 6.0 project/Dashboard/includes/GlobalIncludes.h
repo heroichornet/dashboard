@@ -37,6 +37,8 @@
 /* | Definitionen					| */
 /* +--------------------------------+ */
 
+
+
 // Debugging definitions
 #define DEBUG	(0)
 
@@ -87,8 +89,8 @@
 #define MCM_AD	(5)
 #define MCM_AD_IS_REAR (0)
 #define MCM_AD_IS_RIGHT (0)
+#define DASHBOARD	(6)
 
-#define MCM MCM_AD
 
 #if MCM==MCM_FRONT
 	#define HAS_CAN_RX 0
@@ -282,56 +284,140 @@
 #endif
 
 #if MCM==MCM_AD
-	#include "AD.h"
+		#include "AD.h"
 
-	#define HAS_CAN_RX 1
-	#define HAS_200HZ 0
-	#define HAS_100HZ 0
-	#define HAS_50HZ 0
-	#define HAS_10HZ 1
-	#define HAS_ADC 1
-	#define HAS_PWM
+		#define HAS_CAN_RX 1
+		#define HAS_200HZ 0
+		#define HAS_100HZ 0
+		#define HAS_50HZ 0
+		#define HAS_10HZ 1
+		#define HAS_ADC 1
+		#define HAS_PWM
 
-	#define IO_PORTB_OR (0x80)
-	#define IO_PORTB_AND (0xFE)
-	#define IO_PORTD_OR (0x00)
-	#define IO_PORTD_AND (0xFE)
+		#define IO_PORTB_OR (0x80)
+		#define IO_PORTB_AND (0xFE)
+		#define IO_PORTD_OR (0x00)
+		#define IO_PORTD_AND (0xFE)
 
-	#define CAN_TX_10_ID	(0x401+(MCM_AD_IS_REAR*100+MCM_AD_IS_RIGHT*2))
-	#define CAN_TX_10_LEN	(6)
-	static union MCM_AD_TX_10_un{
-		U8 dataBuf[CAN_TX_10_LEN];
-		struct MCM_AD_TX_10_st {
-			U16 Speed;
-			U8 SpeedSign;
-			U16 Position;
-			U8 errorCode;
-		} dataStruct;
-	} mcm_ad_10_data;
-	static st_cmd_t mcm_ad_10_tx;
+		#define CAN_TX_10_ID	(0x401+(MCM_AD_IS_REAR*100+MCM_AD_IS_RIGHT*2))
+		#define CAN_TX_10_LEN	(6)
+		static union MCM_AD_TX_10_un{
+			U8 dataBuf[CAN_TX_10_LEN];
+			struct MCM_AD_TX_10_st {
+				U16 Speed;
+				U8 SpeedSign;
+				U16 Position;
+				U8 errorCode;
+			} dataStruct;
+		} mcm_ad_10_data;
+		static st_cmd_t mcm_ad_10_tx;
 
-	#if HAS_CAN_RX
-	#define CAN_RX_ID	(0x402+(MCM_AD_IS_REAR*100+MCM_AD_IS_RIGHT*2))
-	#define CAN_RX_LEN	(8)
-	static union MCM_AD_RX_un{
-		U8 dataBuf[CAN_RX_LEN];
-		struct MCM_AD_RX_st{
-			U8 BoundD1;
-			U8 BoundGap;
-			U8 BoundD2;
-			U8 BoundOff2;
-			U8 ReBoundD1;
-			U8 ReBoundGap;
-			U8 ReBoundD2;
-			U8 ReBoundOff2;
-		} dataStruct;
-	} mcm_ad_rx_data;
-	static st_cmd_t mcm_ad_rx;
-	#endif
+		#if HAS_CAN_RX
+		#define CAN_RX_ID	(0x501)
+		#define CAN_RX_LEN	(8)
+		static union MCM_AD_RX_un{
+			U8 dataBuf[CAN_RX_LEN];
+			struct MCM_AD_RX_st{
+				U8 BoundD1;
+				U8 BoundGap;
+				U8 BoundD2;
+				U8 BoundOff2;
+				U8 ReBoundD1;
+				U8 ReBoundGap;
+				U8 ReBoundD2;
+				U8 ReBoundOff2;
+			} dataStruct;
+		} mcm_ad_rx_data;
+		static st_cmd_t mcm_ad_rx;
+		#endif
 
-	// nADWerte*15*2^x/200kHz
-	#define MCM_ADC_PRESCALER 0
-	static U8 mcm_ad_current_ADC;
+		// nADWerte*15*2^x/200kHz
+		#define MCM_ADC_PRESCALER 0
+		static U8 mcm_ad_current_ADC;
+#endif
+	
+	
+#if MCM==DASHBOARD
+
+		#define HAS_CAN_RX 1
+		#define HAS_200HZ 1
+		#define HAS_100HZ 0
+		#define HAS_50HZ 1
+		#define HAS_10HZ 0
+		#define HAS_ADC 0
+	
+	
+		/* RX Frames */
+	
+		/* RX Frame 1*/
+		#if HAS_CAN_RX
+			#define CAN_RX_ID_F1 (0x501)
+			#define CAN_RX_LEN_F1 (8)
+			static union Dashboard_RX_F1_un{
+				U8 dataBuf[CAN_RX_LEN_F1];
+				struct Dashboard_RX_F1_st{
+					U8 ERRCODE;
+					U8 LED_BUZ;
+					U8 SOC;
+					U8 MOTTEMP_REAR_LEFT;
+					U8 MOTTEMP_REAR_RIGHT;
+					U8 MOTTEMP_FRONT_RIGHT;
+					U8 MOTTEMP_FRONT_LEFT;
+					U8 LV_VOLTAGE;
+				} dataStruct;
+			} dashboard_rx_f1_data;
+	
+			/*RX Frame 2 */
+			#define CAN_RX_ID_F2  (0x502)
+			#define CAN_RX_LEN_F2 (3)
+			static union Dashboard_RX_F2_un{
+				U8 dataBuf[CAN_RX_LEN_F2];
+				struct Dashboard_RX_F2_st{
+					U8 CELL_VOLTAGE_MIN;
+					U8 CELL_VOLTAGE_MEAN;
+					U8 CELL_VOLTAGE_MAX;
+					U8 CELL_TEMP_MIN;
+					U8 CELL_TEMP_MEAN;
+					U8 CELL_TEMP_MAX;
+					U8 ACCELERATION_STATE;
+					U8 ACCELERATION_GAS;
+				} dataStruct;
+			} dashboard_rx_f2_data;	
+		#endif
+		
+		/* TX Frame 1 */
+		#define	CAN_TX_50_ID	(0x503)
+		#define CAN_TX_50_LEN	(2)
+		static union Dashboard_TX_50_un{
+			U8 dataBuf[CAN_TX_50_LEN];
+			struct Dashboard_50_st {
+				U8 KEYS;
+				U8 MOTOR_POWER_FRONT;
+				U8 MOTOR_POWER_REAR;
+				U8 TORQUE_VECTORING;
+				U8 TRACTION_CONTROL;
+				U8 PARAM_3;
+				U8 PARAM_4;
+				U8 PARAM_5;
+			} dataStruct;
+		} dashboard_50_data;
+		static st_cmd_t dashboard_50_tx;
+	
+		/* TX Frame 2 */
+		#define	CAN_TX_200_ID	(0x504)
+		#define CAN_TX_200_LEN	(2)
+		static union Dashboard_TX_200_un{
+			U8 dataBuf[CAN_TX_200_LEN];
+			struct Dashboard_200_st {
+				U8 ACCELERATION;
+				U8 DRS;
+			} dataStruct;
+		} dashboard_200_data;
+		static st_cmd_t dashboard_200_tx;
+
+
 	#endif
 
 #endif /* GlobalIncludes_H_ */
+
+

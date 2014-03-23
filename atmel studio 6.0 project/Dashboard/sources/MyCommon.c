@@ -38,28 +38,6 @@ void main_init(){
 	PORTF=0xFF;
 	PORTG|=(0b00011111); // Port G Pins 7,8 and 6 not written
 	
-
-	DDRA=DDRA|0x08;
-	PORTA=PORTA&(~0x08);
-
-	#ifdef IO_PORTB_OR
-	DDRB|=IO_PORTB_OR;
-	DDRB&=IO_PORTB_AND;
-	PORTB&=(~IO_PORTB_OR);
-	#endif
-
-	#ifdef IO_PORTD_OR
-	DDRD|=IO_PORTD_OR;
-	DDRD&=IO_PORTD_AND;
-	PORTD&=(~IO_PORTD_OR);
-	#endif
-
-	#ifdef IO_PORTE_OR
-	DDRE|=IO_PORTE_OR;
-	DDRE&=IO_PORTE_AND;
-	PORTE&=(~IO_PORTE_OR);
-	#endif
-
 	CANInit();
 
 	#if HAS_200HZ|HAS_100HZ|HAS_50HZ
@@ -97,11 +75,11 @@ void main_init(){
 	EventAddEvent(EVENT_INIT);
 	
 	#if HAS_BUZZER
-		buzzer_init();	
+	buzzer_init();	
 	#endif
 	
 	#if HAS_LEDS
-		led_init();
+	led_init();
 	#endif
 		
 

@@ -424,6 +424,94 @@ static void MCMAD(void){
 }
 #endif
 
+
+#if MCM==DASHBOARD
+static void Dashboard(void){
+	switch(event_queue[event_queue_tail]){
+		case EVENT_INIT:
+		CANGetStruct(&dashboard_200_tx,dashboard_200_data.dataBuf,CAN_TX_200_ID,CAN_TX_200_LEN);
+		//CANGetStruct(&mcm_hvbox_rx,mcm_hvbox_rx_data.dataBuf,CAN_RX_ID,CAN_RX_LEN);
+		InitError(&dashboard_200_data.dataStruct.errorCode);
+		sei();
+		//CANStartRx(&dashboard_rx);
+		break;
+		/*case EVENT_200HZ:
+		if(PINB&0x02){
+			mcm_hvbox_10_data.dataStruct.HVDI=CAN_TRUE;
+		}else{
+			mcm_hvbox_10_data.dataStruct.HVDI=CAN_FALSE;
+		}
+		if(PIND&0x02){
+			mcm_hvbox_10_data.dataStruct.IMD=CAN_TRUE;
+		}else{
+			mcm_hvbox_10_data.dataStruct.IMD=CAN_FALSE;
+		}
+		if(PINE&0x02){
+			mcm_hvbox_10_data.dataStruct.BPD=CAN_TRUE;
+		}else{
+			mcm_hvbox_10_data.dataStruct.BPD=CAN_FALSE;
+		}
+		if(PIND&0x20){
+			mcm_hvbox_10_data.dataStruct.MS=CAN_TRUE;
+		}else{
+			mcm_hvbox_10_data.dataStruct.MS=CAN_FALSE;
+		}
+		if(PIND&0x40){
+			//BMS
+		}else{
+			
+		}
+		CANAddSendData(&mcm_hvbox_10_tx);
+		/*if(PORTA&0x08){
+			PORTA=PORTA&(~0x08);
+		}else{
+			PORTA=PORTA|0x08;
+		}*/
+		break;
+		case EVENT_CANERROR:
+		CANAbortCMD();
+		break;
+		case EVENT_CANTX:
+		if(CANGetCurrentTx()==&dashboard_200_tx){//ErrorCode gesendet
+			ClearErrors();
+		}
+		CANSendNext();
+		break;
+		case EVENT_CANRX:
+		CANGetData(&mcm_hvbox_rx);
+		if(dashboard_rx_data.dataStruct.showBPD==CAN_FALSE){
+			PORTB&=(~0x04);
+		}else{
+			PORTB|=0x04;
+		}
+		if(dashboard_rx_data.dataStruct.AIRp==CAN_FALSE){
+			PORTB&=(~0x08);
+		}else{
+			PORTB|=0x08;
+		}
+		if(dashboard_rx_data.dataStruct.preCharge==CAN_FALSE){
+			PORTD&=(~0x01);
+		}else{
+			PORTD|=0x01;
+		}
+		if(mcm_hvbox_rx_data.dataStruct.Fan1==CAN_FALSE){
+			PORTE&=(~0x01);
+		}else{
+			PORTE|=0x01;
+		}
+		if(dashboard_rx_data.dataStruct.Fan2==CAN_FALSE){
+			PORTE&=(~0x10);
+		}else{
+			PORTE|=0x10;
+		}
+		break;
+		default:
+		break;
+	}
+}
+#endif
+
+
 void EventHandleEvent(void){
 	if(event_queue_head!=event_queue_tail){
 		#if MCM==MCM_FRONT
@@ -441,6 +529,10 @@ void EventHandleEvent(void){
 		#if MCM==MCM_AD
 			MCMAD();
 		#endif
+		#if MCM==DASHBOARD
+			Dashboard();
+		#endif
 		event_queue_tail=(event_queue_tail+1)%EVENT_QUEUE_SIZE;
 	}
 }
+

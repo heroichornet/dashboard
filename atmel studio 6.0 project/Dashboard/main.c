@@ -9,18 +9,16 @@
 #include "includes/MyCommon.h"
 #include "includes/GlobalIncludes.h"
 
+
 int main(void){
 	
 	main_init();
 	
-	while(1){
-		
-		led_state_set(0xFFFF);
-		led_state_set(0x0000);
-		
-	wdt_reset();
+	while(1){	
+		wdt_reset();
 		EventHandleEvent();
 	};
+
 
 	main_deinit();
 	
