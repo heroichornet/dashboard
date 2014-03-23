@@ -9,8 +9,6 @@
 #ifndef GlobalIncludes_H_
 #define GlobalIncludes_H_
 
-
-
 /* +--------------------------------+ */
 /* | Libraries						| */
 /* +--------------------------------+ */
@@ -34,11 +32,6 @@
 #include "CAN.h"
 #include "Error.h"
 #include "Timer.h"
-
-// Michael's Libraries
-#include "Buzzer.h"
-#include "Led.h"
-
 
 /* +--------------------------------+ */
 /* | Definitionen					| */
@@ -91,20 +84,22 @@
 #define MCM_LVBOX	(2)
 #define MCM_REAR	(3)
 #define MCM_HVBOX	(4)
-#define MCM_AD		(5)
-#define DASHBOARD	(6)
+#define MCM_AD	(5)
+#define MCM_AD_IS_REAR (0)
+#define MCM_AD_IS_RIGHT (0)
 
-#define MCM DASHBOARD
+#define MCM MCM_AD
 
 #if MCM==MCM_FRONT
 	#define HAS_CAN_RX 0
 	#define HAS_200HZ 1
 	#define HAS_100HZ 0
+	#define HAS_50HZ 0
 	#define HAS_10HZ 1
 	#define HAS_ADC 1
 	
 	#define IO_PORTB_OR (0x00)
-	#define IO_PORTB_AND (0xFE)
+	#define IO_PORTB_AND (0x7E)
 	#define IO_PORTD_OR (0x00)
 	#define IO_PORTD_AND (0xFE)
 
@@ -155,11 +150,12 @@
 	#define HAS_CAN_RX 1
 	#define HAS_200HZ 0
 	#define HAS_100HZ 0
+	#define HAS_50HZ 0
 	#define HAS_10HZ 1
 	#define HAS_ADC 1
 	
 	#define IO_PORTB_OR (0x00)
-	#define IO_PORTB_AND (0xFE)
+	#define IO_PORTB_AND (0x7E)
 	#define IO_PORTD_OR (0x03)
 	#define IO_PORTD_AND (0xFF)
 
@@ -204,11 +200,12 @@
 	#define HAS_CAN_RX 1
 	#define HAS_200HZ 0
 	#define HAS_100HZ 0
+	#define HAS_50HZ 0
 	#define HAS_10HZ 1
 	#define HAS_ADC 0
 	
 	#define IO_PORTB_OR (0x03)
-	#define IO_PORTB_AND (0xFF)
+	#define IO_PORTB_AND (0x7F)
 	#define IO_PORTD_OR (0x00)
 	#define IO_PORTD_AND ~(0x03)
 
@@ -242,11 +239,12 @@
 	#define HAS_CAN_RX 1
 	#define HAS_200HZ 0
 	#define HAS_100HZ 0
+	#define HAS_50HZ 0
 	#define HAS_10HZ 1
 	#define HAS_ADC 0
 	
 	#define IO_PORTB_OR (0x0C)
-	#define IO_PORTB_AND ~(0x02)
+	#define IO_PORTB_AND ~(0x82)
 	#define IO_PORTD_OR (0x01)
 	#define IO_PORTD_AND ~(0x02)
 	#define IO_PORTE_OR (0x91)
@@ -283,105 +281,57 @@
 	#endif
 #endif
 
+#if MCM==MCM_AD
+	#include "AD.h"
 
-#if MCM==MCM_HVBOX
 	#define HAS_CAN_RX 1
 	#define HAS_200HZ 0
 	#define HAS_100HZ 0
+	#define HAS_50HZ 0
 	#define HAS_10HZ 1
-	#define HAS_ADC 0
-	
-	#define IO_PORTB_OR (0x0C)
-	#define IO_PORTB_AND ~(0x02)
-	#define IO_PORTD_OR (0x01)
-	#define IO_PORTD_AND ~(0x02)
-	#define IO_PORTE_OR (0x91)
-	#define IO_PORTE_AND ~(0x62)
-	
-	#define CAN_TX_10_ID	(0x401)
-	#define CAN_TX_10_LEN	(5)
-	static union MCM_HVBOX_TX_10_un{
+	#define HAS_ADC 1
+	#define HAS_PWM
+
+	#define IO_PORTB_OR (0x80)
+	#define IO_PORTB_AND (0xFE)
+	#define IO_PORTD_OR (0x00)
+	#define IO_PORTD_AND (0xFE)
+
+	#define CAN_TX_10_ID	(0x401+(MCM_AD_IS_REAR*100+MCM_AD_IS_RIGHT*2))
+	#define CAN_TX_10_LEN	(6)
+	static union MCM_AD_TX_10_un{
 		U8 dataBuf[CAN_TX_10_LEN];
-		struct MCM_RAER_TX_10_st {
-			U8 IMD;
-			U8 BPD;
-			U8 HVDI;
-			U8 MS;
+		struct MCM_AD_TX_10_st {
+			U16 Speed;
+			U8 SpeedSign;
+			U16 Position;
 			U8 errorCode;
 		} dataStruct;
-	} mcm_hvbox_10_data;
-	static st_cmd_t mcm_hvbox_10_tx;
+	} mcm_ad_10_data;
+	static st_cmd_t mcm_ad_10_tx;
 
 	#if HAS_CAN_RX
-		#define CAN_RX_ID	(0x402)
-		#define CAN_RX_LEN	(3)
-		static union MCM_HVBOX_RX_un{
-			U8 dataBuf[CAN_RX_LEN];
-			struct MCM_HVBOX_RX_st{
-				U8 preCharge;
-				U8 AIRp;
-				U8 Fan1;
-				U8 Fan2;
-				U8 showBPD;
-			} dataStruct;
-		} mcm_hvbox_rx_data;
-		static st_cmd_t mcm_hvbox_rx;
+	#define CAN_RX_ID	(0x402+(MCM_AD_IS_REAR*100+MCM_AD_IS_RIGHT*2))
+	#define CAN_RX_LEN	(8)
+	static union MCM_AD_RX_un{
+		U8 dataBuf[CAN_RX_LEN];
+		struct MCM_AD_RX_st{
+			U8 BoundD1;
+			U8 BoundGap;
+			U8 BoundD2;
+			U8 BoundOff2;
+			U8 ReBoundD1;
+			U8 ReBoundGap;
+			U8 ReBoundD2;
+			U8 ReBoundOff2;
+		} dataStruct;
+	} mcm_ad_rx_data;
+	static st_cmd_t mcm_ad_rx;
 	#endif
-#endif
 
-
-
-#if MCM==DASHBOARD
-
-/* ToDo: mit föhn konfigurieren */
-
-#define HAS_CAN_RX	1
-#define HAS_200HZ	0
-#define HAS_100HZ	0
-#define HAS_10HZ	1
-#define HAS_ADC		0
-
-
-
-#define CAN_TX_10_ID	(0x401)
-#define CAN_TX_10_LEN	(5)
-static union Dashboard_TX_10_un{
-	U8 dataBuf[CAN_TX_10_LEN];
-	struct Dashboard_TX_10_st {
-		U8 IMD;
-		U8 BPD;
-		U8 HVDI;
-		U8 MS;
-		U8 errorCode;
-	} dataStruct;
-} dashboad_10_data;
-static st_cmd_t dashboard_10_tx;
-
-#if HAS_CAN_RX
-#define CAN_RX_ID	(0x402)
-#define CAN_RX_LEN	(3)
-
-
-static union Dashboard_RX_un{
-	U8 dataBuf[CAN_RX_LEN];
-	struct MCM_HVBOX_RX_st{
-		U8 preCharge;
-		U8 AIRp;
-		U8 Fan1;
-		U8 Fan2;
-		U8 showBPD;
-	} dataStruct;
-} dashboard_rx_data;
-static st_cmd_t dashboard_rx;
-
-#endif
-
-
-
-
-#endif
-/* +--------------------------------+ */
-/* | Modulübergreifende Variablen	| */
-/* +--------------------------------+ */
+	// nADWerte*15*2^x/200kHz
+	#define MCM_ADC_PRESCALER 0
+	static U8 mcm_ad_current_ADC;
+	#endif
 
 #endif /* GlobalIncludes_H_ */

@@ -20,8 +20,7 @@ void TIMER_Timer3_OCR3A_on(void); // Used as Software-Timebase
 void TIMER_Timer3_OCR3B_on(void); //
 void TIMER_Timer3_OCR3C_on(void); //
 
-void TIMER_PWM_init(void);
-void TIMER_PWM_X37(U16 value);
-void TIMER_PWM_X38(U16 value);
+void PWM_init(void);
+void TIMER_SetPWMVal(U8 pwm);
 
 #endif /* TIMER_H_ */

@@ -12,6 +12,20 @@
 uint16_t button_pressed;
 uint8_t button_current;
 
+/* Buttons for VCU */
+#define BUTTON_ID_START			(0)
+#define BUTTON_ID_TV			(1)
+#define BUTTON_ID_TC			(2)
+#define BUTTON_ID_RECUP			(3)
+#define BUTTON_ID_KOBI			(4)
+#define BUTTON_ID_AD			(5)
+#define BUTTON_ID_DRS			(6)
+
+/* Buttons for Dashboard (local) */
+
+
+
+
 /*
 	  col1¦col2 ¦col3 ¦
 row1---0--¦--1--¦--2--¦

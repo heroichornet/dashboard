@@ -35,7 +35,7 @@
       </OverrideVtorValue>
       <Channel>
         <host>127.0.0.1</host>
-        <port>52611</port>
+        <port>49737</port>
         <ssl>False</ssl>
       </Channel>
       <ToolOptions>
@@ -144,6 +144,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="includes\Error.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="includes\ErrorCodes.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="includes\Event.h">

@@ -56,6 +56,7 @@ void CANInit(void){
 	can_queue_head=0;
 	can_queue_tail=0;
 	can_Status=CAN_Ready;
+	can_rx=0;
 }
 
 void CANGetStruct(st_cmd_t* st,U8* datapt, U16 ID, U8 lenght){
@@ -80,15 +81,17 @@ void CANGetData(st_cmd_t* Rx){
 
 void CANSendData(void){
 	if(can_queue_head!=can_queue_tail){
-		can_rx->cmd=CMD_ABORT;
-		can_cmd(can_rx);
+		if(can_rx!=0){
+			can_rx->cmd=CMD_ABORT;
+			can_cmd(can_rx);
+		}
 		can_queue[can_queue_tail]->cmd=CMD_TX_DATA;
 		if(can_cmd(can_queue[can_queue_tail])!=CAN_CMD_ACCEPTED){
 			AddError(ERROR_CAN_ACCEPTED);
 		}else{
 			can_Status=CAN_Send;
 		}		
-	}else{
+	}else if(can_rx!=0){
 		can_rx->cmd=CMD_RX_DATA;
 		can_cmd(can_rx);
 	}

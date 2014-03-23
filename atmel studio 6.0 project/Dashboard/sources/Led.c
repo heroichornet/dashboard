@@ -28,12 +28,37 @@ void led_init(void){
 	led_pins[LED_ID_OK]=LED_PIN_OK;
 	led_pins[LED_ID_START]=LED_PIN_START;
 	
+	led_dd[LED_ID_AMS]=LED_PIN_AMS;
+	led_dd[LED_ID_TV]=LED_PIN_TV;
+	led_dd[LED_ID_TC]=LED_PIN_TC;
+	led_dd[LED_ID_RECUP]=LED_PIN_RECUP;
+	led_dd[LED_ID_KOBI]=LED_PIN_KOBI;
+	led_dd[LED_ID_AD]=LED_PIN_AD;
+	led_dd[LED_ID_LV_LOW]=LED_PIN_LV_LOW;
+	led_dd[LED_ID_IMD]=LED_PIN_IMD;
+	led_dd[LED_ID_BRAKE]=LED_PIN_IMD;
+	led_dd[LED_ID_OK]=LED_PIN_OK;
+	led_dd[LED_ID_START]=LED_PIN_START;
+	
+	led_port[LED_ID_AMS]=LED_PIN_AMS;
+	led_port[LED_ID_TV]=LED_PIN_TV;
+	led_port[LED_ID_TC]=LED_PIN_TC;
+	led_port[LED_ID_RECUP]=LED_PIN_RECUP;
+	led_port[LED_ID_KOBI]=LED_PIN_KOBI;
+	led_port[LED_ID_AD]=LED_PIN_AD;
+	led_port[LED_ID_LV_LOW]=LED_PIN_LV_LOW;
+	led_port[LED_ID_IMD]=LED_PIN_IMD;
+	led_port[LED_ID_BRAKE]=LED_PIN_IMD;
+	led_port[LED_ID_OK]=LED_PIN_OK;
+	led_port[LED_ID_START]=LED_PIN_START;
+	
+	
 	
 	for(led_id=0;led_id<LED_NUMBER;led_id++){
 		/* set data direction to output*/
-		LED_DD(i)|=((0x01)<<led_pins[led_id]);
+		led_dd[led_id]|=((0x01)<<led_pins[led_id]);
 		/* turn on led */
-		LED_PORT(i)|=((0x01)<<led_pins[led_id]);
+		led_port[led_id]|=((0x01)<<led_pins[led_id]);
 	}
 
 
@@ -44,11 +69,11 @@ void led_init(void){
 
 void led_set(uint8_t led_id){	
 	if(led_id>11) return; /* illegal id */
-	LED_PORT(led_id)|=((0x01)<<led_pins[led_id]);
+	led_port[led_id]|=((0x01)<<led_pins[led_id]);
 }
 
 void led_clear(uint8_t led_id){
-	LED_PORT(led_id)&=~((0x01)<<led_pins[led_id]);
+	led_port[led_id]&=~((0x01)<<led_pins[led_id]);
 }
 
 
@@ -82,7 +107,7 @@ uint16_t led_state_return(void){
 }
 
 uint8_t led_is_set(uint8_t led_id){
-	return (uint8_t) LED_PORT(led_id)&((0x01)<<led_pins[led_id]);
+	return (uint8_t) led_port[led_id]&((0x01)<<led_pins[led_id]);
 }
 
 

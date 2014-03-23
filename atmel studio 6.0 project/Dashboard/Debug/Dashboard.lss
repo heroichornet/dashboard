@@ -3,29 +3,29 @@ Dashboard.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000014  00800100  00001db2  00001e46  2**0
+  0 .data         00000014  00800100  00001e14  00001ea8  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         00001db2  00000000  00000000  00000094  2**1
+  1 .text         00001e14  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000077  00800114  00800114  00001e5a  2**0
+  2 .bss          00000082  00800114  00800114  00001ebc  2**0
                   ALLOC
-  3 .stab         000006cc  00000000  00000000  00001e5c  2**2
+  3 .stab         000006cc  00000000  00000000  00001ebc  2**2
                   CONTENTS, READONLY, DEBUGGING
-  4 .stabstr      00000085  00000000  00000000  00002528  2**0
+  4 .stabstr      00000085  00000000  00000000  00002588  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_aranges 00000260  00000000  00000000  000025b0  2**3
+  5 .debug_aranges 00000260  00000000  00000000  00002610  2**3
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00003a6f  00000000  00000000  00002810  2**0
+  6 .debug_info   00003b4f  00000000  00000000  00002870  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000012b3  00000000  00000000  0000627f  2**0
+  7 .debug_abbrev 000012b3  00000000  00000000  000063bf  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000018e7  00000000  00000000  00007532  2**0
+  8 .debug_line   000018f1  00000000  00000000  00007672  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000008ec  00000000  00000000  00008e1c  2**2
+  9 .debug_frame  000008f8  00000000  00000000  00008f64  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000b1d  00000000  00000000  00009708  2**0
+ 10 .debug_str    00000b24  00000000  00000000  0000985c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000017b8  00000000  00000000  0000a225  2**0
+ 11 .debug_loc    000017f2  00000000  00000000  0000a380  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -43,10 +43,10 @@ Disassembly of section .text:
       24:	0c 94 6a 00 	jmp	0xd4	; 0xd4 <__bad_interrupt>
       28:	0c 94 6a 00 	jmp	0xd4	; 0xd4 <__bad_interrupt>
       2c:	0c 94 6a 00 	jmp	0xd4	; 0xd4 <__bad_interrupt>
-      30:	0c 94 f6 0c 	jmp	0x19ec	; 0x19ec <__vector_12>
-      34:	0c 94 27 0d 	jmp	0x1a4e	; 0x1a4e <__vector_13>
-      38:	0c 94 58 0d 	jmp	0x1ab0	; 0x1ab0 <__vector_14>
-      3c:	0c 94 1c 0e 	jmp	0x1c38	; 0x1c38 <__vector_15>
+      30:	0c 94 27 0d 	jmp	0x1a4e	; 0x1a4e <__vector_12>
+      34:	0c 94 58 0d 	jmp	0x1ab0	; 0x1ab0 <__vector_13>
+      38:	0c 94 89 0d 	jmp	0x1b12	; 0x1b12 <__vector_14>
+      3c:	0c 94 4d 0e 	jmp	0x1c9a	; 0x1c9a <__vector_15>
       40:	0c 94 6a 00 	jmp	0xd4	; 0xd4 <__bad_interrupt>
       44:	0c 94 6a 00 	jmp	0xd4	; 0xd4 <__bad_interrupt>
       48:	0c 94 01 01 	jmp	0x202	; 0x202 <__vector_18>
@@ -59,10 +59,10 @@ Disassembly of section .text:
       64:	0c 94 77 00 	jmp	0xee	; 0xee <__vector_25>
       68:	0c 94 6a 00 	jmp	0xd4	; 0xd4 <__bad_interrupt>
       6c:	0c 94 6a 00 	jmp	0xd4	; 0xd4 <__bad_interrupt>
-      70:	0c 94 89 0d 	jmp	0x1b12	; 0x1b12 <__vector_28>
-      74:	0c 94 ba 0d 	jmp	0x1b74	; 0x1b74 <__vector_29>
-      78:	0c 94 eb 0d 	jmp	0x1bd6	; 0x1bd6 <__vector_30>
-      7c:	0c 94 26 0e 	jmp	0x1c4c	; 0x1c4c <__vector_31>
+      70:	0c 94 ba 0d 	jmp	0x1b74	; 0x1b74 <__vector_28>
+      74:	0c 94 eb 0d 	jmp	0x1bd6	; 0x1bd6 <__vector_29>
+      78:	0c 94 1c 0e 	jmp	0x1c38	; 0x1c38 <__vector_30>
+      7c:	0c 94 57 0e 	jmp	0x1cae	; 0x1cae <__vector_31>
       80:	0c 94 6a 00 	jmp	0xd4	; 0xd4 <__bad_interrupt>
       84:	0c 94 6a 00 	jmp	0xd4	; 0xd4 <__bad_interrupt>
       88:	0c 94 6a 00 	jmp	0xd4	; 0xd4 <__bad_interrupt>
@@ -81,8 +81,8 @@ Disassembly of section .text:
       a0:	11 e0       	ldi	r17, 0x01	; 1
       a2:	a0 e0       	ldi	r26, 0x00	; 0
       a4:	b1 e0       	ldi	r27, 0x01	; 1
-      a6:	e2 eb       	ldi	r30, 0xB2	; 178
-      a8:	fd e1       	ldi	r31, 0x1D	; 29
+      a6:	e4 e1       	ldi	r30, 0x14	; 20
+      a8:	fe e1       	ldi	r31, 0x1E	; 30
       aa:	00 e0       	ldi	r16, 0x00	; 0
       ac:	0b bf       	out	0x3b, r16	; 59
       ae:	02 c0       	rjmp	.+4      	; 0xb4 <__do_copy_data+0x14>
@@ -103,11 +103,11 @@ Disassembly of section .text:
       c4:	1d 92       	st	X+, r1
 
 000000c6 <.do_clear_bss_start>:
-      c6:	ab 38       	cpi	r26, 0x8B	; 139
+      c6:	a6 39       	cpi	r26, 0x96	; 150
       c8:	b1 07       	cpc	r27, r17
       ca:	e1 f7       	brne	.-8      	; 0xc4 <.do_clear_bss_loop>
       cc:	0e 94 6c 00 	call	0xd8	; 0xd8 <main>
-      d0:	0c 94 d7 0e 	jmp	0x1dae	; 0x1dae <_exit>
+      d0:	0c 94 08 0f 	jmp	0x1e10	; 0x1e10 <_exit>
 
 000000d4 <__bad_interrupt>:
       d4:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -119,18 +119,18 @@ Disassembly of section .text:
 int main(void){
 	
 	main_init();
-      d8:	0e 94 de 0c 	call	0x19bc	; 0x19bc <main_init>
+      d8:	0e 94 0f 0d 	call	0x1a1e	; 0x1a1e <main_init>
 	
 	while(1){
 		
 		led_state_set(0xFFFF);
       dc:	8f ef       	ldi	r24, 0xFF	; 255
       de:	9f ef       	ldi	r25, 0xFF	; 255
-      e0:	0e 94 39 0c 	call	0x1872	; 0x1872 <led_state_set>
+      e0:	0e 94 3c 0c 	call	0x1878	; 0x1878 <led_state_set>
 		led_state_set(0x0000);
       e4:	80 e0       	ldi	r24, 0x00	; 0
       e6:	90 e0       	ldi	r25, 0x00	; 0
-      e8:	0e 94 39 0c 	call	0x1872	; 0x1872 <led_state_set>
+      e8:	0e 94 3c 0c 	call	0x1878	; 0x1878 <led_state_set>
       ec:	f7 cf       	rjmp	.-18     	; 0xdc <main+0x4>
 
 000000ee <__vector_25>:
@@ -274,8 +274,8 @@ U16 ADGetVal(void){
 void button_init( void )
 {
 	button_pressed=0x00;
-     1b2:	10 92 2f 01 	sts	0x012F, r1
-     1b6:	10 92 2e 01 	sts	0x012E, r1
+     1b2:	10 92 3a 01 	sts	0x013A, r1
+     1b6:	10 92 39 01 	sts	0x0139, r1
 	/* ToDo: All pins on tri-state High impedance */
 }
      1ba:	08 95       	ret
@@ -473,11 +473,11 @@ void CANInit(void){
      2ac:	8f ef       	ldi	r24, 0xFF	; 255
      2ae:	80 93 de 00 	sts	0x00DE, r24
 	can_queue_head=0;
-     2b2:	10 92 3b 01 	sts	0x013B, r1
+     2b2:	10 92 46 01 	sts	0x0146, r1
 	can_queue_tail=0;
-     2b6:	10 92 3d 01 	sts	0x013D, r1
+     2b6:	10 92 48 01 	sts	0x0148, r1
 	can_Status=CAN_Ready;
-     2ba:	10 92 3c 01 	sts	0x013C, r1
+     2ba:	10 92 47 01 	sts	0x0147, r1
 }
      2be:	08 95       	ret
 
@@ -513,15 +513,15 @@ void CANGetStruct(st_cmd_t* st,U8* datapt, U16 ID, U8 lenght){
 
 void CANStartRx(st_cmd_t* Rx){
 	can_rx=Rx;
-     2e2:	90 93 3f 01 	sts	0x013F, r25
-     2e6:	80 93 3e 01 	sts	0x013E, r24
+     2e2:	90 93 4a 01 	sts	0x014A, r25
+     2e6:	80 93 49 01 	sts	0x0149, r24
 	can_rx->cmd=CMD_RX_DATA;
      2ea:	25 e0       	ldi	r18, 0x05	; 5
      2ec:	fc 01       	movw	r30, r24
      2ee:	21 83       	std	Z+1, r18	; 0x01
 	can_cmd(can_rx);
-     2f0:	80 91 3e 01 	lds	r24, 0x013E
-     2f4:	90 91 3f 01 	lds	r25, 0x013F
+     2f0:	80 91 49 01 	lds	r24, 0x0149
+     2f4:	90 91 4a 01 	lds	r25, 0x014A
      2f8:	0e 94 35 05 	call	0xa6a	; 0xa6a <can_cmd>
 }
      2fc:	08 95       	ret
@@ -544,25 +544,25 @@ void CANGetData(st_cmd_t* Rx){
 
 void CANSendData(void){
 	if(can_queue_head!=can_queue_tail){
-     30e:	90 91 3b 01 	lds	r25, 0x013B
-     312:	80 91 3d 01 	lds	r24, 0x013D
+     30e:	90 91 46 01 	lds	r25, 0x0146
+     312:	80 91 48 01 	lds	r24, 0x0148
      316:	98 17       	cp	r25, r24
      318:	31 f1       	breq	.+76     	; 0x366 <CANSendData+0x58>
 		can_rx->cmd=CMD_ABORT;
-     31a:	e0 91 3e 01 	lds	r30, 0x013E
-     31e:	f0 91 3f 01 	lds	r31, 0x013F
+     31a:	e0 91 49 01 	lds	r30, 0x0149
+     31e:	f0 91 4a 01 	lds	r31, 0x014A
      322:	8c e0       	ldi	r24, 0x0C	; 12
      324:	81 83       	std	Z+1, r24	; 0x01
 		can_cmd(can_rx);
-     326:	80 91 3e 01 	lds	r24, 0x013E
-     32a:	90 91 3f 01 	lds	r25, 0x013F
+     326:	80 91 49 01 	lds	r24, 0x0149
+     32a:	90 91 4a 01 	lds	r25, 0x014A
      32e:	0e 94 35 05 	call	0xa6a	; 0xa6a <can_cmd>
 		can_queue[can_queue_tail]->cmd=CMD_TX_DATA;
-     332:	e0 91 3d 01 	lds	r30, 0x013D
+     332:	e0 91 48 01 	lds	r30, 0x0148
      336:	f0 e0       	ldi	r31, 0x00	; 0
      338:	ee 0f       	add	r30, r30
      33a:	ff 1f       	adc	r31, r31
-     33c:	ef 5c       	subi	r30, 0xCF	; 207
+     33c:	e4 5c       	subi	r30, 0xC4	; 196
      33e:	fe 4f       	sbci	r31, 0xFE	; 254
      340:	a0 81       	ld	r26, Z
      342:	b1 81       	ldd	r27, Z+1	; 0x01
@@ -582,18 +582,18 @@ void CANSendData(void){
 		}else{
 			can_Status=CAN_Send;
      35e:	81 e0       	ldi	r24, 0x01	; 1
-     360:	80 93 3c 01 	sts	0x013C, r24
+     360:	80 93 47 01 	sts	0x0147, r24
      364:	08 95       	ret
 		}		
 	}else{
 		can_rx->cmd=CMD_RX_DATA;
-     366:	e0 91 3e 01 	lds	r30, 0x013E
-     36a:	f0 91 3f 01 	lds	r31, 0x013F
+     366:	e0 91 49 01 	lds	r30, 0x0149
+     36a:	f0 91 4a 01 	lds	r31, 0x014A
      36e:	85 e0       	ldi	r24, 0x05	; 5
      370:	81 83       	std	Z+1, r24	; 0x01
 		can_cmd(can_rx);
-     372:	80 91 3e 01 	lds	r24, 0x013E
-     376:	90 91 3f 01 	lds	r25, 0x013F
+     372:	80 91 49 01 	lds	r24, 0x0149
+     376:	90 91 4a 01 	lds	r25, 0x014A
      37a:	0e 94 35 05 	call	0xa6a	; 0xa6a <can_cmd>
      37e:	08 95       	ret
 
@@ -606,14 +606,14 @@ void CANAddSendData(st_cmd_t* Tx){
      382:	df 93       	push	r29
      384:	ec 01       	movw	r28, r24
 	if((can_queue_head+1)%CAN_QUEUE_SIZE!=can_queue_tail){
-     386:	e0 91 3b 01 	lds	r30, 0x013B
+     386:	e0 91 46 01 	lds	r30, 0x0146
      38a:	f0 e0       	ldi	r31, 0x00	; 0
      38c:	cf 01       	movw	r24, r30
      38e:	01 96       	adiw	r24, 0x01	; 1
      390:	65 e0       	ldi	r22, 0x05	; 5
      392:	70 e0       	ldi	r23, 0x00	; 0
-     394:	0e 94 b0 0e 	call	0x1d60	; 0x1d60 <__divmodhi4>
-     398:	20 91 3d 01 	lds	r18, 0x013D
+     394:	0e 94 e1 0e 	call	0x1dc2	; 0x1dc2 <__divmodhi4>
+     398:	20 91 48 01 	lds	r18, 0x0148
      39c:	30 e0       	ldi	r19, 0x00	; 0
      39e:	82 17       	cp	r24, r18
      3a0:	93 07       	cpc	r25, r19
@@ -621,12 +621,12 @@ void CANAddSendData(st_cmd_t* Tx){
 		can_queue[can_queue_head]=Tx;
      3a4:	ee 0f       	add	r30, r30
      3a6:	ff 1f       	adc	r31, r31
-     3a8:	ef 5c       	subi	r30, 0xCF	; 207
+     3a8:	e4 5c       	subi	r30, 0xC4	; 196
      3aa:	fe 4f       	sbci	r31, 0xFE	; 254
      3ac:	d1 83       	std	Z+1, r29	; 0x01
      3ae:	c0 83       	st	Z, r28
 		can_queue_head=(can_queue_head+1)%CAN_QUEUE_SIZE;
-     3b0:	80 93 3b 01 	sts	0x013B, r24
+     3b0:	80 93 46 01 	sts	0x0146, r24
      3b4:	03 c0       	rjmp	.+6      	; 0x3bc <CANAddSendData+0x3c>
 	}else{
 		AddError(ERROR_CANQUEUE_FULL);
@@ -634,7 +634,7 @@ void CANAddSendData(st_cmd_t* Tx){
      3b8:	0e 94 c5 0b 	call	0x178a	; 0x178a <AddError>
 	}
 	if(can_Status==CAN_Ready){
-     3bc:	80 91 3c 01 	lds	r24, 0x013C
+     3bc:	80 91 47 01 	lds	r24, 0x0147
      3c0:	88 23       	and	r24, r24
      3c2:	11 f4       	brne	.+4      	; 0x3c8 <CANAddSendData+0x48>
 		CANSendData();
@@ -649,11 +649,11 @@ void CANAddSendData(st_cmd_t* Tx){
 
 st_cmd_t* CANGetCurrentTx(void){
 	return can_queue[can_queue_tail];
-     3ce:	e0 91 3d 01 	lds	r30, 0x013D
+     3ce:	e0 91 48 01 	lds	r30, 0x0148
      3d2:	f0 e0       	ldi	r31, 0x00	; 0
      3d4:	ee 0f       	add	r30, r30
      3d6:	ff 1f       	adc	r31, r31
-     3d8:	ef 5c       	subi	r30, 0xCF	; 207
+     3d8:	e4 5c       	subi	r30, 0xC4	; 196
      3da:	fe 4f       	sbci	r31, 0xFE	; 254
 }
      3dc:	80 81       	ld	r24, Z
@@ -664,11 +664,11 @@ st_cmd_t* CANGetCurrentTx(void){
 
 void CANSendNext(void){
 	can_queue[can_queue_tail]->cmd = CMD_ABORT;
-     3e2:	e0 91 3d 01 	lds	r30, 0x013D
+     3e2:	e0 91 48 01 	lds	r30, 0x0148
      3e6:	f0 e0       	ldi	r31, 0x00	; 0
      3e8:	ee 0f       	add	r30, r30
      3ea:	ff 1f       	adc	r31, r31
-     3ec:	ef 5c       	subi	r30, 0xCF	; 207
+     3ec:	e4 5c       	subi	r30, 0xC4	; 196
      3ee:	fe 4f       	sbci	r31, 0xFE	; 254
      3f0:	a0 81       	ld	r26, Z
      3f2:	b1 81       	ldd	r27, Z+1	; 0x01
@@ -680,15 +680,15 @@ void CANSendNext(void){
      3fc:	91 81       	ldd	r25, Z+1	; 0x01
      3fe:	0e 94 35 05 	call	0xa6a	; 0xa6a <can_cmd>
 	can_Status=CAN_Ready;
-     402:	10 92 3c 01 	sts	0x013C, r1
+     402:	10 92 47 01 	sts	0x0147, r1
 	can_queue_tail=(can_queue_tail+1)%CAN_QUEUE_SIZE;
-     406:	80 91 3d 01 	lds	r24, 0x013D
+     406:	80 91 48 01 	lds	r24, 0x0148
      40a:	90 e0       	ldi	r25, 0x00	; 0
      40c:	01 96       	adiw	r24, 0x01	; 1
      40e:	65 e0       	ldi	r22, 0x05	; 5
      410:	70 e0       	ldi	r23, 0x00	; 0
-     412:	0e 94 b0 0e 	call	0x1d60	; 0x1d60 <__divmodhi4>
-     416:	80 93 3d 01 	sts	0x013D, r24
+     412:	0e 94 e1 0e 	call	0x1dc2	; 0x1dc2 <__divmodhi4>
+     416:	80 93 48 01 	sts	0x0148, r24
 	CANSendData();
      41a:	0e 94 87 01 	call	0x30e	; 0x30e <CANSendData>
 }
@@ -698,15 +698,15 @@ void CANSendNext(void){
 
 void CANAbortCMD(void){
 	if(can_Status==CAN_Send){
-     420:	80 91 3c 01 	lds	r24, 0x013C
+     420:	80 91 47 01 	lds	r24, 0x0147
      424:	81 30       	cpi	r24, 0x01	; 1
      426:	f9 f4       	brne	.+62     	; 0x466 <CANAbortCMD+0x46>
 		can_queue[can_queue_tail]->cmd = CMD_ABORT;
-     428:	e0 91 3d 01 	lds	r30, 0x013D
+     428:	e0 91 48 01 	lds	r30, 0x0148
      42c:	f0 e0       	ldi	r31, 0x00	; 0
      42e:	ee 0f       	add	r30, r30
      430:	ff 1f       	adc	r31, r31
-     432:	ef 5c       	subi	r30, 0xCF	; 207
+     432:	e4 5c       	subi	r30, 0xC4	; 196
      434:	fe 4f       	sbci	r31, 0xFE	; 254
      436:	a0 81       	ld	r26, Z
      438:	b1 81       	ldd	r27, Z+1	; 0x01
@@ -721,15 +721,15 @@ void CANAbortCMD(void){
      448:	82 e0       	ldi	r24, 0x02	; 2
      44a:	0e 94 c5 0b 	call	0x178a	; 0x178a <AddError>
 		can_Status=CAN_Ready;
-     44e:	10 92 3c 01 	sts	0x013C, r1
+     44e:	10 92 47 01 	sts	0x0147, r1
 		can_queue_tail=(can_queue_tail+1)%CAN_QUEUE_SIZE;
-     452:	80 91 3d 01 	lds	r24, 0x013D
+     452:	80 91 48 01 	lds	r24, 0x0148
      456:	90 e0       	ldi	r25, 0x00	; 0
      458:	01 96       	adiw	r24, 0x01	; 1
      45a:	65 e0       	ldi	r22, 0x05	; 5
      45c:	70 e0       	ldi	r23, 0x00	; 0
-     45e:	0e 94 b0 0e 	call	0x1d60	; 0x1d60 <__divmodhi4>
-     462:	80 93 3d 01 	sts	0x013D, r24
+     45e:	0e 94 e1 0e 	call	0x1dc2	; 0x1dc2 <__divmodhi4>
+     462:	80 93 48 01 	sts	0x0148, r24
      466:	08 95       	ret
 
 00000468 <CANRestartReceive>:
@@ -4168,7 +4168,7 @@ void InitError(U8* errorCodeTx){
     177c:	90 93 15 01 	sts	0x0115, r25
     1780:	80 93 14 01 	sts	0x0114, r24
 	CheckWDT();
-    1784:	0e 94 a6 0e 	call	0x1d4c	; 0x1d4c <CheckWDT>
+    1784:	0e 94 d7 0e 	call	0x1dae	; 0x1dae <CheckWDT>
 }
     1788:	08 95       	ret
 
@@ -4200,9 +4200,9 @@ U8 event_queue_head, event_queue_tail;
 
 void EventInit(void){
 	event_queue_head=0;
-    17a6:	10 92 89 01 	sts	0x0189, r1
+    17a6:	10 92 94 01 	sts	0x0194, r1
 	event_queue_tail=0;
-    17aa:	10 92 8a 01 	sts	0x018A, r1
+    17aa:	10 92 95 01 	sts	0x0195, r1
 }
     17ae:	08 95       	ret
 
@@ -4213,24 +4213,24 @@ void EventAddEvent(EVENT_Handle event){
     17b2:	df 93       	push	r29
     17b4:	e8 2f       	mov	r30, r24
 	if((event_queue_head+1)%EVENT_QUEUE_SIZE!=event_queue_tail){
-    17b6:	c0 91 89 01 	lds	r28, 0x0189
+    17b6:	c0 91 94 01 	lds	r28, 0x0194
     17ba:	d0 e0       	ldi	r29, 0x00	; 0
     17bc:	ce 01       	movw	r24, r28
     17be:	01 96       	adiw	r24, 0x01	; 1
     17c0:	60 e1       	ldi	r22, 0x10	; 16
     17c2:	70 e0       	ldi	r23, 0x00	; 0
-    17c4:	0e 94 b0 0e 	call	0x1d60	; 0x1d60 <__divmodhi4>
-    17c8:	40 91 8a 01 	lds	r20, 0x018A
+    17c4:	0e 94 e1 0e 	call	0x1dc2	; 0x1dc2 <__divmodhi4>
+    17c8:	40 91 95 01 	lds	r20, 0x0195
     17cc:	50 e0       	ldi	r21, 0x00	; 0
     17ce:	84 17       	cp	r24, r20
     17d0:	95 07       	cpc	r25, r21
     17d2:	31 f0       	breq	.+12     	; 0x17e0 <EventAddEvent+0x30>
 		event_queue[event_queue_head]=event;
-    17d4:	c7 58       	subi	r28, 0x87	; 135
+    17d4:	cc 57       	subi	r28, 0x7C	; 124
     17d6:	de 4f       	sbci	r29, 0xFE	; 254
     17d8:	e8 83       	st	Y, r30
 		event_queue_head=(event_queue_head+1)%EVENT_QUEUE_SIZE;
-    17da:	80 93 89 01 	sts	0x0189, r24
+    17da:	80 93 94 01 	sts	0x0194, r24
     17de:	03 c0       	rjmp	.+6      	; 0x17e6 <EventAddEvent+0x36>
 	}else{
 		AddError(ERROR_EVENTQUEUE_FULL);
@@ -4247,12 +4247,12 @@ void EventAddEvent(EVENT_Handle event){
 EVENT_Handle EventGetNextEvent(void){
 	EVENT_Handle e=EVENT_NOF_EVENTS;
 	if(event_queue_head!=event_queue_tail){
-    17ec:	80 91 8a 01 	lds	r24, 0x018A
-    17f0:	90 91 89 01 	lds	r25, 0x0189
+    17ec:	80 91 95 01 	lds	r24, 0x0195
+    17f0:	90 91 94 01 	lds	r25, 0x0194
     17f4:	98 17       	cp	r25, r24
     17f6:	31 f0       	breq	.+12     	; 0x1804 <EventGetNextEvent+0x18>
 		e=event_queue[event_queue_tail];
-    17f8:	e9 e7       	ldi	r30, 0x79	; 121
+    17f8:	e4 e8       	ldi	r30, 0x84	; 132
     17fa:	f1 e0       	ldi	r31, 0x01	; 1
     17fc:	e8 0f       	add	r30, r24
     17fe:	f1 1d       	adc	r31, r1
@@ -4279,8 +4279,8 @@ EVENT_Handle EventGetNextEvent(void){
 
 void EventHandleEvent(void){
 	if(event_queue_head!=event_queue_tail){
-    1808:	80 91 8a 01 	lds	r24, 0x018A
-    180c:	90 91 89 01 	lds	r25, 0x0189
+    1808:	80 91 95 01 	lds	r24, 0x0195
+    180c:	90 91 94 01 	lds	r25, 0x0194
     1810:	98 17       	cp	r25, r24
     1812:	41 f0       	breq	.+16     	; 0x1824 <EventHandleEvent+0x1c>
 			MCMRear();
@@ -4293,8 +4293,8 @@ void EventHandleEvent(void){
     1816:	01 96       	adiw	r24, 0x01	; 1
     1818:	60 e1       	ldi	r22, 0x10	; 16
     181a:	70 e0       	ldi	r23, 0x00	; 0
-    181c:	0e 94 b0 0e 	call	0x1d60	; 0x1d60 <__divmodhi4>
-    1820:	80 93 8a 01 	sts	0x018A, r24
+    181c:	0e 94 e1 0e 	call	0x1dc2	; 0x1dc2 <__divmodhi4>
+    1820:	80 93 95 01 	sts	0x0195, r24
     1824:	08 95       	ret
 
 00001826 <led_set>:
@@ -4305,461 +4305,449 @@ void EventHandleEvent(void){
 void led_set(uint8_t led_id){	
 	if(led_id>11) return; /* illegal id */
     1826:	8c 30       	cpi	r24, 0x0C	; 12
-    1828:	80 f4       	brcc	.+32     	; 0x184a <led_set+0x24>
-	LED_PORT(led_id)|=((0x01)<<led_pins[led_id]);
-    182a:	4b b1       	in	r20, 0x0b	; 11
-    182c:	e6 e1       	ldi	r30, 0x16	; 22
-    182e:	f1 e0       	ldi	r31, 0x01	; 1
-    1830:	e8 0f       	add	r30, r24
-    1832:	f1 1d       	adc	r31, r1
-    1834:	21 e0       	ldi	r18, 0x01	; 1
-    1836:	30 e0       	ldi	r19, 0x00	; 0
-    1838:	c9 01       	movw	r24, r18
-    183a:	00 80       	ld	r0, Z
-    183c:	02 c0       	rjmp	.+4      	; 0x1842 <led_set+0x1c>
-    183e:	88 0f       	add	r24, r24
-    1840:	99 1f       	adc	r25, r25
-    1842:	0a 94       	dec	r0
-    1844:	e2 f7       	brpl	.-8      	; 0x183e <led_set+0x18>
-    1846:	84 2b       	or	r24, r20
-    1848:	8b b9       	out	0x0b, r24	; 11
-    184a:	08 95       	ret
+    1828:	90 f4       	brcc	.+36     	; 0x184e <led_set+0x28>
+	led_port[led_id]|=((0x01)<<led_pins[led_id]);
+    182a:	90 e0       	ldi	r25, 0x00	; 0
+    182c:	fc 01       	movw	r30, r24
+    182e:	ed 5d       	subi	r30, 0xDD	; 221
+    1830:	fe 4f       	sbci	r31, 0xFE	; 254
+    1832:	dc 01       	movw	r26, r24
+    1834:	aa 5e       	subi	r26, 0xEA	; 234
+    1836:	be 4f       	sbci	r27, 0xFE	; 254
+    1838:	81 e0       	ldi	r24, 0x01	; 1
+    183a:	90 e0       	ldi	r25, 0x00	; 0
+    183c:	0c 90       	ld	r0, X
+    183e:	02 c0       	rjmp	.+4      	; 0x1844 <led_set+0x1e>
+    1840:	88 0f       	add	r24, r24
+    1842:	99 1f       	adc	r25, r25
+    1844:	0a 94       	dec	r0
+    1846:	e2 f7       	brpl	.-8      	; 0x1840 <led_set+0x1a>
+    1848:	90 81       	ld	r25, Z
+    184a:	89 2b       	or	r24, r25
+    184c:	80 83       	st	Z, r24
+    184e:	08 95       	ret
 
-0000184c <led_clear>:
+00001850 <led_clear>:
 }
 
 void led_clear(uint8_t led_id){
-	LED_PORT(led_id)&=~((0x01)<<led_pins[led_id]);
-    184c:	6b b1       	in	r22, 0x0b	; 11
-    184e:	26 e1       	ldi	r18, 0x16	; 22
-    1850:	31 e0       	ldi	r19, 0x01	; 1
-    1852:	28 0f       	add	r18, r24
-    1854:	31 1d       	adc	r19, r1
-    1856:	41 e0       	ldi	r20, 0x01	; 1
-    1858:	50 e0       	ldi	r21, 0x00	; 0
-    185a:	ca 01       	movw	r24, r20
-    185c:	f9 01       	movw	r30, r18
-    185e:	00 80       	ld	r0, Z
-    1860:	02 c0       	rjmp	.+4      	; 0x1866 <led_clear+0x1a>
-    1862:	88 0f       	add	r24, r24
-    1864:	99 1f       	adc	r25, r25
-    1866:	0a 94       	dec	r0
-    1868:	e2 f7       	brpl	.-8      	; 0x1862 <led_clear+0x16>
-    186a:	80 95       	com	r24
-    186c:	68 23       	and	r22, r24
-    186e:	6b b9       	out	0x0b, r22	; 11
+	led_port[led_id]&=~((0x01)<<led_pins[led_id]);
+    1850:	90 e0       	ldi	r25, 0x00	; 0
+    1852:	fc 01       	movw	r30, r24
+    1854:	ed 5d       	subi	r30, 0xDD	; 221
+    1856:	fe 4f       	sbci	r31, 0xFE	; 254
+    1858:	dc 01       	movw	r26, r24
+    185a:	aa 5e       	subi	r26, 0xEA	; 234
+    185c:	be 4f       	sbci	r27, 0xFE	; 254
+    185e:	81 e0       	ldi	r24, 0x01	; 1
+    1860:	90 e0       	ldi	r25, 0x00	; 0
+    1862:	0c 90       	ld	r0, X
+    1864:	02 c0       	rjmp	.+4      	; 0x186a <led_clear+0x1a>
+    1866:	88 0f       	add	r24, r24
+    1868:	99 1f       	adc	r25, r25
+    186a:	0a 94       	dec	r0
+    186c:	e2 f7       	brpl	.-8      	; 0x1866 <led_clear+0x16>
+    186e:	80 95       	com	r24
+    1870:	90 81       	ld	r25, Z
+    1872:	89 23       	and	r24, r25
+    1874:	80 83       	st	Z, r24
 }
-    1870:	08 95       	ret
+    1876:	08 95       	ret
 
-00001872 <led_state_set>:
+00001878 <led_state_set>:
 	}
 	
 }
 
 
 void led_state_set(uint16_t led_new_state){
-    1872:	ef 92       	push	r14
-    1874:	ff 92       	push	r15
-    1876:	0f 93       	push	r16
-    1878:	1f 93       	push	r17
-    187a:	cf 93       	push	r28
-    187c:	df 93       	push	r29
-    187e:	7c 01       	movw	r14, r24
-    1880:	c0 e0       	ldi	r28, 0x00	; 0
-    1882:	d0 e0       	ldi	r29, 0x00	; 0
+    1878:	ef 92       	push	r14
+    187a:	ff 92       	push	r15
+    187c:	0f 93       	push	r16
+    187e:	1f 93       	push	r17
+    1880:	cf 93       	push	r28
+    1882:	df 93       	push	r29
+    1884:	7c 01       	movw	r14, r24
+    1886:	c0 e0       	ldi	r28, 0x00	; 0
+    1888:	d0 e0       	ldi	r29, 0x00	; 0
 	uint8_t i;
 	for(i=0;i<LED_NUMBER;i++){
 		if(led_new_state&(1<<i)){
-    1884:	01 e0       	ldi	r16, 0x01	; 1
-    1886:	10 e0       	ldi	r17, 0x00	; 0
+    188a:	01 e0       	ldi	r16, 0x01	; 1
+    188c:	10 e0       	ldi	r17, 0x00	; 0
 	}
 	
 }
 
 
 void led_state_set(uint16_t led_new_state){
-    1888:	8c 2f       	mov	r24, r28
+    188e:	8c 2f       	mov	r24, r28
 	uint8_t i;
 	for(i=0;i<LED_NUMBER;i++){
 		if(led_new_state&(1<<i)){
-    188a:	98 01       	movw	r18, r16
-    188c:	0c 2e       	mov	r0, r28
-    188e:	02 c0       	rjmp	.+4      	; 0x1894 <led_state_set+0x22>
-    1890:	22 0f       	add	r18, r18
-    1892:	33 1f       	adc	r19, r19
-    1894:	0a 94       	dec	r0
-    1896:	e2 f7       	brpl	.-8      	; 0x1890 <led_state_set+0x1e>
-    1898:	2e 21       	and	r18, r14
-    189a:	3f 21       	and	r19, r15
-    189c:	21 15       	cp	r18, r1
-    189e:	31 05       	cpc	r19, r1
-    18a0:	11 f0       	breq	.+4      	; 0x18a6 <led_state_set+0x34>
+    1890:	98 01       	movw	r18, r16
+    1892:	0c 2e       	mov	r0, r28
+    1894:	02 c0       	rjmp	.+4      	; 0x189a <led_state_set+0x22>
+    1896:	22 0f       	add	r18, r18
+    1898:	33 1f       	adc	r19, r19
+    189a:	0a 94       	dec	r0
+    189c:	e2 f7       	brpl	.-8      	; 0x1896 <led_state_set+0x1e>
+    189e:	2e 21       	and	r18, r14
+    18a0:	3f 21       	and	r19, r15
+    18a2:	21 15       	cp	r18, r1
+    18a4:	31 05       	cpc	r19, r1
+    18a6:	11 f0       	breq	.+4      	; 0x18ac <led_state_set+0x34>
 			led_set(i);
-    18a2:	0e 94 13 0c 	call	0x1826	; 0x1826 <led_set>
-    18a6:	21 96       	adiw	r28, 0x01	; 1
+    18a8:	0e 94 13 0c 	call	0x1826	; 0x1826 <led_set>
+    18ac:	21 96       	adiw	r28, 0x01	; 1
 }
 
 
 void led_state_set(uint16_t led_new_state){
 	uint8_t i;
 	for(i=0;i<LED_NUMBER;i++){
-    18a8:	cb 30       	cpi	r28, 0x0B	; 11
-    18aa:	d1 05       	cpc	r29, r1
-    18ac:	69 f7       	brne	.-38     	; 0x1888 <led_state_set+0x16>
+    18ae:	cb 30       	cpi	r28, 0x0B	; 11
+    18b0:	d1 05       	cpc	r29, r1
+    18b2:	69 f7       	brne	.-38     	; 0x188e <led_state_set+0x16>
 		if(led_new_state&(1<<i)){
 			led_set(i);
 		}
 	}
 	
 }
-    18ae:	df 91       	pop	r29
-    18b0:	cf 91       	pop	r28
-    18b2:	1f 91       	pop	r17
-    18b4:	0f 91       	pop	r16
-    18b6:	ff 90       	pop	r15
-    18b8:	ef 90       	pop	r14
-    18ba:	08 95       	ret
+    18b4:	df 91       	pop	r29
+    18b6:	cf 91       	pop	r28
+    18b8:	1f 91       	pop	r17
+    18ba:	0f 91       	pop	r16
+    18bc:	ff 90       	pop	r15
+    18be:	ef 90       	pop	r14
+    18c0:	08 95       	ret
 
-000018bc <led_init>:
+000018c2 <led_init>:
+#include <avr/io.h>
+
+
+#include "../includes/Led.h"
+
 void led_init(void){
+    18c2:	cf 93       	push	r28
+    18c4:	df 93       	push	r29
 	
 	
 	uint8_t led_id;
 
 	led_pins[LED_ID_AMS]=LED_PIN_AMS;
-    18bc:	46 e1       	ldi	r20, 0x16	; 22
-    18be:	51 e0       	ldi	r21, 0x01	; 1
-    18c0:	81 e0       	ldi	r24, 0x01	; 1
-    18c2:	80 93 16 01 	sts	0x0116, r24
+    18c6:	26 e1       	ldi	r18, 0x16	; 22
+    18c8:	31 e0       	ldi	r19, 0x01	; 1
+    18ca:	41 e0       	ldi	r20, 0x01	; 1
+    18cc:	40 93 16 01 	sts	0x0116, r20
 	led_pins[LED_ID_TV]=LED_PIN_TV;
-    18c6:	80 93 17 01 	sts	0x0117, r24
+    18d0:	40 93 1b 01 	sts	0x011B, r20
 	led_pins[LED_ID_TC]=LED_PIN_TC;
-    18ca:	92 e0       	ldi	r25, 0x02	; 2
-    18cc:	90 93 18 01 	sts	0x0118, r25
+    18d4:	92 e0       	ldi	r25, 0x02	; 2
+    18d6:	90 93 1c 01 	sts	0x011C, r25
 	led_pins[LED_ID_RECUP]=LED_PIN_RECUP;
-    18d0:	83 e0       	ldi	r24, 0x03	; 3
-    18d2:	80 93 19 01 	sts	0x0119, r24
+    18da:	63 e0       	ldi	r22, 0x03	; 3
+    18dc:	60 93 1d 01 	sts	0x011D, r22
 	led_pins[LED_ID_KOBI]=LED_PIN_KOBI;
-    18d6:	84 e0       	ldi	r24, 0x04	; 4
-    18d8:	80 93 1a 01 	sts	0x011A, r24
+    18e0:	84 e0       	ldi	r24, 0x04	; 4
+    18e2:	80 93 1e 01 	sts	0x011E, r24
 	led_pins[LED_ID_AD]=LED_PIN_AD;
-    18dc:	90 93 1b 01 	sts	0x011B, r25
+    18e6:	90 93 1f 01 	sts	0x011F, r25
 	led_pins[LED_ID_LV_LOW]=LED_PIN_LV_LOW;
-    18e0:	80 93 1c 01 	sts	0x011C, r24
+    18ea:	80 93 17 01 	sts	0x0117, r24
 	led_pins[LED_ID_IMD]=LED_PIN_IMD;
-    18e4:	10 92 1d 01 	sts	0x011D, r1
+    18ee:	10 92 18 01 	sts	0x0118, r1
 	led_pins[LED_ID_BRAKE]=LED_PIN_IMD;
-    18e8:	10 92 1e 01 	sts	0x011E, r1
+    18f2:	10 92 1a 01 	sts	0x011A, r1
 	led_pins[LED_ID_OK]=LED_PIN_OK;
-    18ec:	10 92 1f 01 	sts	0x011F, r1
+    18f6:	10 92 19 01 	sts	0x0119, r1
 	led_pins[LED_ID_START]=LED_PIN_START;
-    18f0:	87 e0       	ldi	r24, 0x07	; 7
-    18f2:	80 93 20 01 	sts	0x0120, r24
-    18f6:	fa 01       	movw	r30, r20
+    18fa:	57 e0       	ldi	r21, 0x07	; 7
+    18fc:	50 93 20 01 	sts	0x0120, r21
+	
+	led_dd[LED_ID_AMS]=LED_PIN_AMS;
+    1900:	40 93 2e 01 	sts	0x012E, r20
+	led_dd[LED_ID_TV]=LED_PIN_TV;
+    1904:	40 93 33 01 	sts	0x0133, r20
+	led_dd[LED_ID_TC]=LED_PIN_TC;
+    1908:	90 93 34 01 	sts	0x0134, r25
+	led_dd[LED_ID_RECUP]=LED_PIN_RECUP;
+    190c:	60 93 35 01 	sts	0x0135, r22
+	led_dd[LED_ID_KOBI]=LED_PIN_KOBI;
+    1910:	80 93 36 01 	sts	0x0136, r24
+	led_dd[LED_ID_AD]=LED_PIN_AD;
+    1914:	90 93 37 01 	sts	0x0137, r25
+	led_dd[LED_ID_LV_LOW]=LED_PIN_LV_LOW;
+    1918:	80 93 2f 01 	sts	0x012F, r24
+	led_dd[LED_ID_IMD]=LED_PIN_IMD;
+    191c:	10 92 30 01 	sts	0x0130, r1
+	led_dd[LED_ID_BRAKE]=LED_PIN_IMD;
+    1920:	10 92 32 01 	sts	0x0132, r1
+	led_dd[LED_ID_OK]=LED_PIN_OK;
+    1924:	10 92 31 01 	sts	0x0131, r1
+	led_dd[LED_ID_START]=LED_PIN_START;
+    1928:	50 93 38 01 	sts	0x0138, r21
+	
+	led_port[LED_ID_AMS]=LED_PIN_AMS;
+    192c:	40 93 23 01 	sts	0x0123, r20
+	led_port[LED_ID_TV]=LED_PIN_TV;
+    1930:	40 93 28 01 	sts	0x0128, r20
+	led_port[LED_ID_TC]=LED_PIN_TC;
+    1934:	90 93 29 01 	sts	0x0129, r25
+	led_port[LED_ID_RECUP]=LED_PIN_RECUP;
+    1938:	60 93 2a 01 	sts	0x012A, r22
+	led_port[LED_ID_KOBI]=LED_PIN_KOBI;
+    193c:	80 93 2b 01 	sts	0x012B, r24
+	led_port[LED_ID_AD]=LED_PIN_AD;
+    1940:	90 93 2c 01 	sts	0x012C, r25
+	led_port[LED_ID_LV_LOW]=LED_PIN_LV_LOW;
+    1944:	80 93 24 01 	sts	0x0124, r24
+	led_port[LED_ID_IMD]=LED_PIN_IMD;
+    1948:	10 92 25 01 	sts	0x0125, r1
+	led_port[LED_ID_BRAKE]=LED_PIN_IMD;
+    194c:	10 92 27 01 	sts	0x0127, r1
+	led_port[LED_ID_OK]=LED_PIN_OK;
+    1950:	10 92 26 01 	sts	0x0126, r1
+	led_port[LED_ID_START]=LED_PIN_START;
+    1954:	50 93 2d 01 	sts	0x012D, r21
+    1958:	f9 01       	movw	r30, r18
+    195a:	ae e2       	ldi	r26, 0x2E	; 46
+    195c:	b1 e0       	ldi	r27, 0x01	; 1
+    195e:	c3 e2       	ldi	r28, 0x23	; 35
+    1960:	d1 e0       	ldi	r29, 0x01	; 1
 #include <avr/io.h>
 
 
 #include "../includes/Led.h"
 
 void led_init(void){
-    18f8:	45 5f       	subi	r20, 0xF5	; 245
-    18fa:	5f 4f       	sbci	r21, 0xFF	; 255
-	led_pins[LED_ID_START]=LED_PIN_START;
+    1962:	25 5f       	subi	r18, 0xF5	; 245
+    1964:	3f 4f       	sbci	r19, 0xFF	; 255
 	
-	
-	for(led_id=0;led_id<LED_NUMBER;led_id++){
-		/* set data direction to output*/
-		LED_DD(i)|=((0x01)<<led_pins[led_id]);
-    18fc:	21 e0       	ldi	r18, 0x01	; 1
-    18fe:	30 e0       	ldi	r19, 0x00	; 0
-    1900:	6a b1       	in	r22, 0x0a	; 10
-#include <avr/io.h>
-
-
-#include "../includes/Led.h"
-
-void led_init(void){
-    1902:	df 01       	movw	r26, r30
-	led_pins[LED_ID_START]=LED_PIN_START;
 	
 	
 	for(led_id=0;led_id<LED_NUMBER;led_id++){
 		/* set data direction to output*/
-		LED_DD(i)|=((0x01)<<led_pins[led_id]);
-    1904:	c9 01       	movw	r24, r18
-    1906:	01 90       	ld	r0, Z+
-    1908:	02 c0       	rjmp	.+4      	; 0x190e <led_init+0x52>
-    190a:	88 0f       	add	r24, r24
-    190c:	99 1f       	adc	r25, r25
-    190e:	0a 94       	dec	r0
-    1910:	e2 f7       	brpl	.-8      	; 0x190a <led_init+0x4e>
-    1912:	86 2b       	or	r24, r22
-    1914:	8a b9       	out	0x0a, r24	; 10
+		led_dd[led_id]|=((0x01)<<led_pins[led_id]);
+    1966:	41 e0       	ldi	r20, 0x01	; 1
+    1968:	50 e0       	ldi	r21, 0x00	; 0
+    196a:	ca 01       	movw	r24, r20
+    196c:	01 90       	ld	r0, Z+
+    196e:	02 c0       	rjmp	.+4      	; 0x1974 <led_init+0xb2>
+    1970:	88 0f       	add	r24, r24
+    1972:	99 1f       	adc	r25, r25
+    1974:	0a 94       	dec	r0
+    1976:	e2 f7       	brpl	.-8      	; 0x1970 <led_init+0xae>
+    1978:	9c 91       	ld	r25, X
+    197a:	98 2b       	or	r25, r24
+    197c:	9d 93       	st	X+, r25
 		/* turn on led */
-		LED_PORT(i)|=((0x01)<<led_pins[led_id]);
-    1916:	6b b1       	in	r22, 0x0b	; 11
-    1918:	c9 01       	movw	r24, r18
-    191a:	0c 90       	ld	r0, X
-    191c:	02 c0       	rjmp	.+4      	; 0x1922 <led_init+0x66>
-    191e:	88 0f       	add	r24, r24
-    1920:	99 1f       	adc	r25, r25
-    1922:	0a 94       	dec	r0
-    1924:	e2 f7       	brpl	.-8      	; 0x191e <led_init+0x62>
-    1926:	86 2b       	or	r24, r22
-    1928:	8b b9       	out	0x0b, r24	; 11
-	led_pins[LED_ID_BRAKE]=LED_PIN_IMD;
-	led_pins[LED_ID_OK]=LED_PIN_OK;
-	led_pins[LED_ID_START]=LED_PIN_START;
+		led_port[led_id]|=((0x01)<<led_pins[led_id]);
+    197e:	98 81       	ld	r25, Y
+    1980:	89 2b       	or	r24, r25
+    1982:	89 93       	st	Y+, r24
+	led_port[LED_ID_OK]=LED_PIN_OK;
+	led_port[LED_ID_START]=LED_PIN_START;
+	
 	
 	
 	for(led_id=0;led_id<LED_NUMBER;led_id++){
-    192a:	e4 17       	cp	r30, r20
-    192c:	f5 07       	cpc	r31, r21
-    192e:	41 f7       	brne	.-48     	; 0x1900 <led_init+0x44>
+    1984:	e2 17       	cp	r30, r18
+    1986:	f3 07       	cpc	r31, r19
+    1988:	81 f7       	brne	.-32     	; 0x196a <led_init+0xa8>
 		/* turn on led */
-		LED_PORT(i)|=((0x01)<<led_pins[led_id]);
+		led_port[led_id]|=((0x01)<<led_pins[led_id]);
 	}
 
 
 	led_state=0xFFFF;
-    1930:	8f ef       	ldi	r24, 0xFF	; 255
-    1932:	9f ef       	ldi	r25, 0xFF	; 255
-    1934:	90 93 22 01 	sts	0x0122, r25
-    1938:	80 93 21 01 	sts	0x0121, r24
+    198a:	8f ef       	ldi	r24, 0xFF	; 255
+    198c:	9f ef       	ldi	r25, 0xFF	; 255
+    198e:	90 93 22 01 	sts	0x0122, r25
+    1992:	80 93 21 01 	sts	0x0121, r24
 	led_state_set(led_state);
-    193c:	0e 94 39 0c 	call	0x1872	; 0x1872 <led_state_set>
+    1996:	0e 94 3c 0c 	call	0x1878	; 0x1878 <led_state_set>
 	
 }
-    1940:	08 95       	ret
+    199a:	df 91       	pop	r29
+    199c:	cf 91       	pop	r28
+    199e:	08 95       	ret
 
-00001942 <led_is_set>:
+000019a0 <led_is_set>:
 		}
 	return led_state;
 }
 
 uint8_t led_is_set(uint8_t led_id){
-	return (uint8_t) LED_PORT(led_id)&((0x01)<<led_pins[led_id]);
-    1942:	9b b1       	in	r25, 0x0b	; 11
-    1944:	26 e1       	ldi	r18, 0x16	; 22
-    1946:	31 e0       	ldi	r19, 0x01	; 1
-    1948:	f9 01       	movw	r30, r18
-    194a:	e8 0f       	add	r30, r24
-    194c:	f1 1d       	adc	r31, r1
-    194e:	21 e0       	ldi	r18, 0x01	; 1
-    1950:	30 e0       	ldi	r19, 0x00	; 0
-    1952:	00 80       	ld	r0, Z
-    1954:	02 c0       	rjmp	.+4      	; 0x195a <led_is_set+0x18>
-    1956:	22 0f       	add	r18, r18
-    1958:	33 1f       	adc	r19, r19
-    195a:	0a 94       	dec	r0
-    195c:	e2 f7       	brpl	.-8      	; 0x1956 <led_is_set+0x14>
+	return (uint8_t) led_port[led_id]&((0x01)<<led_pins[led_id]);
+    19a0:	28 2f       	mov	r18, r24
+    19a2:	30 e0       	ldi	r19, 0x00	; 0
+    19a4:	f9 01       	movw	r30, r18
+    19a6:	ea 5e       	subi	r30, 0xEA	; 234
+    19a8:	fe 4f       	sbci	r31, 0xFE	; 254
+    19aa:	81 e0       	ldi	r24, 0x01	; 1
+    19ac:	90 e0       	ldi	r25, 0x00	; 0
+    19ae:	00 80       	ld	r0, Z
+    19b0:	02 c0       	rjmp	.+4      	; 0x19b6 <led_is_set+0x16>
+    19b2:	88 0f       	add	r24, r24
+    19b4:	99 1f       	adc	r25, r25
+    19b6:	0a 94       	dec	r0
+    19b8:	e2 f7       	brpl	.-8      	; 0x19b2 <led_is_set+0x12>
+    19ba:	2d 5d       	subi	r18, 0xDD	; 221
+    19bc:	3e 4f       	sbci	r19, 0xFE	; 254
+    19be:	f9 01       	movw	r30, r18
+    19c0:	90 81       	ld	r25, Z
 }
-    195e:	89 2f       	mov	r24, r25
-    1960:	82 23       	and	r24, r18
-    1962:	08 95       	ret
+    19c2:	89 23       	and	r24, r25
+    19c4:	08 95       	ret
 
-00001964 <led_state_return>:
+000019c6 <led_state_return>:
 		}
 	}
 	
 }
 
 uint16_t led_state_return(void){
-    1964:	0f 93       	push	r16
-    1966:	1f 93       	push	r17
-    1968:	cf 93       	push	r28
-    196a:	df 93       	push	r29
-    196c:	c0 e0       	ldi	r28, 0x00	; 0
-    196e:	d0 e0       	ldi	r29, 0x00	; 0
+    19c6:	0f 93       	push	r16
+    19c8:	1f 93       	push	r17
+    19ca:	cf 93       	push	r28
+    19cc:	df 93       	push	r29
+    19ce:	c0 e0       	ldi	r28, 0x00	; 0
+    19d0:	d0 e0       	ldi	r29, 0x00	; 0
 		uint8_t i;
 		uint16_t led_state;
 		for(i=0;i<LED_NUMBER;i++){
 			led_state|=led_is_set(i)<<i;
-    1970:	8c 2f       	mov	r24, r28
-    1972:	0e 94 a1 0c 	call	0x1942	; 0x1942 <led_is_set>
-    1976:	90 e0       	ldi	r25, 0x00	; 0
-    1978:	0c 2e       	mov	r0, r28
-    197a:	02 c0       	rjmp	.+4      	; 0x1980 <led_state_return+0x1c>
-    197c:	88 0f       	add	r24, r24
-    197e:	99 1f       	adc	r25, r25
-    1980:	0a 94       	dec	r0
-    1982:	e2 f7       	brpl	.-8      	; 0x197c <led_state_return+0x18>
-    1984:	08 2b       	or	r16, r24
-    1986:	19 2b       	or	r17, r25
-    1988:	21 96       	adiw	r28, 0x01	; 1
+    19d2:	8c 2f       	mov	r24, r28
+    19d4:	0e 94 d0 0c 	call	0x19a0	; 0x19a0 <led_is_set>
+    19d8:	90 e0       	ldi	r25, 0x00	; 0
+    19da:	0c 2e       	mov	r0, r28
+    19dc:	02 c0       	rjmp	.+4      	; 0x19e2 <led_state_return+0x1c>
+    19de:	88 0f       	add	r24, r24
+    19e0:	99 1f       	adc	r25, r25
+    19e2:	0a 94       	dec	r0
+    19e4:	e2 f7       	brpl	.-8      	; 0x19de <led_state_return+0x18>
+    19e6:	08 2b       	or	r16, r24
+    19e8:	19 2b       	or	r17, r25
+    19ea:	21 96       	adiw	r28, 0x01	; 1
 }
 
 uint16_t led_state_return(void){
 		uint8_t i;
 		uint16_t led_state;
 		for(i=0;i<LED_NUMBER;i++){
-    198a:	cb 30       	cpi	r28, 0x0B	; 11
-    198c:	d1 05       	cpc	r29, r1
-    198e:	81 f7       	brne	.-32     	; 0x1970 <led_state_return+0xc>
+    19ec:	cb 30       	cpi	r28, 0x0B	; 11
+    19ee:	d1 05       	cpc	r29, r1
+    19f0:	81 f7       	brne	.-32     	; 0x19d2 <led_state_return+0xc>
 			led_state|=led_is_set(i)<<i;
 		}
 	return led_state;
 }
-    1990:	80 2f       	mov	r24, r16
-    1992:	91 2f       	mov	r25, r17
-    1994:	df 91       	pop	r29
-    1996:	cf 91       	pop	r28
-    1998:	1f 91       	pop	r17
-    199a:	0f 91       	pop	r16
-    199c:	08 95       	ret
+    19f2:	80 2f       	mov	r24, r16
+    19f4:	91 2f       	mov	r25, r17
+    19f6:	df 91       	pop	r29
+    19f8:	cf 91       	pop	r28
+    19fa:	1f 91       	pop	r17
+    19fc:	0f 91       	pop	r16
+    19fe:	08 95       	ret
 
-0000199e <led_toggle>:
+00001a00 <led_toggle>:
 void led_clear(uint8_t led_id){
-	LED_PORT(led_id)&=~((0x01)<<led_pins[led_id]);
+	led_port[led_id]&=~((0x01)<<led_pins[led_id]);
 }
 
 
 void led_toggle(uint8_t led_id){
-    199e:	cf 93       	push	r28
-    19a0:	c8 2f       	mov	r28, r24
+    1a00:	cf 93       	push	r28
+    1a02:	c8 2f       	mov	r28, r24
 	if(led_is_set(led_id)){
-    19a2:	0e 94 a1 0c 	call	0x1942	; 0x1942 <led_is_set>
-    19a6:	88 23       	and	r24, r24
-    19a8:	21 f0       	breq	.+8      	; 0x19b2 <led_toggle+0x14>
+    1a04:	0e 94 d0 0c 	call	0x19a0	; 0x19a0 <led_is_set>
+    1a08:	88 23       	and	r24, r24
+    1a0a:	21 f0       	breq	.+8      	; 0x1a14 <led_toggle+0x14>
 		led_clear(led_id);
-    19aa:	8c 2f       	mov	r24, r28
-    19ac:	0e 94 26 0c 	call	0x184c	; 0x184c <led_clear>
-    19b0:	03 c0       	rjmp	.+6      	; 0x19b8 <led_toggle+0x1a>
+    1a0c:	8c 2f       	mov	r24, r28
+    1a0e:	0e 94 28 0c 	call	0x1850	; 0x1850 <led_clear>
+    1a12:	03 c0       	rjmp	.+6      	; 0x1a1a <led_toggle+0x1a>
 	}else{
 		led_set(led_id);
-    19b2:	8c 2f       	mov	r24, r28
-    19b4:	0e 94 13 0c 	call	0x1826	; 0x1826 <led_set>
+    1a14:	8c 2f       	mov	r24, r28
+    1a16:	0e 94 13 0c 	call	0x1826	; 0x1826 <led_set>
 	}
 	
 }
-    19b8:	cf 91       	pop	r28
-    19ba:	08 95       	ret
+    1a1a:	cf 91       	pop	r28
+    1a1c:	08 95       	ret
 
-000019bc <main_init>:
+00001a1e <main_init>:
 
 void main_init(){
 
 	/* Init Ports */
 	// Default Pin config for PORT A,B,C,D,E,F (Input with pull up)
 	DDRA=0x00;
-    19bc:	11 b8       	out	0x01, r1	; 1
+    1a1e:	11 b8       	out	0x01, r1	; 1
 	DDRB=0x00;
-    19be:	14 b8       	out	0x04, r1	; 4
+    1a20:	14 b8       	out	0x04, r1	; 4
 	DDRC=0x00;
-    19c0:	17 b8       	out	0x07, r1	; 7
+    1a22:	17 b8       	out	0x07, r1	; 7
 	DDRE=0x00;
-    19c2:	1d b8       	out	0x0d, r1	; 13
+    1a24:	1d b8       	out	0x0d, r1	; 13
 	DDRF=0x00;
-    19c4:	10 ba       	out	0x10, r1	; 16
+    1a26:	10 ba       	out	0x10, r1	; 16
 	DDRG&=~(0b00011111); // Port G Pins 7,8 and 6 not written
-    19c6:	83 b3       	in	r24, 0x13	; 19
-    19c8:	80 7e       	andi	r24, 0xE0	; 224
-    19ca:	83 bb       	out	0x13, r24	; 19
+    1a28:	83 b3       	in	r24, 0x13	; 19
+    1a2a:	80 7e       	andi	r24, 0xE0	; 224
+    1a2c:	83 bb       	out	0x13, r24	; 19
 	
 	PORTA=0xFF;
-    19cc:	8f ef       	ldi	r24, 0xFF	; 255
-    19ce:	82 b9       	out	0x02, r24	; 2
+    1a2e:	8f ef       	ldi	r24, 0xFF	; 255
+    1a30:	82 b9       	out	0x02, r24	; 2
 	PORTB=0xFF;
-    19d0:	85 b9       	out	0x05, r24	; 5
+    1a32:	85 b9       	out	0x05, r24	; 5
 	PORTC=0xFF;
-    19d2:	88 b9       	out	0x08, r24	; 8
+    1a34:	88 b9       	out	0x08, r24	; 8
 	PORTD=0xFF;
-    19d4:	8b b9       	out	0x0b, r24	; 11
+    1a36:	8b b9       	out	0x0b, r24	; 11
 	PORTE=0xFF;
-    19d6:	8e b9       	out	0x0e, r24	; 14
+    1a38:	8e b9       	out	0x0e, r24	; 14
 	PORTF=0xFF;
-    19d8:	81 bb       	out	0x11, r24	; 17
+    1a3a:	81 bb       	out	0x11, r24	; 17
 	PORTG|=(0b00011111); // Port G Pins 7,8 and 6 not written
-    19da:	84 b3       	in	r24, 0x14	; 20
-    19dc:	8f 61       	ori	r24, 0x1F	; 31
-    19de:	84 bb       	out	0x14, r24	; 20
+    1a3c:	84 b3       	in	r24, 0x14	; 20
+    1a3e:	8f 61       	ori	r24, 0x1F	; 31
+    1a40:	84 bb       	out	0x14, r24	; 20
 	EventAddEvent(EVENT_INIT);
 	
 	*/
 	
 	#if HAS_BUZZER
 		buzzer_init();	
-    19e0:	0e 94 de 00 	call	0x1bc	; 0x1bc <buzzer_init>
+    1a42:	0e 94 de 00 	call	0x1bc	; 0x1bc <buzzer_init>
 	#endif
 	
 	#if HAS_LEDS
 		led_init();
-    19e4:	0e 94 5e 0c 	call	0x18bc	; 0x18bc <led_init>
+    1a46:	0e 94 61 0c 	call	0x18c2	; 0x18c2 <led_init>
 	#endif
 		
 }
-    19e8:	08 95       	ret
+    1a4a:	08 95       	ret
 
-000019ea <main_deinit>:
+00001a4c <main_deinit>:
 
 void main_deinit(){
 	
 }
-    19ea:	08 95       	ret
+    1a4c:	08 95       	ret
 
-000019ec <__vector_12>:
+00001a4e <__vector_12>:
 
 
 /* +--------------------------------+ */
 /* | Interrupt Service Routines		| */
 /* +--------------------------------+ */
 ISR(TIMER1_COMPA_vect){
-    19ec:	1f 92       	push	r1
-    19ee:	0f 92       	push	r0
-    19f0:	0f b6       	in	r0, 0x3f	; 63
-    19f2:	0f 92       	push	r0
-    19f4:	0b b6       	in	r0, 0x3b	; 59
-    19f6:	0f 92       	push	r0
-    19f8:	11 24       	eor	r1, r1
-    19fa:	2f 93       	push	r18
-    19fc:	3f 93       	push	r19
-    19fe:	4f 93       	push	r20
-    1a00:	5f 93       	push	r21
-    1a02:	6f 93       	push	r22
-    1a04:	7f 93       	push	r23
-    1a06:	8f 93       	push	r24
-    1a08:	9f 93       	push	r25
-    1a0a:	af 93       	push	r26
-    1a0c:	bf 93       	push	r27
-    1a0e:	ef 93       	push	r30
-    1a10:	ff 93       	push	r31
-	OCR1A = OCR1A_PERIOD_CNT + OCR1A;
-    1a12:	e8 e8       	ldi	r30, 0x88	; 136
-    1a14:	f0 e0       	ldi	r31, 0x00	; 0
-    1a16:	80 81       	ld	r24, Z
-    1a18:	91 81       	ldd	r25, Z+1	; 0x01
-    1a1a:	80 5f       	subi	r24, 0xF0	; 240
-    1a1c:	98 4d       	sbci	r25, 0xD8	; 216
-    1a1e:	91 83       	std	Z+1, r25	; 0x01
-    1a20:	80 83       	st	Z, r24
-	EventAddEvent(EVENT_200HZ);
-    1a22:	81 e0       	ldi	r24, 0x01	; 1
-    1a24:	0e 94 d8 0b 	call	0x17b0	; 0x17b0 <EventAddEvent>
-	return;
-}
-    1a28:	ff 91       	pop	r31
-    1a2a:	ef 91       	pop	r30
-    1a2c:	bf 91       	pop	r27
-    1a2e:	af 91       	pop	r26
-    1a30:	9f 91       	pop	r25
-    1a32:	8f 91       	pop	r24
-    1a34:	7f 91       	pop	r23
-    1a36:	6f 91       	pop	r22
-    1a38:	5f 91       	pop	r21
-    1a3a:	4f 91       	pop	r20
-    1a3c:	3f 91       	pop	r19
-    1a3e:	2f 91       	pop	r18
-    1a40:	0f 90       	pop	r0
-    1a42:	0b be       	out	0x3b, r0	; 59
-    1a44:	0f 90       	pop	r0
-    1a46:	0f be       	out	0x3f, r0	; 63
-    1a48:	0f 90       	pop	r0
-    1a4a:	1f 90       	pop	r1
-    1a4c:	18 95       	reti
-
-00001a4e <__vector_13>:
-
-ISR(TIMER1_COMPB_vect){
     1a4e:	1f 92       	push	r1
     1a50:	0f 92       	push	r0
     1a52:	0f b6       	in	r0, 0x3f	; 63
@@ -4779,17 +4767,17 @@ ISR(TIMER1_COMPB_vect){
     1a6e:	bf 93       	push	r27
     1a70:	ef 93       	push	r30
     1a72:	ff 93       	push	r31
-	OCR1B = OCR1B_PERIOD_CNT + OCR1B;
-    1a74:	ea e8       	ldi	r30, 0x8A	; 138
+	OCR1A = OCR1A_PERIOD_CNT + OCR1A;
+    1a74:	e8 e8       	ldi	r30, 0x88	; 136
     1a76:	f0 e0       	ldi	r31, 0x00	; 0
     1a78:	80 81       	ld	r24, Z
     1a7a:	91 81       	ldd	r25, Z+1	; 0x01
-    1a7c:	80 5e       	subi	r24, 0xE0	; 224
-    1a7e:	91 4b       	sbci	r25, 0xB1	; 177
+    1a7c:	80 5f       	subi	r24, 0xF0	; 240
+    1a7e:	98 4d       	sbci	r25, 0xD8	; 216
     1a80:	91 83       	std	Z+1, r25	; 0x01
     1a82:	80 83       	st	Z, r24
-	EventAddEvent(EVENT_100HZ);
-    1a84:	82 e0       	ldi	r24, 0x02	; 2
+	EventAddEvent(EVENT_200HZ);
+    1a84:	81 e0       	ldi	r24, 0x01	; 1
     1a86:	0e 94 d8 0b 	call	0x17b0	; 0x17b0 <EventAddEvent>
 	return;
 }
@@ -4813,9 +4801,9 @@ ISR(TIMER1_COMPB_vect){
     1aac:	1f 90       	pop	r1
     1aae:	18 95       	reti
 
-00001ab0 <__vector_14>:
+00001ab0 <__vector_13>:
 
-ISR(TIMER1_COMPC_vect){
+ISR(TIMER1_COMPB_vect){
     1ab0:	1f 92       	push	r1
     1ab2:	0f 92       	push	r0
     1ab4:	0f b6       	in	r0, 0x3f	; 63
@@ -4835,17 +4823,17 @@ ISR(TIMER1_COMPC_vect){
     1ad0:	bf 93       	push	r27
     1ad2:	ef 93       	push	r30
     1ad4:	ff 93       	push	r31
-	OCR1C = OCR1C_PERIOD_CNT + OCR1C;
-    1ad6:	ec e8       	ldi	r30, 0x8C	; 140
+	OCR1B = OCR1B_PERIOD_CNT + OCR1B;
+    1ad6:	ea e8       	ldi	r30, 0x8A	; 138
     1ad8:	f0 e0       	ldi	r31, 0x00	; 0
     1ada:	80 81       	ld	r24, Z
     1adc:	91 81       	ldd	r25, Z+1	; 0x01
-    1ade:	80 5c       	subi	r24, 0xC0	; 192
-    1ae0:	93 46       	sbci	r25, 0x63	; 99
+    1ade:	80 5e       	subi	r24, 0xE0	; 224
+    1ae0:	91 4b       	sbci	r25, 0xB1	; 177
     1ae2:	91 83       	std	Z+1, r25	; 0x01
     1ae4:	80 83       	st	Z, r24
-	EventAddEvent(EVENT_50HZ);
-    1ae6:	83 e0       	ldi	r24, 0x03	; 3
+	EventAddEvent(EVENT_100HZ);
+    1ae6:	82 e0       	ldi	r24, 0x02	; 2
     1ae8:	0e 94 d8 0b 	call	0x17b0	; 0x17b0 <EventAddEvent>
 	return;
 }
@@ -4869,9 +4857,9 @@ ISR(TIMER1_COMPC_vect){
     1b0e:	1f 90       	pop	r1
     1b10:	18 95       	reti
 
-00001b12 <__vector_28>:
+00001b12 <__vector_14>:
 
-ISR(TIMER3_COMPA_vect){
+ISR(TIMER1_COMPC_vect){
     1b12:	1f 92       	push	r1
     1b14:	0f 92       	push	r0
     1b16:	0f b6       	in	r0, 0x3f	; 63
@@ -4891,17 +4879,17 @@ ISR(TIMER3_COMPA_vect){
     1b32:	bf 93       	push	r27
     1b34:	ef 93       	push	r30
     1b36:	ff 93       	push	r31
-	OCR3A = OCR3A_PERIOD_CNT + OCR3A;
-    1b38:	e8 e9       	ldi	r30, 0x98	; 152
+	OCR1C = OCR1C_PERIOD_CNT + OCR1C;
+    1b38:	ec e8       	ldi	r30, 0x8C	; 140
     1b3a:	f0 e0       	ldi	r31, 0x00	; 0
     1b3c:	80 81       	ld	r24, Z
     1b3e:	91 81       	ldd	r25, Z+1	; 0x01
-    1b40:	88 55       	subi	r24, 0x58	; 88
-    1b42:	9e 49       	sbci	r25, 0x9E	; 158
+    1b40:	80 5c       	subi	r24, 0xC0	; 192
+    1b42:	93 46       	sbci	r25, 0x63	; 99
     1b44:	91 83       	std	Z+1, r25	; 0x01
     1b46:	80 83       	st	Z, r24
-	EventAddEvent(EVENT_10HZ);
-    1b48:	84 e0       	ldi	r24, 0x04	; 4
+	EventAddEvent(EVENT_50HZ);
+    1b48:	83 e0       	ldi	r24, 0x03	; 3
     1b4a:	0e 94 d8 0b 	call	0x17b0	; 0x17b0 <EventAddEvent>
 	return;
 }
@@ -4925,9 +4913,9 @@ ISR(TIMER3_COMPA_vect){
     1b70:	1f 90       	pop	r1
     1b72:	18 95       	reti
 
-00001b74 <__vector_29>:
+00001b74 <__vector_28>:
 
-ISR(TIMER3_COMPB_vect){
+ISR(TIMER3_COMPA_vect){
     1b74:	1f 92       	push	r1
     1b76:	0f 92       	push	r0
     1b78:	0f b6       	in	r0, 0x3f	; 63
@@ -4947,17 +4935,17 @@ ISR(TIMER3_COMPB_vect){
     1b94:	bf 93       	push	r27
     1b96:	ef 93       	push	r30
     1b98:	ff 93       	push	r31
-	OCR3B = OCR3B_PERIOD_CNT + OCR3B;
-    1b9a:	ea e9       	ldi	r30, 0x9A	; 154
+	OCR3A = OCR3A_PERIOD_CNT + OCR3A;
+    1b9a:	e8 e9       	ldi	r30, 0x98	; 152
     1b9c:	f0 e0       	ldi	r31, 0x00	; 0
     1b9e:	80 81       	ld	r24, Z
     1ba0:	91 81       	ldd	r25, Z+1	; 0x01
-    1ba2:	80 5b       	subi	r24, 0xB0	; 176
-    1ba4:	9c 43       	sbci	r25, 0x3C	; 60
+    1ba2:	88 55       	subi	r24, 0x58	; 88
+    1ba4:	9e 49       	sbci	r25, 0x9E	; 158
     1ba6:	91 83       	std	Z+1, r25	; 0x01
     1ba8:	80 83       	st	Z, r24
-	EventAddEvent(EVENT_5HZ);
-    1baa:	85 e0       	ldi	r24, 0x05	; 5
+	EventAddEvent(EVENT_10HZ);
+    1baa:	84 e0       	ldi	r24, 0x04	; 4
     1bac:	0e 94 d8 0b 	call	0x17b0	; 0x17b0 <EventAddEvent>
 	return;
 }
@@ -4981,9 +4969,9 @@ ISR(TIMER3_COMPB_vect){
     1bd2:	1f 90       	pop	r1
     1bd4:	18 95       	reti
 
-00001bd6 <__vector_30>:
+00001bd6 <__vector_29>:
 
-ISR(TIMER3_COMPC_vect){
+ISR(TIMER3_COMPB_vect){
     1bd6:	1f 92       	push	r1
     1bd8:	0f 92       	push	r0
     1bda:	0f b6       	in	r0, 0x3f	; 63
@@ -5003,17 +4991,17 @@ ISR(TIMER3_COMPC_vect){
     1bf6:	bf 93       	push	r27
     1bf8:	ef 93       	push	r30
     1bfa:	ff 93       	push	r31
-	OCR3C = OCR3C_PERIOD_CNT + OCR3C;
-    1bfc:	ec e9       	ldi	r30, 0x9C	; 156
+	OCR3B = OCR3B_PERIOD_CNT + OCR3B;
+    1bfc:	ea e9       	ldi	r30, 0x9A	; 154
     1bfe:	f0 e0       	ldi	r31, 0x00	; 0
     1c00:	80 81       	ld	r24, Z
     1c02:	91 81       	ldd	r25, Z+1	; 0x01
-    1c04:	8c 5d       	subi	r24, 0xDC	; 220
-    1c06:	9b 40       	sbci	r25, 0x0B	; 11
+    1c04:	80 5b       	subi	r24, 0xB0	; 176
+    1c06:	9c 43       	sbci	r25, 0x3C	; 60
     1c08:	91 83       	std	Z+1, r25	; 0x01
     1c0a:	80 83       	st	Z, r24
-	EventAddEvent(EVENT_4HZ);
-    1c0c:	86 e0       	ldi	r24, 0x06	; 6
+	EventAddEvent(EVENT_5HZ);
+    1c0c:	85 e0       	ldi	r24, 0x05	; 5
     1c0e:	0e 94 d8 0b 	call	0x17b0	; 0x17b0 <EventAddEvent>
 	return;
 }
@@ -5037,267 +5025,323 @@ ISR(TIMER3_COMPC_vect){
     1c34:	1f 90       	pop	r1
     1c36:	18 95       	reti
 
-00001c38 <__vector_15>:
+00001c38 <__vector_30>:
 
-ISR(TIMER1_OVF_vect){}
+ISR(TIMER3_COMPC_vect){
     1c38:	1f 92       	push	r1
     1c3a:	0f 92       	push	r0
     1c3c:	0f b6       	in	r0, 0x3f	; 63
     1c3e:	0f 92       	push	r0
-    1c40:	11 24       	eor	r1, r1
-    1c42:	0f 90       	pop	r0
-    1c44:	0f be       	out	0x3f, r0	; 63
-    1c46:	0f 90       	pop	r0
-    1c48:	1f 90       	pop	r1
-    1c4a:	18 95       	reti
+    1c40:	0b b6       	in	r0, 0x3b	; 59
+    1c42:	0f 92       	push	r0
+    1c44:	11 24       	eor	r1, r1
+    1c46:	2f 93       	push	r18
+    1c48:	3f 93       	push	r19
+    1c4a:	4f 93       	push	r20
+    1c4c:	5f 93       	push	r21
+    1c4e:	6f 93       	push	r22
+    1c50:	7f 93       	push	r23
+    1c52:	8f 93       	push	r24
+    1c54:	9f 93       	push	r25
+    1c56:	af 93       	push	r26
+    1c58:	bf 93       	push	r27
+    1c5a:	ef 93       	push	r30
+    1c5c:	ff 93       	push	r31
+	OCR3C = OCR3C_PERIOD_CNT + OCR3C;
+    1c5e:	ec e9       	ldi	r30, 0x9C	; 156
+    1c60:	f0 e0       	ldi	r31, 0x00	; 0
+    1c62:	80 81       	ld	r24, Z
+    1c64:	91 81       	ldd	r25, Z+1	; 0x01
+    1c66:	8c 5d       	subi	r24, 0xDC	; 220
+    1c68:	9b 40       	sbci	r25, 0x0B	; 11
+    1c6a:	91 83       	std	Z+1, r25	; 0x01
+    1c6c:	80 83       	st	Z, r24
+	EventAddEvent(EVENT_4HZ);
+    1c6e:	86 e0       	ldi	r24, 0x06	; 6
+    1c70:	0e 94 d8 0b 	call	0x17b0	; 0x17b0 <EventAddEvent>
+	return;
+}
+    1c74:	ff 91       	pop	r31
+    1c76:	ef 91       	pop	r30
+    1c78:	bf 91       	pop	r27
+    1c7a:	af 91       	pop	r26
+    1c7c:	9f 91       	pop	r25
+    1c7e:	8f 91       	pop	r24
+    1c80:	7f 91       	pop	r23
+    1c82:	6f 91       	pop	r22
+    1c84:	5f 91       	pop	r21
+    1c86:	4f 91       	pop	r20
+    1c88:	3f 91       	pop	r19
+    1c8a:	2f 91       	pop	r18
+    1c8c:	0f 90       	pop	r0
+    1c8e:	0b be       	out	0x3b, r0	; 59
+    1c90:	0f 90       	pop	r0
+    1c92:	0f be       	out	0x3f, r0	; 63
+    1c94:	0f 90       	pop	r0
+    1c96:	1f 90       	pop	r1
+    1c98:	18 95       	reti
 
-00001c4c <__vector_31>:
+00001c9a <__vector_15>:
+
+ISR(TIMER1_OVF_vect){}
+    1c9a:	1f 92       	push	r1
+    1c9c:	0f 92       	push	r0
+    1c9e:	0f b6       	in	r0, 0x3f	; 63
+    1ca0:	0f 92       	push	r0
+    1ca2:	11 24       	eor	r1, r1
+    1ca4:	0f 90       	pop	r0
+    1ca6:	0f be       	out	0x3f, r0	; 63
+    1ca8:	0f 90       	pop	r0
+    1caa:	1f 90       	pop	r1
+    1cac:	18 95       	reti
+
+00001cae <__vector_31>:
 
 ISR(TIMER3_OVF_vect){}
-    1c4c:	1f 92       	push	r1
-    1c4e:	0f 92       	push	r0
-    1c50:	0f b6       	in	r0, 0x3f	; 63
-    1c52:	0f 92       	push	r0
-    1c54:	11 24       	eor	r1, r1
-    1c56:	0f 90       	pop	r0
-    1c58:	0f be       	out	0x3f, r0	; 63
-    1c5a:	0f 90       	pop	r0
-    1c5c:	1f 90       	pop	r1
-    1c5e:	18 95       	reti
+    1cae:	1f 92       	push	r1
+    1cb0:	0f 92       	push	r0
+    1cb2:	0f b6       	in	r0, 0x3f	; 63
+    1cb4:	0f 92       	push	r0
+    1cb6:	11 24       	eor	r1, r1
+    1cb8:	0f 90       	pop	r0
+    1cba:	0f be       	out	0x3f, r0	; 63
+    1cbc:	0f 90       	pop	r0
+    1cbe:	1f 90       	pop	r1
+    1cc0:	18 95       	reti
 
-00001c60 <Timer1_init>:
+00001cc2 <Timer1_init>:
 	010 CLK = BusCLK/8
 	011 CLK = BusCLK/64
 	100 /256
 	101 /1024
 	*/
 	TCCR1B = prescaler;
-    1c60:	80 93 81 00 	sts	0x0081, r24
+    1cc2:	80 93 81 00 	sts	0x0081, r24
 	
 	TIMSK1 = (interruptOverflow << TOIE1);
-    1c64:	60 93 6f 00 	sts	0x006F, r22
+    1cc6:	60 93 6f 00 	sts	0x006F, r22
 }
-    1c68:	08 95       	ret
+    1cca:	08 95       	ret
 
-00001c6a <Timer3_init>:
+00001ccc <Timer3_init>:
 	010 CLK = BusCLK/8
 	011 CLK = BusCLK/64
 	100 /256
 	101 /1024
 	*/
 	TCCR3B = prescaler;
-    1c6a:	80 93 91 00 	sts	0x0091, r24
+    1ccc:	80 93 91 00 	sts	0x0091, r24
 	
 	TIMSK3 = (interruptOverflow << TOIE3);
-    1c6e:	60 93 71 00 	sts	0x0071, r22
+    1cd0:	60 93 71 00 	sts	0x0071, r22
 }
-    1c72:	08 95       	ret
+    1cd4:	08 95       	ret
 
-00001c74 <TIMER_Timer1_OCR1A_on>:
+00001cd6 <TIMER_Timer1_OCR1A_on>:
 
 void TIMER_Timer1_OCR1A_on(void){
 	OCR1A = TCNT1 + OCR1A_PERIOD_CNT;
-    1c74:	80 91 84 00 	lds	r24, 0x0084
-    1c78:	90 91 85 00 	lds	r25, 0x0085
-    1c7c:	80 5f       	subi	r24, 0xF0	; 240
-    1c7e:	98 4d       	sbci	r25, 0xD8	; 216
-    1c80:	90 93 89 00 	sts	0x0089, r25
-    1c84:	80 93 88 00 	sts	0x0088, r24
+    1cd6:	80 91 84 00 	lds	r24, 0x0084
+    1cda:	90 91 85 00 	lds	r25, 0x0085
+    1cde:	80 5f       	subi	r24, 0xF0	; 240
+    1ce0:	98 4d       	sbci	r25, 0xD8	; 216
+    1ce2:	90 93 89 00 	sts	0x0089, r25
+    1ce6:	80 93 88 00 	sts	0x0088, r24
 	TIMSK1 = TIMSK1 | (1<<OCIE1A);
-    1c88:	ef e6       	ldi	r30, 0x6F	; 111
-    1c8a:	f0 e0       	ldi	r31, 0x00	; 0
-    1c8c:	80 81       	ld	r24, Z
-    1c8e:	82 60       	ori	r24, 0x02	; 2
-    1c90:	80 83       	st	Z, r24
+    1cea:	ef e6       	ldi	r30, 0x6F	; 111
+    1cec:	f0 e0       	ldi	r31, 0x00	; 0
+    1cee:	80 81       	ld	r24, Z
+    1cf0:	82 60       	ori	r24, 0x02	; 2
+    1cf2:	80 83       	st	Z, r24
 }
-    1c92:	08 95       	ret
+    1cf4:	08 95       	ret
 
-00001c94 <TIMER_Timer1_OCR1B_on>:
+00001cf6 <TIMER_Timer1_OCR1B_on>:
 
 void TIMER_Timer1_OCR1B_on(void){
 	OCR1B = TCNT1 + OCR1B_PERIOD_CNT;
-    1c94:	80 91 84 00 	lds	r24, 0x0084
-    1c98:	90 91 85 00 	lds	r25, 0x0085
-    1c9c:	80 5e       	subi	r24, 0xE0	; 224
-    1c9e:	91 4b       	sbci	r25, 0xB1	; 177
-    1ca0:	90 93 8b 00 	sts	0x008B, r25
-    1ca4:	80 93 8a 00 	sts	0x008A, r24
+    1cf6:	80 91 84 00 	lds	r24, 0x0084
+    1cfa:	90 91 85 00 	lds	r25, 0x0085
+    1cfe:	80 5e       	subi	r24, 0xE0	; 224
+    1d00:	91 4b       	sbci	r25, 0xB1	; 177
+    1d02:	90 93 8b 00 	sts	0x008B, r25
+    1d06:	80 93 8a 00 	sts	0x008A, r24
 	TIMSK1 = TIMSK1 | (1<<OCIE1B);
-    1ca8:	ef e6       	ldi	r30, 0x6F	; 111
-    1caa:	f0 e0       	ldi	r31, 0x00	; 0
-    1cac:	80 81       	ld	r24, Z
-    1cae:	84 60       	ori	r24, 0x04	; 4
-    1cb0:	80 83       	st	Z, r24
+    1d0a:	ef e6       	ldi	r30, 0x6F	; 111
+    1d0c:	f0 e0       	ldi	r31, 0x00	; 0
+    1d0e:	80 81       	ld	r24, Z
+    1d10:	84 60       	ori	r24, 0x04	; 4
+    1d12:	80 83       	st	Z, r24
 }
-    1cb2:	08 95       	ret
+    1d14:	08 95       	ret
 
-00001cb4 <TIMER_Timer1_OCR1C_on>:
+00001d16 <TIMER_Timer1_OCR1C_on>:
 
 void TIMER_Timer1_OCR1C_on(void){
 	OCR1C = TCNT1 + OCR1C_PERIOD_CNT;
-    1cb4:	80 91 84 00 	lds	r24, 0x0084
-    1cb8:	90 91 85 00 	lds	r25, 0x0085
-    1cbc:	80 5c       	subi	r24, 0xC0	; 192
-    1cbe:	93 46       	sbci	r25, 0x63	; 99
-    1cc0:	90 93 8d 00 	sts	0x008D, r25
-    1cc4:	80 93 8c 00 	sts	0x008C, r24
+    1d16:	80 91 84 00 	lds	r24, 0x0084
+    1d1a:	90 91 85 00 	lds	r25, 0x0085
+    1d1e:	80 5c       	subi	r24, 0xC0	; 192
+    1d20:	93 46       	sbci	r25, 0x63	; 99
+    1d22:	90 93 8d 00 	sts	0x008D, r25
+    1d26:	80 93 8c 00 	sts	0x008C, r24
 	TIMSK1 = TIMSK1 | (1<<OCIE1C);
-    1cc8:	ef e6       	ldi	r30, 0x6F	; 111
-    1cca:	f0 e0       	ldi	r31, 0x00	; 0
-    1ccc:	80 81       	ld	r24, Z
-    1cce:	88 60       	ori	r24, 0x08	; 8
-    1cd0:	80 83       	st	Z, r24
+    1d2a:	ef e6       	ldi	r30, 0x6F	; 111
+    1d2c:	f0 e0       	ldi	r31, 0x00	; 0
+    1d2e:	80 81       	ld	r24, Z
+    1d30:	88 60       	ori	r24, 0x08	; 8
+    1d32:	80 83       	st	Z, r24
 }
-    1cd2:	08 95       	ret
+    1d34:	08 95       	ret
 
-00001cd4 <TIMER_Timer3_OCR3A_on>:
+00001d36 <TIMER_Timer3_OCR3A_on>:
 
 void TIMER_Timer3_OCR3A_on(void){
 	OCR3A = TCNT3 + OCR3A_PERIOD_CNT;
-    1cd4:	80 91 94 00 	lds	r24, 0x0094
-    1cd8:	90 91 95 00 	lds	r25, 0x0095
-    1cdc:	88 55       	subi	r24, 0x58	; 88
-    1cde:	9e 49       	sbci	r25, 0x9E	; 158
-    1ce0:	90 93 99 00 	sts	0x0099, r25
-    1ce4:	80 93 98 00 	sts	0x0098, r24
+    1d36:	80 91 94 00 	lds	r24, 0x0094
+    1d3a:	90 91 95 00 	lds	r25, 0x0095
+    1d3e:	88 55       	subi	r24, 0x58	; 88
+    1d40:	9e 49       	sbci	r25, 0x9E	; 158
+    1d42:	90 93 99 00 	sts	0x0099, r25
+    1d46:	80 93 98 00 	sts	0x0098, r24
 	TIMSK3 = TIMSK3 | (1<<OCIE3A);
-    1ce8:	e1 e7       	ldi	r30, 0x71	; 113
-    1cea:	f0 e0       	ldi	r31, 0x00	; 0
-    1cec:	80 81       	ld	r24, Z
-    1cee:	82 60       	ori	r24, 0x02	; 2
-    1cf0:	80 83       	st	Z, r24
+    1d4a:	e1 e7       	ldi	r30, 0x71	; 113
+    1d4c:	f0 e0       	ldi	r31, 0x00	; 0
+    1d4e:	80 81       	ld	r24, Z
+    1d50:	82 60       	ori	r24, 0x02	; 2
+    1d52:	80 83       	st	Z, r24
 }
-    1cf2:	08 95       	ret
+    1d54:	08 95       	ret
 
-00001cf4 <TIMER_Timer3_OCR3B_on>:
+00001d56 <TIMER_Timer3_OCR3B_on>:
 
 void TIMER_Timer3_OCR3B_on(void){
 	OCR3B = TCNT3 + OCR3B_PERIOD_CNT;
-    1cf4:	80 91 94 00 	lds	r24, 0x0094
-    1cf8:	90 91 95 00 	lds	r25, 0x0095
-    1cfc:	80 5b       	subi	r24, 0xB0	; 176
-    1cfe:	9c 43       	sbci	r25, 0x3C	; 60
-    1d00:	90 93 9b 00 	sts	0x009B, r25
-    1d04:	80 93 9a 00 	sts	0x009A, r24
+    1d56:	80 91 94 00 	lds	r24, 0x0094
+    1d5a:	90 91 95 00 	lds	r25, 0x0095
+    1d5e:	80 5b       	subi	r24, 0xB0	; 176
+    1d60:	9c 43       	sbci	r25, 0x3C	; 60
+    1d62:	90 93 9b 00 	sts	0x009B, r25
+    1d66:	80 93 9a 00 	sts	0x009A, r24
 	TIMSK3 = TIMSK3 | (1<<OCIE3B);
-    1d08:	e1 e7       	ldi	r30, 0x71	; 113
-    1d0a:	f0 e0       	ldi	r31, 0x00	; 0
-    1d0c:	80 81       	ld	r24, Z
-    1d0e:	84 60       	ori	r24, 0x04	; 4
-    1d10:	80 83       	st	Z, r24
+    1d6a:	e1 e7       	ldi	r30, 0x71	; 113
+    1d6c:	f0 e0       	ldi	r31, 0x00	; 0
+    1d6e:	80 81       	ld	r24, Z
+    1d70:	84 60       	ori	r24, 0x04	; 4
+    1d72:	80 83       	st	Z, r24
 }
-    1d12:	08 95       	ret
+    1d74:	08 95       	ret
 
-00001d14 <TIMER_Timer3_OCR3C_on>:
+00001d76 <TIMER_Timer3_OCR3C_on>:
 
 void TIMER_Timer3_OCR3C_on(void){
 	OCR3C = TCNT3 + OCR3C_PERIOD_CNT;
-    1d14:	80 91 94 00 	lds	r24, 0x0094
-    1d18:	90 91 95 00 	lds	r25, 0x0095
-    1d1c:	8c 5d       	subi	r24, 0xDC	; 220
-    1d1e:	9b 40       	sbci	r25, 0x0B	; 11
-    1d20:	90 93 9d 00 	sts	0x009D, r25
-    1d24:	80 93 9c 00 	sts	0x009C, r24
+    1d76:	80 91 94 00 	lds	r24, 0x0094
+    1d7a:	90 91 95 00 	lds	r25, 0x0095
+    1d7e:	8c 5d       	subi	r24, 0xDC	; 220
+    1d80:	9b 40       	sbci	r25, 0x0B	; 11
+    1d82:	90 93 9d 00 	sts	0x009D, r25
+    1d86:	80 93 9c 00 	sts	0x009C, r24
 	TIMSK3 = TIMSK3 | (1<<OCIE3C);
-    1d28:	e1 e7       	ldi	r30, 0x71	; 113
-    1d2a:	f0 e0       	ldi	r31, 0x00	; 0
-    1d2c:	80 81       	ld	r24, Z
-    1d2e:	88 60       	ori	r24, 0x08	; 8
-    1d30:	80 83       	st	Z, r24
-    1d32:	08 95       	ret
+    1d8a:	e1 e7       	ldi	r30, 0x71	; 113
+    1d8c:	f0 e0       	ldi	r31, 0x00	; 0
+    1d8e:	80 81       	ld	r24, Z
+    1d90:	88 60       	ori	r24, 0x08	; 8
+    1d92:	80 83       	st	Z, r24
+    1d94:	08 95       	ret
 
-00001d34 <InitWDT>:
+00001d96 <InitWDT>:
  */ 
 
 #include "../includes/WatchDog.h"
 
 void InitWDT(void){
 	wdt_enable(WDTO_120MS);
-    1d34:	2b e0       	ldi	r18, 0x0B	; 11
-    1d36:	88 e1       	ldi	r24, 0x18	; 24
-    1d38:	90 e0       	ldi	r25, 0x00	; 0
-    1d3a:	0f b6       	in	r0, 0x3f	; 63
-    1d3c:	f8 94       	cli
-    1d3e:	a8 95       	wdr
-    1d40:	80 93 60 00 	sts	0x0060, r24
-    1d44:	0f be       	out	0x3f, r0	; 63
-    1d46:	20 93 60 00 	sts	0x0060, r18
+    1d96:	2b e0       	ldi	r18, 0x0B	; 11
+    1d98:	88 e1       	ldi	r24, 0x18	; 24
+    1d9a:	90 e0       	ldi	r25, 0x00	; 0
+    1d9c:	0f b6       	in	r0, 0x3f	; 63
+    1d9e:	f8 94       	cli
+    1da0:	a8 95       	wdr
+    1da2:	80 93 60 00 	sts	0x0060, r24
+    1da6:	0f be       	out	0x3f, r0	; 63
+    1da8:	20 93 60 00 	sts	0x0060, r18
 }
-    1d4a:	08 95       	ret
+    1dac:	08 95       	ret
 
-00001d4c <CheckWDT>:
+00001dae <CheckWDT>:
 
 Bool CheckWDT(void){
 	if(MCUSR&(1<<WDRF)){
-    1d4c:	04 b6       	in	r0, 0x34	; 52
-    1d4e:	03 fe       	sbrs	r0, 3
-    1d50:	06 c0       	rjmp	.+12     	; 0x1d5e <CheckWDT+0x12>
+    1dae:	04 b6       	in	r0, 0x34	; 52
+    1db0:	03 fe       	sbrs	r0, 3
+    1db2:	06 c0       	rjmp	.+12     	; 0x1dc0 <CheckWDT+0x12>
 		MCUSR&=~(1<<WDRF);
-    1d52:	84 b7       	in	r24, 0x34	; 52
-    1d54:	87 7f       	andi	r24, 0xF7	; 247
-    1d56:	84 bf       	out	0x34, r24	; 52
+    1db4:	84 b7       	in	r24, 0x34	; 52
+    1db6:	87 7f       	andi	r24, 0xF7	; 247
+    1db8:	84 bf       	out	0x34, r24	; 52
 		AddError(ERROR_WDT);
-    1d58:	80 e1       	ldi	r24, 0x10	; 16
-    1d5a:	0e 94 c5 0b 	call	0x178a	; 0x178a <AddError>
+    1dba:	80 e1       	ldi	r24, 0x10	; 16
+    1dbc:	0e 94 c5 0b 	call	0x178a	; 0x178a <AddError>
 	}
 }
-    1d5e:	08 95       	ret
+    1dc0:	08 95       	ret
 
-00001d60 <__divmodhi4>:
-    1d60:	97 fb       	bst	r25, 7
-    1d62:	09 2e       	mov	r0, r25
-    1d64:	07 26       	eor	r0, r23
-    1d66:	0a d0       	rcall	.+20     	; 0x1d7c <__divmodhi4_neg1>
-    1d68:	77 fd       	sbrc	r23, 7
-    1d6a:	04 d0       	rcall	.+8      	; 0x1d74 <__divmodhi4_neg2>
-    1d6c:	0c d0       	rcall	.+24     	; 0x1d86 <__udivmodhi4>
-    1d6e:	06 d0       	rcall	.+12     	; 0x1d7c <__divmodhi4_neg1>
-    1d70:	00 20       	and	r0, r0
-    1d72:	1a f4       	brpl	.+6      	; 0x1d7a <__divmodhi4_exit>
+00001dc2 <__divmodhi4>:
+    1dc2:	97 fb       	bst	r25, 7
+    1dc4:	09 2e       	mov	r0, r25
+    1dc6:	07 26       	eor	r0, r23
+    1dc8:	0a d0       	rcall	.+20     	; 0x1dde <__divmodhi4_neg1>
+    1dca:	77 fd       	sbrc	r23, 7
+    1dcc:	04 d0       	rcall	.+8      	; 0x1dd6 <__divmodhi4_neg2>
+    1dce:	0c d0       	rcall	.+24     	; 0x1de8 <__udivmodhi4>
+    1dd0:	06 d0       	rcall	.+12     	; 0x1dde <__divmodhi4_neg1>
+    1dd2:	00 20       	and	r0, r0
+    1dd4:	1a f4       	brpl	.+6      	; 0x1ddc <__divmodhi4_exit>
 
-00001d74 <__divmodhi4_neg2>:
-    1d74:	70 95       	com	r23
-    1d76:	61 95       	neg	r22
-    1d78:	7f 4f       	sbci	r23, 0xFF	; 255
+00001dd6 <__divmodhi4_neg2>:
+    1dd6:	70 95       	com	r23
+    1dd8:	61 95       	neg	r22
+    1dda:	7f 4f       	sbci	r23, 0xFF	; 255
 
-00001d7a <__divmodhi4_exit>:
-    1d7a:	08 95       	ret
+00001ddc <__divmodhi4_exit>:
+    1ddc:	08 95       	ret
 
-00001d7c <__divmodhi4_neg1>:
-    1d7c:	f6 f7       	brtc	.-4      	; 0x1d7a <__divmodhi4_exit>
-    1d7e:	90 95       	com	r25
-    1d80:	81 95       	neg	r24
-    1d82:	9f 4f       	sbci	r25, 0xFF	; 255
-    1d84:	08 95       	ret
+00001dde <__divmodhi4_neg1>:
+    1dde:	f6 f7       	brtc	.-4      	; 0x1ddc <__divmodhi4_exit>
+    1de0:	90 95       	com	r25
+    1de2:	81 95       	neg	r24
+    1de4:	9f 4f       	sbci	r25, 0xFF	; 255
+    1de6:	08 95       	ret
 
-00001d86 <__udivmodhi4>:
-    1d86:	aa 1b       	sub	r26, r26
-    1d88:	bb 1b       	sub	r27, r27
-    1d8a:	51 e1       	ldi	r21, 0x11	; 17
-    1d8c:	07 c0       	rjmp	.+14     	; 0x1d9c <__udivmodhi4_ep>
+00001de8 <__udivmodhi4>:
+    1de8:	aa 1b       	sub	r26, r26
+    1dea:	bb 1b       	sub	r27, r27
+    1dec:	51 e1       	ldi	r21, 0x11	; 17
+    1dee:	07 c0       	rjmp	.+14     	; 0x1dfe <__udivmodhi4_ep>
 
-00001d8e <__udivmodhi4_loop>:
-    1d8e:	aa 1f       	adc	r26, r26
-    1d90:	bb 1f       	adc	r27, r27
-    1d92:	a6 17       	cp	r26, r22
-    1d94:	b7 07       	cpc	r27, r23
-    1d96:	10 f0       	brcs	.+4      	; 0x1d9c <__udivmodhi4_ep>
-    1d98:	a6 1b       	sub	r26, r22
-    1d9a:	b7 0b       	sbc	r27, r23
+00001df0 <__udivmodhi4_loop>:
+    1df0:	aa 1f       	adc	r26, r26
+    1df2:	bb 1f       	adc	r27, r27
+    1df4:	a6 17       	cp	r26, r22
+    1df6:	b7 07       	cpc	r27, r23
+    1df8:	10 f0       	brcs	.+4      	; 0x1dfe <__udivmodhi4_ep>
+    1dfa:	a6 1b       	sub	r26, r22
+    1dfc:	b7 0b       	sbc	r27, r23
 
-00001d9c <__udivmodhi4_ep>:
-    1d9c:	88 1f       	adc	r24, r24
-    1d9e:	99 1f       	adc	r25, r25
-    1da0:	5a 95       	dec	r21
-    1da2:	a9 f7       	brne	.-22     	; 0x1d8e <__udivmodhi4_loop>
-    1da4:	80 95       	com	r24
-    1da6:	90 95       	com	r25
-    1da8:	bc 01       	movw	r22, r24
-    1daa:	cd 01       	movw	r24, r26
-    1dac:	08 95       	ret
+00001dfe <__udivmodhi4_ep>:
+    1dfe:	88 1f       	adc	r24, r24
+    1e00:	99 1f       	adc	r25, r25
+    1e02:	5a 95       	dec	r21
+    1e04:	a9 f7       	brne	.-22     	; 0x1df0 <__udivmodhi4_loop>
+    1e06:	80 95       	com	r24
+    1e08:	90 95       	com	r25
+    1e0a:	bc 01       	movw	r22, r24
+    1e0c:	cd 01       	movw	r24, r26
+    1e0e:	08 95       	ret
 
-00001dae <_exit>:
-    1dae:	f8 94       	cli
+00001e10 <_exit>:
+    1e10:	f8 94       	cli
 
-00001db0 <__stop_program>:
-    1db0:	ff cf       	rjmp	.-2      	; 0x1db0 <__stop_program>
+00001e12 <__stop_program>:
+    1e12:	ff cf       	rjmp	.-2      	; 0x1e12 <__stop_program>

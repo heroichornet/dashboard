@@ -217,11 +217,11 @@ static void MCMRear(void){
 		}else{
 			mcm_rear_10_data.dataStruct.preENRE=CAN_FALSE;
 		}
-		/*if(PORTA&0x08){
+		if(PORTA&0x08){
 			PORTA=PORTA&(~0x08);
 		}else{
 			PORTA=PORTA|0x08;
-		}*/
+		}
 		CANAddSendData(&mcm_rear_10_tx);
 		break;
 		case EVENT_CANERROR:
@@ -340,6 +340,90 @@ static void MCMHVBox(void){
 }
 #endif
 
+#if MCM==MCM_AD
+static void MCMAD(void){
+	U16 result;
+	switch(event_queue[event_queue_tail]){
+		case EVENT_INIT:
+		CANGetStruct(&mcm_ad_10_tx,mcm_ad_10_data.dataBuf,CAN_TX_10_ID,CAN_TX_10_LEN);
+		CANGetStruct(&mcm_ad_rx,mcm_ad_rx_data.dataBuf,CAN_RX_ID,CAN_RX_LEN);
+		InitError(&mcm_ad_10_data.dataStruct.errorCode);
+		mcm_ad_rx_data.dataStruct.BoundD1=255;
+		mcm_ad_rx_data.dataStruct.BoundGap=64;
+		mcm_ad_rx_data.dataStruct.BoundD2=128;
+		mcm_ad_rx_data.dataStruct.BoundOff2=64;
+		mcm_ad_rx_data.dataStruct.ReBoundD1=255;
+		mcm_ad_rx_data.dataStruct.ReBoundGap=64;
+		mcm_ad_rx_data.dataStruct.ReBoundD2=128;
+		mcm_ad_rx_data.dataStruct.ReBoundOff2=64;
+		sei();
+		CANStartRx(&mcm_ad_rx);
+		break;
+		case EVENT_PWM:
+		mcm_ad_current_ADC=0;
+		ADStart(mcm_ad_current_ADC);
+		break;
+		case EVENT_10HZ:
+		CANAddSendData(&mcm_ad_10_tx);
+		/*if(PORTA&0x08){
+			PORTA=PORTA&(~0x08);
+		}else{
+			PORTA=PORTA|0x08;
+		}*/
+		break;
+		case EVENT_ADCDONE:
+		switch(mcm_ad_current_ADC){
+			case 0:
+			mcm_ad_10_data.dataStruct.SpeedSign=PINB&0x01;
+			mcm_ad_10_data.dataStruct.Speed=ADGetVal();
+			
+			result=mcm_ad_10_data.dataStruct.Speed;
+			if(mcm_ad_10_data.dataStruct.SpeedSign){
+				if((result>>2)<mcm_ad_rx_data.dataStruct.BoundGap){
+					result=((U32)result*(U32)mcm_ad_rx_data.dataStruct.BoundD1)>>9;
+				}else{
+					result=((U32)result*(U32)mcm_ad_rx_data.dataStruct.BoundD2)>>9;
+					result+=mcm_ad_rx_data.dataStruct.BoundOff2;
+				}
+				TIMER_SetPWMVal(ad_LUT_Bound[result]);
+			}else{
+				if((result>>2)<mcm_ad_rx_data.dataStruct.ReBoundGap){
+					result=((U32)result*(U32)mcm_ad_rx_data.dataStruct.ReBoundD1)>>9;
+				}else{
+					result=((U32)result*(U32)mcm_ad_rx_data.dataStruct.ReBoundD2)>>9;
+					result+=mcm_ad_rx_data.dataStruct.ReBoundOff2;
+				}
+				TIMER_SetPWMVal(ad_LUT_ReBound[256-result]);
+			}
+			
+			mcm_ad_current_ADC++;
+			ADStart(mcm_ad_current_ADC);
+			break;
+			case 1:
+			mcm_ad_10_data.dataStruct.Position=ADGetVal();
+			//PORTA=PORTA|0x08;
+			//PORTA=PORTA&(~0x08);
+			break;
+		}
+		break;
+		case EVENT_CANERROR:
+		CANAbortCMD();
+		break;
+		case EVENT_CANTX:
+		if(CANGetCurrentTx()==&mcm_ad_10_tx){//ErrorCode gesendet
+			ClearErrors();
+		}
+		CANSendNext();
+		break;
+		case EVENT_CANRX:
+		CANGetData(&mcm_ad_rx);
+		break;
+		default:
+		break;
+	}
+}
+#endif
+
 void EventHandleEvent(void){
 	if(event_queue_head!=event_queue_tail){
 		#if MCM==MCM_FRONT
@@ -353,6 +437,9 @@ void EventHandleEvent(void){
 		#endif
 		#if MCM==MCM_HVBOX
 			MCMHVBox();
+		#endif
+		#if MCM==MCM_AD
+			MCMAD();
 		#endif
 		event_queue_tail=(event_queue_tail+1)%EVENT_QUEUE_SIZE;
 	}

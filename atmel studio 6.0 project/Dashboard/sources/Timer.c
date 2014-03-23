@@ -27,42 +27,54 @@
 /* | Global Variables				| */
 /* +--------------------------------+ */
 
+static S16 pwmVal;
+static S16 delta;
 
 /* +--------------------------------+ */
 /* | Interrupt Service Routines		| */
 /* +--------------------------------+ */
+
+ISR(TIMER0_COMP_vect){
+	return;
+}
+
+ISR(TIMER0_OVF_vect){
+	EventAddEvent(EVENT_PWM);
+	return;
+}
+
 ISR(TIMER1_COMPA_vect){
-	OCR1A = OCR1A_PERIOD_CNT + OCR1A;
+	OCR1A+=OCR1A_PERIOD_CNT;
 	EventAddEvent(EVENT_200HZ);
 	return;
 }
 
 ISR(TIMER1_COMPB_vect){
-	OCR1B = OCR1B_PERIOD_CNT + OCR1B;
+	OCR1B+=OCR1B_PERIOD_CNT;
 	EventAddEvent(EVENT_100HZ);
 	return;
 }
 
 ISR(TIMER1_COMPC_vect){
-	OCR1C = OCR1C_PERIOD_CNT + OCR1C;
+	OCR1C+=OCR1C_PERIOD_CNT;
 	EventAddEvent(EVENT_50HZ);
 	return;
 }
 
 ISR(TIMER3_COMPA_vect){
-	OCR3A = OCR3A_PERIOD_CNT + OCR3A;
+	OCR3A+=OCR3A_PERIOD_CNT;
 	EventAddEvent(EVENT_10HZ);
 	return;
 }
 
 ISR(TIMER3_COMPB_vect){
-	OCR3B = OCR3B_PERIOD_CNT + OCR3B;
+	OCR3B+=OCR3B_PERIOD_CNT;
 	EventAddEvent(EVENT_5HZ);
 	return;
 }
 
 ISR(TIMER3_COMPC_vect){
-	OCR3C = OCR3C_PERIOD_CNT + OCR3C;
+	OCR3C+=OCR3C_PERIOD_CNT;
 	EventAddEvent(EVENT_4HZ);
 	return;
 }
@@ -86,7 +98,7 @@ void Timer1_init(U8 prescaler, Bool interruptOverflow){
 	*/
 	TCCR1B = prescaler;
 	
-	TIMSK1 = (interruptOverflow << TOIE1);
+	TIMSK1 = (interruptOverflow<<TOIE1);
 }
 
 void Timer3_init(U8 prescaler, Bool interruptOverflow){
@@ -100,7 +112,7 @@ void Timer3_init(U8 prescaler, Bool interruptOverflow){
 	*/
 	TCCR3B = prescaler;
 	
-	TIMSK3 = (interruptOverflow << TOIE3);
+	TIMSK3 = (interruptOverflow<<TOIE3);
 }
 
 void TIMER_Timer1_OCR1A_on(void){
@@ -131,4 +143,24 @@ void TIMER_Timer3_OCR3B_on(void){
 void TIMER_Timer3_OCR3C_on(void){
 	OCR3C = TCNT3 + OCR3C_PERIOD_CNT;
 	TIMSK3 = TIMSK3 | (1<<OCIE3C);
+}
+
+void PWM_init(void){
+	pwmVal=0xFF;
+	OCR0A=0xFF;
+	TCCR0A=0b01111010;
+	TIMSK0|=(0<<OCIE0A)|(1<<TOIE0);
+}
+
+void TIMER_SetPWMVal(U8 pwm){
+	delta=((S16)pwm-pwmVal);
+	pwmVal=pwmVal+delta/4;
+	delta=(S16)pwm+delta/2;
+	if(delta>255){
+		OCR0A=255;
+	}else if(delta<0){
+		OCR0A=0;
+	}else{
+		OCR0A=delta;
+	}
 }
