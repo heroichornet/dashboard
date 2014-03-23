@@ -38,23 +38,48 @@ void main_init(){
 	PORTF=0xFF;
 	PORTG|=(0b00011111); // Port G Pins 7,8 and 6 not written
 	
-	/*
+
+	DDRA=DDRA|0x08;
+	PORTA=PORTA&(~0x08);
+
+	#ifdef IO_PORTB_OR
+	DDRB|=IO_PORTB_OR;
+	DDRB&=IO_PORTB_AND;
+	PORTB&=(~IO_PORTB_OR);
+	#endif
+
+	#ifdef IO_PORTD_OR
+	DDRD|=IO_PORTD_OR;
+	DDRD&=IO_PORTD_AND;
+	PORTD&=(~IO_PORTD_OR);
+	#endif
+
+	#ifdef IO_PORTE_OR
+	DDRE|=IO_PORTE_OR;
+	DDRE&=IO_PORTE_AND;
+	PORTE&=(~IO_PORTE_OR);
+	#endif
+
 	CANInit();
-	
-	#if HAS_200HZ|HAS_100HZ
+
+	#if HAS_200HZ|HAS_100HZ|HAS_50HZ
 	Timer1_init(TMR1_PRESCALER,FALSE);
 	#endif
 
 	#if HAS_10HZ
 	Timer3_init(TMR3_PRESCALER,FALSE);
 	#endif
-	
+
 	#if HAS_200HZ
 	TIMER_Timer1_OCR1A_on();
 	#endif
 
 	#if HAS_100HZ
 	TIMER_Timer1_OCR1B_on();
+	#endif
+
+	#if HAS_50HZ
+	TIMER_Timer1_OCR1C_on();
 	#endif
 
 	#if HAS_10HZ
@@ -66,12 +91,10 @@ void main_init(){
 	PORTF=0x00;
 	ADInit(MCM_ADC_PRESCALER, TRUE);
 	#endif
-	
+
 	InitWDT();
-	
+
 	EventAddEvent(EVENT_INIT);
-	
-	*/
 	
 	#if HAS_BUZZER
 		buzzer_init();	
@@ -81,9 +104,9 @@ void main_init(){
 		led_init();
 	#endif
 		
+
 }
 
 void main_deinit(){
 	
 }
-

@@ -18,12 +18,12 @@ int main(void){
 		led_state_set(0xFFFF);
 		led_state_set(0x0000);
 		
-		//wdt_reset();
-		//EventHandleEvent();
-	
+	wdt_reset();
+		EventHandleEvent();
 	};
 
 	main_deinit();
 	
 	return 0;
 }
+
