@@ -71,19 +71,22 @@ void main_init(){
 	ADInit(MCM_ADC_PRESCALER, TRUE);
 	#endif
 
-	InitWDT();
 
-	EventAddEvent(EVENT_INIT);
-	
+
 	#if HAS_BUZZER
-	buzzer_init();	
+	buzzer_init();
 	#endif
 	
 	#if HAS_LEDS
 	led_init();
 	#endif
+	
+	
+	InitWDT();
+	
+	EventAddEvent(EVENT_INIT);
+	
 		
-
 }
 
 void main_deinit(){

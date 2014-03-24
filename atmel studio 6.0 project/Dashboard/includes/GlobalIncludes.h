@@ -92,6 +92,8 @@
 #define DASHBOARD	(6)
 
 
+#define MCM DASHBOARD
+
 #if MCM==MCM_FRONT
 	#define HAS_CAN_RX 0
 	#define HAS_200HZ 1
@@ -337,7 +339,7 @@
 #endif
 	
 	
-#if MCM==DASHBOARD
+
 
 		#define HAS_CAN_RX	(1)
 		#define HAS_200HZ	(1)
@@ -470,7 +472,6 @@
 		static st_cmd_t dashboard_200_tx;
 
 
-#endif // MCM=DASHBOARD
 
 #endif /* GlobalIncludes_H_ */
 

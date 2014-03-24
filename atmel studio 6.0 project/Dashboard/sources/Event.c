@@ -424,8 +424,6 @@ static void MCMAD(void){
 }
 #endif
 
-
-#if MCM==DASHBOARD
 static void Dashboard(void){
 	switch(event_queue[event_queue_tail]){
 		case EVENT_INIT:
@@ -438,12 +436,7 @@ static void Dashboard(void){
 			/* Rx Structs*/
 			/* Rx Frame*/
 			CANGetStruct(&dashboard_rx,dashboard_rx_general_data.dataBuf,CAN_RX_ID,CAN_RX_ID);
-
-			/* init error for TX */
-			/* error for frame 1 */
-			InitError(&dashboard_50_data.dataStruct.errorCode);
-			/* error for frame 2 */
-			InitError(&dashboard_200_data.dataStruct.errorCode);
+			
 			sei(); /* enable interrupts*/
 			/* start Rx */
 			/* Frame 1 */
@@ -470,35 +463,17 @@ static void Dashboard(void){
 			CANSendNext();
 		break;
 			case EVENT_CANRX:
-			CANGetData(&mcm_hvbox_rx);
+			CANGetData(&dashboard_rx);
 		break;
 		default:
 		break;
 	}
 }
-#endif
 
 
 void EventHandleEvent(void){
 	if(event_queue_head!=event_queue_tail){
-		#if MCM==MCM_FRONT
-			MCMFront();
-		#endif
-		#if MCM==MCM_LVBOX
-			MCMLVBox();
-		#endif
-		#if MCM==MCM_REAR
-			MCMRear();
-		#endif
-		#if MCM==MCM_HVBOX
-			MCMHVBox();
-		#endif
-		#if MCM==MCM_AD
-			MCMAD();
-		#endif
-		#if MCM==DASHBOARD
-			Dashboard();
-		#endif
+		Dashboard();		
 		event_queue_tail=(event_queue_tail+1)%EVENT_QUEUE_SIZE;
 	}
 }
