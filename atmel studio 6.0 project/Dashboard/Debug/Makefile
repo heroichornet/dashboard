@@ -38,7 +38,6 @@ SUBDIRS :=  \
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../main.c \
-../sources/adc.c \
 ../sources/Button.c \
 ../sources/Buzzer.c \
 ../sources/CAN.c \
@@ -61,7 +60,6 @@ ASM_SRCS +=
 
 OBJS +=  \
 main.o \
-sources/adc.o \
 sources/Button.o \
 sources/Buzzer.o \
 sources/CAN.o \
@@ -78,7 +76,6 @@ sources/WatchDog.o
 
 OBJS_AS_ARGS +=  \
 main.o \
-sources/adc.o \
 sources/Button.o \
 sources/Buzzer.o \
 sources/CAN.o \
@@ -95,7 +92,6 @@ sources/WatchDog.o
 
 C_DEPS +=  \
 main.d \
-sources/adc.d \
 sources/Button.d \
 sources/Buzzer.d \
 sources/CAN.d \
@@ -112,7 +108,6 @@ sources/WatchDog.d
 
 C_DEPS_AS_ARGS +=  \
 main.d \
-sources/adc.d \
 sources/Button.d \
 sources/Buzzer.d \
 sources/CAN.d \
@@ -136,8 +131,6 @@ ADDITIONAL_DEPENDENCIES:=
 OUTPUT_FILE_DEP:= ./makedep.mk
 
 # AVR32/GNU C Compiler
-
-
 
 
 

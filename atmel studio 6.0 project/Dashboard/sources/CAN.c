@@ -59,12 +59,12 @@ void CANInit(void){
 	can_rx=0;
 }
 
-void CANGetStruct(st_cmd_t* st,U8* datapt, U16 ID, U8 lenght){
+void CANGetStruct(st_cmd_t* st,U8* datapt, U16 ID, U8 length){
 	st->pt_data=datapt;
 	st->ctrl.ide=0;
 	st->ctrl.rtr=0;
 	st->id.std=ID;
-	st->dlc=lenght;
+	st->dlc=length;
 	st->id_mask=0x07FF;
 }
 

@@ -4,8 +4,6 @@
 
 main.c
 
-sources\adc.c
-
 sources\Button.c
 
 sources\Buzzer.c

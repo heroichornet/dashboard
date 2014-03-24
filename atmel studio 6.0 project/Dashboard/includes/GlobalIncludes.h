@@ -339,66 +339,114 @@
 	
 #if MCM==DASHBOARD
 
-		#define HAS_CAN_RX 1
-		#define HAS_200HZ 1
-		#define HAS_100HZ 0
-		#define HAS_50HZ 1
-		#define HAS_10HZ 0
-		#define HAS_ADC 0
+		#define HAS_CAN_RX	(1)
+		#define HAS_200HZ	(1)
+		#define HAS_100HZ	(0)
+		#define HAS_50HZ	(1)
+		#define HAS_10HZ	(0)
+		#define HAS_ADC		(0)
 	
 	
 		/* RX Frames */
 	
-		/* RX Frame 1*/
+		/* RX */
 		#if HAS_CAN_RX
-			#define CAN_RX_ID_F1 (0x501)
-			#define CAN_RX_LEN_F1 (8)
-			static union Dashboard_RX_F1_un{
-				U8 dataBuf[CAN_RX_LEN_F1];
-				struct Dashboard_RX_F1_st{
+		
+			#define REQUEST_ID_MOTOR_TEMP (0)
+			#define REQUEST_ID_ACTOR	  (1)
+			#define REQUEST_ID_LV_AKKU	  (2)
+		
+			#define CAN_RX_ID (0x501)
+			#define CAN_RX_LEN (8)
+			
+			/* static cmd String for CAN RX */
+			static st_cmd_t dashboard_rx;
+			
+			/* general RX Frame, Request ID on first byte*/
+
+			static union Dashboard_RX_general_un{
+				U8 dataBuf[CAN_RX_LEN];
+				struct Dashboard_RX_st{
+					U8 REQUEST_ID;
 					U8 ERRCODE;
-					U8 LED_BUZ;
-					U8 SOC;
+					U8 PARAM3;
+					U8 PARAM4;
+					U8 PARAM5;
+					U8 PARAM6;
+					U8 PARAM7;
+					U8 PARAM8;
+				} dataStruct;
+			} dashboard_rx_general_data;
+
+		
+		
+			/* Request ID Motortemp */
+
+			static union Dashboard_RX_motortemp_un{
+				U8 dataBuf[CAN_RX_LEN];
+				struct Dashboard_RX_motortemp_st{
+					U8 REQUEST_ID;
+					U8 ERRCODE;
 					U8 MOTTEMP_REAR_LEFT;
 					U8 MOTTEMP_REAR_RIGHT;
 					U8 MOTTEMP_FRONT_RIGHT;
 					U8 MOTTEMP_FRONT_LEFT;
-					U8 LV_VOLTAGE;
+					U8 PARAM7;
+					U8 PARAM8;
 				} dataStruct;
-			} dashboard_rx_f1_data;
-	
-			/*RX Frame 2 */
-			#define CAN_RX_ID_F2  (0x502)
-			#define CAN_RX_LEN_F2 (3)
-			static union Dashboard_RX_F2_un{
-				U8 dataBuf[CAN_RX_LEN_F2];
-				struct Dashboard_RX_F2_st{
-					U8 CELL_VOLTAGE_MIN;
-					U8 CELL_VOLTAGE_MEAN;
-					U8 CELL_VOLTAGE_MAX;
-					U8 CELL_TEMP_MIN;
-					U8 CELL_TEMP_MEAN;
-					U8 CELL_TEMP_MAX;
-					U8 ACCELERATION_STATE;
-					U8 ACCELERATION_GAS;
-				} dataStruct;
-			} dashboard_rx_f2_data;	
-		#endif
+			} dashboard_rx_motortemp_data;
+
 		
+			/* Request ID Actor */
+			/* Buzzer & LED */
+
+			static union Dashboard_RX_actor_un{
+				U8 dataBuf[CAN_RX_LEN];
+				struct Dashboard_RX_actor_st{
+					U8 REQUEST_ID;
+					U8 ERRCODE;
+					U8 LED;
+					U8 BUZ;
+					U8 SOC;
+					U8 LV_VOLTAGE;
+					U8 PARAM7;
+					U8 PARAM8;
+				} dataStruct;
+			} dashboard_rx_actor_data;
+
+		
+			/* Request ID LV Akku */
+			/* SOC & LV Voltage */
+			static union Dashboard_RX_lvakku_un{
+				U8 dataBuf[CAN_RX_LEN];
+				struct Dashboard_RX_lvakku_st{
+					U8 REQUEST_ID;
+					U8 ERRCODE;
+					U8 SOC;
+					U8 LV_VOLTAGE;
+					U8 PARAM5;
+					U8 PARAM6;
+					U8 PARAM7;
+					U8 PARAM8;
+				} dataStruct;
+			} dashboard_rx_lvakku_data;
+		 
+		#endif // HAS_CAN_RX
+	
 		/* TX Frame 1 */
 		#define	CAN_TX_50_ID	(0x503)
 		#define CAN_TX_50_LEN	(2)
 		static union Dashboard_TX_50_un{
 			U8 dataBuf[CAN_TX_50_LEN];
 			struct Dashboard_50_st {
+				U8 REQUEST_ID;
 				U8 KEYS;
 				U8 MOTOR_POWER_FRONT;
 				U8 MOTOR_POWER_REAR;
 				U8 TORQUE_VECTORING;
 				U8 TRACTION_CONTROL;
-				U8 PARAM_3;
-				U8 PARAM_4;
-				U8 PARAM_5;
+				U8 PARAM7;
+				U8 PARAM8;
 			} dataStruct;
 		} dashboard_50_data;
 		static st_cmd_t dashboard_50_tx;
@@ -411,12 +459,18 @@
 			struct Dashboard_200_st {
 				U8 ACCELERATION;
 				U8 DRS;
+				U8 PARAM3;
+				U8 PARAM4;
+				U8 PARAM5;
+				U8 PARAM6;
+				U8 PARAM7;
+				U8 PARAM8;
 			} dataStruct;
 		} dashboard_200_data;
 		static st_cmd_t dashboard_200_tx;
 
 
-	#endif
+#endif // MCM=DASHBOARD
 
 #endif /* GlobalIncludes_H_ */
 

@@ -25,7 +25,8 @@ void main_init(){
 	// Default Pin config for PORT A,B,C,D,E,F (Input with pull up)
 	DDRA=0x00;
 	DDRB=0x00;
-	DDRC=0x00;
+	DDRC&=~(0b10011111);;
+	DDRD=0xFF;
 	DDRE=0x00;
 	DDRF=0x00;
 	DDRG&=~(0b00011111); // Port G Pins 7,8 and 6 not written
@@ -33,7 +34,7 @@ void main_init(){
 	PORTA=0xFF;
 	PORTB=0xFF;
 	PORTC=0xFF;
-	PORTD=0xFF;
+	PORTD|=(0b10011111);
 	PORTE=0xFF;
 	PORTF=0xFF;
 	PORTG|=(0b00011111); // Port G Pins 7,8 and 6 not written
