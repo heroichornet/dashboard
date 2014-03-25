@@ -29,7 +29,7 @@
 #include "can_lib.h"
 #include "compiler.h"
 
-#define FOSC	16000				//Frequenz des Oszilators in kHz 
+#define FOSC	12000				//Frequenz des Oszilators in kHz 
 #ifndef CAN_BAUDRATE 
 #define CAN_BAUDRATE (CAN_500)
 #endif

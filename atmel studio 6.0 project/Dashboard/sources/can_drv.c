@@ -418,6 +418,12 @@ U8 can_fixed_baudrate(U8 baudrate)
 		else if (baudrate == CAN_1000) Can_conf_bt_flex(0x00, 0x0C, 0x37 ); //!< -- 1000Kb/s, 16x Tscl, sampling at 75%
 		else Can_conf_bt();
 		return 1;
+	#endif
+	#if FOSC == 12000
+		Can_reset();
+		if(baudrate == CAN_500) Can_conf_bt_flex(0x02, 0x08, 0x25); //!< -- 500Kb/s, 8x 2Tscl, sampling at 75%
+		else(Can_conf_bt());
+		return 1;
 	#else
 	#   error This FOSC value is not yet programmed, please add values above
 	#endif
@@ -433,6 +439,8 @@ U8 Can_conf_bt_flex(U8 bt1, U8 bt2, U8 bt3)
 	CANBT1=bt1;
 	CANBT2=bt2;
 	CANBT3=bt3;
+	
+	
     return 1;
 }
 
