@@ -341,13 +341,21 @@
 	
 #if MCM==DASHBOARD
 
+
+		// Activate/deactivate peripherals
+		
+		#define HAS_BUZZER  (1)
+		#define HAS_LED	    (1)
+		#define HAS_BUTTONS (1)
+		
+		// Activate/deactivate CAN components
+
 		#define HAS_CAN_RX	(1)
 		#define HAS_200HZ	(1)
 		#define HAS_100HZ	(0)
 		#define HAS_50HZ	(1)
 		#define HAS_10HZ	(0)
 		#define HAS_ADC		(0)
-	
 	
 		/* RX Frames */
 	

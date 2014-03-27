@@ -36,23 +36,24 @@ row4---9--¦-10--¦-11--¦
 */
 
 
-#define ROW_1_ID 0
-#define ROW_2_ID 1
-#define ROW_3_ID 2
-#define ROW_4_ID 3
-#define COLOUMN_1_ID 4
-#define COLOUMN_2_ID 5
-#define COLOUMN_3_ID 6
+#define BUTTON_PIN_NUMBER (7)
 
-#define ROW_PIN(ROW_1_ID) 0x00
+#define ROW_1_ID	 (0)
+#define ROW_2_ID	 (1)
+#define ROW_3_ID	 (2)
+#define ROW_4_ID	 (3)
+#define COLOUMN_1_ID (4)
+#define COLOUMN_2_ID (5)
+#define COLOUMN_3_ID (6)
 
-#define ROW_PORT(ROW_1_ID) 0x00
+uint8_t *button_port;
+uint8_t *button_pin;
+uint8_t *button_dd;
 
-#define ROW_DD(port) 
 
 
 void button_init(void);
-void button_next_multiplex_step(void);
+void button_multiplex_cycle(void);
 
 
 

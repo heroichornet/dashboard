@@ -8,11 +8,12 @@
 #ifndef MYCOMMON_H_
 #define MYCOMMON_H_
 
-// Selected MCM
-#define MCM DASHBOARD
+
 
 #include <avr/io.h>
 #include "GlobalIncludes.h"
+
+
 
 void main_init(void);
 void main_deinit(void);

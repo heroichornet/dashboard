@@ -9,8 +9,6 @@
 #ifndef LED_H_
 #define LED_H_
 
-#define HAS_LEDS				(1)
-
 uint16_t led_state;
 
 #define LED_NUMBER				(11)
