@@ -21,6 +21,8 @@
 
 void main_init(){
 
+
+
 	/* Init Ports */
 	// Default Pin config for PORT A,B,C,D,E,F (Input with pull up)
 	DDRA=0x00;

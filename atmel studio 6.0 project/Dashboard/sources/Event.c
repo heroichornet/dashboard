@@ -11,7 +11,7 @@
 //#include "RecupBalance.h"
 //#include "adc.h"
 #include <stdlib.h>
-
+#include "../includes/Led.h"
 EVENT_Handle event_queue[EVENT_QUEUE_SIZE];
 U8 event_queue_head, event_queue_tail;
 
@@ -450,8 +450,17 @@ static void Dashboard(void){
 		break;
 		case EVENT_50HZ:
 			/* Timer Stuff mit 50 Hz */
+
+			/* turn on led */
+			led_port[LED_ID_RECUP]|=((0x01)<<led_pins[LED_ID_RECUP]);
 			CANAddSendData(&dashboard_50_tx);
+			led_port[LED_ID_RECUP]&=~((0x01)<<led_pins[LED_ID_RECUP]);
+			
 		break;
+		
+		case EVENT_10KHZ:
+			/* Multiplex */
+			
 		case EVENT_CANERROR:
 			/* Catch Can Errors*/
 			CANAbortCMD();

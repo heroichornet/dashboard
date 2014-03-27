@@ -8,14 +8,15 @@
 #include <stdlib.h>
 #include "includes/MyCommon.h"
 #include "includes/GlobalIncludes.h"
+#include "includes/Led.h"
 
 
-int main(void){
-	
+int main(void){	
+
 	main_init();
 	
 	while(1){	
-		//wdt_reset();
+		wdt_reset();
 		EventHandleEvent();
 	};
 

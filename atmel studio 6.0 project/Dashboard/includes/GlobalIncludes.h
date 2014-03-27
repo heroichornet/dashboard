@@ -54,14 +54,14 @@
 #define ADC_NUM_AVGS	(1)
 
 // Timer Defines
-#define TMR1_PRESCALER		((0<<CS32) | (1<<CS31) | (0<<CS30)) //1 Tick = PRSC/OSC_CLCK= 8 / 16MHz = 0.5 us
-#define OCR1A_PERIOD_CNT	(0x2710) // 5ms/200Hz		Software Ticker 0x4E20 for PRSC=8 (0x09C4 for PRSC=64)
-#define OCR1B_PERIOD_CNT	(0x4E20) // 10ms/100Hz
-#define OCR1C_PERIOD_CNT	(0x9C40) // 20ms/50Hz
-#define TMR3_PRESCALER		((0<<CS32) | (1<<CS31) | (1<<CS30)) //1 Tick = PRSC/OSC_CLCK= 64 / 16MHz = 4us
-#define OCR3A_PERIOD_CNT	(0x61A8) // 100ms/10Hz		Software Ticker 0x4E20 for PRSC=8 (0x09C4 for PRSC=64)
-#define OCR3B_PERIOD_CNT	(0xC350) // 200ms/5Hz
-#define OCR3C_PERIOD_CNT	(0xF424) // 250ms/4Hz
+#define TMR1_PRESCALER		((0<<CS32) | (1<<CS31) | (0<<CS30)) //1 Tick = PRSC/OSC_CLCK= 8 / 12MHz = 0.6667 us
+#define OCR1A_PERIOD_CNT	(0x1D4C) // 5ms/200Hz		Software Ticker 0x4E20 for PRSC=8 (0x09C4 for PRSC=64)
+#define OCR1B_PERIOD_CNT	(0x3A98) // 10ms/100Hz
+#define OCR1C_PERIOD_CNT	(0x7530) // 20ms/50Hz
+#define TMR3_PRESCALER		((0<<CS32) | (1<<CS31) | (1<<CS30)) //1 Tick = PRSC/OSC_CLCK= 64 / 12 MHz = 5.33 us
+#define OCR3A_PERIOD_CNT	(0x493E) // 100ms/10Hz		Software Ticker 0x4E20 for PRSC=8 (0x09C4 for PRSC=64)
+#define OCR3B_PERIOD_CNT	(0x927C) // 200ms/5Hz
+#define OCR3C_PERIOD_CNT	(0xB720) // 250ms/4Hz
 
 
 // EEPROM Memory addresses
@@ -339,7 +339,7 @@
 #endif
 	
 	
-
+#if MCM==DASHBOARD
 
 		#define HAS_CAN_RX	(1)
 		#define HAS_200HZ	(1)
@@ -470,6 +470,8 @@
 			} dataStruct;
 		} dashboard_200_data;
 		static st_cmd_t dashboard_200_tx;
+
+#endif /* Dashboard Endif */
 
 
 
