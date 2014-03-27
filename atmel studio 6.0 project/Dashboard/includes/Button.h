@@ -9,22 +9,28 @@
 #ifndef BUTTON_H_
 #define BUTTON_H_
 
-uint16_t button_pressed;
-uint8_t button_current;
 
-/* Buttons for VCU */
-#define BUTTON_ID_START			(0)
-#define BUTTON_ID_TV			(1)
-#define BUTTON_ID_TC			(2)
+uint16_t button_pressed_previous;
+uint16_t button_pressed_current;
+
+
+
+/* Buttons on Steering Wheel */
+
+#define BUTTON_ID_FLAPPY_DRS	(0)
+#define BUTTON_ID_FLAPPY_RADIO	(1)
+#define BUTTON_ID_PLUS			(4)
+#define BUTTON_ID_MINUS			(5)
+#define BUTTON_ID_UP			(8)
+#define BUTTON_ID_DOWN			(9)
+
+/* Buttons on Dashboard */
+#define BUTTON_ID_TMS			(2)
 #define BUTTON_ID_RECUP			(3)
-#define BUTTON_ID_KOBI			(4)
-#define BUTTON_ID_AD			(5)
-#define BUTTON_ID_DRS			(6)
-
-/* Buttons for Dashboard (local) */
-
-
-
+#define BUTTON_ID_TC			(6)
+#define BUTTON_ID_KOBI			(7)
+#define BUTTON_ID_TV			(10)
+#define BUTTON_ID_AD			(11)
 
 /*
 	  col1¦col2 ¦col3 ¦
@@ -37,6 +43,7 @@ row4---9--¦-10--¦-11--¦
 
 
 #define BUTTON_PIN_NUMBER (7)
+#define BUTTON_ROW_NUMBER (4)
 
 #define ROW_1_ID	 (0)
 #define ROW_2_ID	 (1)
