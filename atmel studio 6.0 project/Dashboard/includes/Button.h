@@ -45,13 +45,6 @@ row4---9--¦-10--¦-11--¦
 #define BUTTON_PIN_NUMBER (7)
 #define BUTTON_ROW_NUMBER (4)
 
-#define ROW_1_PORT PORTE;
-#define ROW_2_PORT PORTE;
-#define ROW_3_PORT PORTC;
-#define ROW_4_PORT PORTC;
-#define COLOUMN_1_PORT PORTE;
-#define COLOUMN_2_PORT PORTE;
-#define COLOUMN_3_PORT PORTB;
 
 	
 #define ROW_1_PIN (4);
@@ -60,15 +53,9 @@ row4---9--¦-10--¦-11--¦
 #define ROW_4_PIN (3);
 #define COLOUMN_1_PIN (6);
 #define COLOUMN_2_PIN (7);
-#define COLOUMN_3_PIN (0);
+#define COLOUMN_3_PIN (4);
 
-#define ROW_1_DD DDRE;
-#define ROW_2_DD DDRE;
-#define ROW_3_DD DDRC;
-#define ROW_4_DD DDRC;
-#define COLOUMN_1_DD DDRE;
-#define COLOUMN_2_DD DDRE;
-#define COLOUMN_3_DD DDRB;
+
 
 
 
