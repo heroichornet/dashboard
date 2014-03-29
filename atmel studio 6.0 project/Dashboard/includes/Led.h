@@ -44,31 +44,6 @@ uint16_t led_state;
 #define LED_PIN_OK				(0)
 #define LED_PIN_START			(7)
 
-#define LED_PORT_AMS			(PORTC)
-#define LED_PORT_TV				(PORTA)
-#define LED_PORT_TC				(PORTA)
-#define LED_PORT_RECUP			(PORTA)
-#define LED_PORT_KOBI			(PORTA)
-#define LED_PORT_AD				(PORTG)
-#define LED_PORT_LV_LOW			(PORTC)
-#define LED_PORT_LV_AMS			(PORTC)
-#define LED_PORT_IMD			(PORTC)
-#define LED_PORT_BRAKE			(PORTG)
-#define LED_PORT_OK				(PORTG)
-#define LED_PORT_START			(PORTD)
-
-#define LED_DD_AMS				(DDRC)
-#define LED_DD_TV				(DDRA)
-#define LED_DD_TC				(DDRA)
-#define LED_DD_RECUP			(DDRA)
-#define LED_DD_KOBI				(DDRA)
-#define LED_DD_AD				(DDRG)
-#define LED_DD_LV_LOW			(DDRC)
-#define LED_DD_LV_AMS			(DDRC)
-#define LED_DD_IMD				(DDRC)
-#define LED_DD_BRAKE			(DDRG)
-#define LED_DD_OK				(DDRG)
-#define LED_DD_START			(DDRD)
 
 
 uint8_t led_pins[LED_NUMBER];
