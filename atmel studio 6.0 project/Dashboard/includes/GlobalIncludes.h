@@ -59,7 +59,7 @@
 #define OCR1B_PERIOD_CNT	(0x3A98) // 10ms/100Hz
 #define OCR1C_PERIOD_CNT	(0x7530) // 20ms/50Hz
 #define TMR3_PRESCALER		((0<<CS32) | (1<<CS31) | (1<<CS30)) //1 Tick = PRSC/OSC_CLCK= 64 / 12 MHz = 5.33 us
-#define OCR3A_PERIOD_CNT	(0x493E) // 100ms/10Hz		Software Ticker 0x4E20 for PRSC=8 (0x09C4 for PRSC=64)
+#define OCR3A_PERIOD_CNT	(0x493E) // 0.2ms/5kHz		Software Ticker 0x4E20 for PRSC=8 (0x09C4 for PRSC=64)
 #define OCR3B_PERIOD_CNT	(0x927C) // 200ms/5Hz
 #define OCR3C_PERIOD_CNT	(0xB720) // 250ms/4Hz
 

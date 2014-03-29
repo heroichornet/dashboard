@@ -27,8 +27,6 @@
 /* | Global Variables				| */
 /* +--------------------------------+ */
 
-static S16 pwmVal;
-static S16 delta;
 
 /* +--------------------------------+ */
 /* | Interrupt Service Routines		| */
@@ -101,7 +99,7 @@ void Timer1_init(U8 prescaler, Bool interruptOverflow){
 }
 
 void Timer3_init(U8 prescaler, Bool interruptOverflow){
-	/*
+	/*s
 	000 no Clock source
 	001 CLK = BusCLK
 	010 CLK = BusCLK/8
@@ -110,6 +108,7 @@ void Timer3_init(U8 prescaler, Bool interruptOverflow){
 	101 /1024
 	*/
 	TCCR3B = prescaler;
+
 	
 	TIMSK3 = (interruptOverflow<<TOIE3);
 }
