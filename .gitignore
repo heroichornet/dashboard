@@ -1,2 +1,10 @@
 /examples_libs*
 /atmel studio 6.0 project/Dashboard/Debug*
+atmel studio 6.0 project/Dashboard/Debug/Dashboard.elf
+atmel studio 6.0 project/Dashboard/Debug/Dashboard.lss
+atmel studio 6.0 project/Dashboard/Debug/Dashboard.map
+atmel studio 6.0 project/Dashboard/Debug/sources/Timer.o
+*.o
+*.elf
+*.lss
+*.map
