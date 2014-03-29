@@ -17,20 +17,20 @@ uint16_t button_pressed_current;
 
 /* Buttons on Steering Wheel */
 
-#define BUTTON_ID_FLAPPY_DRS	(0)
-#define BUTTON_ID_FLAPPY_RADIO	(1)
-#define BUTTON_ID_PLUS			(4)
-#define BUTTON_ID_MINUS			(5)
-#define BUTTON_ID_UP			(8)
-#define BUTTON_ID_DOWN			(9)
+#define BUTTON_ID_FLAPPY_DRS (0)
+#define BUTTON_ID_FLAPPY_RADIO (1)
+#define BUTTON_ID_PLUS (4)
+#define BUTTON_ID_MINUS (5)
+#define BUTTON_ID_UP (8)
+#define BUTTON_ID_DOWN (9)
 
 /* Buttons on Dashboard */
-#define BUTTON_ID_TMS			(2)
-#define BUTTON_ID_RECUP			(3)
-#define BUTTON_ID_TC			(6)
-#define BUTTON_ID_KOBI			(7)
-#define BUTTON_ID_TV			(10)
-#define BUTTON_ID_AD			(11)
+#define BUTTON_ID_TMS (2)
+#define BUTTON_ID_RECUP (3)
+#define BUTTON_ID_TC (6)
+#define BUTTON_ID_KOBI (7)
+#define BUTTON_ID_TV (10)
+#define BUTTON_ID_AD (11)
 
 /*
 	  col1¦col2 ¦col3 ¦
@@ -45,22 +45,38 @@ row4---9--¦-10--¦-11--¦
 #define BUTTON_PIN_NUMBER (7)
 #define BUTTON_ROW_NUMBER (4)
 
-#define ROW_1_ID	 (0)
-#define ROW_2_ID	 (1)
-#define ROW_3_ID	 (2)
-#define ROW_4_ID	 (3)
-#define COLOUMN_1_ID (4)
-#define COLOUMN_2_ID (5)
-#define COLOUMN_3_ID (6)
+#define ROW_1_PORT PORTE;
+#define ROW_2_PORT PORTE;
+#define ROW_3_PORT PORTC;
+#define ROW_4_PORT PORTC;
+#define COLOUMN_1_PORT PORTE;
+#define COLOUMN_2_PORT PORTE;
+#define COLOUMN_3_PORT PORTB;
 
-uint8_t *button_port;
-uint8_t *button_pin;
-uint8_t *button_dd;
+	
+#define ROW_1_PIN (4);
+#define ROW_2_PIN (5);
+#define ROW_3_PIN (6);
+#define ROW_4_PIN (3);
+#define COLOUMN_1_PIN (6);
+#define COLOUMN_2_PIN (7);
+#define COLOUMN_3_PIN (0);
+
+#define ROW_1_DD DDRE;
+#define ROW_2_DD DDRE;
+#define ROW_3_DD DDRC;
+#define ROW_4_DD DDRC;
+#define COLOUMN_1_DD DDRE;
+#define COLOUMN_2_DD DDRE;
+#define COLOUMN_3_DD DDRB;
+
+
 
 
 
 void button_init(void);
 void button_multiplex_cycle(void);
+void button_row_col(void);
 
 
 

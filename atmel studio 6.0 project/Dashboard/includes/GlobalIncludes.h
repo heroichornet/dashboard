@@ -345,7 +345,7 @@
 		// Activate/deactivate peripherals
 		
 		#define HAS_BUZZER  (1)
-		#define HAS_LED	    (1)
+		#define HAS_LEDS    (1)
 		#define HAS_BUTTONS (1)
 		
 		// Activate/deactivate CAN components

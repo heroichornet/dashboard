@@ -10,36 +10,12 @@
 #include "../includes/GlobalIncludes.h"
 
 
-/* Note to I/O Pin Registers */
-/* DDRxn high = Output
-/* DDRxn low  = Input
-/* PORTxn high = pull up, if Input  
-/* PORTxn low = no pull up, if Input
-/* PORTxn high = driven high, if output
-/* PORTxn low = driven low, if output
-*/
+
 
 void main_init(){
 
 
-
-	/* Init Ports */
-	// Default Pin config for PORT A,B,C,D,E,F (Input with pull up)
-	DDRA=0x00;
-	DDRB=0x00;
-	DDRC&=~(0b10011111);;
-	DDRD=0xFF;
-	DDRE=0x00;
-	DDRF=0x00;
-	DDRG&=~(0b00011111); // Port G Pins 7,8 and 6 not written
-	
-	PORTA=0xFF;
-	PORTB=0xFF;
-	PORTC=0xFF;
-	PORTD|=(0b10011111);
-	PORTE=0xFF;
-	PORTF=0xFF;
-	PORTG|=(0b00011111); // Port G Pins 7,8 and 6 not written
+	ports_init();
 	
 	CANInit();
 
@@ -73,8 +49,6 @@ void main_init(){
 	ADInit(MCM_ADC_PRESCALER, TRUE);
 	#endif
 
-
-
 	#if HAS_BUZZER
 	buzzer_init();
 	#endif
@@ -83,6 +57,9 @@ void main_init(){
 	led_init();
 	#endif
 	
+	#if HAS_BUTTONS
+	button_init();
+	#endif
 	
 	InitWDT();
 	
@@ -92,5 +69,37 @@ void main_init(){
 }
 
 void main_deinit(){
+	
+}
+
+void ports_init(void){
+	
+	/* Note to I/O Pin Registers */
+	/* DDRxn high = Output
+	/* DDRxn low  = Input
+	/* PORTxn high = pull up, if Input
+	/* PORTxn low = no pull up, if Input
+	/* PORTxn high = driven high, if output
+	/* PORTxn low = driven low, if output
+	*/
+	
+	
+	/* Init Ports */
+	// Default Pin config for PORT A,B,C,D,E,F (Input with pull up)
+	DDRA=0x00;
+	DDRB=0x00;
+	DDRC&=~(0b10011111);;
+	DDRD=0xFF;
+	DDRE=0x00;
+	DDRF=0x00;
+	DDRG&=~(0b00011111); // Port G Pins 7,8 and 6 not written
+	
+	PORTA=0xFF;
+	PORTB=0xFF;
+	PORTC=0xFF;
+	PORTD|=(0b10011111);
+	PORTE=0xFF;
+	PORTF=0xFF;
+	PORTG|=(0b00011111); // Port G Pins 7,8 and 6 not written
 	
 }
