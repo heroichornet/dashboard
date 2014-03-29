@@ -12,6 +12,9 @@
 //#include "adc.h"
 #include <stdlib.h>
 #include "../includes/Led.h"
+#include "../includes/Button.h"
+#include "../includes/Display.h"
+
 EVENT_Handle event_queue[EVENT_QUEUE_SIZE];
 U8 event_queue_head, event_queue_tail;
 
@@ -424,6 +427,7 @@ static void MCMAD(void){
 }
 #endif
 
+#if MCM==DASHBOARD
 static void Dashboard(void){
 	switch(event_queue[event_queue_tail]){
 		case EVENT_INIT:
@@ -451,24 +455,25 @@ static void Dashboard(void){
 		case EVENT_50HZ:
 			/* Timer Stuff mit 50 Hz */
 
-			/* turn on led */
-			led_port[LED_ID_RECUP]|=((0x01)<<led_pins[LED_ID_RECUP]);
 			CANAddSendData(&dashboard_50_tx);
-			led_port[LED_ID_RECUP]&=~((0x01)<<led_pins[LED_ID_RECUP]);
+			
+			/* Led Update */
+			led_state_set(led_state);
+			
+			/* display Update */
+			
+			
 			
 		break;
-		
-		case EVENT_10KHZ:
+		case EVENT_5KHZ:
 			/* Multiplex */
+			button_multiplex_cycle();
 			
 		case EVENT_CANERROR:
 			/* Catch Can Errors*/
 			CANAbortCMD();
 		break;
 		case EVENT_CANTX:
-			if(CANGetCurrentTx()==&dashboard_200_tx){//ErrorCode gesendet
-				ClearErrors();
-			}
 			CANSendNext();
 		break;
 			case EVENT_CANRX:
@@ -478,12 +483,19 @@ static void Dashboard(void){
 		break;
 	}
 }
+#else
+	#error MCM should be Dashboard
+#endif /* end if DASHBOARD==MCM */
 
 
 void EventHandleEvent(void){
 	if(event_queue_head!=event_queue_tail){
+	#if MCM==DASHBOARD
 		Dashboard();		
 		event_queue_tail=(event_queue_tail+1)%EVENT_QUEUE_SIZE;
+	#else
+		#error MCM should be Dashboard
+	#endif
 	}
 }
 

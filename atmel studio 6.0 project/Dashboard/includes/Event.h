@@ -25,7 +25,7 @@ typedef enum {
 	EVENT_CANTX,
 	EVENT_CANRX,
 	EVENT_NOF_EVENTS,
-	EVENT_10KHZ
+	EVENT_5KHZ
 } EVENT_Handle;
 
 void EventInit(void);

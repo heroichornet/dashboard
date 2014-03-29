@@ -91,7 +91,15 @@ void display_init(void){
 		/* clock rate index is 0 */
 		/* clock rate is CPU clock, so 12MHz and 16Mhz withe new quarz */
 	spi_init(SPI_MASTER|SPI_MSB_FIRST|SPI_DATA_MODE_2|SPI_CLKIO_BY_32);
+	
 		
 }
 
+void display_update(void){
+	display_write_display_string(display_string);	
+}
+
+void display_set_display_string(display_string s){
+	display_string=s;
+}	
                   
