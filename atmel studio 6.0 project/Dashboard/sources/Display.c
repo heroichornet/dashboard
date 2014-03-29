@@ -63,11 +63,20 @@ uint8_t address_counter;
 display_string test={'0','1','2','3','4','5','6','7','8','9',
 					 'A','B','C','D','E','F','G','H','I','J'};
 
-void display_write_data(uint8_t *data){
-	uint8_t buffer[2]={START_BITS_WRITE_DATA,*data};
-	uint8_t Size=2;
-	
-	
+void display_write_data(uint8_t data){
+	spi_write_buffer(START_BITS_WRITE_DATA,data);	
+}
+
+void display_write_instruction(uint8_t inst){
+	spi_write_buffer(START_BITS_WRITE_INSTRUCTION,inst);
+}
+
+void display_write_display_string(display_string *s){
+	int i;
+	display_write_instruction(INSTRUCTION_CURSOR_HOME);	// cursor to pos 1
+	for(i=0;i<20;i++){
+		display_write_data(s[i]);
+	}	
 }
 
 
@@ -81,7 +90,6 @@ void display_init(void){
 		/* chip select toggle is no */
 		/* clock rate index is 0 */
 		/* clock rate is CPU clock, so 12MHz and 16Mhz withe new quarz */
-	
 	spi_init(SPI_MASTER|SPI_MSB_FIRST|SPI_DATA_MODE_2|SPI_CLKIO_BY_32);
 		
 }
