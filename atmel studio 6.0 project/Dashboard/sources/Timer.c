@@ -39,7 +39,6 @@ ISR(TIMER0_COMP_vect){
 }
 
 ISR(TIMER0_OVF_vect){
-	EventAddEvent(EVENT_PWM);
 	return;
 }
 
@@ -145,12 +144,6 @@ void TIMER_Timer3_OCR3C_on(void){
 	TIMSK3 = TIMSK3 | (1<<OCIE3C);
 }
 
-void PWM_init(void){
-	pwmVal=0xFF;
-	OCR0A=0xFF;
-	TCCR0A=0b01111010;
-	TIMSK0|=(0<<OCIE0A)|(1<<TOIE0);
-}
 
 void TIMER_SetPWMVal(U8 pwm){
 	delta=((S16)pwm-pwmVal);

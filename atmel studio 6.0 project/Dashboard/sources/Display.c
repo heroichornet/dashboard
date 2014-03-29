@@ -9,7 +9,9 @@
  */
 
 #include <stdint.h>
+#include <avr/io.h>
 #include "../includes/Display.h"
+#include "../includes/spi_lib.h"
 
 /* Display Data Ram (DDRAM)
  * 0x00 till 0x27
@@ -41,6 +43,12 @@ uint8_t display_ddram_bottom_row[28];
 #define INSTRUCTION_DISPLAY_RIGHT_SHIFT 0x1C
 #define INSTRUCTION_DDRAM_ADDRESS_SET(x) ((0x80)|(x))
 
+/* Start Bit */
+#define START_BITS_READ_INSTRUCTION (0xF8|0x04|0x00)
+#define	START_BITS_READ_DATA (0xF8|0x04|0x02)
+#define	START_BITS_WRITE_INSTRUCTION (0xF8|0x00|0x00)
+#define START_BITS_WRITE_DATA (0xF8|0x00|0x02)
+
 
 /* Address Counter (AC) 
 *	 with DDRAM: 
@@ -55,26 +63,27 @@ uint8_t address_counter;
 display_string test={'0','1','2','3','4','5','6','7','8','9',
 					 'A','B','C','D','E','F','G','H','I','J'};
 
-void display_write_data(uint8_t data);
-
-void display_write_instruction(uint8_t inst);
-
-uint8_t display_read_data(uint8_t address);
-
-
-
-void display_test(void){
-	uint8_t test_data='A';	
-	//SM1_SendBlock(&);
+void display_write_data(uint8_t *data){
+	uint8_t buffer[2]={START_BITS_WRITE_DATA,*data};
+	uint8_t Size=2;
+	
 	
 }
 
 
 void display_init(void){
-//	SM1_Enable();
+	/* SPI */
+		/* width 8 Bit */
+		/* is MSB  */
+		/* Clock ploarity is high */
+		/* Clock phase is change on leading edge */
+		/* parity is none */
+		/* chip select toggle is no */
+		/* clock rate index is 0 */
+		/* clock rate is CPU clock, so 12MHz and 16Mhz withe new quarz */
 	
+	spi_init(SPI_MASTER|SPI_MSB_FIRST|SPI_DATA_MODE_2|SPI_CLKIO_BY_32);
+		
 }
 
                   
-
-

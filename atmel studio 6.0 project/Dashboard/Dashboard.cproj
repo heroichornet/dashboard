@@ -152,6 +152,12 @@
     <Compile Include="includes\MyCommon.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="includes\spi_drv.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="includes\spi_lib.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="includes\Timer.h">
       <SubType>compile</SubType>
     </Compile>
@@ -189,6 +195,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="sources\MyCommon.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sources\spi_lib.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="sources\Timer.c">
