@@ -1,15 +1,12 @@
 /*
  * Event.c
  *
- *  Created on: 20.10.2011
- *      Author: Morris
+ *  Created on: 20.10.2013
+ *      Author: Michael
  */
 
 #include "../includes/Event.h"
 #include "../includes/GlobalIncludes.h"
-#include "../includes/adc.h"
-//#include "RecupBalance.h"
-//#include "adc.h"
 #include <stdlib.h>
 #include "../includes/Led.h"
 #include "../includes/Button.h"
@@ -64,13 +61,19 @@ static void Dashboard(void){
 			
 			/* 200 Hz CAN Tx, do your thing */
 			CANAddSendData(&dashboard_200_tx);
+			static int j=0;
+			if(j==16){
+				j=0;
+						if(((PORTA>>3)&1)==1){
+							PORTA&=~(1<<3);
+						}else{
+							PORTA|=(1<<3);
+						}
+			}			
+			j++;
 		break;
 		case EVENT_50HZ:
-			if((PORTA>>3)&1){
-				PORTA&=~(1<<3);
-			}else{
-				PORTA|=(1<<3);
-			}		
+	
 			/* Timer Stuff mit 50 Hz */
 
 			CANAddSendData(&dashboard_50_tx);

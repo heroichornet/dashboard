@@ -95,7 +95,6 @@
 #define HAS_100HZ	(0)
 #define HAS_50HZ	(1)
 #define HAS_10HZ	(0)
-#define HAS_ADC		(0)
 	
 /* RX Frames */
 	
