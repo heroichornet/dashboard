@@ -11,9 +11,10 @@
 #define BUZZER_H_
 
 
+/* Buzzer ist on PINA0 */
+
 #define BUZZER_PIN (0x00)
-#define BUZZER_PORT (PORTA)
-#define BUZZER_DD (DDRA)
+
 
 void buzzer_init(void);
 void buzzer_on(void);
