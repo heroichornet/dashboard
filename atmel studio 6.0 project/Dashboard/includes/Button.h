@@ -57,10 +57,6 @@ row4---9--¦-10--¦-11--¦
 
 
 
-
-
-
-
 void button_init(void);
 void button_multiplex_cycle(void);
 void button_row_col(void);

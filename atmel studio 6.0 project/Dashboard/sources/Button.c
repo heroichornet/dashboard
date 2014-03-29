@@ -71,7 +71,7 @@ void button_multiplex_cycle(void){
 	/* COL 2 HIGH */
 	PORTE|=(0x01)<<COLOUMN_2_PIN;
 	/* COL 3 LOW  */
-	PORTB&=~(0x01)<<COLOUMN_3_PORT;
+	PORTB&=~(0x01)<<COLOUMN_3_PIN;
 
 	button_read_col(2);
 	

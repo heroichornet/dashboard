@@ -10,6 +10,13 @@
 #ifndef DISPLAY_H_
 #define DISPLAY_H_
 
+/* Pin info */
+
+/* SPI Start on PORTB0 */
+/* SPI Clock on PORTB1 */
+/* SPI MOSI on PORTB2 */
+/* SPI MISO on PORTB3 */
+
 /* This is the front end for controlling the display */
 
 #define BRIGHTNESS_100 0;
