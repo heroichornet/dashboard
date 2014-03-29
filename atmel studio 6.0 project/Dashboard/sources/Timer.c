@@ -145,15 +145,3 @@ void TIMER_Timer3_OCR3C_on(void){
 }
 
 
-void TIMER_SetPWMVal(U8 pwm){
-	delta=((S16)pwm-pwmVal);
-	pwmVal=pwmVal+delta/4;
-	delta=(S16)pwm+delta/2;
-	if(delta>255){
-		OCR0A=255;
-	}else if(delta<0){
-		OCR0A=0;
-	}else{
-		OCR0A=delta;
-	}
-}

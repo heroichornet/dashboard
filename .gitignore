@@ -1,3 +1,2 @@
 /examples_libs*
-atmel studio 6.0 project/Dashboard/Debug/*
-
+/atmel studio 6.0 project/Dashboard/Debug*
