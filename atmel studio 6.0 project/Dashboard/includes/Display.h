@@ -24,7 +24,9 @@
 #define BRIGTHNESS_50 2;
 #define BRIGTHNESS_25 3;
 
-typedef char display_string[20];
+typedef char display_string_t[20];
+
+display_string_t display_string;
 
 #define DISPLAY_LINE_AMZ_GRIMSEL ' ',' ',' ',' ',' ',' ','A','M','Z',' ','g','r','i','m','s','e','l',' ',' ',' '
 #define DISPLAY_LINE_ERROR ' ',' ',' ',' ',' ',' ','E','R','R','R','O','R',' ',' ',' ',' ',' ',' ',' ',' '
@@ -43,7 +45,7 @@ typedef char display_string[20];
 
 void display_update(void);
 
-void display_show(display_string s);
+void display_show(display_string_t s);
 
 void display_clear(void);
 
@@ -55,6 +57,6 @@ void display_brigthness(uint8_t b);
 
 void display_update(void);
 
-void display_set_display_string(display_string s);
+void display_set_display_string(display_string_t s);
 
 #endif /* DISPLAY_H_ */

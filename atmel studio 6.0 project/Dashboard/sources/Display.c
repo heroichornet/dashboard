@@ -60,7 +60,7 @@ uint8_t display_ddram_bottom_row[28];
 uint8_t address_counter; 
 
 
-display_string test={'0','1','2','3','4','5','6','7','8','9',
+display_string_t test={'0','1','2','3','4','5','6','7','8','9',
 					 'A','B','C','D','E','F','G','H','I','J'};
 
 void display_write_data(uint8_t data){
@@ -71,7 +71,7 @@ void display_write_instruction(uint8_t inst){
 	spi_write_buffer(START_BITS_WRITE_INSTRUCTION,inst);
 }
 
-void display_write_display_string(display_string *s){
+void display_write_display_string(display_string_t s){
 	int i;
 	display_write_instruction(INSTRUCTION_CURSOR_HOME);	// cursor to pos 1
 	for(i=0;i<20;i++){
@@ -99,7 +99,7 @@ void display_update(void){
 	display_write_display_string(display_string);	
 }
 
-void display_set_display_string(display_string s){
-	display_string=s;
+void display_set_display_string(display_string_t s){
+	memcpy(s,display_string,20);
 }	
                   

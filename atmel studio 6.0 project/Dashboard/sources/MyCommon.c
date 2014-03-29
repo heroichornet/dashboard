@@ -43,12 +43,6 @@ void main_init(){
 	TIMER_Timer3_OCR3A_on();
 	#endif
 
-	#if HAS_ADC
-	DDRF=0x00;
-	PORTF=0x00;
-	ADInit(MCM_ADC_PRESCALER, TRUE);
-	#endif
-
 	#if HAS_BUZZER
 	buzzer_init();
 	#endif

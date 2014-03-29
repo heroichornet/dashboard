@@ -17,7 +17,7 @@ void button_init( void )
 	
 	/* enable pull-ups */
 	
-	MCUCR|=(0x01)<<PUD;
+	MCUCR&=~(0x01)<<PUD;
 	
 	
 	/* COL 1 OUTPUT HIGH */
