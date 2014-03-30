@@ -127,7 +127,7 @@
 		} dataStruct;
 	} dashboard_rx_general_data;
 
-		
+	
 		
 	/* Request ID Motortemp */
 
@@ -179,7 +179,9 @@
 			U8 PARAM8;
 		} dataStruct;
 	} dashboard_rx_lvakku_data;
-		 
+
+#endif 
+
 #endif // HAS_CAN_RX
 	
 /* TX Frame 1 */
