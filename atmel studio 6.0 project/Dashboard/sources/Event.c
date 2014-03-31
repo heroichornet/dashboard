@@ -54,6 +54,7 @@ void Dashboard(void){
 			/* start Rx */
 			/* Frame 1 */
 			CANStartRx(&dashboard_rx);
+		return;
 		break;
 		case EVENT_10HZ:
 			
@@ -63,31 +64,36 @@ void Dashboard(void){
 			}else{
 					PORTA|=(1<<3);
 			}
+
 	
-			
+/*			
 			// ToDo Fill TX Frame
 
 			CANAddSendData(&dashboard_10_tx);
 						
-			/* Led Update */
+			//Led Update 
 			led_state_set(led_state);
 						
-			/* display Update */
-			display_update();
+			// display Update
+*/			//display_update();
+		return;
 		break;
 		case EVENT_5KHZ:
 			/* Multiplex */
-			button_multiplex_cycle();		
+			button_multiplex_cycle();	
+		break;
 		case EVENT_CANERROR:
 			/* Catch Can Errors*/
 			CANAbortCMD();
+		return;
 		break;
 		case EVENT_CANTX:
 			CANSendNext();
 		break;
-			case EVENT_CANRX:
+		case EVENT_CANRX:
 			// ToDo use RX to build display
 			CANGetData(&dashboard_rx);
+		return;
 		break;
 		default:
 		break;

@@ -22,23 +22,23 @@ void main_init(){
 	
 	CANInit();
 
-	#if HAS_200HZ|HAS_100HZ|HAS_50HZ
+	#if HAS_5KHZ|HAS_1KHZ|HAS_500HZ
 	Timer1_init(TMR1_PRESCALER,FALSE);
 	#endif
 
-	#if HAS_10HZ
+	#if HAS_10HZ|HAS_5HZ|HAS_4HZ
 	Timer3_init(TMR3_PRESCALER,FALSE);
 	#endif
 
-	#if HAS_200HZ
+	#if HAS_5KHZ
 	TIMER_Timer1_OCR1A_on();
 	#endif
 
-	#if HAS_100HZ
+	#if HAS_1KHZ
 	TIMER_Timer1_OCR1B_on();
 	#endif
 
-	#if HAS_50HZ
+	#if HAS_500HZ
 	TIMER_Timer1_OCR1C_on();
 	#endif
 

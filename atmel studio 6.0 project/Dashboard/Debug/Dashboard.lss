@@ -15,17 +15,17 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   5 .debug_aranges 00000260  00000000  00000000  00002a30  2**3
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   000044a3  00000000  00000000  00002c90  2**0
+  6 .debug_info   00004496  00000000  00000000  00002c90  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000013a6  00000000  00000000  00007133  2**0
+  7 .debug_abbrev 000013a6  00000000  00000000  00007126  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00001a5d  00000000  00000000  000084d9  2**0
+  8 .debug_line   00001a60  00000000  00000000  000084cc  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000a60  00000000  00000000  00009f38  2**2
+  9 .debug_frame  00000a60  00000000  00000000  00009f2c  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000e7a  00000000  00000000  0000a998  2**0
+ 10 .debug_str    00000e7a  00000000  00000000  0000a98c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00001b1f  00000000  00000000  0000b812  2**0
+ 11 .debug_loc    00001b1f  00000000  00000000  0000b806  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -119,13 +119,13 @@ Disassembly of section .text:
 int main(void){	
 
 	main_init();
-      d8:	0e 94 35 0e 	call	0x1c6a	; 0x1c6a <main_init>
+      d8:	0e 94 29 0e 	call	0x1c52	; 0x1c52 <main_init>
 	
 	while(1){	
 		wdt_reset();
       dc:	a8 95       	wdr
 		EventHandleEvent();
-      de:	0e 94 bc 0c 	call	0x1978	; 0x1978 <EventHandleEvent>
+      de:	0e 94 b0 0c 	call	0x1960	; 0x1960 <EventHandleEvent>
       e2:	fc cf       	rjmp	.-8      	; 0xdc <main+0x4>
 
 000000e4 <button_read_col>:
@@ -4517,761 +4517,771 @@ void Dashboard(void){
     18d8:	f1 1d       	adc	r31, r1
     18da:	80 81       	ld	r24, Z
     18dc:	84 30       	cpi	r24, 0x04	; 4
-    18de:	39 f1       	breq	.+78     	; 0x192e <Dashboard+0x64>
+    18de:	31 f1       	breq	.+76     	; 0x192c <Dashboard+0x62>
     18e0:	85 30       	cpi	r24, 0x05	; 5
-    18e2:	30 f4       	brcc	.+12     	; 0x18f0 <Dashboard+0x26>
+    18e2:	28 f4       	brcc	.+10     	; 0x18ee <Dashboard+0x24>
     18e4:	88 23       	and	r24, r24
-    18e6:	59 f0       	breq	.+22     	; 0x18fe <Dashboard+0x34>
+    18e6:	51 f0       	breq	.+20     	; 0x18fc <Dashboard+0x32>
     18e8:	81 30       	cpi	r24, 0x01	; 1
-    18ea:	09 f0       	breq	.+2      	; 0x18ee <Dashboard+0x24>
-    18ec:	42 c0       	rjmp	.+132    	; 0x1972 <Dashboard+0xa8>
-    18ee:	35 c0       	rjmp	.+106    	; 0x195a <Dashboard+0x90>
-    18f0:	88 30       	cpi	r24, 0x08	; 8
-    18f2:	c1 f1       	breq	.+112    	; 0x1964 <Dashboard+0x9a>
-    18f4:	89 30       	cpi	r24, 0x09	; 9
-    18f6:	c9 f1       	breq	.+114    	; 0x196a <Dashboard+0xa0>
-    18f8:	87 30       	cpi	r24, 0x07	; 7
-    18fa:	d9 f5       	brne	.+118    	; 0x1972 <Dashboard+0xa8>
-    18fc:	30 c0       	rjmp	.+96     	; 0x195e <Dashboard+0x94>
+    18ea:	b9 f5       	brne	.+110    	; 0x195a <Dashboard+0x90>
+    18ec:	29 c0       	rjmp	.+82     	; 0x1940 <Dashboard+0x76>
+    18ee:	88 30       	cpi	r24, 0x08	; 8
+    18f0:	69 f1       	breq	.+90     	; 0x194c <Dashboard+0x82>
+    18f2:	89 30       	cpi	r24, 0x09	; 9
+    18f4:	71 f1       	breq	.+92     	; 0x1952 <Dashboard+0x88>
+    18f6:	87 30       	cpi	r24, 0x07	; 7
+    18f8:	81 f5       	brne	.+96     	; 0x195a <Dashboard+0x90>
+    18fa:	25 c0       	rjmp	.+74     	; 0x1946 <Dashboard+0x7c>
 		case EVENT_INIT:
 			/* make structs for can  */
 			/* Tx Structs */
 			/* Tx Frame 1 */
 			CANGetStruct(&dashboard_10_tx,dashboard_10_data.dataBuf,CAN_TX_10_ID,CAN_TX_10_LEN);
-    18fe:	82 ef       	ldi	r24, 0xF2	; 242
-    1900:	91 e0       	ldi	r25, 0x01	; 1
-    1902:	62 e0       	ldi	r22, 0x02	; 2
-    1904:	72 e0       	ldi	r23, 0x02	; 2
-    1906:	42 e0       	ldi	r20, 0x02	; 2
-    1908:	55 e0       	ldi	r21, 0x05	; 5
-    190a:	28 e0       	ldi	r18, 0x08	; 8
-    190c:	0e 94 87 01 	call	0x30e	; 0x30e <CANGetStruct>
+    18fc:	82 ef       	ldi	r24, 0xF2	; 242
+    18fe:	91 e0       	ldi	r25, 0x01	; 1
+    1900:	62 e0       	ldi	r22, 0x02	; 2
+    1902:	72 e0       	ldi	r23, 0x02	; 2
+    1904:	42 e0       	ldi	r20, 0x02	; 2
+    1906:	55 e0       	ldi	r21, 0x05	; 5
+    1908:	28 e0       	ldi	r18, 0x08	; 8
+    190a:	0e 94 87 01 	call	0x30e	; 0x30e <CANGetStruct>
 			/* Rx Structs*/
 			/* Rx Frame*/
 			CANGetStruct(&dashboard_rx,dashboard_rx_general_data.dataBuf,CAN_RX_ID,CAN_RX_ID);
-    1910:	ca e0       	ldi	r28, 0x0A	; 10
-    1912:	d2 e0       	ldi	r29, 0x02	; 2
-    1914:	ce 01       	movw	r24, r28
-    1916:	6a e1       	ldi	r22, 0x1A	; 26
-    1918:	72 e0       	ldi	r23, 0x02	; 2
-    191a:	41 e0       	ldi	r20, 0x01	; 1
-    191c:	55 e0       	ldi	r21, 0x05	; 5
-    191e:	21 e0       	ldi	r18, 0x01	; 1
-    1920:	0e 94 87 01 	call	0x30e	; 0x30e <CANGetStruct>
+    190e:	ca e0       	ldi	r28, 0x0A	; 10
+    1910:	d2 e0       	ldi	r29, 0x02	; 2
+    1912:	ce 01       	movw	r24, r28
+    1914:	6a e1       	ldi	r22, 0x1A	; 26
+    1916:	72 e0       	ldi	r23, 0x02	; 2
+    1918:	41 e0       	ldi	r20, 0x01	; 1
+    191a:	55 e0       	ldi	r21, 0x05	; 5
+    191c:	21 e0       	ldi	r18, 0x01	; 1
+    191e:	0e 94 87 01 	call	0x30e	; 0x30e <CANGetStruct>
 			
 			sei(); /* enable interrupts*/
-    1924:	78 94       	sei
+    1922:	78 94       	sei
 			/* start Rx */
 			/* Frame 1 */
 			CANStartRx(&dashboard_rx);
-    1926:	ce 01       	movw	r24, r28
-    1928:	0e 94 98 01 	call	0x330	; 0x330 <CANStartRx>
+    1924:	ce 01       	movw	r24, r28
+    1926:	0e 94 98 01 	call	0x330	; 0x330 <CANStartRx>
+		return;
+    192a:	17 c0       	rjmp	.+46     	; 0x195a <Dashboard+0x90>
 		break;
-    192c:	22 c0       	rjmp	.+68     	; 0x1972 <Dashboard+0xa8>
 		case EVENT_10HZ:
 			
 
 			if(((PORTA>>3)&1)==1){
-    192e:	82 b1       	in	r24, 0x02	; 2
+    192c:	82 b1       	in	r24, 0x02	; 2
+    192e:	86 95       	lsr	r24
     1930:	86 95       	lsr	r24
     1932:	86 95       	lsr	r24
-    1934:	86 95       	lsr	r24
-    1936:	80 ff       	sbrs	r24, 0
-    1938:	02 c0       	rjmp	.+4      	; 0x193e <Dashboard+0x74>
+    1934:	80 ff       	sbrs	r24, 0
+    1936:	02 c0       	rjmp	.+4      	; 0x193c <Dashboard+0x72>
 					PORTA&=~(1<<3);
-    193a:	13 98       	cbi	0x02, 3	; 2
-    193c:	01 c0       	rjmp	.+2      	; 0x1940 <Dashboard+0x76>
+    1938:	13 98       	cbi	0x02, 3	; 2
+    193a:	0f c0       	rjmp	.+30     	; 0x195a <Dashboard+0x90>
 			}else{
 					PORTA|=(1<<3);
-    193e:	13 9a       	sbi	0x02, 3	; 2
-			}
-	
-			
-			// ToDo Fill TX Frame
-
-			CANAddSendData(&dashboard_10_tx);
-    1940:	82 ef       	ldi	r24, 0xF2	; 242
-    1942:	91 e0       	ldi	r25, 0x01	; 1
-    1944:	0e 94 eb 01 	call	0x3d6	; 0x3d6 <CANAddSendData>
-						
-			/* Led Update */
-			led_state_set(led_state);
-    1948:	80 91 2d 02 	lds	r24, 0x022D
-    194c:	90 91 2e 02 	lds	r25, 0x022E
-    1950:	0e 94 bd 0d 	call	0x1b7a	; 0x1b7a <led_state_set>
-						
-			/* display Update */
-			display_update();
-    1954:	0e 94 ea 0b 	call	0x17d4	; 0x17d4 <display_update>
+    193c:	13 9a       	sbi	0x02, 3	; 2
+    193e:	0d c0       	rjmp	.+26     	; 0x195a <Dashboard+0x90>
+*/			//display_update();
+		return;
 		break;
-    1958:	0c c0       	rjmp	.+24     	; 0x1972 <Dashboard+0xa8>
 		case EVENT_5KHZ:
 			/* Multiplex */
-			button_multiplex_cycle();		
-    195a:	0e 94 c8 00 	call	0x190	; 0x190 <button_multiplex_cycle>
+			button_multiplex_cycle();	
+    1940:	0e 94 c8 00 	call	0x190	; 0x190 <button_multiplex_cycle>
+		break;
+    1944:	0a c0       	rjmp	.+20     	; 0x195a <Dashboard+0x90>
 		case EVENT_CANERROR:
 			/* Catch Can Errors*/
 			CANAbortCMD();
-    195e:	0e 94 3b 02 	call	0x476	; 0x476 <CANAbortCMD>
+    1946:	0e 94 3b 02 	call	0x476	; 0x476 <CANAbortCMD>
+		return;
+    194a:	07 c0       	rjmp	.+14     	; 0x195a <Dashboard+0x90>
 		break;
-    1962:	07 c0       	rjmp	.+14     	; 0x1972 <Dashboard+0xa8>
 		case EVENT_CANTX:
 			CANSendNext();
-    1964:	0e 94 1c 02 	call	0x438	; 0x438 <CANSendNext>
+    194c:	0e 94 1c 02 	call	0x438	; 0x438 <CANSendNext>
 		break;
-    1968:	04 c0       	rjmp	.+8      	; 0x1972 <Dashboard+0xa8>
-			case EVENT_CANRX:
+    1950:	04 c0       	rjmp	.+8      	; 0x195a <Dashboard+0x90>
+		case EVENT_CANRX:
 			// ToDo use RX to build display
 			CANGetData(&dashboard_rx);
-    196a:	8a e0       	ldi	r24, 0x0A	; 10
-    196c:	92 e0       	ldi	r25, 0x02	; 2
-    196e:	0e 94 a6 01 	call	0x34c	; 0x34c <CANGetData>
+    1952:	8a e0       	ldi	r24, 0x0A	; 10
+    1954:	92 e0       	ldi	r25, 0x02	; 2
+    1956:	0e 94 a6 01 	call	0x34c	; 0x34c <CANGetData>
+		return;
 		break;
 		default:
 		break;
 	}
 }
-    1972:	df 91       	pop	r29
-    1974:	cf 91       	pop	r28
-    1976:	08 95       	ret
+    195a:	df 91       	pop	r29
+    195c:	cf 91       	pop	r28
+    195e:	08 95       	ret
 
-00001978 <EventHandleEvent>:
+00001960 <EventHandleEvent>:
 
 
 void EventHandleEvent(void){
 	if(event_queue_head!=event_queue_tail){
-    1978:	90 91 cc 02 	lds	r25, 0x02CC
-    197c:	80 91 cd 02 	lds	r24, 0x02CD
-    1980:	98 17       	cp	r25, r24
-    1982:	61 f0       	breq	.+24     	; 0x199c <EventHandleEvent+0x24>
+    1960:	90 91 cc 02 	lds	r25, 0x02CC
+    1964:	80 91 cd 02 	lds	r24, 0x02CD
+    1968:	98 17       	cp	r25, r24
+    196a:	61 f0       	breq	.+24     	; 0x1984 <EventHandleEvent+0x24>
 		Dashboard();		
-    1984:	0e 94 65 0c 	call	0x18ca	; 0x18ca <Dashboard>
+    196c:	0e 94 65 0c 	call	0x18ca	; 0x18ca <Dashboard>
 		event_queue_tail=(event_queue_tail+1)%EVENT_QUEUE_SIZE;
-    1988:	80 91 cd 02 	lds	r24, 0x02CD
-    198c:	90 e0       	ldi	r25, 0x00	; 0
-    198e:	01 96       	adiw	r24, 0x01	; 1
-    1990:	60 e1       	ldi	r22, 0x10	; 16
-    1992:	70 e0       	ldi	r23, 0x00	; 0
-    1994:	0e 94 80 10 	call	0x2100	; 0x2100 <__divmodhi4>
-    1998:	80 93 cd 02 	sts	0x02CD, r24
-    199c:	08 95       	ret
+    1970:	80 91 cd 02 	lds	r24, 0x02CD
+    1974:	90 e0       	ldi	r25, 0x00	; 0
+    1976:	01 96       	adiw	r24, 0x01	; 1
+    1978:	60 e1       	ldi	r22, 0x10	; 16
+    197a:	70 e0       	ldi	r23, 0x00	; 0
+    197c:	0e 94 80 10 	call	0x2100	; 0x2100 <__divmodhi4>
+    1980:	80 93 cd 02 	sts	0x02CD, r24
+    1984:	08 95       	ret
 
-0000199e <led_set>:
+00001986 <led_set>:
 	led_state_set(led_state);
 	
 }
 
 void led_set(uint8_t led_id){	
 	if(led_id>11) return; /* illegal id */
-    199e:	8c 30       	cpi	r24, 0x0C	; 12
-    19a0:	70 f5       	brcc	.+92     	; 0x19fe <led_set+0x60>
+    1986:	8c 30       	cpi	r24, 0x0C	; 12
+    1988:	70 f5       	brcc	.+92     	; 0x19e6 <led_set+0x60>
 	
 	switch(led_id){
-    19a2:	84 30       	cpi	r24, 0x04	; 4
-    19a4:	39 f1       	breq	.+78     	; 0x19f4 <led_set+0x56>
-    19a6:	85 30       	cpi	r24, 0x05	; 5
-    19a8:	48 f4       	brcc	.+18     	; 0x19bc <led_set+0x1e>
-    19aa:	81 30       	cpi	r24, 0x01	; 1
-    19ac:	f9 f0       	breq	.+62     	; 0x19ec <led_set+0x4e>
-    19ae:	81 30       	cpi	r24, 0x01	; 1
-    19b0:	98 f0       	brcs	.+38     	; 0x19d8 <led_set+0x3a>
-    19b2:	82 30       	cpi	r24, 0x02	; 2
-    19b4:	e9 f0       	breq	.+58     	; 0x19f0 <led_set+0x52>
-    19b6:	83 30       	cpi	r24, 0x03	; 3
-    19b8:	11 f5       	brne	.+68     	; 0x19fe <led_set+0x60>
-    19ba:	1e c0       	rjmp	.+60     	; 0x19f8 <led_set+0x5a>
-    19bc:	88 30       	cpi	r24, 0x08	; 8
-    19be:	91 f0       	breq	.+36     	; 0x19e4 <led_set+0x46>
-    19c0:	89 30       	cpi	r24, 0x09	; 9
-    19c2:	28 f4       	brcc	.+10     	; 0x19ce <led_set+0x30>
-    19c4:	85 30       	cpi	r24, 0x05	; 5
-    19c6:	51 f0       	breq	.+20     	; 0x19dc <led_set+0x3e>
-    19c8:	87 30       	cpi	r24, 0x07	; 7
-    19ca:	c9 f4       	brne	.+50     	; 0x19fe <led_set+0x60>
-    19cc:	09 c0       	rjmp	.+18     	; 0x19e0 <led_set+0x42>
-    19ce:	89 30       	cpi	r24, 0x09	; 9
-    19d0:	59 f0       	breq	.+22     	; 0x19e8 <led_set+0x4a>
-    19d2:	8a 30       	cpi	r24, 0x0A	; 10
-    19d4:	a1 f4       	brne	.+40     	; 0x19fe <led_set+0x60>
-    19d6:	12 c0       	rjmp	.+36     	; 0x19fc <led_set+0x5e>
+    198a:	84 30       	cpi	r24, 0x04	; 4
+    198c:	39 f1       	breq	.+78     	; 0x19dc <led_set+0x56>
+    198e:	85 30       	cpi	r24, 0x05	; 5
+    1990:	48 f4       	brcc	.+18     	; 0x19a4 <led_set+0x1e>
+    1992:	81 30       	cpi	r24, 0x01	; 1
+    1994:	f9 f0       	breq	.+62     	; 0x19d4 <led_set+0x4e>
+    1996:	81 30       	cpi	r24, 0x01	; 1
+    1998:	98 f0       	brcs	.+38     	; 0x19c0 <led_set+0x3a>
+    199a:	82 30       	cpi	r24, 0x02	; 2
+    199c:	e9 f0       	breq	.+58     	; 0x19d8 <led_set+0x52>
+    199e:	83 30       	cpi	r24, 0x03	; 3
+    19a0:	11 f5       	brne	.+68     	; 0x19e6 <led_set+0x60>
+    19a2:	1e c0       	rjmp	.+60     	; 0x19e0 <led_set+0x5a>
+    19a4:	88 30       	cpi	r24, 0x08	; 8
+    19a6:	91 f0       	breq	.+36     	; 0x19cc <led_set+0x46>
+    19a8:	89 30       	cpi	r24, 0x09	; 9
+    19aa:	28 f4       	brcc	.+10     	; 0x19b6 <led_set+0x30>
+    19ac:	85 30       	cpi	r24, 0x05	; 5
+    19ae:	51 f0       	breq	.+20     	; 0x19c4 <led_set+0x3e>
+    19b0:	87 30       	cpi	r24, 0x07	; 7
+    19b2:	c9 f4       	brne	.+50     	; 0x19e6 <led_set+0x60>
+    19b4:	09 c0       	rjmp	.+18     	; 0x19c8 <led_set+0x42>
+    19b6:	89 30       	cpi	r24, 0x09	; 9
+    19b8:	59 f0       	breq	.+22     	; 0x19d0 <led_set+0x4a>
+    19ba:	8a 30       	cpi	r24, 0x0A	; 10
+    19bc:	a1 f4       	brne	.+40     	; 0x19e6 <led_set+0x60>
+    19be:	12 c0       	rjmp	.+36     	; 0x19e4 <led_set+0x5e>
 		case LED_ID_AMS:
 				PORTC|=(0x01)<<LED_PIN_AMS;	/* turn on led */
-    19d8:	41 9a       	sbi	0x08, 1	; 8
+    19c0:	41 9a       	sbi	0x08, 1	; 8
 			break;
-    19da:	08 95       	ret
+    19c2:	08 95       	ret
 		case LED_ID_TV:
 				PORTA|=(0x01)<<LED_PIN_TV;/* turn on led */
-    19dc:	11 9a       	sbi	0x02, 1	; 2
+    19c4:	11 9a       	sbi	0x02, 1	; 2
 			break;
-    19de:	08 95       	ret
+    19c6:	08 95       	ret
 		case LED_ID_RECUP:
 				PORTA|=(0x01)<<LED_PIN_RECUP;/* turn on led */
-    19e0:	13 9a       	sbi	0x02, 3	; 2
+    19c8:	13 9a       	sbi	0x02, 3	; 2
 			break;
-    19e2:	08 95       	ret
+    19ca:	08 95       	ret
 		case LED_ID_KOBI:
 				PORTA|=(0x01)<<LED_PIN_KOBI;/* turn on led */
-    19e4:	14 9a       	sbi	0x02, 4	; 2
+    19cc:	14 9a       	sbi	0x02, 4	; 2
 				break;
-    19e6:	08 95       	ret
+    19ce:	08 95       	ret
 		case LED_ID_AD:
 				PORTA|=(0x01)<<LED_PIN_AD;/* turn on led */
-    19e8:	12 9a       	sbi	0x02, 2	; 2
+    19d0:	12 9a       	sbi	0x02, 2	; 2
 				break;
-    19ea:	08 95       	ret
+    19d2:	08 95       	ret
 		case LED_ID_LV_LOW:
 				PORTG|=(0x01)<<LED_PIN_LV_LOW;/* turn on led */
-    19ec:	a4 9a       	sbi	0x14, 4	; 20
+    19d4:	a4 9a       	sbi	0x14, 4	; 20
 				break;
-    19ee:	08 95       	ret
+    19d6:	08 95       	ret
 		case LED_ID_IMD:
 				PORTC|=(0x01)<<LED_PIN_IMD;/* turn on led */
-    19f0:	40 9a       	sbi	0x08, 0	; 8
+    19d8:	40 9a       	sbi	0x08, 0	; 8
 				break;
-    19f2:	08 95       	ret
+    19da:	08 95       	ret
 		case LED_ID_BRAKE:
 				PORTG|=(0x01)<<LED_PIN_BRAKE;/* turn on led */
-    19f4:	a1 9a       	sbi	0x14, 1	; 20
+    19dc:	a1 9a       	sbi	0x14, 1	; 20
 				break;
-    19f6:	08 95       	ret
+    19de:	08 95       	ret
 		case LED_ID_OK:
 				PORTG|=(0x01)<<LED_PIN_OK;/* turn on led */
-    19f8:	a0 9a       	sbi	0x14, 0	; 20
+    19e0:	a0 9a       	sbi	0x14, 0	; 20
 				break;
-    19fa:	08 95       	ret
+    19e2:	08 95       	ret
 		case LED_ID_START:
 				PORTD|=(0x01)<<LED_PIN_START;/* turn on led */
-    19fc:	5f 9a       	sbi	0x0b, 7	; 11
-    19fe:	08 95       	ret
+    19e4:	5f 9a       	sbi	0x0b, 7	; 11
+    19e6:	08 95       	ret
 
-00001a00 <led_clear>:
+000019e8 <led_clear>:
 				
 				
 }
 
 void led_clear(uint8_t led_id){
 	if(led_id>11) return; /* illegal id */
-    1a00:	8c 30       	cpi	r24, 0x0C	; 12
-    1a02:	e8 f5       	brcc	.+122    	; 0x1a7e <led_clear+0x7e>
+    19e8:	8c 30       	cpi	r24, 0x0C	; 12
+    19ea:	e8 f5       	brcc	.+122    	; 0x1a66 <led_clear+0x7e>
 	
 	switch(led_id){
-    1a04:	84 30       	cpi	r24, 0x04	; 4
-    1a06:	99 f1       	breq	.+102    	; 0x1a6e <led_clear+0x6e>
-    1a08:	85 30       	cpi	r24, 0x05	; 5
-    1a0a:	48 f4       	brcc	.+18     	; 0x1a1e <led_clear+0x1e>
-    1a0c:	81 30       	cpi	r24, 0x01	; 1
-    1a0e:	49 f1       	breq	.+82     	; 0x1a62 <led_clear+0x62>
-    1a10:	81 30       	cpi	r24, 0x01	; 1
-    1a12:	98 f0       	brcs	.+38     	; 0x1a3a <led_clear+0x3a>
-    1a14:	82 30       	cpi	r24, 0x02	; 2
-    1a16:	49 f1       	breq	.+82     	; 0x1a6a <led_clear+0x6a>
-    1a18:	83 30       	cpi	r24, 0x03	; 3
-    1a1a:	89 f5       	brne	.+98     	; 0x1a7e <led_clear+0x7e>
-    1a1c:	2c c0       	rjmp	.+88     	; 0x1a76 <led_clear+0x76>
-    1a1e:	88 30       	cpi	r24, 0x08	; 8
-    1a20:	c1 f0       	breq	.+48     	; 0x1a52 <led_clear+0x52>
-    1a22:	89 30       	cpi	r24, 0x09	; 9
-    1a24:	28 f4       	brcc	.+10     	; 0x1a30 <led_clear+0x30>
-    1a26:	85 30       	cpi	r24, 0x05	; 5
-    1a28:	61 f0       	breq	.+24     	; 0x1a42 <led_clear+0x42>
-    1a2a:	87 30       	cpi	r24, 0x07	; 7
-    1a2c:	41 f5       	brne	.+80     	; 0x1a7e <led_clear+0x7e>
-    1a2e:	0d c0       	rjmp	.+26     	; 0x1a4a <led_clear+0x4a>
-    1a30:	89 30       	cpi	r24, 0x09	; 9
-    1a32:	99 f0       	breq	.+38     	; 0x1a5a <led_clear+0x5a>
-    1a34:	8a 30       	cpi	r24, 0x0A	; 10
-    1a36:	19 f5       	brne	.+70     	; 0x1a7e <led_clear+0x7e>
-    1a38:	20 c0       	rjmp	.+64     	; 0x1a7a <led_clear+0x7a>
+    19ec:	84 30       	cpi	r24, 0x04	; 4
+    19ee:	99 f1       	breq	.+102    	; 0x1a56 <led_clear+0x6e>
+    19f0:	85 30       	cpi	r24, 0x05	; 5
+    19f2:	48 f4       	brcc	.+18     	; 0x1a06 <led_clear+0x1e>
+    19f4:	81 30       	cpi	r24, 0x01	; 1
+    19f6:	49 f1       	breq	.+82     	; 0x1a4a <led_clear+0x62>
+    19f8:	81 30       	cpi	r24, 0x01	; 1
+    19fa:	98 f0       	brcs	.+38     	; 0x1a22 <led_clear+0x3a>
+    19fc:	82 30       	cpi	r24, 0x02	; 2
+    19fe:	49 f1       	breq	.+82     	; 0x1a52 <led_clear+0x6a>
+    1a00:	83 30       	cpi	r24, 0x03	; 3
+    1a02:	89 f5       	brne	.+98     	; 0x1a66 <led_clear+0x7e>
+    1a04:	2c c0       	rjmp	.+88     	; 0x1a5e <led_clear+0x76>
+    1a06:	88 30       	cpi	r24, 0x08	; 8
+    1a08:	c1 f0       	breq	.+48     	; 0x1a3a <led_clear+0x52>
+    1a0a:	89 30       	cpi	r24, 0x09	; 9
+    1a0c:	28 f4       	brcc	.+10     	; 0x1a18 <led_clear+0x30>
+    1a0e:	85 30       	cpi	r24, 0x05	; 5
+    1a10:	61 f0       	breq	.+24     	; 0x1a2a <led_clear+0x42>
+    1a12:	87 30       	cpi	r24, 0x07	; 7
+    1a14:	41 f5       	brne	.+80     	; 0x1a66 <led_clear+0x7e>
+    1a16:	0d c0       	rjmp	.+26     	; 0x1a32 <led_clear+0x4a>
+    1a18:	89 30       	cpi	r24, 0x09	; 9
+    1a1a:	99 f0       	breq	.+38     	; 0x1a42 <led_clear+0x5a>
+    1a1c:	8a 30       	cpi	r24, 0x0A	; 10
+    1a1e:	19 f5       	brne	.+70     	; 0x1a66 <led_clear+0x7e>
+    1a20:	20 c0       	rjmp	.+64     	; 0x1a62 <led_clear+0x7a>
 		case LED_ID_AMS:
 				PORTC&=~(0x01)<<LED_PIN_AMS;	/* turn off led */
-    1a3a:	88 b1       	in	r24, 0x08	; 8
-    1a3c:	8c 7f       	andi	r24, 0xFC	; 252
-    1a3e:	88 b9       	out	0x08, r24	; 8
+    1a22:	88 b1       	in	r24, 0x08	; 8
+    1a24:	8c 7f       	andi	r24, 0xFC	; 252
+    1a26:	88 b9       	out	0x08, r24	; 8
 				break;
-    1a40:	08 95       	ret
+    1a28:	08 95       	ret
 		case LED_ID_TV:
 				PORTA&=~(0x01)<<LED_PIN_TV;/* turn off led */
+    1a2a:	82 b1       	in	r24, 0x02	; 2
+    1a2c:	8c 7f       	andi	r24, 0xFC	; 252
+    1a2e:	82 b9       	out	0x02, r24	; 2
+				break;
+    1a30:	08 95       	ret
+		case LED_ID_RECUP:
+				PORTA&=~(0x01)<<LED_PIN_RECUP;/* turn off led */
+    1a32:	82 b1       	in	r24, 0x02	; 2
+    1a34:	80 7f       	andi	r24, 0xF0	; 240
+    1a36:	82 b9       	out	0x02, r24	; 2
+				break;
+    1a38:	08 95       	ret
+		case LED_ID_KOBI:
+				PORTA&=~(0x01)<<LED_PIN_KOBI;/* turn off led */
+    1a3a:	82 b1       	in	r24, 0x02	; 2
+    1a3c:	80 7e       	andi	r24, 0xE0	; 224
+    1a3e:	82 b9       	out	0x02, r24	; 2
+				break;
+    1a40:	08 95       	ret
+		case LED_ID_AD:
+				PORTA&=~(0x01)<<LED_PIN_AD;/* turn off led */
     1a42:	82 b1       	in	r24, 0x02	; 2
-    1a44:	8c 7f       	andi	r24, 0xFC	; 252
+    1a44:	88 7f       	andi	r24, 0xF8	; 248
     1a46:	82 b9       	out	0x02, r24	; 2
 				break;
     1a48:	08 95       	ret
-		case LED_ID_RECUP:
-				PORTA&=~(0x01)<<LED_PIN_RECUP;/* turn off led */
-    1a4a:	82 b1       	in	r24, 0x02	; 2
-    1a4c:	80 7f       	andi	r24, 0xF0	; 240
-    1a4e:	82 b9       	out	0x02, r24	; 2
-				break;
-    1a50:	08 95       	ret
-		case LED_ID_KOBI:
-				PORTA&=~(0x01)<<LED_PIN_KOBI;/* turn off led */
-    1a52:	82 b1       	in	r24, 0x02	; 2
-    1a54:	80 7e       	andi	r24, 0xE0	; 224
-    1a56:	82 b9       	out	0x02, r24	; 2
-				break;
-    1a58:	08 95       	ret
-		case LED_ID_AD:
-				PORTA&=~(0x01)<<LED_PIN_AD;/* turn off led */
-    1a5a:	82 b1       	in	r24, 0x02	; 2
-    1a5c:	88 7f       	andi	r24, 0xF8	; 248
-    1a5e:	82 b9       	out	0x02, r24	; 2
-				break;
-    1a60:	08 95       	ret
 		case LED_ID_LV_LOW:
 				PORTG&=~(0x01)<<LED_PIN_LV_LOW;/* turn off led */
-    1a62:	84 b3       	in	r24, 0x14	; 20
-    1a64:	80 7e       	andi	r24, 0xE0	; 224
-    1a66:	84 bb       	out	0x14, r24	; 20
+    1a4a:	84 b3       	in	r24, 0x14	; 20
+    1a4c:	80 7e       	andi	r24, 0xE0	; 224
+    1a4e:	84 bb       	out	0x14, r24	; 20
 				break;
-    1a68:	08 95       	ret
+    1a50:	08 95       	ret
 		case LED_ID_IMD:
 				PORTC&=~(0x01)<<LED_PIN_IMD;/* turn off led */
-    1a6a:	40 98       	cbi	0x08, 0	; 8
+    1a52:	40 98       	cbi	0x08, 0	; 8
 				break;
-    1a6c:	08 95       	ret
+    1a54:	08 95       	ret
 		case LED_ID_BRAKE:
 				PORTG&=~(0x01)<<LED_PIN_BRAKE;/* turn off led */
-    1a6e:	84 b3       	in	r24, 0x14	; 20
-    1a70:	8c 7f       	andi	r24, 0xFC	; 252
-    1a72:	84 bb       	out	0x14, r24	; 20
+    1a56:	84 b3       	in	r24, 0x14	; 20
+    1a58:	8c 7f       	andi	r24, 0xFC	; 252
+    1a5a:	84 bb       	out	0x14, r24	; 20
 				break;
-    1a74:	08 95       	ret
+    1a5c:	08 95       	ret
 		case LED_ID_OK:
 				PORTG&=~(0x01)<<LED_PIN_OK;/* turn off led */
-    1a76:	a0 98       	cbi	0x14, 0	; 20
+    1a5e:	a0 98       	cbi	0x14, 0	; 20
 				break;
-    1a78:	08 95       	ret
+    1a60:	08 95       	ret
 		case LED_ID_START:
 				PORTD&=~(0x01)<<LED_PIN_START;/* turn off led */
-    1a7a:	8b b1       	in	r24, 0x0b	; 11
-    1a7c:	1b b8       	out	0x0b, r1	; 11
-    1a7e:	08 95       	ret
+    1a62:	8b b1       	in	r24, 0x0b	; 11
+    1a64:	1b b8       	out	0x0b, r1	; 11
+    1a66:	08 95       	ret
 
-00001a80 <led_is_set>:
+00001a68 <led_is_set>:
 				break;
 	}			
 }				
 			
 uint8_t led_is_set(uint8_t led_id){
 	if(led_id>11) return; /* illegal id */
-    1a80:	8c 30       	cpi	r24, 0x0C	; 12
-    1a82:	08 f0       	brcs	.+2      	; 0x1a86 <led_is_set+0x6>
-    1a84:	6a c0       	rjmp	.+212    	; 0x1b5a <led_is_set+0xda>
+    1a68:	8c 30       	cpi	r24, 0x0C	; 12
+    1a6a:	08 f0       	brcs	.+2      	; 0x1a6e <led_is_set+0x6>
+    1a6c:	6a c0       	rjmp	.+212    	; 0x1b42 <led_is_set+0xda>
 	
 	switch(led_id){
-    1a86:	84 30       	cpi	r24, 0x04	; 4
-    1a88:	09 f4       	brne	.+2      	; 0x1a8c <led_is_set+0xc>
-    1a8a:	54 c0       	rjmp	.+168    	; 0x1b34 <led_is_set+0xb4>
-    1a8c:	85 30       	cpi	r24, 0x05	; 5
-    1a8e:	60 f4       	brcc	.+24     	; 0x1aa8 <led_is_set+0x28>
-    1a90:	81 30       	cpi	r24, 0x01	; 1
-    1a92:	09 f4       	brne	.+2      	; 0x1a96 <led_is_set+0x16>
-    1a94:	41 c0       	rjmp	.+130    	; 0x1b18 <led_is_set+0x98>
-    1a96:	81 30       	cpi	r24, 0x01	; 1
-    1a98:	b8 f0       	brcs	.+46     	; 0x1ac8 <led_is_set+0x48>
-    1a9a:	82 30       	cpi	r24, 0x02	; 2
-    1a9c:	09 f4       	brne	.+2      	; 0x1aa0 <led_is_set+0x20>
-    1a9e:	44 c0       	rjmp	.+136    	; 0x1b28 <led_is_set+0xa8>
-    1aa0:	83 30       	cpi	r24, 0x03	; 3
-    1aa2:	09 f0       	breq	.+2      	; 0x1aa6 <led_is_set+0x26>
-    1aa4:	59 c0       	rjmp	.+178    	; 0x1b58 <led_is_set+0xd8>
-    1aa6:	4d c0       	rjmp	.+154    	; 0x1b42 <led_is_set+0xc2>
-    1aa8:	88 30       	cpi	r24, 0x08	; 8
-    1aaa:	31 f1       	breq	.+76     	; 0x1af8 <led_is_set+0x78>
-    1aac:	89 30       	cpi	r24, 0x09	; 9
-    1aae:	30 f4       	brcc	.+12     	; 0x1abc <led_is_set+0x3c>
-    1ab0:	85 30       	cpi	r24, 0x05	; 5
-    1ab2:	91 f0       	breq	.+36     	; 0x1ad8 <led_is_set+0x58>
-    1ab4:	87 30       	cpi	r24, 0x07	; 7
-    1ab6:	09 f0       	breq	.+2      	; 0x1aba <led_is_set+0x3a>
-    1ab8:	4f c0       	rjmp	.+158    	; 0x1b58 <led_is_set+0xd8>
-    1aba:	15 c0       	rjmp	.+42     	; 0x1ae6 <led_is_set+0x66>
-    1abc:	89 30       	cpi	r24, 0x09	; 9
-    1abe:	21 f1       	breq	.+72     	; 0x1b08 <led_is_set+0x88>
-    1ac0:	8a 30       	cpi	r24, 0x0A	; 10
-    1ac2:	09 f0       	breq	.+2      	; 0x1ac6 <led_is_set+0x46>
-    1ac4:	49 c0       	rjmp	.+146    	; 0x1b58 <led_is_set+0xd8>
-    1ac6:	43 c0       	rjmp	.+134    	; 0x1b4e <led_is_set+0xce>
+    1a6e:	84 30       	cpi	r24, 0x04	; 4
+    1a70:	09 f4       	brne	.+2      	; 0x1a74 <led_is_set+0xc>
+    1a72:	54 c0       	rjmp	.+168    	; 0x1b1c <led_is_set+0xb4>
+    1a74:	85 30       	cpi	r24, 0x05	; 5
+    1a76:	60 f4       	brcc	.+24     	; 0x1a90 <led_is_set+0x28>
+    1a78:	81 30       	cpi	r24, 0x01	; 1
+    1a7a:	09 f4       	brne	.+2      	; 0x1a7e <led_is_set+0x16>
+    1a7c:	41 c0       	rjmp	.+130    	; 0x1b00 <led_is_set+0x98>
+    1a7e:	81 30       	cpi	r24, 0x01	; 1
+    1a80:	b8 f0       	brcs	.+46     	; 0x1ab0 <led_is_set+0x48>
+    1a82:	82 30       	cpi	r24, 0x02	; 2
+    1a84:	09 f4       	brne	.+2      	; 0x1a88 <led_is_set+0x20>
+    1a86:	44 c0       	rjmp	.+136    	; 0x1b10 <led_is_set+0xa8>
+    1a88:	83 30       	cpi	r24, 0x03	; 3
+    1a8a:	09 f0       	breq	.+2      	; 0x1a8e <led_is_set+0x26>
+    1a8c:	59 c0       	rjmp	.+178    	; 0x1b40 <led_is_set+0xd8>
+    1a8e:	4d c0       	rjmp	.+154    	; 0x1b2a <led_is_set+0xc2>
+    1a90:	88 30       	cpi	r24, 0x08	; 8
+    1a92:	31 f1       	breq	.+76     	; 0x1ae0 <led_is_set+0x78>
+    1a94:	89 30       	cpi	r24, 0x09	; 9
+    1a96:	30 f4       	brcc	.+12     	; 0x1aa4 <led_is_set+0x3c>
+    1a98:	85 30       	cpi	r24, 0x05	; 5
+    1a9a:	91 f0       	breq	.+36     	; 0x1ac0 <led_is_set+0x58>
+    1a9c:	87 30       	cpi	r24, 0x07	; 7
+    1a9e:	09 f0       	breq	.+2      	; 0x1aa2 <led_is_set+0x3a>
+    1aa0:	4f c0       	rjmp	.+158    	; 0x1b40 <led_is_set+0xd8>
+    1aa2:	15 c0       	rjmp	.+42     	; 0x1ace <led_is_set+0x66>
+    1aa4:	89 30       	cpi	r24, 0x09	; 9
+    1aa6:	21 f1       	breq	.+72     	; 0x1af0 <led_is_set+0x88>
+    1aa8:	8a 30       	cpi	r24, 0x0A	; 10
+    1aaa:	09 f0       	breq	.+2      	; 0x1aae <led_is_set+0x46>
+    1aac:	49 c0       	rjmp	.+146    	; 0x1b40 <led_is_set+0xd8>
+    1aae:	43 c0       	rjmp	.+134    	; 0x1b36 <led_is_set+0xce>
 		case LED_ID_AMS:
 			return 0x01==(PORTC>>LED_PIN_AMS);	
-    1ac8:	98 b1       	in	r25, 0x08	; 8
-    1aca:	96 95       	lsr	r25
-    1acc:	81 e0       	ldi	r24, 0x01	; 1
-    1ace:	91 30       	cpi	r25, 0x01	; 1
-    1ad0:	09 f4       	brne	.+2      	; 0x1ad4 <led_is_set+0x54>
-    1ad2:	43 c0       	rjmp	.+134    	; 0x1b5a <led_is_set+0xda>
-    1ad4:	80 e0       	ldi	r24, 0x00	; 0
-    1ad6:	08 95       	ret
+    1ab0:	98 b1       	in	r25, 0x08	; 8
+    1ab2:	96 95       	lsr	r25
+    1ab4:	81 e0       	ldi	r24, 0x01	; 1
+    1ab6:	91 30       	cpi	r25, 0x01	; 1
+    1ab8:	09 f4       	brne	.+2      	; 0x1abc <led_is_set+0x54>
+    1aba:	43 c0       	rjmp	.+134    	; 0x1b42 <led_is_set+0xda>
+    1abc:	80 e0       	ldi	r24, 0x00	; 0
+    1abe:	08 95       	ret
 			break;
 		case LED_ID_TV:
 			return 0x01==(PORTA>>LED_PIN_TV);
-    1ad8:	92 b1       	in	r25, 0x02	; 2
-    1ada:	96 95       	lsr	r25
-    1adc:	81 e0       	ldi	r24, 0x01	; 1
-    1ade:	91 30       	cpi	r25, 0x01	; 1
-    1ae0:	e1 f1       	breq	.+120    	; 0x1b5a <led_is_set+0xda>
-    1ae2:	80 e0       	ldi	r24, 0x00	; 0
-    1ae4:	08 95       	ret
+    1ac0:	92 b1       	in	r25, 0x02	; 2
+    1ac2:	96 95       	lsr	r25
+    1ac4:	81 e0       	ldi	r24, 0x01	; 1
+    1ac6:	91 30       	cpi	r25, 0x01	; 1
+    1ac8:	e1 f1       	breq	.+120    	; 0x1b42 <led_is_set+0xda>
+    1aca:	80 e0       	ldi	r24, 0x00	; 0
+    1acc:	08 95       	ret
 			break;
 		case LED_ID_RECUP:
 			return 0x01==(PORTA>>LED_PIN_RECUP);
-    1ae6:	92 b1       	in	r25, 0x02	; 2
-    1ae8:	96 95       	lsr	r25
-    1aea:	96 95       	lsr	r25
-    1aec:	96 95       	lsr	r25
-    1aee:	81 e0       	ldi	r24, 0x01	; 1
-    1af0:	91 30       	cpi	r25, 0x01	; 1
-    1af2:	99 f1       	breq	.+102    	; 0x1b5a <led_is_set+0xda>
-    1af4:	80 e0       	ldi	r24, 0x00	; 0
-    1af6:	08 95       	ret
+    1ace:	92 b1       	in	r25, 0x02	; 2
+    1ad0:	96 95       	lsr	r25
+    1ad2:	96 95       	lsr	r25
+    1ad4:	96 95       	lsr	r25
+    1ad6:	81 e0       	ldi	r24, 0x01	; 1
+    1ad8:	91 30       	cpi	r25, 0x01	; 1
+    1ada:	99 f1       	breq	.+102    	; 0x1b42 <led_is_set+0xda>
+    1adc:	80 e0       	ldi	r24, 0x00	; 0
+    1ade:	08 95       	ret
 			break;
 		case LED_ID_KOBI:
 			return 0x01==(PORTA>>LED_PIN_KOBI);
-    1af8:	92 b1       	in	r25, 0x02	; 2
-    1afa:	92 95       	swap	r25
-    1afc:	9f 70       	andi	r25, 0x0F	; 15
-    1afe:	81 e0       	ldi	r24, 0x01	; 1
-    1b00:	91 30       	cpi	r25, 0x01	; 1
-    1b02:	59 f1       	breq	.+86     	; 0x1b5a <led_is_set+0xda>
-    1b04:	80 e0       	ldi	r24, 0x00	; 0
-    1b06:	08 95       	ret
+    1ae0:	92 b1       	in	r25, 0x02	; 2
+    1ae2:	92 95       	swap	r25
+    1ae4:	9f 70       	andi	r25, 0x0F	; 15
+    1ae6:	81 e0       	ldi	r24, 0x01	; 1
+    1ae8:	91 30       	cpi	r25, 0x01	; 1
+    1aea:	59 f1       	breq	.+86     	; 0x1b42 <led_is_set+0xda>
+    1aec:	80 e0       	ldi	r24, 0x00	; 0
+    1aee:	08 95       	ret
 			break;
 		case LED_ID_AD:
 			return 0x01==(PORTA>>LED_PIN_AD);
-    1b08:	92 b1       	in	r25, 0x02	; 2
-    1b0a:	96 95       	lsr	r25
-    1b0c:	96 95       	lsr	r25
-    1b0e:	81 e0       	ldi	r24, 0x01	; 1
-    1b10:	91 30       	cpi	r25, 0x01	; 1
-    1b12:	19 f1       	breq	.+70     	; 0x1b5a <led_is_set+0xda>
-    1b14:	80 e0       	ldi	r24, 0x00	; 0
-    1b16:	08 95       	ret
+    1af0:	92 b1       	in	r25, 0x02	; 2
+    1af2:	96 95       	lsr	r25
+    1af4:	96 95       	lsr	r25
+    1af6:	81 e0       	ldi	r24, 0x01	; 1
+    1af8:	91 30       	cpi	r25, 0x01	; 1
+    1afa:	19 f1       	breq	.+70     	; 0x1b42 <led_is_set+0xda>
+    1afc:	80 e0       	ldi	r24, 0x00	; 0
+    1afe:	08 95       	ret
 			break;
 		case LED_ID_LV_LOW:
 			return 0x01==(PORTG>>LED_PIN_LV_LOW);
-    1b18:	94 b3       	in	r25, 0x14	; 20
-    1b1a:	92 95       	swap	r25
-    1b1c:	9f 70       	andi	r25, 0x0F	; 15
-    1b1e:	81 e0       	ldi	r24, 0x01	; 1
-    1b20:	91 30       	cpi	r25, 0x01	; 1
-    1b22:	d9 f0       	breq	.+54     	; 0x1b5a <led_is_set+0xda>
-    1b24:	80 e0       	ldi	r24, 0x00	; 0
-    1b26:	08 95       	ret
+    1b00:	94 b3       	in	r25, 0x14	; 20
+    1b02:	92 95       	swap	r25
+    1b04:	9f 70       	andi	r25, 0x0F	; 15
+    1b06:	81 e0       	ldi	r24, 0x01	; 1
+    1b08:	91 30       	cpi	r25, 0x01	; 1
+    1b0a:	d9 f0       	breq	.+54     	; 0x1b42 <led_is_set+0xda>
+    1b0c:	80 e0       	ldi	r24, 0x00	; 0
+    1b0e:	08 95       	ret
 			break;
 		case LED_ID_IMD:
 			return 0x01==(PORTC>>LED_PIN_IMD);
-    1b28:	98 b1       	in	r25, 0x08	; 8
-    1b2a:	81 e0       	ldi	r24, 0x01	; 1
-    1b2c:	91 30       	cpi	r25, 0x01	; 1
-    1b2e:	a9 f0       	breq	.+42     	; 0x1b5a <led_is_set+0xda>
-    1b30:	80 e0       	ldi	r24, 0x00	; 0
-    1b32:	08 95       	ret
+    1b10:	98 b1       	in	r25, 0x08	; 8
+    1b12:	81 e0       	ldi	r24, 0x01	; 1
+    1b14:	91 30       	cpi	r25, 0x01	; 1
+    1b16:	a9 f0       	breq	.+42     	; 0x1b42 <led_is_set+0xda>
+    1b18:	80 e0       	ldi	r24, 0x00	; 0
+    1b1a:	08 95       	ret
 			break;
 		case LED_ID_BRAKE:
 			return 0x01==(PORTG>>LED_PIN_BRAKE);
-    1b34:	94 b3       	in	r25, 0x14	; 20
-    1b36:	96 95       	lsr	r25
-    1b38:	81 e0       	ldi	r24, 0x01	; 1
-    1b3a:	91 30       	cpi	r25, 0x01	; 1
-    1b3c:	71 f0       	breq	.+28     	; 0x1b5a <led_is_set+0xda>
-    1b3e:	80 e0       	ldi	r24, 0x00	; 0
-    1b40:	08 95       	ret
+    1b1c:	94 b3       	in	r25, 0x14	; 20
+    1b1e:	96 95       	lsr	r25
+    1b20:	81 e0       	ldi	r24, 0x01	; 1
+    1b22:	91 30       	cpi	r25, 0x01	; 1
+    1b24:	71 f0       	breq	.+28     	; 0x1b42 <led_is_set+0xda>
+    1b26:	80 e0       	ldi	r24, 0x00	; 0
+    1b28:	08 95       	ret
 			break;
 		case LED_ID_OK:
 			return 0x01==(PORTG>>LED_PIN_OK);
-    1b42:	94 b3       	in	r25, 0x14	; 20
-    1b44:	81 e0       	ldi	r24, 0x01	; 1
-    1b46:	91 30       	cpi	r25, 0x01	; 1
-    1b48:	41 f0       	breq	.+16     	; 0x1b5a <led_is_set+0xda>
-    1b4a:	80 e0       	ldi	r24, 0x00	; 0
-    1b4c:	08 95       	ret
+    1b2a:	94 b3       	in	r25, 0x14	; 20
+    1b2c:	81 e0       	ldi	r24, 0x01	; 1
+    1b2e:	91 30       	cpi	r25, 0x01	; 1
+    1b30:	41 f0       	breq	.+16     	; 0x1b42 <led_is_set+0xda>
+    1b32:	80 e0       	ldi	r24, 0x00	; 0
+    1b34:	08 95       	ret
 			break;
 		case LED_ID_START:
 			return 0x01==(PORTD>>LED_PIN_START);
-    1b4e:	81 e0       	ldi	r24, 0x01	; 1
-    1b50:	5f 99       	sbic	0x0b, 7	; 11
-    1b52:	03 c0       	rjmp	.+6      	; 0x1b5a <led_is_set+0xda>
-    1b54:	80 e0       	ldi	r24, 0x00	; 0
-    1b56:	08 95       	ret
-    1b58:	08 95       	ret
+    1b36:	81 e0       	ldi	r24, 0x01	; 1
+    1b38:	5f 99       	sbic	0x0b, 7	; 11
+    1b3a:	03 c0       	rjmp	.+6      	; 0x1b42 <led_is_set+0xda>
+    1b3c:	80 e0       	ldi	r24, 0x00	; 0
+    1b3e:	08 95       	ret
+    1b40:	08 95       	ret
 			break;
 		default:
 		break;
 	}
 }
-    1b5a:	08 95       	ret
+    1b42:	08 95       	ret
 
-00001b5c <led_toggle>:
+00001b44 <led_toggle>:
 
 
 
 void led_toggle(uint8_t led_id){
-    1b5c:	cf 93       	push	r28
-    1b5e:	c8 2f       	mov	r28, r24
+    1b44:	cf 93       	push	r28
+    1b46:	c8 2f       	mov	r28, r24
 	if(led_is_set(led_id)){
-    1b60:	0e 94 40 0d 	call	0x1a80	; 0x1a80 <led_is_set>
-    1b64:	88 23       	and	r24, r24
-    1b66:	21 f0       	breq	.+8      	; 0x1b70 <led_toggle+0x14>
+    1b48:	0e 94 34 0d 	call	0x1a68	; 0x1a68 <led_is_set>
+    1b4c:	88 23       	and	r24, r24
+    1b4e:	21 f0       	breq	.+8      	; 0x1b58 <led_toggle+0x14>
 		led_clear(led_id);
-    1b68:	8c 2f       	mov	r24, r28
-    1b6a:	0e 94 00 0d 	call	0x1a00	; 0x1a00 <led_clear>
-    1b6e:	03 c0       	rjmp	.+6      	; 0x1b76 <led_toggle+0x1a>
+    1b50:	8c 2f       	mov	r24, r28
+    1b52:	0e 94 f4 0c 	call	0x19e8	; 0x19e8 <led_clear>
+    1b56:	03 c0       	rjmp	.+6      	; 0x1b5e <led_toggle+0x1a>
 	}else{
 		led_set(led_id);
-    1b70:	8c 2f       	mov	r24, r28
-    1b72:	0e 94 cf 0c 	call	0x199e	; 0x199e <led_set>
+    1b58:	8c 2f       	mov	r24, r28
+    1b5a:	0e 94 c3 0c 	call	0x1986	; 0x1986 <led_set>
 	}
 }
-    1b76:	cf 91       	pop	r28
-    1b78:	08 95       	ret
+    1b5e:	cf 91       	pop	r28
+    1b60:	08 95       	ret
 
-00001b7a <led_state_set>:
+00001b62 <led_state_set>:
 
 
 void led_state_set(uint16_t led_new_state){
-    1b7a:	ef 92       	push	r14
-    1b7c:	ff 92       	push	r15
-    1b7e:	0f 93       	push	r16
-    1b80:	1f 93       	push	r17
-    1b82:	cf 93       	push	r28
-    1b84:	df 93       	push	r29
-    1b86:	7c 01       	movw	r14, r24
-    1b88:	c0 e0       	ldi	r28, 0x00	; 0
-    1b8a:	d0 e0       	ldi	r29, 0x00	; 0
+    1b62:	ef 92       	push	r14
+    1b64:	ff 92       	push	r15
+    1b66:	0f 93       	push	r16
+    1b68:	1f 93       	push	r17
+    1b6a:	cf 93       	push	r28
+    1b6c:	df 93       	push	r29
+    1b6e:	7c 01       	movw	r14, r24
+    1b70:	c0 e0       	ldi	r28, 0x00	; 0
+    1b72:	d0 e0       	ldi	r29, 0x00	; 0
 	uint8_t i;
 	for(i=0;i<LED_NUMBER;i++){
 		if(led_new_state&(1<<i)){
-    1b8c:	01 e0       	ldi	r16, 0x01	; 1
-    1b8e:	10 e0       	ldi	r17, 0x00	; 0
+    1b74:	01 e0       	ldi	r16, 0x01	; 1
+    1b76:	10 e0       	ldi	r17, 0x00	; 0
 		led_set(led_id);
 	}
 }
 
 
 void led_state_set(uint16_t led_new_state){
-    1b90:	8c 2f       	mov	r24, r28
+    1b78:	8c 2f       	mov	r24, r28
 	uint8_t i;
 	for(i=0;i<LED_NUMBER;i++){
 		if(led_new_state&(1<<i)){
-    1b92:	98 01       	movw	r18, r16
-    1b94:	0c 2e       	mov	r0, r28
-    1b96:	02 c0       	rjmp	.+4      	; 0x1b9c <led_state_set+0x22>
-    1b98:	22 0f       	add	r18, r18
-    1b9a:	33 1f       	adc	r19, r19
-    1b9c:	0a 94       	dec	r0
-    1b9e:	e2 f7       	brpl	.-8      	; 0x1b98 <led_state_set+0x1e>
-    1ba0:	2e 21       	and	r18, r14
-    1ba2:	3f 21       	and	r19, r15
-    1ba4:	21 15       	cp	r18, r1
-    1ba6:	31 05       	cpc	r19, r1
-    1ba8:	11 f0       	breq	.+4      	; 0x1bae <led_state_set+0x34>
+    1b7a:	98 01       	movw	r18, r16
+    1b7c:	0c 2e       	mov	r0, r28
+    1b7e:	02 c0       	rjmp	.+4      	; 0x1b84 <led_state_set+0x22>
+    1b80:	22 0f       	add	r18, r18
+    1b82:	33 1f       	adc	r19, r19
+    1b84:	0a 94       	dec	r0
+    1b86:	e2 f7       	brpl	.-8      	; 0x1b80 <led_state_set+0x1e>
+    1b88:	2e 21       	and	r18, r14
+    1b8a:	3f 21       	and	r19, r15
+    1b8c:	21 15       	cp	r18, r1
+    1b8e:	31 05       	cpc	r19, r1
+    1b90:	11 f0       	breq	.+4      	; 0x1b96 <led_state_set+0x34>
 			led_set(i);
-    1baa:	0e 94 cf 0c 	call	0x199e	; 0x199e <led_set>
-    1bae:	21 96       	adiw	r28, 0x01	; 1
+    1b92:	0e 94 c3 0c 	call	0x1986	; 0x1986 <led_set>
+    1b96:	21 96       	adiw	r28, 0x01	; 1
 }
 
 
 void led_state_set(uint16_t led_new_state){
 	uint8_t i;
 	for(i=0;i<LED_NUMBER;i++){
-    1bb0:	cb 30       	cpi	r28, 0x0B	; 11
-    1bb2:	d1 05       	cpc	r29, r1
-    1bb4:	69 f7       	brne	.-38     	; 0x1b90 <led_state_set+0x16>
+    1b98:	cb 30       	cpi	r28, 0x0B	; 11
+    1b9a:	d1 05       	cpc	r29, r1
+    1b9c:	69 f7       	brne	.-38     	; 0x1b78 <led_state_set+0x16>
 		if(led_new_state&(1<<i)){
 			led_set(i);
 		}
 	}
 }
-    1bb6:	df 91       	pop	r29
-    1bb8:	cf 91       	pop	r28
-    1bba:	1f 91       	pop	r17
-    1bbc:	0f 91       	pop	r16
-    1bbe:	ff 90       	pop	r15
-    1bc0:	ef 90       	pop	r14
-    1bc2:	08 95       	ret
+    1b9e:	df 91       	pop	r29
+    1ba0:	cf 91       	pop	r28
+    1ba2:	1f 91       	pop	r17
+    1ba4:	0f 91       	pop	r16
+    1ba6:	ff 90       	pop	r15
+    1ba8:	ef 90       	pop	r14
+    1baa:	08 95       	ret
 
-00001bc4 <led_init>:
+00001bac <led_init>:
 void led_init(void){
 	
 	
 	// Set Data Direction of LED I/O Pins 
 	
 	DDRC|=(0x01)<<LED_PIN_AMS;/* set data direction to output*/
-    1bc4:	39 9a       	sbi	0x07, 1	; 7
+    1bac:	39 9a       	sbi	0x07, 1	; 7
 	DDRA|=(0x01)<<LED_PIN_TV;/* set data direction to output*/
-    1bc6:	09 9a       	sbi	0x01, 1	; 1
+    1bae:	09 9a       	sbi	0x01, 1	; 1
 	DDRA|=(0x01)<<LED_PIN_RECUP;/* set data direction to output*/
-    1bc8:	0b 9a       	sbi	0x01, 3	; 1
+    1bb0:	0b 9a       	sbi	0x01, 3	; 1
 	DDRA|=(0x01)<<LED_PIN_KOBI;/* set data direction to output*/
-    1bca:	0c 9a       	sbi	0x01, 4	; 1
+    1bb2:	0c 9a       	sbi	0x01, 4	; 1
 	DDRA|=(0x01)<<LED_PIN_AD;/* set data direction to output*/
-    1bcc:	0a 9a       	sbi	0x01, 2	; 1
+    1bb4:	0a 9a       	sbi	0x01, 2	; 1
 	DDRG|=(0x01)<<LED_PIN_LV_LOW;/* set data direction to output*/
-    1bce:	9c 9a       	sbi	0x13, 4	; 19
+    1bb6:	9c 9a       	sbi	0x13, 4	; 19
 	DDRC|=(0x01)<<LED_PIN_IMD;/* set data direction to output*/
-    1bd0:	38 9a       	sbi	0x07, 0	; 7
+    1bb8:	38 9a       	sbi	0x07, 0	; 7
 	DDRG|=(0x01)<<LED_PIN_BRAKE;/* set data direction to output*/
-    1bd2:	99 9a       	sbi	0x13, 1	; 19
+    1bba:	99 9a       	sbi	0x13, 1	; 19
 	DDRG|=(0x01)<<LED_PIN_OK;/* set data direction to output*/
-    1bd4:	98 9a       	sbi	0x13, 0	; 19
+    1bbc:	98 9a       	sbi	0x13, 0	; 19
 	DDRD|=(0x01)<<LED_PIN_START;/* set data direction to output*/
-    1bd6:	57 9a       	sbi	0x0a, 7	; 10
+    1bbe:	57 9a       	sbi	0x0a, 7	; 10
 	
 	// Set I/O Pins High (all leds on)	
 	PORTC|=(0x01)<<LED_PIN_AMS;	/* turn on led */
-    1bd8:	41 9a       	sbi	0x08, 1	; 8
+    1bc0:	41 9a       	sbi	0x08, 1	; 8
 	PORTA|=(0x01)<<LED_PIN_TV;/* turn on led */
-    1bda:	11 9a       	sbi	0x02, 1	; 2
+    1bc2:	11 9a       	sbi	0x02, 1	; 2
 	PORTA|=(0x01)<<LED_PIN_RECUP;/* turn on led */
-    1bdc:	13 9a       	sbi	0x02, 3	; 2
+    1bc4:	13 9a       	sbi	0x02, 3	; 2
 	PORTA|=(0x01)<<LED_PIN_KOBI;/* turn on led */
-    1bde:	14 9a       	sbi	0x02, 4	; 2
+    1bc6:	14 9a       	sbi	0x02, 4	; 2
 	PORTA|=(0x01)<<LED_PIN_AD;/* turn on led */
-    1be0:	12 9a       	sbi	0x02, 2	; 2
+    1bc8:	12 9a       	sbi	0x02, 2	; 2
 	PORTG|=(0x01)<<LED_PIN_LV_LOW;/* turn on led */
-    1be2:	a4 9a       	sbi	0x14, 4	; 20
+    1bca:	a4 9a       	sbi	0x14, 4	; 20
 	PORTC|=(0x01)<<LED_PIN_IMD;/* turn on led */
-    1be4:	40 9a       	sbi	0x08, 0	; 8
+    1bcc:	40 9a       	sbi	0x08, 0	; 8
 	PORTG|=(0x01)<<LED_PIN_BRAKE;/* turn on led */
-    1be6:	a1 9a       	sbi	0x14, 1	; 20
+    1bce:	a1 9a       	sbi	0x14, 1	; 20
 	PORTG|=(0x01)<<LED_PIN_OK;/* turn on led */
-    1be8:	a0 9a       	sbi	0x14, 0	; 20
+    1bd0:	a0 9a       	sbi	0x14, 0	; 20
 	PORTD|=(0x01)<<LED_PIN_START;/* turn on led */
-    1bea:	5f 9a       	sbi	0x0b, 7	; 11
+    1bd2:	5f 9a       	sbi	0x0b, 7	; 11
 	
 	
 	
 	led_state=0xFFFF;
-    1bec:	8f ef       	ldi	r24, 0xFF	; 255
-    1bee:	9f ef       	ldi	r25, 0xFF	; 255
-    1bf0:	90 93 2e 02 	sts	0x022E, r25
-    1bf4:	80 93 2d 02 	sts	0x022D, r24
+    1bd4:	8f ef       	ldi	r24, 0xFF	; 255
+    1bd6:	9f ef       	ldi	r25, 0xFF	; 255
+    1bd8:	90 93 2e 02 	sts	0x022E, r25
+    1bdc:	80 93 2d 02 	sts	0x022D, r24
 	led_state_set(led_state);
-    1bf8:	0e 94 bd 0d 	call	0x1b7a	; 0x1b7a <led_state_set>
+    1be0:	0e 94 b1 0d 	call	0x1b62	; 0x1b62 <led_state_set>
 	
 }
-    1bfc:	08 95       	ret
+    1be4:	08 95       	ret
 
-00001bfe <led_state_return>:
+00001be6 <led_state_return>:
 			led_set(i);
 		}
 	}
 }
 
 uint16_t led_state_return(void){
-    1bfe:	0f 93       	push	r16
-    1c00:	1f 93       	push	r17
-    1c02:	cf 93       	push	r28
-    1c04:	df 93       	push	r29
-    1c06:	c0 e0       	ldi	r28, 0x00	; 0
-    1c08:	d0 e0       	ldi	r29, 0x00	; 0
+    1be6:	0f 93       	push	r16
+    1be8:	1f 93       	push	r17
+    1bea:	cf 93       	push	r28
+    1bec:	df 93       	push	r29
+    1bee:	c0 e0       	ldi	r28, 0x00	; 0
+    1bf0:	d0 e0       	ldi	r29, 0x00	; 0
 		uint8_t i;
 		uint16_t led_state;
 		for(i=0;i<LED_NUMBER;i++){
 			led_state|=led_is_set(i)<<i;
-    1c0a:	8c 2f       	mov	r24, r28
-    1c0c:	0e 94 40 0d 	call	0x1a80	; 0x1a80 <led_is_set>
-    1c10:	90 e0       	ldi	r25, 0x00	; 0
-    1c12:	0c 2e       	mov	r0, r28
-    1c14:	02 c0       	rjmp	.+4      	; 0x1c1a <led_state_return+0x1c>
-    1c16:	88 0f       	add	r24, r24
-    1c18:	99 1f       	adc	r25, r25
-    1c1a:	0a 94       	dec	r0
-    1c1c:	e2 f7       	brpl	.-8      	; 0x1c16 <led_state_return+0x18>
-    1c1e:	08 2b       	or	r16, r24
-    1c20:	19 2b       	or	r17, r25
-    1c22:	21 96       	adiw	r28, 0x01	; 1
+    1bf2:	8c 2f       	mov	r24, r28
+    1bf4:	0e 94 34 0d 	call	0x1a68	; 0x1a68 <led_is_set>
+    1bf8:	90 e0       	ldi	r25, 0x00	; 0
+    1bfa:	0c 2e       	mov	r0, r28
+    1bfc:	02 c0       	rjmp	.+4      	; 0x1c02 <led_state_return+0x1c>
+    1bfe:	88 0f       	add	r24, r24
+    1c00:	99 1f       	adc	r25, r25
+    1c02:	0a 94       	dec	r0
+    1c04:	e2 f7       	brpl	.-8      	; 0x1bfe <led_state_return+0x18>
+    1c06:	08 2b       	or	r16, r24
+    1c08:	19 2b       	or	r17, r25
+    1c0a:	21 96       	adiw	r28, 0x01	; 1
 }
 
 uint16_t led_state_return(void){
 		uint8_t i;
 		uint16_t led_state;
 		for(i=0;i<LED_NUMBER;i++){
-    1c24:	cb 30       	cpi	r28, 0x0B	; 11
-    1c26:	d1 05       	cpc	r29, r1
-    1c28:	81 f7       	brne	.-32     	; 0x1c0a <led_state_return+0xc>
+    1c0c:	cb 30       	cpi	r28, 0x0B	; 11
+    1c0e:	d1 05       	cpc	r29, r1
+    1c10:	81 f7       	brne	.-32     	; 0x1bf2 <led_state_return+0xc>
 			led_state|=led_is_set(i)<<i;
 		}
 	return led_state;
 }
-    1c2a:	80 2f       	mov	r24, r16
-    1c2c:	91 2f       	mov	r25, r17
-    1c2e:	df 91       	pop	r29
-    1c30:	cf 91       	pop	r28
-    1c32:	1f 91       	pop	r17
-    1c34:	0f 91       	pop	r16
-    1c36:	08 95       	ret
+    1c12:	80 2f       	mov	r24, r16
+    1c14:	91 2f       	mov	r25, r17
+    1c16:	df 91       	pop	r29
+    1c18:	cf 91       	pop	r28
+    1c1a:	1f 91       	pop	r17
+    1c1c:	0f 91       	pop	r16
+    1c1e:	08 95       	ret
 
-00001c38 <main_deinit>:
+00001c20 <main_deinit>:
 		
 }
 
 void main_deinit(){
 	
 }
-    1c38:	08 95       	ret
+    1c20:	08 95       	ret
 
-00001c3a <ports_init>:
+00001c22 <ports_init>:
 	*/
 	
 	
 	/* Init Ports */
 	// Default Pin config for PORT A,B,C,D,E,F (Input with pull up)
 	DDRA=0x00;
-    1c3a:	11 b8       	out	0x01, r1	; 1
+    1c22:	11 b8       	out	0x01, r1	; 1
 	DDRB=0x00;
-    1c3c:	14 b8       	out	0x04, r1	; 4
+    1c24:	14 b8       	out	0x04, r1	; 4
 	DDRC&=~(0b10011111);;
-    1c3e:	87 b1       	in	r24, 0x07	; 7
-    1c40:	80 76       	andi	r24, 0x60	; 96
-    1c42:	87 b9       	out	0x07, r24	; 7
+    1c26:	87 b1       	in	r24, 0x07	; 7
+    1c28:	80 76       	andi	r24, 0x60	; 96
+    1c2a:	87 b9       	out	0x07, r24	; 7
 	DDRD=0xFF;
-    1c44:	8f ef       	ldi	r24, 0xFF	; 255
-    1c46:	8a b9       	out	0x0a, r24	; 10
+    1c2c:	8f ef       	ldi	r24, 0xFF	; 255
+    1c2e:	8a b9       	out	0x0a, r24	; 10
 	DDRE=0x00;
-    1c48:	1d b8       	out	0x0d, r1	; 13
+    1c30:	1d b8       	out	0x0d, r1	; 13
 	DDRF=0x00;
-    1c4a:	10 ba       	out	0x10, r1	; 16
+    1c32:	10 ba       	out	0x10, r1	; 16
 	DDRG&=~(0b00011111); // Port G Pins 7,8 and 6 not written
-    1c4c:	93 b3       	in	r25, 0x13	; 19
-    1c4e:	90 7e       	andi	r25, 0xE0	; 224
-    1c50:	93 bb       	out	0x13, r25	; 19
+    1c34:	93 b3       	in	r25, 0x13	; 19
+    1c36:	90 7e       	andi	r25, 0xE0	; 224
+    1c38:	93 bb       	out	0x13, r25	; 19
 	
 	PORTA=0xFF;
-    1c52:	82 b9       	out	0x02, r24	; 2
+    1c3a:	82 b9       	out	0x02, r24	; 2
 	PORTB=0xFF;
-    1c54:	85 b9       	out	0x05, r24	; 5
+    1c3c:	85 b9       	out	0x05, r24	; 5
 	PORTC=0xFF;
-    1c56:	88 b9       	out	0x08, r24	; 8
+    1c3e:	88 b9       	out	0x08, r24	; 8
 	PORTD|=(0b10011111);
-    1c58:	9b b1       	in	r25, 0x0b	; 11
-    1c5a:	9f 69       	ori	r25, 0x9F	; 159
-    1c5c:	9b b9       	out	0x0b, r25	; 11
+    1c40:	9b b1       	in	r25, 0x0b	; 11
+    1c42:	9f 69       	ori	r25, 0x9F	; 159
+    1c44:	9b b9       	out	0x0b, r25	; 11
 	PORTE=0xFF;
-    1c5e:	8e b9       	out	0x0e, r24	; 14
+    1c46:	8e b9       	out	0x0e, r24	; 14
 	PORTF=0xFF;
-    1c60:	81 bb       	out	0x11, r24	; 17
+    1c48:	81 bb       	out	0x11, r24	; 17
 	PORTG|=(0b00011111); // Port G Pins 7,8 and 6 not written
-    1c62:	84 b3       	in	r24, 0x14	; 20
-    1c64:	8f 61       	ori	r24, 0x1F	; 31
-    1c66:	84 bb       	out	0x14, r24	; 20
+    1c4a:	84 b3       	in	r24, 0x14	; 20
+    1c4c:	8f 61       	ori	r24, 0x1F	; 31
+    1c4e:	84 bb       	out	0x14, r24	; 20
 	
 }
-    1c68:	08 95       	ret
+    1c50:	08 95       	ret
 
-00001c6a <main_init>:
+00001c52 <main_init>:
 
 
 void main_init(){
 
 
 	ports_init();
-    1c6a:	0e 94 1d 0e 	call	0x1c3a	; 0x1c3a <ports_init>
+    1c52:	0e 94 11 0e 	call	0x1c22	; 0x1c22 <ports_init>
 	
 	CANInit();
-    1c6e:	0e 94 6c 01 	call	0x2d8	; 0x2d8 <CANInit>
+    1c56:	0e 94 6c 01 	call	0x2d8	; 0x2d8 <CANInit>
+
+	#if HAS_5KHZ|HAS_1KHZ|HAS_500HZ
+	Timer1_init(TMR1_PRESCALER,FALSE);
+    1c5a:	81 e0       	ldi	r24, 0x01	; 1
+    1c5c:	60 e0       	ldi	r22, 0x00	; 0
+    1c5e:	0e 94 00 10 	call	0x2000	; 0x2000 <Timer1_init>
+	#endif
+
+	#if HAS_10HZ|HAS_5HZ|HAS_4HZ
+	Timer3_init(TMR3_PRESCALER,FALSE);
+    1c62:	83 e0       	ldi	r24, 0x03	; 3
+    1c64:	60 e0       	ldi	r22, 0x00	; 0
+    1c66:	0e 94 05 10 	call	0x200a	; 0x200a <Timer3_init>
+	#endif
+
+	#if HAS_5KHZ
+	TIMER_Timer1_OCR1A_on();
+    1c6a:	0e 94 0a 10 	call	0x2014	; 0x2014 <TIMER_Timer1_OCR1A_on>
+	#if HAS_500HZ
+	TIMER_Timer1_OCR1C_on();
+	#endif
+
 	#if HAS_10HZ
 	TIMER_Timer3_OCR3A_on();
+    1c6e:	0e 94 3a 10 	call	0x2074	; 0x2074 <TIMER_Timer3_OCR3A_on>
 	#endif
 
 	#if HAS_BUZZER
@@ -5281,7 +5291,7 @@ void main_init(){
 	
 	#if HAS_LEDS
 	led_init();
-    1c76:	0e 94 e2 0d 	call	0x1bc4	; 0x1bc4 <led_init>
+    1c76:	0e 94 d6 0d 	call	0x1bac	; 0x1bac <led_init>
 	#endif
 	
 	#if HAS_BUTTONS
@@ -5763,7 +5773,7 @@ ISR(TIMER3_COMPA_vect){
     1eda:	f0 e0       	ldi	r31, 0x00	; 0
     1edc:	80 81       	ld	r24, Z
     1ede:	91 81       	ldd	r25, Z+1	; 0x01
-    1ee0:	80 5c       	subi	r24, 0xC0	; 192
+    1ee0:	80 59       	subi	r24, 0x90	; 144
     1ee2:	96 4b       	sbci	r25, 0xB6	; 182
     1ee4:	91 83       	std	Z+1, r25	; 0x01
     1ee6:	80 83       	st	Z, r24
@@ -5819,7 +5829,7 @@ ISR(TIMER3_COMPB_vect){
     1f3c:	f0 e0       	ldi	r31, 0x00	; 0
     1f3e:	80 81       	ld	r24, Z
     1f40:	91 81       	ldd	r25, Z+1	; 0x01
-    1f42:	82 58       	subi	r24, 0x82	; 130
+    1f42:	80 52       	subi	r24, 0x20	; 32
     1f44:	9d 46       	sbci	r25, 0x6D	; 109
     1f46:	91 83       	std	Z+1, r25	; 0x01
     1f48:	80 83       	st	Z, r24
@@ -5875,7 +5885,7 @@ ISR(TIMER3_COMPC_vect){
     1f9e:	f0 e0       	ldi	r31, 0x00	; 0
     1fa0:	80 81       	ld	r24, Z
     1fa2:	91 81       	ldd	r25, Z+1	; 0x01
-    1fa4:	82 5e       	subi	r24, 0xE2	; 226
+    1fa4:	88 56       	subi	r24, 0x68	; 104
     1fa6:	98 44       	sbci	r25, 0x48	; 72
     1fa8:	91 83       	std	Z+1, r25	; 0x01
     1faa:	80 83       	st	Z, r24
@@ -6024,7 +6034,7 @@ void TIMER_Timer3_OCR3A_on(void){
 	OCR3A = TCNT3 + OCR3A_PERIOD_CNT;
     2074:	80 91 94 00 	lds	r24, 0x0094
     2078:	90 91 95 00 	lds	r25, 0x0095
-    207c:	80 5c       	subi	r24, 0xC0	; 192
+    207c:	80 59       	subi	r24, 0x90	; 144
     207e:	96 4b       	sbci	r25, 0xB6	; 182
     2080:	90 93 99 00 	sts	0x0099, r25
     2084:	80 93 98 00 	sts	0x0098, r24
@@ -6043,7 +6053,7 @@ void TIMER_Timer3_OCR3B_on(void){
 	OCR3B = TCNT3 + OCR3B_PERIOD_CNT;
     2094:	80 91 94 00 	lds	r24, 0x0094
     2098:	90 91 95 00 	lds	r25, 0x0095
-    209c:	82 58       	subi	r24, 0x82	; 130
+    209c:	80 52       	subi	r24, 0x20	; 32
     209e:	9d 46       	sbci	r25, 0x6D	; 109
     20a0:	90 93 9b 00 	sts	0x009B, r25
     20a4:	80 93 9a 00 	sts	0x009A, r24
@@ -6062,7 +6072,7 @@ void TIMER_Timer3_OCR3C_on(void){
 	OCR3C = TCNT3 + OCR3C_PERIOD_CNT;
     20b4:	80 91 94 00 	lds	r24, 0x0094
     20b8:	90 91 95 00 	lds	r25, 0x0095
-    20bc:	82 5e       	subi	r24, 0xE2	; 226
+    20bc:	88 56       	subi	r24, 0x68	; 104
     20be:	98 44       	sbci	r25, 0x48	; 72
     20c0:	90 93 9d 00 	sts	0x009D, r25
     20c4:	80 93 9c 00 	sts	0x009C, r24

@@ -303,24 +303,24 @@ LOAD c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1
                 0x0000183e                InitError
                 0x0000184c                AddError
                 0x0000185c                ClearErrors
- .text          0x00001868      0x136 sources/Event.o
+ .text          0x00001868      0x11e sources/Event.o
                 0x00001868                EventInit
                 0x00001872                EventAddEvent
                 0x000018ae                EventGetNextEvent
                 0x000018ca                Dashboard
-                0x00001978                EventHandleEvent
- .text          0x0000199e      0x29a sources/Led.o
-                0x0000199e                led_set
-                0x00001a00                led_clear
-                0x00001a80                led_is_set
-                0x00001b5c                led_toggle
-                0x00001b7a                led_state_set
-                0x00001bc4                led_init
-                0x00001bfe                led_state_return
- .text          0x00001c38       0x52 sources/MyCommon.o
-                0x00001c38                main_deinit
-                0x00001c3a                ports_init
-                0x00001c6a                main_init
+                0x00001960                EventHandleEvent
+ .text          0x00001986      0x29a sources/Led.o
+                0x00001986                led_set
+                0x000019e8                led_clear
+                0x00001a68                led_is_set
+                0x00001b44                led_toggle
+                0x00001b62                led_state_set
+                0x00001bac                led_init
+                0x00001be6                led_state_return
+ .text          0x00001c20       0x6a sources/MyCommon.o
+                0x00001c20                main_deinit
+                0x00001c22                ports_init
+                0x00001c52                main_init
  .text          0x00001c8a       0xda sources/spi_lib.o
                 0x00001c8a                spi_init
                 0x00001cbe                spi_test_hit
@@ -591,7 +591,7 @@ LOAD c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x44a3
+.debug_info     0x00000000     0x4496
  *(.debug_info)
  .debug_info    0x00000000      0x3fa main.o
  .debug_info    0x000003fa      0x146 sources/Button.o
@@ -601,17 +601,17 @@ LOAD c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1
  .debug_info    0x00001365      0x4ce sources/can_lib.o
  .debug_info    0x00001833      0x828 sources/Display.o
  .debug_info    0x0000205b      0x41c sources/Error.o
- .debug_info    0x00002477      0x5ed sources/Event.o
- .debug_info    0x00002a64      0x204 sources/Led.o
- .debug_info    0x00002c68      0x48f sources/MyCommon.o
- .debug_info    0x000030f7      0x5ec sources/spi_lib.o
- .debug_info    0x000036e3      0x58c sources/Timer.o
- .debug_info    0x00003c6f      0x3de sources/WatchDog.o
- .debug_info    0x0000404d       0xde c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr51\libgcc.a(_divmodhi4.o)
- .debug_info    0x0000412b       0xde c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr51\libgcc.a(_exit.o)
- .debug_info    0x00004209       0xde c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr51\libgcc.a(_copy_data.o)
- .debug_info    0x000042e7       0xde c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr51\libgcc.a(_clear_bss.o)
- .debug_info    0x000043c5       0xde c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr51\libgcc.a(_udivmodhi4.o)
+ .debug_info    0x00002477      0x5e0 sources/Event.o
+ .debug_info    0x00002a57      0x204 sources/Led.o
+ .debug_info    0x00002c5b      0x48f sources/MyCommon.o
+ .debug_info    0x000030ea      0x5ec sources/spi_lib.o
+ .debug_info    0x000036d6      0x58c sources/Timer.o
+ .debug_info    0x00003c62      0x3de sources/WatchDog.o
+ .debug_info    0x00004040       0xde c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr51\libgcc.a(_divmodhi4.o)
+ .debug_info    0x0000411e       0xde c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr51\libgcc.a(_exit.o)
+ .debug_info    0x000041fc       0xde c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr51\libgcc.a(_copy_data.o)
+ .debug_info    0x000042da       0xde c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr51\libgcc.a(_clear_bss.o)
+ .debug_info    0x000043b8       0xde c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr51\libgcc.a(_udivmodhi4.o)
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev   0x00000000     0x13a6
@@ -636,7 +636,7 @@ LOAD c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1
  .debug_abbrev  0x0000137e       0x14 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr51\libgcc.a(_clear_bss.o)
  .debug_abbrev  0x00001392       0x14 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr51\libgcc.a(_udivmodhi4.o)
 
-.debug_line     0x00000000     0x1a5d
+.debug_line     0x00000000     0x1a60
  *(.debug_line)
  .debug_line    0x00000000      0x122 main.o
  .debug_line    0x00000122      0x129 sources/Button.o
@@ -646,17 +646,17 @@ LOAD c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1
  .debug_line    0x00000838      0x303 sources/can_lib.o
  .debug_line    0x00000b3b      0x1be sources/Display.o
  .debug_line    0x00000cf9       0xfa sources/Error.o
- .debug_line    0x00000df3      0x17e sources/Event.o
- .debug_line    0x00000f71      0x16c sources/Led.o
- .debug_line    0x000010dd      0x163 sources/MyCommon.o
- .debug_line    0x00001240      0x27b sources/spi_lib.o
- .debug_line    0x000014bb      0x190 sources/Timer.o
- .debug_line    0x0000164b      0x133 sources/WatchDog.o
- .debug_line    0x0000177e       0x99 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr51\libgcc.a(_divmodhi4.o)
- .debug_line    0x00001817       0x88 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr51\libgcc.a(_exit.o)
- .debug_line    0x0000189f       0x96 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr51\libgcc.a(_copy_data.o)
- .debug_line    0x00001935       0x8e c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr51\libgcc.a(_clear_bss.o)
- .debug_line    0x000019c3       0x9a c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr51\libgcc.a(_udivmodhi4.o)
+ .debug_line    0x00000df3      0x17d sources/Event.o
+ .debug_line    0x00000f70      0x16c sources/Led.o
+ .debug_line    0x000010dc      0x167 sources/MyCommon.o
+ .debug_line    0x00001243      0x27b sources/spi_lib.o
+ .debug_line    0x000014be      0x190 sources/Timer.o
+ .debug_line    0x0000164e      0x133 sources/WatchDog.o
+ .debug_line    0x00001781       0x99 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr51\libgcc.a(_divmodhi4.o)
+ .debug_line    0x0000181a       0x88 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr51\libgcc.a(_exit.o)
+ .debug_line    0x000018a2       0x96 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr51\libgcc.a(_copy_data.o)
+ .debug_line    0x00001938       0x8e c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr51\libgcc.a(_clear_bss.o)
+ .debug_line    0x000019c6       0x9a c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr51\libgcc.a(_udivmodhi4.o)
 
 .debug_frame    0x00000000      0xa60
  *(.debug_frame)

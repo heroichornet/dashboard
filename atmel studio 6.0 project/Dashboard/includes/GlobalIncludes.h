@@ -59,9 +59,9 @@
 #define OCR1B_PERIOD_CNT	(0x2EE0) //  1us/1kHz
 #define OCR1C_PERIOD_CNT	(0x5DC0) // 2us/500Hz
 #define TMR3_PRESCALER		((0<<CS32) | (1<<CS31) | (1<<CS30)) //1 Tick = PRSC/OSC_CLCK= 64 / 12 MHz = 5.33 us
-#define OCR3A_PERIOD_CNT	(0x4940) //  0.1ms/10Hz		
-#define OCR3B_PERIOD_CNT	(0x927E) //  200ms/5Hz
-#define OCR3C_PERIOD_CNT	(0xB71E) //  250ms/4Hz
+#define OCR3A_PERIOD_CNT	(0x4970) //  0.1ms/10Hz		
+#define OCR3B_PERIOD_CNT	(0x92E0) //  200ms/5Hz
+#define OCR3C_PERIOD_CNT	(0xB798) //  250ms/4Hz
 
 
 // EEPROM Memory addresses
@@ -92,6 +92,12 @@
 
 #define HAS_CAN_RX	(1)
 #define HAS_CAN_TX (1)
+#define HAS_5KHZ (1)
+#define HAS_1KHZ (0)
+#define HAS_500HZ (0)
+#define HAS_10HZ (1)
+#define HAS_5HZ (0)
+#define HAS_4HZ (0)
 	
 /* RX Frames */
 	
