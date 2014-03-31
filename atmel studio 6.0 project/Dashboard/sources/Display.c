@@ -22,6 +22,20 @@
 uint8_t display_ddram_top_row[28];
 uint8_t display_ddram_bottom_row[28];
 
+/* Display Strings*/
+
+display_line_t display_line_home={' ',' ',' ',' ',' ',' ','A','M','Z',' ','g','r','i','m','s','e','l',' ',' ',' '};
+display_line_t display_line_error={' ',' ',' ',' ',' ',' ','E','R','R','R','O','R',' ',' ',' ',' ',' ',' ',' '};
+display_line_t display_line_soc={' ',' ','S','T','A','T','E',' ','O','F',' ','C','H','A','R','G','E',' ',' ',' '};
+display_line_t display_line_min_cv_max={' ',' ','M','I','N',' ','C','E','L','L','V','O','L','T','A','G','E','M','A','X'};
+display_line_t display_line_cel_temp={' ',' ','M','I','N',' ','C','E','L','L','t','E','M','P',' ',' ','M','A','X',' '};
+display_line_t display_line_motor_power_front={' ',' ','M','O','T','O','R',' ','P','O','W','E','R',' ','F','R','O','N','T',' '};
+display_line_t display_line_motor_power_rear={ ' ',' ','M','O','T','O','R',' ','P','O','W','E','R',' ','R','E','A','R',' ',' '};
+display_line_t display_line_torque_vectoring={' ',' ','T','O','R','Q','U','E',' ',' ','V','E','C','T','O','R','I','N','G',' '};
+display_line_t display_line_accleration_mode={ ' ',' ','A','C','C','E','L','E','R','A','T','I','O','N',' ','M','O','D','E',' '};
+display_line_t display_line_blank={' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
+	
+
 /* Character Generator Ram (CGRAM)
  * stores pixel info, 1=pixel on, 0=pixel off
  * 5*8 pixel / char
@@ -72,7 +86,7 @@ void display_write_instruction(uint8_t inst){
 	spi_write_buffer(START_BITS_WRITE_INSTRUCTION,inst);
 }
 
-void display_write_display_string(display_string_t s){
+void display_write_display_line(display_line_t s){
 	int i;
 	display_write_instruction(INSTRUCTION_CURSOR_HOME);	// cursor to pos 1
 	for(i=0;i<20;i++){
@@ -97,25 +111,23 @@ void display_init(void){
 	/* Display selected Menu init */
 	selected_menu=DISPLAY_MENU_HOME;
 	
-	/* Display Strings init */
-	
-	display_line_t display_line_home={' ',' ',' ',' ',' ',' ','A','M','Z',' ','g','r','i','m','s','e','l',' ',' ',' '};
-	display_line_t display_line_error={' ',' ',' ',' ',' ',' ','E','R','R','R','O','R',' ',' ',' ',' ',' ',' ',' '};
-	display_line_t display_line_soc={' ',' ','S','T','A','T','E',' ','O','F',' ','C','H','A','R','G','E',' ',' ',' '};
-	display_line_t display_line_min_cv_max={' ',' ','M','I','N',' ','C','E','L','L','V','O','L','T','A','G','E','M','A','X'};
-	display_line_t display_line_cel_temp={' ',' ','M','I','N',' ','C','E','L','L','t','E','M','P',' ',' ','M','A','X',' '};
-	display_line_t display_line_motor_power_front={' ',' ','M','O','T','O','R',' ','P','O','W','E','R',' ','F','R','O','N','T',' '};
-	display_line_t display_line_motor_power_rear={ ' ',' ','M','O','T','O','R',' ','P','O','W','E','R',' ','R','E','A','R',' ',' '};
-	display_line_t display_line_torque_vectoring={' ',' ','T','O','R','Q','U','E',' ',' ','V','E','C','T','O','R','I','N','G',' '};
-	display_line_t display_line_accleration_mode={ ' ',' ','A','C','C','E','L','E','R','A','T','I','O','N',' ','M','O','D','E',' '};
-	display_line_t display_line_blank={' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
-		
 }
 
 void display_update(void){
 	switch(selected_menu){
 		case DISPLAY_MENU_HOME:
-				display_write_display_string(display_line_home);
+				display_write_display_line(display_line_home);
+			break;
+		case DISPLAY_MENU_ERROR:
+				display_write_display_line(display_line_error);
+			break;
+		case DISPLAY_MENU_SOC:
+			break;
+		case DISPLAY_MENU_MIN_AV_MAX_VOLT:
+			break;
+		case DISPLAY_MENU_MIN_AV_MAX_TEMP:
+			break;
+		case DISPLAY_MENU_TORQUE_VECTORING:
 			break;
 		default:
 			break;		
@@ -124,17 +136,17 @@ void display_update(void){
 
 void display_set_display_string(display_string_t s){
 	memcpy(s,display_string,20);
-}	
+}/* end display_set_display_string*/
 
 void display_make_display_line_percent(display_line_t dpl,char a, char b){
 	display_line_t display_line_percent={' ',' ',' ',' ',' ',' ',a,b,'%',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
 	dpl=display_line_percent;
-}	
+}/* end display_make_display_line_percent */
 
 void display_make_display_line_min_av_max_volt(display_line_t dpl,char a, char b,char c,char d, char e,char f){
 	display_line_t display_line_percent={' ',' ',a,b,'V',' ',c,d,'V',' ',' ',' ',' ',' ',' ',' ',e,f,'V',' '};
 	dpl=display_line_percent;
-}	
+}/*display_make_display_line_min_av_max_volt */
 
 void display_make_display_line_percent_bar(display_line_t dpl,uint8_t percent){
 	display_line_t display_line_percent={' ',' ',' ',' ','A','B','C','D','E','F','G','H','I','J',' ',' ',' ',' ',' ',' '};
@@ -149,14 +161,14 @@ void display_make_display_line_percent_bar(display_line_t dpl,uint8_t percent){
 	}
 	dpl=display_line_percent;
 	
-}	
+}/* end display_make_display_line_percent_bar */	
 
-void *display_make_display_line_min_av_max_temp(display_line_t dpl,char a, char b,char c,char d, char e,char f){
+void display_make_display_line_min_av_max_temp(display_line_t dpl,char a, char b,char c,char d, char e,char f){
 	display_line_t display_line_percent={' ',' ',a,b,'C',' ',c,d,'C',' ',' ',' ',' ',' ',' ',' ',e,f,'C',' '};
 	dpl=display_line_percent;
-}	
+}/* end display_make_display_line_min_av_max_temp*/
 
 void display_make_display_line_min_max_temp(display_line_t dpl, char a, char b,char c,char d, char e,char f){
 	display_line_t display_line_percent={' ',' ',a,b,c,'C',' ',' ',' ',' ',' ',' ',' ',' ',' ',d,e,f,'C',' '};
 	dpl=display_line_percent;
-}	
+}/* end display_make_display_line_min_av_max_temp*/

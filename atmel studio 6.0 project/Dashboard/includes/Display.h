@@ -28,9 +28,8 @@ typedef char display_string_t[40];
 typedef char display_line_t[20];
 
 uint8_t selected_menu;
-
-display_string_t display_string;
-
+display_string_t display_string;	
+	
 
 
 #define DISPLAY_MENU_HOME (0)

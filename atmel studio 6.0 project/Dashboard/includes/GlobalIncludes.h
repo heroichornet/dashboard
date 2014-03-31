@@ -54,14 +54,14 @@
 #define ADC_NUM_AVGS	(1)
 
 // Timer Defines
-#define TMR1_PRESCALER		((0<<CS32) | (1<<CS31) | (0<<CS30)) //1 Tick = PRSC/OSC_CLCK= 8 / 12MHz = 0.6667 us
-#define OCR1A_PERIOD_CNT	(0x1D4C) // 5ms/200Hz		Software Ticker 0x4E20 for PRSC=8 (0x09C4 for PRSC=64)
-#define OCR1B_PERIOD_CNT	(0x3A98) // 10ms/100Hz
-#define OCR1C_PERIOD_CNT	(0x7530) // 20ms/50Hz
+#define TMR1_PRESCALER		((0<<CS32) | (0<<CS31) | (1<<CS30)) //1 Tick = PRSC/OSC_CLCK= 1 / 12MHz = 83.3 ns
+#define OCR1A_PERIOD_CNT	(0x960) //  200us/5kHz		
+#define OCR1B_PERIOD_CNT	(0x2EE0) //  1us/1kHz
+#define OCR1C_PERIOD_CNT	(0x5DC0) // 2us/500Hz
 #define TMR3_PRESCALER		((0<<CS32) | (1<<CS31) | (1<<CS30)) //1 Tick = PRSC/OSC_CLCK= 64 / 12 MHz = 5.33 us
-#define OCR3A_PERIOD_CNT	(0x493E) // 0.2ms/5kHz		Software Ticker 0x4E20 for PRSC=8 (0x09C4 for PRSC=64)
-#define OCR3B_PERIOD_CNT	(0x927C) // 200ms/5Hz
-#define OCR3C_PERIOD_CNT	(0xB720) // 250ms/4Hz
+#define OCR3A_PERIOD_CNT	(0x4940) //  0.1ms/10Hz		
+#define OCR3B_PERIOD_CNT	(0x927E) //  200ms/5Hz
+#define OCR3C_PERIOD_CNT	(0xB71E) //  250ms/4Hz
 
 
 // EEPROM Memory addresses
@@ -91,10 +91,7 @@
 // Activate/deactivate CAN components
 
 #define HAS_CAN_RX	(1)
-#define HAS_200HZ	(1)
-#define HAS_100HZ	(0)
-#define HAS_50HZ	(1)
-#define HAS_10HZ	(0)
+#define HAS_CAN_TX (1)
 	
 /* RX Frames */
 	
@@ -110,117 +107,45 @@
 			
 	/* static cmd String for CAN RX */
 	static st_cmd_t dashboard_rx;
-			
-	/* general RX Frame, Request ID on first byte*/
 
 	static union Dashboard_RX_general_un{
 		U8 dataBuf[CAN_RX_LEN];
 		struct Dashboard_RX_st{
-			U8 REQUEST_ID;
+			U8 LEDS;
 			U8 ERRCODE;
-			U8 PARAM3;
-			U8 PARAM4;
-			U8 PARAM5;
-			U8 PARAM6;
-			U8 PARAM7;
-			U8 PARAM8;
+			U8 REQUEST_ID;
+			U8 VALUE1;
+			U8 VALUE2;
+			U8 VALUE3;
+			U8 VALUE4;
+			U8 VALUE5;
 		} dataStruct;
 	} dashboard_rx_general_data;
 
-	
-		
-	/* Request ID Motortemp */
-
-	static union Dashboard_RX_motortemp_un{
-		U8 dataBuf[CAN_RX_LEN];
-		struct Dashboard_RX_motortemp_st{
-			U8 REQUEST_ID;
-			U8 ERRCODE;
-			U8 MOTTEMP_REAR_LEFT;
-			U8 MOTTEMP_REAR_RIGHT;
-			U8 MOTTEMP_FRONT_RIGHT;
-			U8 MOTTEMP_FRONT_LEFT;
-			U8 PARAM7;
-			U8 PARAM8;
-		} dataStruct;
-	} dashboard_rx_motortemp_data;
-
-		
-	/* Request ID Actor */
-	/* Buzzer & LED */
-
-	static union Dashboard_RX_actor_un{
-		U8 dataBuf[CAN_RX_LEN];
-		struct Dashboard_RX_actor_st{
-			U8 REQUEST_ID;
-			U8 ERRCODE;
-			U8 LED;
-			U8 BUZ;
-			U8 SOC;
-			U8 LV_VOLTAGE;
-			U8 PARAM7;
-			U8 PARAM8;
-		} dataStruct;
-	} dashboard_rx_actor_data;
-
-		
-	/* Request ID LV Akku */
-	/* SOC & LV Voltage */
-	static union Dashboard_RX_lvakku_un{
-		U8 dataBuf[CAN_RX_LEN];
-		struct Dashboard_RX_lvakku_st{
-			U8 REQUEST_ID;
-			U8 ERRCODE;
-			U8 SOC;
-			U8 LV_VOLTAGE;
-			U8 PARAM5;
-			U8 PARAM6;
-			U8 PARAM7;
-			U8 PARAM8;
-		} dataStruct;
-	} dashboard_rx_lvakku_data;
-
 
 #endif // HAS_CAN_RX
+
+#if HAS_CAN_TX
+
+	/* TX Frame 1 */
+	#define	CAN_TX_10_ID	(0x502)
+	#define CAN_TX_10_LEN	(8)
+	static union Dashboard_TX_10_un{
+		U8 dataBuf[CAN_TX_10_LEN];
+		struct Dashboard_10_st {
+			U8 REQUEST_ID;
+			U8 ERROR_CODE;
+			U8 KEYS;
+			U8 VALUE1;
+			U8 VALUE2;
+			U8 VALUE3;
+			U8 VALUE4;
+			U8 VALUE5;
+		} dataStruct;
+	} dashboard_10_data;
+	static st_cmd_t dashboard_10_tx;
 	
-/* TX Frame 1 */
-#define	CAN_TX_50_ID	(0x503)
-#define CAN_TX_50_LEN	(2)
-static union Dashboard_TX_50_un{
-	U8 dataBuf[CAN_TX_50_LEN];
-	struct Dashboard_50_st {
-		U8 REQUEST_ID;
-		U8 KEYS;
-		U8 MOTOR_POWER_FRONT;
-		U8 MOTOR_POWER_REAR;
-		U8 TORQUE_VECTORING;
-		U8 TRACTION_CONTROL;
-		U8 PARAM7;
-		U8 PARAM8;
-	} dataStruct;
-} dashboard_50_data;
-static st_cmd_t dashboard_50_tx;
-	
-/* TX Frame 2 */
-#define	CAN_TX_200_ID	(0x504)
-#define CAN_TX_200_LEN	(2)
-static union Dashboard_TX_200_un{
-	U8 dataBuf[CAN_TX_200_LEN];
-	struct Dashboard_200_st {
-		U8 ACCELERATION;
-		U8 DRS;
-		U8 PARAM3;
-		U8 PARAM4;
-		U8 PARAM5;
-		U8 PARAM6;
-		U8 PARAM7;
-		U8 PARAM8;
-	} dataStruct;
-} dashboard_200_data;
-static st_cmd_t dashboard_200_tx;
-
-
-
+#endif /* end HAS_CAN_TX */
 
 #endif /* GlobalIncludes_H_ */
 

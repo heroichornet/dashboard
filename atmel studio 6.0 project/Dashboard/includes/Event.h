@@ -13,9 +13,9 @@
 
 typedef enum {
 	EVENT_INIT,
-	EVENT_200HZ,
-	EVENT_100HZ,
-	EVENT_50HZ,
+	EVENT_5KHZ,
+	EVENT_1KHZ,
+	EVENT_500HZ,
 	EVENT_10HZ,
 	EVENT_5HZ,
 	EVENT_4HZ,
@@ -23,7 +23,6 @@ typedef enum {
 	EVENT_CANTX,
 	EVENT_CANRX,
 	EVENT_NOF_EVENTS,
-	EVENT_5KHZ
 } EVENT_Handle;
 
 void EventInit(void);
