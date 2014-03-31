@@ -4310,7 +4310,7 @@ void display_write_display_line(display_line_t s){
 	
 	/* turn display on */
 	display_write_instruction(INSTRUCTION_DISPLAY_ON);
-    17fe:	8e e0       	ldi	r24, 0x0E	; 14
+    17fe:	8c e0       	ldi	r24, 0x0C	; 12
     1800:	0e 94 cb 0b 	call	0x1796	; 0x1796 <display_write_instruction>
 	
 	

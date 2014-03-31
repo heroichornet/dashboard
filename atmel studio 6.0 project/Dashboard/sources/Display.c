@@ -59,7 +59,7 @@ display_line_t display_line_blank={' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','
 #define INSTRUCTION_DISPLAY_RIGHT_SHIFT 0x1C
 #define INSTRUCTION_DDRAM_ADDRESS_SET(x) ((0x80)|(x))
 #define INSTRUCTION_BRIGHTNESS(x) ((0x1C)|(x))
-#define INSTRUCTION_DISPLAY_ON 0x0E
+#define INSTRUCTION_DISPLAY_ON 0x0C
 
 /* Start Bit */
 #define START_BITS_READ_INSTRUCTION (0xF8|0x04|0x00)
