@@ -4301,16 +4301,18 @@ void display_write_display_line(display_line_t s){
 	selected_menu=DISPLAY_MENU_HOME;
     17f6:	10 92 b9 02 	sts	0x02B9, r1
 	
-	/* turn display on */
-	display_write_instruction(INSTRUCTION_DISPLAY_ON);
-    17fa:	8e e0       	ldi	r24, 0x0E	; 14
-    17fc:	0e 94 cb 0b 	call	0x1796	; 0x1796 <display_write_instruction>
 	
 	/*toggle button init */
 	DDRB|=(1<<4);
-    1800:	24 9a       	sbi	0x04, 4	; 4
+    17fa:	24 9a       	sbi	0x04, 4	; 4
 	PORTB|=(1<<4);
-    1802:	2c 9a       	sbi	0x05, 4	; 5
+    17fc:	2c 9a       	sbi	0x05, 4	; 5
+	
+	/* turn display on */
+	display_write_instruction(INSTRUCTION_DISPLAY_ON);
+    17fe:	8e e0       	ldi	r24, 0x0E	; 14
+    1800:	0e 94 cb 0b 	call	0x1796	; 0x1796 <display_write_instruction>
+	
 	
 }
     1804:	08 95       	ret
@@ -4644,6 +4646,7 @@ void Dashboard(void){
 			// display Update
 			display_update();
     1984:	0e 94 03 0c 	call	0x1806	; 0x1806 <display_update>
+			
 		return;
     1988:	0a c0       	rjmp	.+20     	; 0x199e <Dashboard+0xa2>
 				button_multiplex_cycle();
@@ -5473,7 +5476,6 @@ static ISR(SPI_STC_vect){
     1d1c:	0f b6       	in	r0, 0x3f	; 63
     1d1e:	0f 92       	push	r0
     1d20:	11 24       	eor	r1, r1
-	
 }
     1d22:	0f 90       	pop	r0
     1d24:	0f be       	out	0x3f, r0	; 63

@@ -80,6 +80,7 @@ void Dashboard(void){
 							
 			// display Update
 			display_update();
+			
 		return;
 		break;
 		case EVENT_5KHZ:

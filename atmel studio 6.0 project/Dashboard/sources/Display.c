@@ -121,12 +121,14 @@ void display_init(void){
 	/* Display selected Menu init */
 	selected_menu=DISPLAY_MENU_HOME;
 	
-	/* turn display on */
-	display_write_instruction(INSTRUCTION_DISPLAY_ON);
 	
 	/*toggle button init */
 	DDRB|=(1<<4);
 	PORTB|=(1<<4);
+	
+	/* turn display on */
+	display_write_instruction(INSTRUCTION_DISPLAY_ON);
+	
 	
 }
 

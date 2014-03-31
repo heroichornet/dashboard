@@ -153,6 +153,5 @@ void  spi_transmit_master(U8 ch)
 //!
 
 static ISR(SPI_STC_vect){
-	
 }
 
