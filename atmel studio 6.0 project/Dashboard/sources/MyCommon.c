@@ -8,6 +8,9 @@
 
 #include "../includes/MyCommon.h"
 #include "../includes/GlobalIncludes.h"
+#include "../includes/Buzzer.h"
+#include "../includes/Led.h"
+#include "../includes/Button.h"
 
 
 
@@ -68,13 +71,13 @@ void main_deinit(){
 
 void ports_init(void){
 	
-	/* Note to I/O Pin Registers */
-	/* DDRxn high = Output
-	/* DDRxn low  = Input
-	/* PORTxn high = pull up, if Input
-	/* PORTxn low = no pull up, if Input
-	/* PORTxn high = driven high, if output
-	/* PORTxn low = driven low, if output
+	/* Note to I/O Pin Registers
+	     DDRxn high = Output
+	     DDRxn low  = Input
+	     PORTxn high = pull up, if Input
+	     PORTxn low = no pull up, if Input
+	     PORTxn high = driven high, if output
+	     PORTxn low = driven low, if output
 	*/
 	
 	

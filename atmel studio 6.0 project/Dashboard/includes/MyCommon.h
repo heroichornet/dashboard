@@ -17,7 +17,7 @@
 
 void main_init(void);
 void main_deinit(void);
-
+void ports_init(void);
 
 
 

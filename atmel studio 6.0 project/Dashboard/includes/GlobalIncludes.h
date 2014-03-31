@@ -180,7 +180,6 @@
 		} dataStruct;
 	} dashboard_rx_lvakku_data;
 
-#endif 
 
 #endif // HAS_CAN_RX
 	

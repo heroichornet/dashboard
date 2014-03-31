@@ -33,7 +33,9 @@ sources/MyCommon.d sources/MyCommon.o: ../sources/MyCommon.c \
  ../sources/../includes/..\includes\/compiler.h \
  ../sources/../includes/..\includes\/dvk90can1_board.h \
  ../sources/../includes/..\includes\CAN.h ../sources/../includes/Error.h \
- ../sources/../includes/Timer.h ../sources/../includes/GlobalIncludes.h
+ ../sources/../includes/Timer.h ../sources/../includes/GlobalIncludes.h \
+ ../sources/../includes/Buzzer.h ../sources/../includes/Led.h \
+ ../sources/../includes/Button.h
 
 ../sources/../includes/MyCommon.h:
 
@@ -112,3 +114,9 @@ c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.
 ../sources/../includes/Timer.h:
 
 ../sources/../includes/GlobalIncludes.h:
+
+../sources/../includes/Buzzer.h:
+
+../sources/../includes/Led.h:
+
+../sources/../includes/Button.h:

@@ -24,8 +24,8 @@
 #define BRIGTHNESS_50 2;
 #define BRIGTHNESS_25 3;
 
-typedef char display_string_t[20];
-typedef char display_line_t[10];
+typedef char display_string_t[40];
+typedef char display_line_t[20];
 
 uint8_t selected_menu;
 

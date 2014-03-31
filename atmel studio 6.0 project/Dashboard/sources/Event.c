@@ -82,6 +82,7 @@ static void Dashboard(void){
 			led_state_set(led_state);
 			
 			/* display Update */
+			display_update();
 			
 		break;
 		case EVENT_5KHZ:
