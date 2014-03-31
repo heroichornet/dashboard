@@ -49,6 +49,7 @@ display_line_t display_line_blank={' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','
 
 /* Instructions */
 
+
 #define INSTRUCTION_CLEAR_DISPLAY 0x01
 #define INSTRUCTION_CURSOR_HOME 0x02
 #define INSTRUCTION_ENTRY_MODE_SET 0x06 /* S=0, I/D=1 */
@@ -57,6 +58,8 @@ display_line_t display_line_blank={' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','
 #define INSTRUCTION_DISPLAY_LEFT_SHIFT 0x18
 #define INSTRUCTION_DISPLAY_RIGHT_SHIFT 0x1C
 #define INSTRUCTION_DDRAM_ADDRESS_SET(x) ((0x80)|(x))
+#define INSTRUCTION_BRIGHTNESS(x) ((0x1C)|(x))
+#define INSTRUCTION_DISPLAY_ON 0x0E
 
 /* Start Bit */
 #define START_BITS_READ_INSTRUCTION (0xF8|0x04|0x00)
@@ -79,11 +82,17 @@ display_string_t test={'0','1','2','3','4','5','6','7','8','9',
 					 'A','B','C','D','E','F','G','H','I','J'};
 
 void display_write_data(uint8_t data){
-	spi_write_buffer(START_BITS_WRITE_DATA,data);	
+	PORTB&=~(1<<4);
+	spi_putchar(START_BITS_WRITE_DATA);
+	spi_putchar(data);
+	PORTB|=(1<<4);
 }
 
 void display_write_instruction(uint8_t inst){
-	spi_write_buffer(START_BITS_WRITE_INSTRUCTION,inst);
+	PORTB&=~(1<<4);
+	spi_putchar(START_BITS_WRITE_INSTRUCTION);
+	spi_putchar(inst);
+	PORTB|=(1<<4);
 }
 
 void display_write_display_line(display_line_t s){
@@ -105,11 +114,19 @@ void display_init(void){
 		/* chip select toggle is no */
 		/* clock rate index is 0 */
 		/* clock rate is CPU clock, so 12MHz and 16Mhz withe new quarz */
-	spi_init(SPI_MASTER|SPI_MSB_FIRST|SPI_DATA_MODE_2|SPI_CLKIO_BY_32);
-	
+	spi_init(SPI_MASTER|SPI_MSB_FIRST|SPI_DATA_MODE_3|SPI_CLKIO_BY_64);
+	Spi_disable_it();	
+	Spi_select_master_mode();
 
 	/* Display selected Menu init */
 	selected_menu=DISPLAY_MENU_HOME;
+	
+	/* turn display on */
+	display_write_instruction(INSTRUCTION_DISPLAY_ON);
+	
+	/*toggle button init */
+	DDRB|=(1<<4);
+	PORTB|=(1<<4);
 	
 }
 

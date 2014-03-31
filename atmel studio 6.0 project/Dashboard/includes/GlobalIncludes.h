@@ -86,7 +86,7 @@
 		
 #define HAS_BUZZER  (1)
 #define HAS_LEDS    (1)
-#define HAS_BUTTONS (1)
+#define HAS_BUTTONS (0)
 #define HAS_DISPLAY (1)
 		
 // Activate/deactivate CAN components

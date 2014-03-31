@@ -75,7 +75,7 @@ void Dashboard(void){
 			CANAddSendData(&dashboard_10_tx);
 						
 	
-		//Led Update 
+			//Led Update 
 			led_state_set(led_state);
 							
 			// display Update
@@ -84,7 +84,9 @@ void Dashboard(void){
 		break;
 		case EVENT_5KHZ:
 			/* Multiplex */
-			button_multiplex_cycle();	
+			#if HAS_BUTTONS
+				button_multiplex_cycle();
+			#endif	
 		break;
 		case EVENT_CANERROR:
 			/* Catch Can Errors*/

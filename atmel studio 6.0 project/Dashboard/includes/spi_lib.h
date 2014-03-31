@@ -28,8 +28,6 @@
 
 //_____ D E F I N I T I O N S __________________________________________________
 
-uint8_t spi_second_byte;
-uint8_t spi_second_byte_sent;
 
 
 //_____ D E C L A R A T I O N S ________________________________________________

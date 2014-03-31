@@ -51,19 +51,11 @@
 //------------------------------------------------------------------------------
 Bool spi_init (U8 config)
 {
-
-	EnterCritical();
-	spi_second_byte_sent=0x01;
-	spi_second_byte=0x00;
-	ExitCritical();
 	Spi_init_ss();
 	
     Spi_init_config(config);
     Spi_enable();
 	
-	Spi_send_byte('A');
-	Spi_send_byte('B');
-	Spi_send_byte('C');
     return TRUE;
 }
 
@@ -146,31 +138,6 @@ void  spi_transmit_master(U8 ch)
     Spi_send_byte(ch);
 }
 
-//------------------------------------------------------------------------------
-//  @fn spi_write_buffer
-//!
-//! This function sends 2 bytes on the SPI. Make the transmission possible.
-//!
-//! @warning See SPI section in datasheet.
-//!
-//! @param  buffer:  buffer of length 2 with characters to send on the SPI
-//!
-//! @return  none
-//!
-
-void spi_write_buffer(uint8_t b1,uint8_t b2){
-	
-	while(spi_second_byte!=0x01);
-	
-	EnterCritical();
-	spi_second_byte=b2;
-	spi_second_byte_sent=0x00;
-	ExitCritical();
-	
-	Spi_disable_ss();
-	spi_transmit_master(b1);
-	
-}
 
 
 //------------------------------------------------------------------------------
@@ -187,13 +154,5 @@ void spi_write_buffer(uint8_t b1,uint8_t b2){
 
 static ISR(SPI_STC_vect){
 	
-	if(spi_second_byte_sent==0x01){
-		spi_transmit_master(spi_second_byte);	
-		EnterCritical();
-		spi_second_byte_sent==0x00;
-		ExitCritical();
-	} else{
-		Spi_enable_ss();
-	}
 }
 
