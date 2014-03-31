@@ -54,28 +54,32 @@ void Dashboard(void){
 			/* start Rx */
 			/* Frame 1 */
 			CANStartRx(&dashboard_rx);
+			
+			DDRD|=1<<3;
+			
+			
 		return;
 		break;
 		case EVENT_10HZ:
 			
 
-			if(((PORTA>>3)&1)==1){
-					PORTA&=~(1<<3);
+			if(((PORTD>>3)&1)==1){
+					PORTD&=~(1<<3);
 			}else{
-					PORTA|=(1<<3);
+					PORTD|=(1<<3);
 			}
 
-	
-/*			
+		
 			// ToDo Fill TX Frame
 
 			CANAddSendData(&dashboard_10_tx);
 						
-			//Led Update 
+	
+		//Led Update 
 			led_state_set(led_state);
-						
+							
 			// display Update
-*/			//display_update();
+			display_update();
 		return;
 		break;
 		case EVENT_5KHZ:

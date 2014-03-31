@@ -16,7 +16,7 @@ int main(void){
 	main_init();
 	
 	while(1){	
-		wdt_reset();
+	//	wdt_reset();
 		EventHandleEvent();
 	};
 

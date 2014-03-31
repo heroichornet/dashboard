@@ -8,7 +8,7 @@
 #include "../includes/WatchDog.h"
 
 void InitWDT(void){
-	wdt_enable(WDTO_120MS);
+	//wdt_enable(WDTO_120MS);
 }
 
 Bool CheckWDT(void){

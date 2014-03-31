@@ -14,7 +14,7 @@
 /**
 	@brief		Frequenz vom CPU in Hz
 */
-#define F_CPU	12000000			// 16 MHz
+#define F_CPU	12000000			// 12 MHz
 #define FOSC	12000				//Frequenz des Oszilators in kHz 
 #ifndef CAN_BAUDRATE
 #define CAN_BAUDRATE (CAN_500)

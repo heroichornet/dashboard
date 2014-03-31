@@ -60,6 +60,10 @@ Bool spi_init (U8 config)
 	
     Spi_init_config(config);
     Spi_enable();
+	
+	Spi_send_byte('A');
+	Spi_send_byte('B');
+	Spi_send_byte('C');
     return TRUE;
 }
 

@@ -58,6 +58,10 @@ void main_init(){
 	button_init();
 	#endif
 	
+	#if HAS_DISPLAY
+	display_init();
+	#endif
+	
 	InitWDT();
 	
 	EventAddEvent(EVENT_INIT);

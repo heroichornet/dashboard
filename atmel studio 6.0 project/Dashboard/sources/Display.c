@@ -107,7 +107,7 @@ void display_init(void){
 		/* clock rate is CPU clock, so 12MHz and 16Mhz withe new quarz */
 	spi_init(SPI_MASTER|SPI_MSB_FIRST|SPI_DATA_MODE_2|SPI_CLKIO_BY_32);
 	
-	
+
 	/* Display selected Menu init */
 	selected_menu=DISPLAY_MENU_HOME;
 	
