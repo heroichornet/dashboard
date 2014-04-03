@@ -1,15 +1,22 @@
-/*
- * Led.h
- *
- * Created: 05.03.2014 14:15:48
- *  Author: michael
- */ 
-
+//******************************************************************************
+//! @file Led.H
+//!
+//! Led Driver for 11 leds
+//!
+//! @brief This Library is used to drive 11 LEDs
+//!
+//!
+//! @version 1.0
+//!
+//! @todo
+//! @bug
+//******************************************************************************
 
 #ifndef LED_H_
 #define LED_H_
 
 uint16_t led_state;
+
 
 #define LED_NUMBER				(11)
 
@@ -54,7 +61,18 @@ uint8_t led_dd[LED_NUMBER];
 
 
 
-
+//------------------------------------------------------------------------------
+//  @fn led_init
+//!
+//! This function initalizes the leds
+//!
+//! @warning none
+//!
+//! @param  none
+//!
+//! @return  none
+//!
+//------------------------------------------------------------------------------
 void led_init(void);
 void led_set(uint8_t led_id);
 void led_clear(uint8_t led_id);

@@ -92,22 +92,36 @@
 // Activate/deactivate CAN components
 
 #define HAS_CAN_RX	(1)
-#define HAS_CAN_TX (1)
-#define HAS_5KHZ (1)
-#define HAS_1KHZ (0)
-#define HAS_500HZ (0)
-#define HAS_10HZ (1)
-#define HAS_5HZ (0)
-#define HAS_4HZ (0)
+#define HAS_CAN_TX	(1)
+#define HAS_5KHZ	(1)
+#define HAS_1KHZ	(0)
+#define HAS_500HZ	(0)
+#define HAS_10HZ	(1)
+#define HAS_5HZ		(0)
+#define HAS_4HZ		(0)
+
+
+/* Request IDs for Dashboard <-> VCU Connection */ 
+
+#define REQUEST_SOC					(0)
+#define REQUEST_CELL_VOLTAGE		(1)
+#define REQUEST_TEMPERATURE			(2)
+#define REQUEST_LV_VOLTAGE			(3)
+#define REQUEST_MOTOR_TEMP_REAR		(4)
+#define REQUEST_MOTOR_TEMP_FRONT	(5)
+#define REQUEST_MOTOR_POWER_REAR	(4)
+#define REQUEST_MOTOR_POWER_FRONT	(5)
+#define REQUEST_TRACTION_CONTROL	(6)
+#define REQUEST_TORQUE_VECTORING	(7)
+#define REQUEST_ACCLERATION_MODE	(8)
+
+
 	
 /* RX Frames */
 	
 /* RX */
 #if HAS_CAN_RX
-		
-	#define REQUEST_ID_MOTOR_TEMP (0)
-	#define REQUEST_ID_ACTOR	  (1)
-	#define REQUEST_ID_LV_AKKU	  (2)
+	
 		
 	#define CAN_RX_ID (0x501)
 	#define CAN_RX_LEN (8)

@@ -1,10 +1,17 @@
-/**
- * \file
- * \brief 
- * \author 
- * \date
- *
- */
+//******************************************************************************
+//! @file Led.H
+//!
+//! Led Driver for 11 leds
+//!
+//! @brief This Library is used to drive 11 LEDs
+//!
+//!
+//! @version 1.0
+//!
+//! @todo 1. Adjust RX and TX Frames to match CAN Database
+//! @bug
+//******************************************************************************
+
 
 #ifndef EVENT_H_
 #define EVENT_H_
