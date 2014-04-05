@@ -50,16 +50,21 @@ display_line_t display_line_blank={' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','
 /* Instructions */
 
 
-#define INSTRUCTION_CLEAR_DISPLAY 0x01
-#define INSTRUCTION_CURSOR_HOME 0x02
-#define INSTRUCTION_ENTRY_MODE_SET 0x06 /* S=0, I/D=1 */
-#define INSTRUCTION_DISPLAY_AC_UP 0x14
-#define INSTRUCTION_DISPLAY_AC_DOWN 0x10
-#define INSTRUCTION_DISPLAY_LEFT_SHIFT 0x18
-#define INSTRUCTION_DISPLAY_RIGHT_SHIFT 0x1C
+#define INSTRUCTION_CLEAR_DISPLAY (0x01)
+#define INSTRUCTION_CURSOR_HOME (0x02)
+#define INSTRUCTION_ENTRY_MODE_SET (0x06) /* S=0, I/D=1 */
+#define INSTRUCTION_DISPLAY_AC_UP (0x14)
+#define INSTRUCTION_DISPLAY_AC_DOWN (0x10)
+#define INSTRUCTION_DISPLAY_LEFT_SHIFT (0x18)
+#define INSTRUCTION_DISPLAY_RIGHT_SHIFT (0x1C)
 #define INSTRUCTION_DDRAM_ADDRESS_SET(x) ((0x80)|(x))
-#define INSTRUCTION_BRIGHTNESS(x) ((0x1C)|(x))
-#define INSTRUCTION_DISPLAY_ON 0x0C
+#define INSTRUCTION_BRIGHTNESS_100 (0b0000111000)
+#define INSTRUCTION_BRIGHTNESS_75 (0b0000111000)
+#define INSTRUCTION_BRIGHTNESS_50 (0b0000111000)
+#define INSTRUCTION_BRIGHTNESS_25 (0b0000111000)
+#define INSTRUCTION_DISPLAY_ON (0x0C)
+#define INSTRUCTION_CURSOR_LEFT_SHIFT (0b0000010000)
+#define INSTRUCTION_CURSOR_RIGHT_SHIFT (0b0000010100)
 
 /* Start Bit */
 #define START_BITS_READ_INSTRUCTION (0xF8|0x04|0x00)
@@ -95,11 +100,19 @@ void display_write_instruction(uint8_t inst){
 	PORTB|=(1<<4);
 }
 
-void display_write_display_line(display_line_t s){
+void display_write_display_lines(display_line_t s1,display_line_t s2){
 	int i;
 	display_write_instruction(INSTRUCTION_CURSOR_HOME);	// cursor to pos 1
 	for(i=0;i<20;i++){
-		display_write_data(s[i]);
+		display_write_data(s1[i]);
+	}
+	
+	for(int i=0;i<20;i++){
+		display_write_instruction(INSTRUCTION_CURSOR_RIGHT_SHIFT);	// cursor to second line
+	};
+			
+	for(i=0;i<20;i++){
+		display_write_data(s2[i]);
 	}	
 }
 
@@ -130,15 +143,19 @@ void display_init(void){
 	display_write_instruction(INSTRUCTION_DISPLAY_ON);
 	
 	
+	display_write_instruction(INSTRUCTION_BRIGHTNESS_100);
+
+	
+	
 }
 
 void display_update(void){
 	switch(selected_menu){
 		case DISPLAY_MENU_HOME:
-				display_write_display_line(display_line_home);
+				display_write_display_lines(display_line_home,display_line_home);
 			break;
 		case DISPLAY_MENU_ERROR:
-				display_write_display_line(display_line_error);
+				//display_write_display_line(display_line_error);
 			break;
 		case DISPLAY_MENU_SOC:
 			break;

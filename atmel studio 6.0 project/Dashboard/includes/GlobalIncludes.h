@@ -79,7 +79,7 @@
 
 
 /************************************************************************/
-/* Define the Module, this Code is used                                 */
+/* Define Parameters for Build               */
 /************************************************************************/
 
 // Activate/deactivate peripherals

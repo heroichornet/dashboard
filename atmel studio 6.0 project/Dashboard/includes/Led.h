@@ -74,6 +74,18 @@ uint8_t led_dd[LED_NUMBER];
 //!
 //------------------------------------------------------------------------------
 void led_init(void);
+//------------------------------------------------------------------------------
+//  @fn led_set
+//!
+//! This function sets a specific LED with a specific ID
+//!
+//! @warning none
+//!
+//! @param  led_id I
+//!
+//! @return  none
+//!
+//------------------------------------------------------------------------------
 void led_set(uint8_t led_id);
 void led_clear(uint8_t led_id);
 void led_toggle(uint8_t led_id);
