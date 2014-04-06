@@ -155,14 +155,14 @@
 	static union Dashboard_TX_10_un{
 		U8 dataBuf[CAN_TX_10_LEN];
 		struct Dashboard_10_st {
+			U8 ERRORCODE;
 			U8 REQUEST_ID;
-			U8 ERROR_CODE;
-			U8 KEYS;
+			U8 KEYS_1;
+			U8 KEYS_2;
 			U8 VALUE1;
 			U8 VALUE2;
 			U8 VALUE3;
 			U8 VALUE4;
-			U8 VALUE5;
 		} dataStruct;
 	} dashboard_10_data;
 	static st_cmd_t dashboard_10_tx;

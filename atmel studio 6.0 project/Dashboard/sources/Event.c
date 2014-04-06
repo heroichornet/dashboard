@@ -66,10 +66,14 @@ void Dashboard(void){
 			}else{
 					PORTD|=(1<<3);
 			}
-
-		
-			// ToDo Fill TX Frame
-
+			
+			//CAN Stuff
+			//Fill TX Frame
+			dashboard_10_data.dataStruct.ERRORCODE=0xFF;
+			dashboard_10_data.dataStruct.REQUEST_ID=0xFA;
+			dashboard_10_data.dataStruct.KEYS_1=0xFF;
+			dashboard_10_data.dataStruct.KEYS_2=0xFF;			
+			// Send tx Frame
 			CANAddSendData(&dashboard_10_tx);
 						
 	
@@ -77,11 +81,7 @@ void Dashboard(void){
 			led_state_set(led_state);
 							
 			// display Update
-			selected_menu+=1;
-			selected_menu%=42;
-			
-			//display_update(DISPLAY_MENU_MOTOR_POWER_FRONT,30,30,200,0,0);	
-			display_update(DISPLAY_MENU_ERROR,selected_menu,70,90,0,0);
+			display_update(selected_menu,0,0,0,0,0);
 			
 		return;
 		break;
@@ -102,6 +102,7 @@ void Dashboard(void){
 		case EVENT_CANRX:
 			// ToDo use RX to build display
 			CANGetData(&dashboard_rx);
+			selected_menu=dashboard_rx_general_data.dataStruct.REQUEST_ID;
 		return;
 		break;
 		default:
