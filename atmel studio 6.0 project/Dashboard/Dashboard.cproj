@@ -35,7 +35,7 @@
       </OverrideVtorValue>
       <Channel>
         <host>127.0.0.1</host>
-        <port>63091</port>
+        <port>58299</port>
         <ssl>False</ssl>
       </Channel>
       <ToolOptions>
@@ -152,6 +152,9 @@
     <Compile Include="includes\MyCommon.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="includes\Radio.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="includes\spi_drv.h">
       <SubType>compile</SubType>
     </Compile>
@@ -195,6 +198,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="sources\MyCommon.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sources\Radio.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="sources\spi_lib.c">

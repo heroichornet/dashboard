@@ -55,8 +55,6 @@ void Dashboard(void){
 			/* Frame 1 */
 			CANStartRx(&dashboard_rx);
 			
-			DDRD|=1<<3;
-			
 			
 		return;
 		break;
@@ -79,6 +77,8 @@ void Dashboard(void){
 			led_state_set(led_state);
 							
 			// display Update
+			selected_menu++;
+			selected_menu%=10;
 			display_update();
 			
 		return;

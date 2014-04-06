@@ -1,10 +1,16 @@
-/*
- * display.h
- *
- *  Created on: Jan 22, 2014
- *      Author: michael
- */
-
+//******************************************************************************
+//! @file Led.H
+//!
+//! Led Driver for 11 leds
+//!
+//! @brief This Library is used to drive 11 LEDs
+//!
+//!
+//! @version 1.0
+//!
+//! @todo
+//! @bug
+//******************************************************************************
 
 
 #ifndef DISPLAY_H_

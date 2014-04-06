@@ -62,6 +62,10 @@ void main_init(){
 	display_init();
 	#endif
 	
+	#if HAS_RADIO
+	radio_init();
+	#endif
+	
 	InitWDT();
 	
 	EventAddEvent(EVENT_INIT);

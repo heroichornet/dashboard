@@ -24,8 +24,8 @@ uint8_t display_ddram_bottom_row[28];
 
 /* Display Strings*/
 
-display_line_t display_line_home={' ',' ',' ',' ',' ',' ','A','M','Z',' ','g','r','i','m','s','e','l',' ',' ',' '};
-display_line_t display_line_error={' ',' ',' ',' ',' ',' ','E','R','R','R','O','R',' ',' ',' ',' ',' ',' ',' '};
+display_line_t display_line_home={' ',' ',' ',' ',' ','A','M','Z',' ','g','r','i','m','s','e','l',' ',' ',' ',' '};
+display_line_t display_line_error={' ',' ',' ',' ',' ',' ','E','R','R','O','R',' ',' ',' ',' ',' ',' ',' '};
 display_line_t display_line_soc={' ',' ','S','T','A','T','E',' ','O','F',' ','C','H','A','R','G','E',' ',' ',' '};
 display_line_t display_line_min_cv_max={' ',' ','M','I','N',' ','C','E','L','L','V','O','L','T','A','G','E','M','A','X'};
 display_line_t display_line_cel_temp={' ',' ','M','I','N',' ','C','E','L','L','t','E','M','P',' ',' ','M','A','X',' '};
@@ -150,20 +150,28 @@ void display_init(void){
 }
 
 void display_update(void){
+	char * dpl=display_line_blank;
+	
 	switch(selected_menu){
 		case DISPLAY_MENU_HOME:
-				display_write_display_lines(display_line_home,display_line_home);
+				display_write_display_lines(display_line_home,display_line_blank);
 			break;
 		case DISPLAY_MENU_ERROR:
-				//display_write_display_line(display_line_error);
+				display_write_display_lines(display_line_error,display_line_blank);
 			break;
 		case DISPLAY_MENU_SOC:
+				display_make_display_line_percent(dpl,'5','0');
+				display_write_display_lines(display_line_soc,dpl);
 			break;
 		case DISPLAY_MENU_MIN_AV_MAX_VOLT:
+				display_write_display_lines(display_line_min_cv_max,display_line_blank);
 			break;
 		case DISPLAY_MENU_MIN_AV_MAX_TEMP:
+				display_write_display_lines(display_line_cel_temp,display_line_blank);
 			break;
 		case DISPLAY_MENU_TORQUE_VECTORING:
+				display_make_display_line_percent_bar(dpl,1);
+				display_write_display_lines(display_line_torque_vectoring,dpl);			
 			break;
 		default:
 			break;		
@@ -174,17 +182,17 @@ void display_set_display_string(display_string_t s){
 	memcpy(s,display_string,20);
 }/* end display_set_display_string*/
 
-void display_make_display_line_percent(display_line_t dpl,char a, char b){
+void display_make_display_line_percent(char* dpl,char a, char b){
 	display_line_t display_line_percent={' ',' ',' ',' ',' ',' ',a,b,'%',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
-	dpl=display_line_percent;
+	memcpy(dpl,display_line_percent,20);
 }/* end display_make_display_line_percent */
 
-void display_make_display_line_min_av_max_volt(display_line_t dpl,char a, char b,char c,char d, char e,char f){
+void display_make_display_line_min_av_max_volt(char * dpl,char a, char b,char c,char d, char e,char f){
 	display_line_t display_line_percent={' ',' ',a,b,'V',' ',c,d,'V',' ',' ',' ',' ',' ',' ',' ',e,f,'V',' '};
-	dpl=display_line_percent;
+	memcpy(dpl,display_line_percent,20);
 }/*display_make_display_line_min_av_max_volt */
 
-void display_make_display_line_percent_bar(display_line_t dpl,uint8_t percent){
+void display_make_display_line_percent_bar(char * dpl,uint8_t percent){
 	display_line_t display_line_percent={' ',' ',' ',' ','A','B','C','D','E','F','G','H','I','J',' ',' ',' ',' ',' ',' '};
 
 	int i;
@@ -195,16 +203,16 @@ void display_make_display_line_percent_bar(display_line_t dpl,uint8_t percent){
 	for(i;i<10;i++){
 		display_line_percent[i+4]='o';
 	}
-	dpl=display_line_percent;
+	memcpy(dpl,display_line_percent,20);
 	
 }/* end display_make_display_line_percent_bar */	
 
 void display_make_display_line_min_av_max_temp(display_line_t dpl,char a, char b,char c,char d, char e,char f){
 	display_line_t display_line_percent={' ',' ',a,b,'C',' ',c,d,'C',' ',' ',' ',' ',' ',' ',' ',e,f,'C',' '};
-	dpl=display_line_percent;
+	memcpy(dpl,display_line_percent,20);
 }/* end display_make_display_line_min_av_max_temp*/
 
-void display_make_display_line_min_max_temp(display_line_t dpl, char a, char b,char c,char d, char e,char f){
+void display_make_display_line_min_max_temp(char *dpl, char a, char b,char c,char d, char e,char f){
 	display_line_t display_line_percent={' ',' ',a,b,c,'C',' ',' ',' ',' ',' ',' ',' ',' ',' ',d,e,f,'C',' '};
-	dpl=display_line_percent;
+	memcpy(dpl,display_line_percent,20);
 }/* end display_make_display_line_min_av_max_temp*/

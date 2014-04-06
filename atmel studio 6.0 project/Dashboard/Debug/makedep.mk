@@ -24,6 +24,8 @@ sources\Led.c
 
 sources\MyCommon.c
 
+sources\Radio.c
+
 sources\spi_lib.c
 
 sources\Timer.c
