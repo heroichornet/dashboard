@@ -78,8 +78,10 @@ void Dashboard(void){
 							
 			// display Update
 			selected_menu++;
-			selected_menu%=10;
-			display_update();
+			selected_menu%=11;
+			
+			display_update(4,100,41,200,0,0);	
+			//display_update(9,selected_menu,0,0,0,0);
 			
 		return;
 		break;

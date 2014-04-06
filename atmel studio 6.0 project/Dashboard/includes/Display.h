@@ -51,7 +51,7 @@ display_string_t display_string;
 #define DISPLAY_MENU_ACCLERATION_MODE (10)
 
 
-void display_update(void);
+void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t value3, uint8_t value4, uint8_t value5);
 
 void display_show(display_string_t s);
 
@@ -62,8 +62,6 @@ void display_init(void);
 void display_deinit(void);
 
 void display_brigthness(uint8_t b);
-
-void display_update(void);
 
 void display_up(void);
 

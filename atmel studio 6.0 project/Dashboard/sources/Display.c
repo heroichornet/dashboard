@@ -27,8 +27,8 @@ uint8_t display_ddram_bottom_row[28];
 display_line_t display_line_home={' ',' ',' ',' ',' ','A','M','Z',' ','g','r','i','m','s','e','l',' ',' ',' ',' '};
 display_line_t display_line_error={' ',' ',' ',' ',' ',' ','E','R','R','O','R',' ',' ',' ',' ',' ',' ',' '};
 display_line_t display_line_soc={' ',' ','S','T','A','T','E',' ','O','F',' ','C','H','A','R','G','E',' ',' ',' '};
-display_line_t display_line_min_cv_max={' ',' ','M','I','N',' ','C','E','L','L','V','O','L','T','A','G','E','M','A','X'};
-display_line_t display_line_cel_temp={' ',' ','M','I','N',' ','C','E','L','L','t','E','M','P',' ',' ','M','A','X',' '};
+display_line_t display_line_min_cv_max={'M','I','N',' ',' ','C','E','L','L','V','O','L','T','A','G','E',' ','M','A','X'};
+display_line_t display_line_cel_temp={' ','M','I','N',' ',' ','C','E','L','L','t','E','M','P',' ',' ','M','A','X',' '};
 display_line_t display_line_motor_power_front={' ',' ','M','O','T','O','R',' ','P','O','W','E','R',' ','F','R','O','N','T',' '};
 display_line_t display_line_motor_power_rear={ ' ',' ','M','O','T','O','R',' ','P','O','W','E','R',' ','R','E','A','R',' ',' '};
 display_line_t display_line_torque_vectoring={' ',' ','T','O','R','Q','U','E',' ',' ','V','E','C','T','O','R','I','N','G',' '};
@@ -149,10 +149,10 @@ void display_init(void){
 	
 }
 
-void display_update(void){
+void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t value3, uint8_t value4, uint8_t value5){
 	char * dpl=display_line_blank;
 	
-	switch(selected_menu){
+	switch(request_id){
 		case DISPLAY_MENU_HOME:
 				display_write_display_lines(display_line_home,display_line_blank);
 			break;
@@ -164,13 +164,14 @@ void display_update(void){
 				display_write_display_lines(display_line_soc,dpl);
 			break;
 		case DISPLAY_MENU_MIN_AV_MAX_VOLT:
+				display_make_display_line_min_av_max_volt(dpl,value1,value2,value3);
 				display_write_display_lines(display_line_min_cv_max,display_line_blank);
 			break;
 		case DISPLAY_MENU_MIN_AV_MAX_TEMP:
 				display_write_display_lines(display_line_cel_temp,display_line_blank);
 			break;
 		case DISPLAY_MENU_TORQUE_VECTORING:
-				display_make_display_line_percent_bar(dpl,1);
+				display_make_display_line_percent_bar(dpl,value1);
 				display_write_display_lines(display_line_torque_vectoring,dpl);			
 			break;
 		default:
@@ -187,9 +188,15 @@ void display_make_display_line_percent(char* dpl,char a, char b){
 	memcpy(dpl,display_line_percent,20);
 }/* end display_make_display_line_percent */
 
-void display_make_display_line_min_av_max_volt(char * dpl,char a, char b,char c,char d, char e,char f){
-	display_line_t display_line_percent={' ',' ',a,b,'V',' ',c,d,'V',' ',' ',' ',' ',' ',' ',' ',e,f,'V',' '};
-	memcpy(dpl,display_line_percent,20);
+void display_make_display_line_min_av_max_volt(char* dpl,uint8_t min_i,uint8_t av_i,uint8_t max_i){
+	
+	#define GET_DEC_POS1(x) (char)(0b00110000+(x/100+2))
+	#define GET_DEC_POS2(x) (char)(0b00110000+((x/10)%10))
+	#define GET_DEC_POS3(x) (char)(0b00110000+((x)%10))
+
+	
+	display_line_t dpl_volt={GET_DEC_POS1(min_i),'.',GET_DEC_POS2(min_i),GET_DEC_POS3(min_i),'V',' ',GET_DEC_POS1(av_i),'.',GET_DEC_POS2(av_i),GET_DEC_POS3(av_i),'V',' ',' ',' ',' ',GET_DEC_POS1(max_i),'.',GET_DEC_POS2(max_i),GET_DEC_POS3(max_i),'V',};
+	memcpy(dpl,dpl_volt,20);
 }/*display_make_display_line_min_av_max_volt */
 
 void display_make_display_line_percent_bar(char * dpl,uint8_t percent){
@@ -197,12 +204,18 @@ void display_make_display_line_percent_bar(char * dpl,uint8_t percent){
 
 	int i;
 	for(i=0;i<percent;i++){
-		display_line_percent[i+4]=(char)0b10000110;
+		display_line_percent[i+4]=(char)0b00010110;
 	}
 	
 	for(i;i<10;i++){
-		display_line_percent[i+4]='o';
+		display_line_percent[i+4]=0b00101010;
 	}
+	i++;
+	display_line_percent[i+4]=(char)(0b00110000+percent);
+	i++;
+	display_line_percent[i+4]='0';
+	i++;
+	display_line_percent[i+4]='%';
 	memcpy(dpl,display_line_percent,20);
 	
 }/* end display_make_display_line_percent_bar */	
