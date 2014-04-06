@@ -28,7 +28,7 @@ display_line_t display_line_home={' ',' ',' ',' ',' ','A','M','Z',' ','g','r','i
 display_line_t display_line_error={' ',' ',' ',' ',' ',' ','E','R','R','O','R',' ',' ',' ',' ',' ',' ',' '};
 display_line_t display_line_soc={' ',' ','S','T','A','T','E',' ','O','F',' ','C','H','A','R','G','E',' ',' ',' '};
 display_line_t display_line_min_cv_max={'M','I','N',' ',' ','C','E','L','L','V','O','L','T','A','G','E',' ','M','A','X'};
-display_line_t display_line_cel_temp={' ','M','I','N',' ',' ','C','E','L','L','t','E','M','P',' ',' ','M','A','X',' '};
+display_line_t display_line_cel_temp={' ','M','I','N',' ',' ','C','E','L','L','T','E','M','P',' ',' ','M','A','X',' '};
 display_line_t display_line_motor_power_front={' ',' ','M','O','T','O','R',' ','P','O','W','E','R',' ','F','R','O','N','T',' '};
 display_line_t display_line_motor_power_rear={ ' ',' ','M','O','T','O','R',' ','P','O','W','E','R',' ','R','E','A','R',' ',' '};
 display_line_t display_line_torque_vectoring={' ',' ','T','O','R','Q','U','E',' ',' ','V','E','C','T','O','R','I','N','G',' '};
@@ -85,6 +85,9 @@ uint8_t address_counter;
 
 display_string_t test={'0','1','2','3','4','5','6','7','8','9',
 					 'A','B','C','D','E','F','G','H','I','J'};
+
+
+
 
 void display_write_data(uint8_t data){
 	PORTB&=~(1<<4);
@@ -165,10 +168,11 @@ void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t va
 			break;
 		case DISPLAY_MENU_MIN_AV_MAX_VOLT:
 				display_make_display_line_min_av_max_volt(dpl,value1,value2,value3);
-				display_write_display_lines(display_line_min_cv_max,display_line_blank);
+				display_write_display_lines(display_line_min_cv_max,dpl);
 			break;
 		case DISPLAY_MENU_MIN_AV_MAX_TEMP:
-				display_write_display_lines(display_line_cel_temp,display_line_blank);
+				display_make_display_line_min_av_max_temp(dpl,value1,value2,value3);
+				display_write_display_lines(display_line_cel_temp,dpl);
 			break;
 		case DISPLAY_MENU_TORQUE_VECTORING:
 				display_make_display_line_percent_bar(dpl,value1);
@@ -189,13 +193,11 @@ void display_make_display_line_percent(char* dpl,char a, char b){
 }/* end display_make_display_line_percent */
 
 void display_make_display_line_min_av_max_volt(char* dpl,uint8_t min_i,uint8_t av_i,uint8_t max_i){
-	
 	#define GET_DEC_POS1(x) (char)(0b00110000+(x/100+2))
 	#define GET_DEC_POS2(x) (char)(0b00110000+((x/10)%10))
 	#define GET_DEC_POS3(x) (char)(0b00110000+((x)%10))
-
 	
-	display_line_t dpl_volt={GET_DEC_POS1(min_i),'.',GET_DEC_POS2(min_i),GET_DEC_POS3(min_i),'V',' ',GET_DEC_POS1(av_i),'.',GET_DEC_POS2(av_i),GET_DEC_POS3(av_i),'V',' ',' ',' ',' ',GET_DEC_POS1(max_i),'.',GET_DEC_POS2(max_i),GET_DEC_POS3(max_i),'V',};
+	display_line_t dpl_volt={GET_DEC_POS1(min_i),'.',GET_DEC_POS2(min_i),GET_DEC_POS3(min_i),'V',' ',' ',GET_DEC_POS1(av_i),'.',GET_DEC_POS2(av_i),GET_DEC_POS3(av_i),'V',' ',' ',' ',GET_DEC_POS1(max_i),'.',GET_DEC_POS2(max_i),GET_DEC_POS3(max_i),'V'};
 	memcpy(dpl,dpl_volt,20);
 }/*display_make_display_line_min_av_max_volt */
 
@@ -220,9 +222,14 @@ void display_make_display_line_percent_bar(char * dpl,uint8_t percent){
 	
 }/* end display_make_display_line_percent_bar */	
 
-void display_make_display_line_min_av_max_temp(display_line_t dpl,char a, char b,char c,char d, char e,char f){
-	display_line_t display_line_percent={' ',' ',a,b,'C',' ',c,d,'C',' ',' ',' ',' ',' ',' ',' ',e,f,'C',' '};
-	memcpy(dpl,display_line_percent,20);
+void display_make_display_line_min_av_max_temp(char* dpl,uint8_t min_i,uint8_t av_i,uint8_t max_i){
+	
+	#define GET_DEC_POS1(x) (char)(0b00110000+(x/100))
+	#define GET_DEC_POS2(x) (char)(0b00110000+((x/10)%10))
+	#define GET_DEC_POS3(x) (char)(0b00110000+((x)%10))
+	
+	display_line_t dpl_volt={GET_DEC_POS1(min_i),GET_DEC_POS2(min_i),GET_DEC_POS3(min_i),'°','C',' ',' ',GET_DEC_POS1(av_i),GET_DEC_POS2(av_i),GET_DEC_POS3(av_i),'°','C',' ',' ',' ',GET_DEC_POS1(max_i),GET_DEC_POS2(max_i),GET_DEC_POS3(max_i),'°','C'};
+	memcpy(dpl,dpl_volt,20);
 }/* end display_make_display_line_min_av_max_temp*/
 
 void display_make_display_line_min_max_temp(char *dpl, char a, char b,char c,char d, char e,char f){
