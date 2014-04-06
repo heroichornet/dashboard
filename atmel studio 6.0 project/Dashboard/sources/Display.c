@@ -304,12 +304,31 @@ void display_make_display_line_lv_voltage(dpl,value1){
 
 void display_make_display_line_motor_temp(dpl,value1,value2){
 	
-	#define GET_DEC_POS1_LV_VOLT(x) (char)(0b00110000+(x/10))
-	#define GET_DEC_POS2_LV_VOLT(x) (char)(0b00110000+((x)%10))		
-	#define GET_DEC_POS3_VOLT(x) (char)(0b00110000+((x)%100))
+	#define GET_DEC_POS1_MOTOR_TEMP(x) (char)(0b00110000+(x/100))
+	#define GET_DEC_POS2_MOTOR_TEMP(x) (char)(0b00110000+((x/10)%10))		
+	#define GET_DEC_POS3_MOTOR_TEMP(x) (char)(0b00110000+((x)%10))
+	
+	char pos_1a=GET_DEC_POS1_MOTOR_TEMP(value1);
+	char pos_2a=GET_DEC_POS2_MOTOR_TEMP(value1);
+	char pos_1b=GET_DEC_POS1_MOTOR_TEMP(value2);
+	char pos_2b=GET_DEC_POS2_MOTOR_TEMP(value2);	
+	
+	if(pos_1a=='0'){
+		pos_1a=' ';
+		if(pos_2a=='0'){
+			pos_2a=' ';			
+		}
+	}	
+	
+	if(pos_1b=='0'){
+			pos_1b=' ';
+			if(pos_2b=='0'){
+				pos_2b=' ';
+			}
+	}	
+		
 			
-			
-	display_line_t dpl_volt={' ',' ',' ',' ',' ',' ',' ',GET_DEC_POS1_TEMP(value1),GET_DEC_POS2_TEMP(value1),'.',GET_DEC_POS3_TEMP(value1),'V',' ',' ',' ',' ',' ',' ',' ',' '};
+	display_line_t dpl_volt={' ',pos_1a,pos_2a,GET_DEC_POS1_MOTOR_TEMP(value1),'°','C',' ',' ',' ',' ',' ',' ',' ',' ',pos_1b,pos_1b,GET_DEC_POS3_MOTOR_TEMP(value2),'°','C',' '};
 	memcpy(dpl,dpl_volt,20);
 	
 } /*end display_make_display_line_motor_temp*/

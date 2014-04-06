@@ -81,7 +81,7 @@ void Dashboard(void){
 			selected_menu%=110;
 			
 			//display_update(DISPLAY_MENU_MOTOR_POWER_FRONT,30,30,200,0,0);	
-			display_update(7,selected_menu,0,0,0,0);
+			display_update(5,selected_menu,70,90,0,0);
 			
 		return;
 		break;
