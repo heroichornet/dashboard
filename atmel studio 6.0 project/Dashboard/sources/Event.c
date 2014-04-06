@@ -77,11 +77,11 @@ void Dashboard(void){
 			led_state_set(led_state);
 							
 			// display Update
-			selected_menu++;
-			selected_menu%=100;
+			selected_menu+=10;
+			selected_menu%=110;
 			
-			display_update(DISPLAY_MENU_SOC,selected_menu,41,200,0,0);	
-			//display_update(9,selected_menu,0,0,0,0);
+			//display_update(DISPLAY_MENU_MOTOR_POWER_FRONT,30,30,200,0,0);	
+			display_update(7,selected_menu,0,0,0,0);
 			
 		return;
 		break;
