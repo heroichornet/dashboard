@@ -10,9 +10,11 @@
 
 #include <stdint.h>
 #include <avr/io.h>
+#include <string.h>
+
 #include "../includes/Display.h"
 #include "../includes/spi_lib.h"
-#include <string.h>
+#include "../includes/ErrorCodes.h"
 
 /* Display Data Ram (DDRAM)
  * 0x00 till 0x27
@@ -25,7 +27,7 @@ uint8_t display_ddram_bottom_row[28];
 /* Display Strings*/
 
 display_line_t display_line_home={' ',' ',' ',' ',' ','A','M','Z',' ','g','r','i','m','s','e','l',' ',' ',' ',' '};
-display_line_t display_line_error={' ',' ',' ',' ',' ',' ','E','R','R','O','R',' ',' ',' ',' ',' ',' ',' '};
+display_line_t display_line_error={' ',' ',' ',' ',' ',' ',' ','E','R','R','O','R',' ',' ',' ',' ',' ',' '};
 display_line_t display_line_soc={' ',' ','S','T','A','T','E',' ','O','F',' ','C','H','A','R','G','E',' ',' ',' '};
 display_line_t display_line_min_cv_max={'M','I','N',' ',' ','C','E','L','L','V','O','L','T','A','G','E',' ','M','A','X'};
 display_line_t display_line_cel_temp={' ','M','I','N',' ',' ','C','E','L','L','T','E','M','P',' ',' ','M','A','X',' '};
@@ -164,7 +166,8 @@ void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t va
 				display_write_display_lines(display_line_home,display_line_blank);
 			break;
 		case DISPLAY_MENU_ERROR:
-				display_write_display_lines(display_line_error,display_line_blank);
+				display_make_display_line_error(dpl,value1);
+				display_write_display_lines(display_line_error,dpl);
 			break;
 		case DISPLAY_MENU_SOC:
 				display_make_display_line_percent(dpl,value1);
@@ -285,13 +288,9 @@ void display_make_display_line_min_av_max_temp(char* dpl,uint8_t min_i,uint8_t a
 	memcpy(dpl,dpl_volt,20);
 }/* end display_make_display_line_min_av_max_temp*/
 
-void display_make_display_line_min_max_temp(char *dpl, char a, char b,char c,char d, char e,char f){
-	display_line_t display_line_percent={' ',' ',a,b,c,'C',' ',' ',' ',' ',' ',' ',' ',' ',' ',d,e,f,'C',' '};
-	memcpy(dpl,display_line_percent,20);
-}/* end display_make_display_line_min_av_max_temp*/
 
 
-void display_make_display_line_lv_voltage(dpl,value1){
+void display_make_display_line_lv_voltage(char *dpl,uint8_t value1){
 	#define GET_DEC_POS1_LV_VOLT(x) (char)(0b00110000+(x/10))
 	#define GET_DEC_POS2_LV_VOLT(x) (char)(0b00110000+((x)%10))
 	#define GET_DEC_POS3_VOLT(x) (char)(0b00110000+((x)%100))
@@ -332,3 +331,45 @@ void display_make_display_line_motor_temp(dpl,value1,value2){
 	memcpy(dpl,dpl_volt,20);
 	
 } /*end display_make_display_line_motor_temp*/
+
+void display_make_display_line_error(char * dpl,uint8_t error_code){
+	
+	#define GET_DEC_POS3_ERROR(x) (char)(0b00110000+(x/100))
+	#define GET_DEC_POS2_ERROR(x) (char)(0b00110000+((x/10)%10))
+	#define GET_DEC_POS1_ERROR(x) (char)(0b00110000+((x)%10))
+		
+	switch(error_code){
+		case ERRROR_NONE:
+			memcpy(dpl,display_line_error_none,20);
+			break;
+		case ERROR_SC_DOWN:
+			memcpy(dpl,display_line_error_sc_down,20);
+			break;
+		case ERROR_PRE_MASTER:
+			memcpy(dpl,display_line_error_pre_master,20);
+			break;
+		case ERROR_PRE_BOTS:
+			memcpy(dpl,display_line_error_unknown_code,20);
+			break;
+		case ERROR_HVDI:
+			memcpy(dpl,display_line_error_hvdi,20);
+			break;
+		case ERROR_IMD:
+			memcpy(dpl,display_line_error_imd,20);
+			break;
+		case ERROR_IMDF:
+			memcpy(dpl,display_line_error_imdf,20);
+			break;
+		case ERRROR_PBD:
+			memcpy(dpl,display_line_error_bpd,20);
+			break;
+		default:
+			memcpy(dpl,display_line_error_unknown_code,20);
+		break;
+	}
+	
+	dpl[1]=GET_DEC_POS3_ERROR(error_code);
+	dpl[2]=GET_DEC_POS2_ERROR(error_code);
+	dpl[3]=GET_DEC_POS1_ERROR(error_code);
+	
+} /*end display_make_display_error*/
