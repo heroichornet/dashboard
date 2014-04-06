@@ -163,7 +163,7 @@ void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t va
 				display_write_display_lines(display_line_error,display_line_blank);
 			break;
 		case DISPLAY_MENU_SOC:
-				display_make_display_line_percent(dpl,'5','0');
+				display_make_display_line_percent(dpl,value1);
 				display_write_display_lines(display_line_soc,dpl);
 			break;
 		case DISPLAY_MENU_MIN_AV_MAX_VOLT:
@@ -174,9 +174,21 @@ void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t va
 				display_make_display_line_min_av_max_temp(dpl,value1,value2,value3);
 				display_write_display_lines(display_line_cel_temp,dpl);
 			break;
+		case DISPLAY_MENU_LV_VOLTAGE:
+			break;
+		case DISPLAY_MENU_MOTOR_TEMP_REAR:
+			break;
+		case DISPLAY_MENU_MOTOR_TEMP_FRONT:
+			break;
+		case DISPLAY_MENU_MOTOR_POWER_REAR:
+			break;	
+		case DISPLAY_MENU_MOTOR_POWER_FRONT:
+			break;
+		case DISPLAY_MENU_TRACTION_CONTROL:
+			break;				
 		case DISPLAY_MENU_TORQUE_VECTORING:
 				display_make_display_line_percent_bar(dpl,value1);
-				display_write_display_lines(display_line_torque_vectoring,dpl);			
+				display_write_display_lines(display_line_torque_vectoring,dpl);		
 			break;
 		default:
 			break;		
@@ -187,17 +199,31 @@ void display_set_display_string(display_string_t s){
 	memcpy(s,display_string,20);
 }/* end display_set_display_string*/
 
-void display_make_display_line_percent(char* dpl,char a, char b){
-	display_line_t display_line_percent={' ',' ',' ',' ',' ',' ',a,b,'%',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
+void display_make_display_line_percent(char* dpl,uint8_t percent){
+	#define GET_DEC_POS1_PERCENT(x) (char)(0b00110000+(x/100))
+	#define GET_DEC_POS2_PERCENT(x) (char)(0b00110000+((x/10)%10))
+	#define GET_DEC_POS3_PERCENT(x) (char)(0b00110000+((x)%10))
+	
+	char pos_1=GET_DEC_POS1_PERCENT(percent);
+	if(pos_1=='0'){
+		pos_1=' ';
+	}
+	
+	char pos_2=GET_DEC_POS2_PERCENT(percent);
+	if(pos_2=='0'){
+		pos_2=' ';
+	}
+	
+	display_line_t display_line_percent={' ',' ',' ',' ',' ',' ',' ',' ',pos_1,pos_2,GET_DEC_POS3_PERCENT(percent),'%',' ',' ',' ',' ',' ',' ',' ',' '};
 	memcpy(dpl,display_line_percent,20);
 }/* end display_make_display_line_percent */
 
 void display_make_display_line_min_av_max_volt(char* dpl,uint8_t min_i,uint8_t av_i,uint8_t max_i){
-	#define GET_DEC_POS1(x) (char)(0b00110000+(x/100+2))
-	#define GET_DEC_POS2(x) (char)(0b00110000+((x/10)%10))
-	#define GET_DEC_POS3(x) (char)(0b00110000+((x)%10))
+	#define GET_DEC_POS1_VOLT(x) (char)(0b00110000+(x/100+2))
+	#define GET_DEC_POS2_VOLT(x) (char)(0b00110000+((x/10)%10))
+	#define GET_DEC_POS3_VOLT(x) (char)(0b00110000+((x)%10))
 	
-	display_line_t dpl_volt={GET_DEC_POS1(min_i),'.',GET_DEC_POS2(min_i),GET_DEC_POS3(min_i),'V',' ',' ',GET_DEC_POS1(av_i),'.',GET_DEC_POS2(av_i),GET_DEC_POS3(av_i),'V',' ',' ',' ',GET_DEC_POS1(max_i),'.',GET_DEC_POS2(max_i),GET_DEC_POS3(max_i),'V'};
+	display_line_t dpl_volt={GET_DEC_POS1_VOLT(min_i),'.',GET_DEC_POS2_VOLT(min_i),GET_DEC_POS3_VOLT(min_i),'V',' ',' ',GET_DEC_POS1_VOLT(av_i),'.',GET_DEC_POS2_VOLT(av_i),GET_DEC_POS3_VOLT(av_i),'V',' ',' ',' ',GET_DEC_POS1_VOLT(max_i),'.',GET_DEC_POS2_VOLT(max_i),GET_DEC_POS3_VOLT(max_i),'V'};
 	memcpy(dpl,dpl_volt,20);
 }/*display_make_display_line_min_av_max_volt */
 
@@ -224,11 +250,12 @@ void display_make_display_line_percent_bar(char * dpl,uint8_t percent){
 
 void display_make_display_line_min_av_max_temp(char* dpl,uint8_t min_i,uint8_t av_i,uint8_t max_i){
 	
-	#define GET_DEC_POS1(x) (char)(0b00110000+(x/100))
-	#define GET_DEC_POS2(x) (char)(0b00110000+((x/10)%10))
-	#define GET_DEC_POS3(x) (char)(0b00110000+((x)%10))
+	#define GET_DEC_POS1_TEMP(x) (char)(0b00110000+(x/100))
+	#define GET_DEC_POS2_TEMP(x) (char)(0b00110000+((x/10)%10))
+	#define GET_DEC_POS3_TEMP(x) (char)(0b00110000+((x)%10))
 	
-	display_line_t dpl_volt={GET_DEC_POS1(min_i),GET_DEC_POS2(min_i),GET_DEC_POS3(min_i),'°','C',' ',' ',GET_DEC_POS1(av_i),GET_DEC_POS2(av_i),GET_DEC_POS3(av_i),'°','C',' ',' ',' ',GET_DEC_POS1(max_i),GET_DEC_POS2(max_i),GET_DEC_POS3(max_i),'°','C'};
+	
+	display_line_t dpl_volt={GET_DEC_POS1_TEMP(min_i),GET_DEC_POS2_TEMP(min_i),GET_DEC_POS3_TEMP(min_i),'°','C',' ',' ',GET_DEC_POS1_TEMP(av_i),GET_DEC_POS2_TEMP(av_i),GET_DEC_POS3_TEMP(av_i),'°','C',' ',' ',' ',GET_DEC_POS1_TEMP(max_i),GET_DEC_POS2_TEMP(max_i),GET_DEC_POS3_TEMP(max_i),'°','C'};
 	memcpy(dpl,dpl_volt,20);
 }/* end display_make_display_line_min_av_max_temp*/
 

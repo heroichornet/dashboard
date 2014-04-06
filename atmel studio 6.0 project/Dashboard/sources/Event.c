@@ -78,9 +78,9 @@ void Dashboard(void){
 							
 			// display Update
 			selected_menu++;
-			selected_menu%=11;
+			selected_menu%=100;
 			
-			display_update(5,100,41,200,0,0);	
+			display_update(DISPLAY_MENU_SOC,selected_menu,41,200,0,0);	
 			//display_update(9,selected_menu,0,0,0,0);
 			
 		return;
