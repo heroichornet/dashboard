@@ -83,15 +83,18 @@ void Dashboard(void){
 			//Led Update 
 			led_state_set(led_state);
 							
+			//Display Update
+			display_update(DISPLAY_MENU_BUTTON_TEST,(uint8_t) 0x0FF&button_pressed_current, (uint8_t)button_pressed_current>>8,0,0,0);
 
 			
 		return;
 		break;
-		case EVENT_5KHZ:
+		case EVENT_50HZ:
 			/* Multiplex */
 			#if HAS_BUTTONS
 				button_multiplex_cycle();
 			#endif	
+		return;
 		break;
 		case EVENT_CANERROR:
 			/* Catch Can Errors*/

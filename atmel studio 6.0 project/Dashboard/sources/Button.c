@@ -20,14 +20,14 @@ void button_init( void )
 	MCUCR&=~(0x01)<<PUD;
 	
 	
-	/* COL 1 OUTPUT HIGH */
-	DDRE|=(0x01)<<COLOUMN_1_PIN;
+	/* COL 1 INPUT HIGH */
+	DDRE|=~(0x01)<<COLOUMN_1_PIN;
 	PORTE|=(0x01)<<COLOUMN_1_PIN;
-	/* COL 2 OUTPUT HIGH */
-	DDRE|=(0x01)<<COLOUMN_2_PIN;
+	/* COL 2 INPUT HIGH */
+	DDRE|=~(0x01)<<COLOUMN_2_PIN;
 	PORTE|=(0x01)<<COLOUMN_2_PIN;
-	/* COL 3 OUTPUT HIGH */
-	DDRB|=(0x01)<<COLOUMN_3_PIN;
+	/* COL 3 INPUT HIGH */
+	DDRB|=~(0x01)<<COLOUMN_3_PIN;
 	PORTB|=(0x01)<<COLOUMN_3_PIN;
 	
 	
@@ -48,40 +48,44 @@ void button_init( void )
 
 void button_multiplex_cycle(void){
 		
-	/* COL 1 LOW */
-	PORTE&=~(0x01)<<COLOUMN_1_PIN;
-	/* COL 2 HIGH */
-	/* already HIGH */
-	/* COL 3 HIGH */
-	/* already HIGH */
+		
+	col1_input_high();
+	col2_input_high();
+	col3_input_high();
 	
+	/* Cycle 1 */
+
+	col2_input_high();
+	col3_input_high();
+	col1_low();
+	
+		
 	button_read_col(0);
+
+	/* Cycle 2 */
+
 	
-	/* COL 1 HIGH */
-	PORTE|=(0x01)<<COLOUMN_1_PIN;
-	/* COL 2 LOW */
-	PORTE&=~(0x01)<<COLOUMN_2_PIN;
-	/* COL 3 HIGH */
-	/* already HIGH */
+	col1_input_high();
+	col3_input_high();
+	col2_low();
 	
 	button_read_col(1);
-		
-	/* COL 1 HIGH */
-	/* already high */
-	/* COL 2 HIGH */
-	PORTE|=(0x01)<<COLOUMN_2_PIN;
-	/* COL 3 LOW  */
-	PORTB&=~(0x01)<<COLOUMN_3_PIN;
-
+	
+	
+	/* Cycle 3 */
+	
+	col1_input_high();
+	col2_input_high();
+	col3_low();	
+	
 	button_read_col(2);
 	
-	/* set COL 3 HIGH, so that all are high again*/
-	PORTB|=(0x01)<<COLOUMN_3_PIN;
+			
+	col1_input_high();
+	col2_input_high();
+	col3_input_high();
+			
 	
-	
-	/* debounce: check if button states are the same since last cycle*/
-	
-	button_pressed_current&=button_pressed_previous;
 	
 } /* end button_multiplex_cycle */
 
@@ -89,20 +93,67 @@ void button_multiplex_cycle(void){
 void button_read_col(uint8_t col){
 		
 		/* ROW 1 READ */
-		button_pressed_current|=(0x01)<(0+col*BUTTON_ROW_NUMBER);
+		uint8_t r1,r2,r3,r4;
+		
+		r1=(PINE>>4)&0x01;
+		button_pressed_current|=(r1)<<(0+col*BUTTON_ROW_NUMBER);
 	
 		/* ROW 2 READ */
-		button_pressed_current|=(0x01)<<(1+col*BUTTON_ROW_NUMBER);
+		
+		r2=(PINE>>5)&0x01;		
+		button_pressed_current|=(r2)<<(1+col*BUTTON_ROW_NUMBER);
 		
 		/* ROW 3 READ */
-		button_pressed_current|=(0x01)<<(2+col*BUTTON_ROW_NUMBER);
+				
+		r3=(PINC>>6)&0x01;
+		button_pressed_current|=(r3)<<(2+col*BUTTON_ROW_NUMBER);
 		
 		/* ROW 4 READ */
-		button_pressed_current|=(0x01)<<(3+col*BUTTON_ROW_NUMBER);
+		r4=(PINC3>>3)&0x01;
+		button_pressed_current|=(r4)<<(3+col*BUTTON_ROW_NUMBER);
 	
 }/*end button_read_rows */
 
 
 uint8_t button_get_button_state(uint8_t button_id){
 	return (0x01)&(button_pressed_current>>(button_id));
+}
+
+
+void col1_input_high(void){
+	/* COL 1 INPUT HIGH */
+	DDRE|=~(0x01)<<COLOUMN_1_PIN;
+	PORTE|=(0x01)<<COLOUMN_1_PIN;
+}
+
+void col2_input_high(void){
+	/* COL 2 INPUT HIGH */
+	DDRE|=~(0x01)<<COLOUMN_2_PIN;
+	PORTE|=(0x01)<<COLOUMN_2_PIN;
+}
+
+void col3_input_high(void){
+	/* COL 3 HIGH */
+	DDRB|=~(0x01)<<COLOUMN_3_PIN;
+	PORTB|=(0x01)<<COLOUMN_3_PIN;
+	
+}	
+
+void col1_low(void){
+	/* COL 1 LOW */
+	PORTE&=~(0x01)<<COLOUMN_1_PIN;
+	DDRE&=(0x01)<<COLOUMN_1_PIN;
+}
+
+void col2_low(void){
+	/* COL 2 LOW */
+	PORTE&=~(0x01)<<COLOUMN_2_PIN;
+	DDRE&=(0x01)<<COLOUMN_2_PIN;
+}
+
+void col3_low(void){
+	/* COL 3 LOW  */
+	PORTB&=~(0x01)<<COLOUMN_3_PIN;
+	DDRE&=(0x01)<<COLOUMN_2_PIN;
+
 }

@@ -43,6 +43,7 @@ display_line_t display_line_motor_temp_rear={ ' ',' ','M','O','T','O','R',' ','T
 display_line_t display_line_traction_control={' ',' ','T','R','A','C','T','I','O','N',' ','C','O','N','T','R','O','L',' ',' '};
 display_line_t display_line_torque_vectoring={' ',' ','T','O','R','Q','U','E',' ',' ','V','E','C','T','O','R','I','N','G',' '};
 display_line_t display_line_accleration_mode={ ' ',' ','A','C','C','E','L','E','R','A','T','I','O','N',' ','M','O','D','E',' '};
+display_line_t display_line_buttons_pressed={ ' ',' ','B','U','T','T','O','N',' ','P','R','E','S','S','E','D',' ',' ',' ',' '};
 display_line_t display_line_blank={' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
 	
 
@@ -214,6 +215,10 @@ void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t va
 		case DISPLAY_MENU_TORQUE_VECTORING:
 				display_make_display_line_percent_bar(dpl,value1);
 				display_write_display_lines(display_line_torque_vectoring,dpl);		
+				break;
+		case DISPLAY_MENU_BUTTON_TEST:
+				display_make_display_line_button_test(dpl,value1);
+				display_write_display_lines(display_line_buttons_pressed,dpl);
 			break;
 		default:
 			break;		
@@ -381,3 +386,17 @@ void display_make_display_line_error(char * dpl,uint8_t error_code){
 	dpl[3]=GET_DEC_POS1_ERROR(error_code);
 	
 } /*end display_make_display_error*/
+
+void display_make_display_line_button_test(char* dpl,uint8_t button_low,uint8_t buttons_high){
+	
+	uint16_t buttons=(button_low)+(buttons_high<<8)&0xFF00;
+	
+	#define GET_HEX_POS4_BUTTON(x) (char)(0b00110000+(x/0x1000))
+	#define GET_HEX_POS3_BUTTON(x) (char)(0b00110000+((x/0x0100)%0x100))
+	#define GET_HEX_POS2_BUTTON(x) (char)(0b00110000+((x/0x0010)%0x10))
+	#define GET_HEX_POS1_BUTTON(x) (char)(0b00110000+(x%0x0001))
+	
+	display_line_t dpl_buttons={' ',' ','0','x',GET_HEX_POS4_BUTTON(buttons),GET_HEX_POS3_BUTTON(buttons),GET_HEX_POS2_BUTTON(buttons),GET_HEX_POS1_BUTTON(buttons),' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
+	memcpy(dpl,dpl_buttons,20);
+	
+}	

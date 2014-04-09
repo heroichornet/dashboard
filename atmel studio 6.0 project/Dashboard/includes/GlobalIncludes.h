@@ -54,10 +54,10 @@
 #define ADC_NUM_AVGS	(1)
 
 // Timer Defines
-#define TMR1_PRESCALER		((0<<CS32) | (0<<CS31) | (1<<CS30)) //1 Tick = PRSC/OSC_CLCK= 1 / 12MHz = 83.3 ns
-#define OCR1A_PERIOD_CNT	(0x960) //  200us/5kHz		
-#define OCR1B_PERIOD_CNT	(0x2EE0) //  1us/1kHz
-#define OCR1C_PERIOD_CNT	(0x5DC0) // 2us/500Hz
+#define TMR1_PRESCALER		((0<<CS32) | (1<<CS31) | (0<<CS30)) //1 Tick = PRSC/OSC_CLCK= 8 / 12MHz = 666.67 ns
+#define OCR1A_PERIOD_CNT	(0x7530) // 20ms/50Hz		
+#define OCR1B_PERIOD_CNT	(0xEA60) // 40ms/25Hz
+#define OCR1C_PERIOD_CNT	(0x3A98) // 10ms/100Hz
 #define TMR3_PRESCALER		((0<<CS32) | (1<<CS31) | (1<<CS30)) //1 Tick = PRSC/OSC_CLCK= 64 / 12 MHz = 5.33 us
 #define OCR3A_PERIOD_CNT	(0x4970) //  0.1ms/10Hz		
 #define OCR3B_PERIOD_CNT	(0x92E0) //  200ms/5Hz
@@ -86,7 +86,7 @@
 		
 #define HAS_BUZZER  (1)
 #define HAS_LEDS    (1)
-#define HAS_BUTTONS (0)
+#define HAS_BUTTONS (1)
 #define HAS_DISPLAY (1)
 #define HAS_RADIO	(0)
 		
@@ -94,9 +94,9 @@
 
 #define HAS_CAN_RX	(1)
 #define HAS_CAN_TX	(1)
-#define HAS_5KHZ	(1)
-#define HAS_1KHZ	(0)
-#define HAS_500HZ	(0)
+#define HAS_50HZ	(1)
+#define HAS_25HZ	(0)
+#define HAS_200HZ	(0)
 #define HAS_10HZ	(1)
 #define HAS_5HZ		(0)
 #define HAS_4HZ		(0)

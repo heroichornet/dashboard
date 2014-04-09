@@ -42,19 +42,19 @@ ISR(TIMER0_OVF_vect){
 
 ISR(TIMER1_COMPA_vect){
 	OCR1A+=OCR1A_PERIOD_CNT;
-	EventAddEvent(EVENT_5KHZ);
+	EventAddEvent(EVENT_50HZ);
 	return;
 }
 
 ISR(TIMER1_COMPB_vect){
 	OCR1B+=OCR1B_PERIOD_CNT;
-	EventAddEvent(EVENT_1KHZ);
+	EventAddEvent(EVENT_25HZ);
 	return;
 }
 
 ISR(TIMER1_COMPC_vect){
 	OCR1C+=OCR1C_PERIOD_CNT;
-	EventAddEvent(EVENT_500HZ);
+	EventAddEvent(EVENT_200HZ);
 	return;
 }
 
