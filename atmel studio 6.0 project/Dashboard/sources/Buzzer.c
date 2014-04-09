@@ -22,7 +22,7 @@ void buzzer_on( void )
 
 void buzzer_off( void )
 {
-	PORTA&=~(0x01)<<BUZZER_PIN;
+	PORTA&=~(1<<BUZZER_PIN);
 }
 
 void buzzer_buzz( uint8_t time_ms )

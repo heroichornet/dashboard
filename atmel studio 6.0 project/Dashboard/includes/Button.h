@@ -47,13 +47,13 @@ row4---9--¦-10--¦-11--¦
 
 
 	
-#define ROW_1_PIN (4);
-#define ROW_2_PIN (5);
-#define ROW_3_PIN (6);
-#define ROW_4_PIN (3);
-#define COLOUMN_1_PIN (6);
-#define COLOUMN_2_PIN (7);
-#define COLOUMN_3_PIN (4);
+#define ROW_1_PIN (4)
+#define ROW_2_PIN (5)
+#define ROW_3_PIN (6)
+#define ROW_4_PIN (3)
+#define COLOUMN_1_PIN (6)
+#define COLOUMN_2_PIN (7)
+#define COLOUMN_3_PIN (4)
 
 
 

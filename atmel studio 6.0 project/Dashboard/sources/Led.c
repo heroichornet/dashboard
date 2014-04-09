@@ -92,34 +92,34 @@ void led_clear(uint8_t led_id){
 	
 	switch(led_id){
 		case LED_ID_AMS:
-				PORTC&=~(0x01)<<LED_PIN_AMS;	/* turn off led */
+				PORTC&=~(1<<LED_PIN_AMS);	/* turn off led */
 				break;
 		case LED_ID_TV:
-				PORTA&=~(0x01)<<LED_PIN_TV;/* turn off led */
+				PORTA&=~(1<<LED_PIN_TV);/* turn off led */
 				break;
 		case LED_ID_RECUP:
-				PORTA&=~(0x01)<<LED_PIN_RECUP;/* turn off led */
+				PORTA&=~(1<<LED_PIN_RECUP);/* turn off led */
 				break;
 		case LED_ID_KOBI:
-				PORTA&=~(0x01)<<LED_PIN_KOBI;/* turn off led */
+				PORTA&=~(1<<LED_PIN_KOBI);/* turn off led */
 				break;
 		case LED_ID_AD:
-				PORTA&=~(0x01)<<LED_PIN_AD;/* turn off led */
+				PORTA&=~(1<<LED_PIN_AD);/* turn off led */
 				break;
 		case LED_ID_LV_LOW:
 				PORTG&=~(0x01)<<LED_PIN_LV_LOW;/* turn off led */
 				break;
 		case LED_ID_IMD:
-				PORTC&=~(0x01)<<LED_PIN_IMD;/* turn off led */
+				PORTC&=~(1<<LED_PIN_IMD);/* turn off led */
 				break;
 		case LED_ID_BRAKE:
 				PORTG&=~(0x01)<<LED_PIN_BRAKE;/* turn off led */
 				break;
 		case LED_ID_OK:
-				PORTG&=~(0x01)<<LED_PIN_OK;/* turn off led */
+				PORTG&=~(1<<LED_PIN_OK);/* turn off led */
 				break;
 		case LED_ID_START:
-				PORTD&=~(0x01)<<LED_PIN_START;/* turn off led */
+				PORTD&=~(1<<LED_PIN_START);/* turn off led */
 				break;
 		default:
 				break;

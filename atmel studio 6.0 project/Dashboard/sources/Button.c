@@ -17,31 +17,31 @@ void button_init( void )
 	
 	/* enable pull-ups */
 	
-	MCUCR&=~(0x01)<<PUD;
+	MCUCR&=~(1<<PUD);
 	
 	
 	/* COL 1 INPUT HIGH */
-	DDRE|=~(0x01)<<COLOUMN_1_PIN;
+	DDRE|=~(1<<COLOUMN_1_PIN);
 	PORTE|=(0x01)<<COLOUMN_1_PIN;
 	/* COL 2 INPUT HIGH */
-	DDRE|=~(0x01)<<COLOUMN_2_PIN;
+	DDRE|=~(1<<COLOUMN_2_PIN);
 	PORTE|=(0x01)<<COLOUMN_2_PIN;
 	/* COL 3 INPUT HIGH */
-	DDRB|=~(0x01)<<COLOUMN_3_PIN;
+	DDRB|=~(1<<COLOUMN_3_PIN);
 	PORTB|=(0x01)<<COLOUMN_3_PIN;
 	
 	
 	/* ROW 1 INPUT, PULLUP */
-	DDRE&=~(0x01)<<ROW_1_PIN;
+	DDRE&=~(1<<ROW_1_PIN);
 	PORTE|=(0x01)<<ROW_1_PIN;
 	/* ROW 2 INPUT, PULLUP */
-	DDRE&=~(0x01)<<ROW_2_PIN;
+	DDRE&=~(1<<ROW_2_PIN);
 	PORTE|=(0x01)<<ROW_2_PIN;
 	/* ROW 3 INPUT, PULLUP */
-	DDRC&=~(0x01)<<ROW_3_PIN;
+	DDRC&=~(1<<ROW_3_PIN);
 	PORTC|=(0x01)<<ROW_3_PIN;
 	/* ROW 4 INPUT, PULLUP */
-	DDRC&=~(0x01)<<ROW_4_PIN;
+	DDRC&=~(1<<ROW_4_PIN);
 	PORTC|=(0x01)<<ROW_4_PIN;
 	
 } /* end button_init */
@@ -122,38 +122,38 @@ uint8_t button_get_button_state(uint8_t button_id){
 
 void col1_input_high(void){
 	/* COL 1 INPUT HIGH */
-	DDRE|=~(0x01)<<COLOUMN_1_PIN;
+	DDRE|=~(1<<COLOUMN_1_PIN);
 	PORTE|=(0x01)<<COLOUMN_1_PIN;
 }
 
 void col2_input_high(void){
 	/* COL 2 INPUT HIGH */
-	DDRE|=~(0x01)<<COLOUMN_2_PIN;
+	DDRE|=~(1<<COLOUMN_2_PIN);
 	PORTE|=(0x01)<<COLOUMN_2_PIN;
 }
 
 void col3_input_high(void){
 	/* COL 3 HIGH */
-	DDRB|=~(0x01)<<COLOUMN_3_PIN;
+	DDRB|=~(1<<COLOUMN_3_PIN);
 	PORTB|=(0x01)<<COLOUMN_3_PIN;
 	
 }	
 
 void col1_low(void){
 	/* COL 1 LOW */
-	PORTE&=~(0x01)<<COLOUMN_1_PIN;
-	DDRE&=(0x01)<<COLOUMN_1_PIN;
+	PORTE&=~(1<<COLOUMN_1_PIN);
+	DDRE|=(0x01)<<COLOUMN_1_PIN;
 }
 
 void col2_low(void){
 	/* COL 2 LOW */
-	PORTE&=~(0x01)<<COLOUMN_2_PIN;
-	DDRE&=(0x01)<<COLOUMN_2_PIN;
+	PORTE&=~(1<<COLOUMN_2_PIN);
+	DDRE|=(0x01)<<COLOUMN_2_PIN;
 }
 
 void col3_low(void){
 	/* COL 3 LOW  */
-	PORTB&=~(0x01)<<COLOUMN_3_PIN;
-	DDRE&=(0x01)<<COLOUMN_2_PIN;
+	PORTB&=~(1<<COLOUMN_3_PIN);
+	DDRB|=(0x01)<<COLOUMN_3_PIN;
 
 }
