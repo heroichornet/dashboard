@@ -84,7 +84,7 @@ void Dashboard(void){
 			led_state_set(led_state);
 							
 			//Display Update
-			display_update(DISPLAY_MENU_BUTTON_TEST,(uint8_t) 0x0FF&button_pressed_current, (uint8_t)button_pressed_current>>8,0,0,0);
+			display_update(DISPLAY_MENU_BUTTON_TEST,(uint8_t) 0x00FF&button_pressed_current, (uint8_t)button_pressed_current>>8,0,0,0);
 
 			
 		return;
@@ -111,7 +111,8 @@ void Dashboard(void){
 			/*if(selected_menu!=dashboard_rx_general_data.dataStruct.REQUEST_ID){
 				display_update(DISPLAY_MENU_ERROR,ERROR_BAD_REQUEST_ID,0,0,0,0);
 			}*/
-				display_update(dashboard_rx_general_data.dataStruct.REQUEST_ID,dashboard_rx_general_data.dataStruct.VALUE1,dashboard_rx_general_data.dataStruct.VALUE2,dashboard_rx_general_data.dataStruct.VALUE3,dashboard_rx_general_data.dataStruct.VALUE4,dashboard_rx_general_data.dataStruct.VALUE5);
+			
+			display_update(dashboard_rx_general_data.dataStruct.REQUEST_ID,dashboard_rx_general_data.dataStruct.VALUE1,dashboard_rx_general_data.dataStruct.VALUE2,dashboard_rx_general_data.dataStruct.VALUE3,dashboard_rx_general_data.dataStruct.VALUE4,dashboard_rx_general_data.dataStruct.VALUE5);
 		
 
 		return;
