@@ -18,6 +18,7 @@
 #define ERROR_IMDF 6
 #define ERROR_IMDF 7
 #define ERRROR_PBD 11
+#define ERROR_BAD_REQUEST_ID 12
 
 /* error Strings */
 
@@ -30,7 +31,7 @@ display_line_t display_line_error_hvdi={'#','X','X','X',' ','H','V','D','I',' ',
 display_line_t display_line_error_imd={'#','X','X','X',' ','I','M','D',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
 display_line_t display_line_error_imdf={'#','X','X','X',' ','I','M','D','F',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
 display_line_t display_line_error_bpd={'#','X','X','X',' ','B','R','A','K','E',' ','P','.','D','.',' ',' ',' ',' '};
-
+display_line_t display_line_error_bad_request_id={'#','X','X','X',' ','B','A','D','R','E','Q','U','E','S','T',' ','I','D',' '};
 
 
 

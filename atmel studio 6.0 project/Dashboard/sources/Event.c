@@ -5,12 +5,15 @@
  *      Author: Michael
  */
 
+
 #include "../includes/Event.h"
 #include "../includes/GlobalIncludes.h"
 #include <stdlib.h>
 #include "../includes/Led.h"
 #include "../includes/Button.h"
 #include "../includes/Display.h"
+
+
 
 EVENT_Handle event_queue[EVENT_QUEUE_SIZE];
 U8 event_queue_head, event_queue_tail;
@@ -70,7 +73,7 @@ void Dashboard(void){
 			//CAN Stuff
 			//Fill TX Frame
 			dashboard_10_data.dataStruct.ERRORCODE=0xFF;
-			dashboard_10_data.dataStruct.REQUEST_ID=0xFA;
+			dashboard_10_data.dataStruct.REQUEST_ID=selected_menu;
 			dashboard_10_data.dataStruct.KEYS_1=0xFF;
 			dashboard_10_data.dataStruct.KEYS_2=0xFF;			
 			// Send tx Frame
@@ -80,8 +83,7 @@ void Dashboard(void){
 			//Led Update 
 			led_state_set(led_state);
 							
-			// display Update
-			display_update(selected_menu,0,0,0,0,0);
+
 			
 		return;
 		break;
@@ -102,7 +104,13 @@ void Dashboard(void){
 		case EVENT_CANRX:
 			// ToDo use RX to build display
 			CANGetData(&dashboard_rx);
-			selected_menu=dashboard_rx_general_data.dataStruct.REQUEST_ID;
+			// check for communication error
+			/*if(selected_menu!=dashboard_rx_general_data.dataStruct.REQUEST_ID){
+				display_update(DISPLAY_MENU_ERROR,ERROR_BAD_REQUEST_ID,0,0,0,0);
+			}*/
+				display_update(dashboard_rx_general_data.dataStruct.REQUEST_ID,dashboard_rx_general_data.dataStruct.VALUE1,dashboard_rx_general_data.dataStruct.VALUE2,dashboard_rx_general_data.dataStruct.VALUE3,dashboard_rx_general_data.dataStruct.VALUE4,dashboard_rx_general_data.dataStruct.VALUE5);
+		
+
 		return;
 		break;
 		default:

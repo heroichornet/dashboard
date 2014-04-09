@@ -11,7 +11,8 @@
 
 void buzzer_init( void )
 {
-	PORTA|=(0x01)<<BUZZER_PIN;
+	DDRA|=(1)<<BUZZER_PIN;
+	PORTA&=~((1)<<BUZZER_PIN);
 }
 
 void buzzer_on( void )

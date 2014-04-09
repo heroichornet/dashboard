@@ -16,6 +16,10 @@
 #include "../includes/spi_lib.h"
 #include "../includes/ErrorCodes.h"
 
+#define SPI_START_PORT (PORTB)
+#define SPI_START_PIN (0)
+#define SPI_START_DDR (DDRB)
+
 /* Display Data Ram (DDRAM)
  * 0x00 till 0x27
  * 0x40 till 0x67
@@ -96,17 +100,17 @@ display_string_t test={'0','1','2','3','4','5','6','7','8','9',
 
 
 void display_write_data(uint8_t data){
-	PORTB&=~(1<<4);
+	SPI_START_PORT&=~(1<<SPI_START_PIN);
 	spi_putchar(START_BITS_WRITE_DATA);
 	spi_putchar(data);
-	PORTB|=(1<<4);
+	SPI_START_PORT|=(1<<SPI_START_PIN);
 }
 
 void display_write_instruction(uint8_t inst){
-	PORTB&=~(1<<4);
+	SPI_START_PORT&=~(1<<SPI_START_PIN);
 	spi_putchar(START_BITS_WRITE_INSTRUCTION);
 	spi_putchar(inst);
-	PORTB|=(1<<4);
+	SPI_START_PORT|=(1<<SPI_START_PIN);
 }
 
 void display_write_display_lines(display_line_t s1,display_line_t s2){
@@ -145,15 +149,17 @@ void display_init(void){
 	
 	
 	/*toggle button init */
-	DDRB|=(1<<4);
-	PORTB|=(1<<4);
+	SPI_START_DDR|=(1<<SPI_START_PIN);
+	SPI_START_PORT|=(1<<SPI_START_PIN);
 	
 	/* turn display on */
 	display_write_instruction(INSTRUCTION_DISPLAY_ON);
 	
-	
+	/* set brigthness to max*/
 	display_write_instruction(INSTRUCTION_BRIGHTNESS_100);
 
+	/* set menu to home */
+	display_update(DISPLAY_MENU_HOME,0,0,0,0,0);
 	
 	
 }
@@ -363,6 +369,8 @@ void display_make_display_line_error(char * dpl,uint8_t error_code){
 		case ERRROR_PBD:
 			memcpy(dpl,display_line_error_bpd,20);
 			break;
+		case ERROR_BAD_REQUEST_ID:
+			memcpy(dpl,display_line_error_bad_request_id,20);
 		default:
 			memcpy(dpl,display_line_error_unknown_code,20);
 		break;
