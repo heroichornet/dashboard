@@ -32,6 +32,9 @@ uint16_t button_pressed_current;
 #define BUTTON_ID_TV (10)
 #define BUTTON_ID_AD (11)
 
+
+uint8_t button_state[12];
+
 /*
 	  col1¦col2 ¦col3 ¦
 row1---0--¦--1--¦--2--¦

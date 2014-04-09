@@ -387,16 +387,10 @@ void display_make_display_line_error(char * dpl,uint8_t error_code){
 	
 } /*end display_make_display_error*/
 
-void display_make_display_line_button_test(char* dpl,uint8_t button_low,uint8_t buttons_high){
+void display_make_display_line_button_test(char* dpl,uint8_t b1,uint8_t b2){
 	
-	uint8_t buttons=0x0000;
-		
-	#define GET_HEX_POS4_BUTTON(x) (0b0000000000110000+(x/0x10))
-	#define GET_HEX_POS3_BUTTON(x) (0b0000000000110000+((x/0x0100)%0x1000))
-	#define GET_HEX_POS2_BUTTON(x) (0b0000000000110000+((x/0x0010)%0x0100))
-	#define GET_HEX_POS1_BUTTON(x) (0b0000000000110000+(x%0x0010))
 
-	display_line_t dpl_buttons={' ',' ','0','x',GET_HEX_POS4_BUTTON(buttons),GET_HEX_POS3_BUTTON(buttons),GET_HEX_POS2_BUTTON(buttons),GET_HEX_POS1_BUTTON(buttons),' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
+	display_line_t dpl_buttons={' ',' ','I','D',':',(char)(0b00110000+b1),(char)(0b00110000+b2),' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
 	memcpy(dpl,dpl_buttons,20);
 	
 }	

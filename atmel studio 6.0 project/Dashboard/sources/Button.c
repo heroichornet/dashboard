@@ -8,12 +8,13 @@
 #include <stdint.h>
 #include <avr/io.h>
 #include "../includes/Button.h"
+#include "../includes/Display.h"
+
 
 
 void button_init( void )
 {
 
-	button_pressed_previous=0x0000;
 	
 	/* enable pull-ups */
 	
@@ -92,39 +93,58 @@ void button_multiplex_cycle(void){
 
 void button_read_col(uint8_t col){
 		
+
+		uint8_t r1=0;
+		uint8_t r2=0;
+		uint8_t r3=0;
+		uint8_t r4=0;
+				
 		/* ROW 1 READ */
-		uint8_t r1;
-		uint8_t r2;
-		uint8_t r3;
-		uint8_t r4;
+
 		
-		r1=~((PINE>>4)&1);
+		r1=PINE;
 		
-		if(r1){
-			button_pressed_current&=(r1)<<(0+col*BUTTON_ROW_NUMBER);
+		if(!((r1>>ROW_1_PIN)&1)){
+			button_state[0+col*BUTTON_ROW_NUMBER]=1;
 		}else{
-			button_pressed_current|=(r1)<<(0+col*BUTTON_ROW_NUMBER);
+			button_state[0+col*BUTTON_ROW_NUMBER]=0;
 		}
 	
 		/* ROW 2 READ */
 		
-		r2=~((PINE>>5)&1);		
-		button_pressed_current|=(r2)<<(1+col*BUTTON_ROW_NUMBER);
+		r2=PINE;
+		if(!((r2>>ROW_2_PIN)&1)){		
+			button_state[1+col*BUTTON_ROW_NUMBER]=1;
+		}else{
+			button_state[1+col*BUTTON_ROW_NUMBER]=0;
+		}
+		
+		/* ROW 3 READ */
+		
+		r3=PINC;
+		if(!((r3>>ROW_3_PIN)&1)){	
+			button_state[2+col*BUTTON_ROW_NUMBER]=1;
+		}else{
+			button_state[2+col*BUTTON_ROW_NUMBER]=0;
+		}
 		
 		/* ROW 3 READ */
 				
-		r3=~((PINC>>6)&1);
-		button_pressed_current|=(r3)<<(2+col*BUTTON_ROW_NUMBER);
+		r4=PINC;
+		if(!((r4>>ROW_4_PIN)&1)){
+			button_state[3+col*BUTTON_ROW_NUMBER]=1;
+		}else{
+			button_state[3+col*BUTTON_ROW_NUMBER]=0;
+		}
 		
-		/* ROW 4 READ */
-		r4=~((PINC3>>3)&1);
-		button_pressed_current|=(r4)<<(3+col*BUTTON_ROW_NUMBER);
+
+
 	
 }/*end button_read_rows */
 
 
 uint8_t button_get_button_state(uint8_t button_id){
-	return (0x01)&(button_pressed_current>>(button_id));
+	return button_state[button_id];
 }
 
 
