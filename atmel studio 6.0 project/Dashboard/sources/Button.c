@@ -45,6 +45,11 @@ void button_init( void )
 	DDRC&=~(1<<ROW_4_PIN);
 	PORTC|=1<<ROW_4_PIN;
 	
+	uint8_t i;
+	for(i=0;i<12;i++){
+		button_released[i]=1;
+	}
+	
 } /* end button_init */
 
 void button_multiplex_cycle(void){
@@ -85,8 +90,18 @@ void button_multiplex_cycle(void){
 	col1_input_high();
 	col2_input_high();
 	col3_input_high();
-			
 	
+	uint8_t i=0;
+	for(i;i<12;i++){
+		if(button_previous_state[i]==0 && button_state[i]==1 && button_released[i]==1){
+			button_press[i]=1;
+			button_released[i]=0;
+		}
+		if(button_previous_state[i]==1 && button_state[i]==0 && button_released[i]==0){
+			button_released[i]=1;
+		}			
+	}
+	memcpy(button_previous_state,button_state,12);
 	
 } /* end button_multiplex_cycle */
 
@@ -107,15 +122,8 @@ void button_read_col(uint8_t col){
 		
 		if(!((r1>>ROW_1_PIN)&1)){
 			button_state[0+col*BUTTON_ROW_NUMBER]=1;
-			button_counter[0+col*BUTTON_ROW_NUMBER]=BUTTON_COUNTER_VALUE;
-			button_press[0+col*BUTTON_ROW_NUMBER]=1;
 		}else{
 			button_state[0+col*BUTTON_ROW_NUMBER]=0;
-			if(button_counter[0+col*BUTTON_ROW_NUMBER]==0){
-				button_press[0+col*BUTTON_ROW_NUMBER]=0;
-			}else{
-				button_counter[0+col*BUTTON_ROW_NUMBER]--;
-			};
 		}
 	
 		/* ROW 2 READ */
@@ -123,15 +131,8 @@ void button_read_col(uint8_t col){
 		r2=PINE;
 		if(!((r2>>ROW_2_PIN)&1)){		
 			button_state[1+col*BUTTON_ROW_NUMBER]=1;
-			button_counter[1+col*BUTTON_ROW_NUMBER]=BUTTON_COUNTER_VALUE;
-			button_press[1+col*BUTTON_ROW_NUMBER]=1;
 		}else{
 			button_state[1+col*BUTTON_ROW_NUMBER]=0;
-			if(button_counter[1+col*BUTTON_ROW_NUMBER]==0){
-				button_press[1+col*BUTTON_ROW_NUMBER]=0;
-			}else{
-				button_counter[1+col*BUTTON_ROW_NUMBER]--;
-			};
 		}
 		
 		/* ROW 3 READ */
@@ -139,15 +140,9 @@ void button_read_col(uint8_t col){
 		r3=PINC;
 		if(!((r3>>ROW_3_PIN)&1)){	
 			button_state[2+col*BUTTON_ROW_NUMBER]=1;
-			button_counter[2+col*BUTTON_ROW_NUMBER]=BUTTON_COUNTER_VALUE;
-			button_press[2+col*BUTTON_ROW_NUMBER]=1;
 		}else{
 			button_state[2+col*BUTTON_ROW_NUMBER]=0;
-			if(button_counter[2+col*BUTTON_ROW_NUMBER]==0){
-				button_press[2+col*BUTTON_ROW_NUMBER]=0;
-			}else{			
-				button_counter[2+col*BUTTON_ROW_NUMBER]--;
-			};				
+			
 		}
 		
 		/* ROW 3 READ */
@@ -155,19 +150,9 @@ void button_read_col(uint8_t col){
 		r4=PINC;
 		if(!((r4>>ROW_4_PIN)&1)){
 			button_state[3+col*BUTTON_ROW_NUMBER]=1;
-			if(button_counter[3+col*BUTTON_ROW_NUMBER]==BUTTON_ROW_NUMBER){
-				button_press[3+col*BUTTON_ROW_NUMBER]==0;
-			}else{
-				button_counter[3+col*BUTTON_ROW_NUMBER]=BUTTON_COUNTER_VALUE;
-				button_press[3+col*BUTTON_ROW_NUMBER]=1;
-			}				
+			
 		}else{
 			button_state[3+col*BUTTON_ROW_NUMBER]=0;
-			if(button_counter[3+col*BUTTON_ROW_NUMBER]==0){
-				button_press[3+col*BUTTON_ROW_NUMBER]=0;
-			}else{
-				button_counter[3+col*BUTTON_ROW_NUMBER]--;
-			};
 		}
 		
 
