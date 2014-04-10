@@ -96,18 +96,7 @@ void Dashboard(void){
 		case EVENT_50HZ:
 			/* Multiplex */
 			#if HAS_BUTTONS
-				button_multiplex_cycle();	
-				
-				for(i;i<12;i++){
-					if(button_press[BUTTON_ID_UP]==1){
-						button_press[i]=0;
-						
-						selected_menu++;
-						selected_menu%11;
-						display_update(selected_menu,0,i,0,0,0);
-					}
-				}
-					
+				button_multiplex_cycle();						
 			#endif	
 			
 		return;

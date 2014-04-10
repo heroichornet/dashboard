@@ -9,6 +9,7 @@
 #include <avr/io.h>
 #include "../includes/Button.h"
 #include "../includes/Display.h"
+#include "../includes/Display.h"
 
 
 
@@ -101,6 +102,11 @@ void button_multiplex_cycle(void){
 			button_released[i]=1;
 		}			
 	}
+	
+	
+	buttons_react();
+	
+	
 	memcpy(button_previous_state,button_state,12);
 	
 } /* end button_multiplex_cycle */
@@ -201,4 +207,49 @@ void col3_low(void){
 	PORTB&=~(1<<COLOUMN_3_PIN);
 	DDRB|=(0x01)<<COLOUMN_3_PIN;
 
+}
+
+void buttons_react(void){
+
+/*	uint8_t i=0;
+
+	for(i;i<12;i++){
+		if(button_state[i]){
+			display_update(DISPLAY_MENU_BUTTON_TEST,i,1,0,0,0);
+		}else{
+			display_update(DISPLAY_MENU_BUTTON_TEST,i,0,0,0,0);
+		}
+	}
+*/	
+	
+	if(button_press[BUTTON_ID_UP]){
+		button_press[BUTTON_ID_UP]=0;
+		display_up();
+	}
+	
+	if(button_press[BUTTON_ID_DOWN]){
+		button_press[BUTTON_ID_DOWN]=0;
+		display_down();		
+	}
+	
+
+	
+	
+	
+	#define BUTTON_ID_FLAPPY_DRS (0)
+	#define BUTTON_ID_FLAPPY_RADIO (1)
+	#define BUTTON_ID_PLUS (4)
+	#define BUTTON_ID_MINUS (5)
+	#define BUTTON_ID_UP (8)
+	#define BUTTON_ID_DOWN (9)
+
+	/* Buttons on Dashboard */
+	#define BUTTON_ID_TMS (2)
+	#define BUTTON_ID_RECUP (3)
+	#define BUTTON_ID_TC (6)
+	#define BUTTON_ID_KOBI (7)
+	#define BUTTON_ID_TV (10)
+	#define BUTTON_ID_AD (11)
+
+	
 }

@@ -390,7 +390,21 @@ void display_make_display_line_error(char * dpl,uint8_t error_code){
 void display_make_display_line_button_test(char* dpl,uint8_t b1,uint8_t b2){
 	
 
-	display_line_t dpl_buttons={' ',' ','I','D',':',(char)(0b00110000+b1),(char)(0b00110000+b2),' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
-	memcpy(dpl,dpl_buttons,20);
+	dpl[b1]=(char) (char)(0b00110000+b2);
+
 	
 }	
+
+void display_up( void )
+{
+	selected_menu++;
+	selected_menu%=(DISPLAY_MENU_NUMBER+1);
+	display_update(selected_menu,0,0,0,0,0);
+}
+
+void display_down( void )
+{
+	selected_menu--;
+	selected_menu%=(DISPLAY_MENU_NUMBER+1);
+	display_update(selected_menu,0,0,0,0,0);
+}

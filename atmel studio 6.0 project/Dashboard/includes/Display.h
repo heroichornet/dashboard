@@ -38,6 +38,9 @@ display_string_t display_string;
 	
 
 
+#define DISPLAY_MENU_NUMBER				(11)
+
+
 #define DISPLAY_MENU_HOME				(0)
 #define DISPLAY_MENU_SOC				(1)
 #define DISPLAY_MENU_MIN_AV_MAX_VOLT	(2)
