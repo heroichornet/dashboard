@@ -9,6 +9,11 @@
 #include <avr/io.h>
 #include "../includes/Buzzer.h"
 
+#include <util/delay.h>
+
+uint8_t buzzer_count=0;
+uint8_t buzz_cycles=0;
+
 void buzzer_init( void )
 {
 	DDRA|=(1)<<BUZZER_PIN;
@@ -17,7 +22,7 @@ void buzzer_init( void )
 
 void buzzer_on( void )
 {
-	PORTA|=(0x01)<<BUZZER_PIN;
+	PORTA|=1<<BUZZER_PIN;
 }
 
 void buzzer_off( void )
@@ -25,21 +30,10 @@ void buzzer_off( void )
 	PORTA&=~(1<<BUZZER_PIN);
 }
 
-void buzzer_buzz( uint8_t time_ms )
-{
-	/* QUICK shitty implementation */
-	/* ToDO use timer */
-	
+
+void buzzer_buzz_ready_to_drive(){
 	buzzer_on();
-	int i;
-	for(i=0;i<time_ms*100;i++){
-		
-	}
-	
-	buzzer_off();
+	buzz_cycles=3;
+	buzzer_count=4;	
 }
 
-void buzzer_puls( uint8_t freq_ms, uint8_t time_ms )
-{
-	
-}

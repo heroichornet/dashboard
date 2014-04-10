@@ -61,7 +61,7 @@
 #define TMR3_PRESCALER		((0<<CS32) | (1<<CS31) | (1<<CS30)) //1 Tick = PRSC/OSC_CLCK= 64 / 12 MHz = 5.33 us
 #define OCR3A_PERIOD_CNT	(0x4970) //  0.1ms/10Hz		
 #define OCR3B_PERIOD_CNT	(0x92E0) //  200ms/5Hz
-#define OCR3C_PERIOD_CNT	(0xB798) //  250ms/4Hz
+#define OCR3C_PERIOD_CNT	(0x1370) //  250ms/4Hz
 
 
 // EEPROM Memory addresses

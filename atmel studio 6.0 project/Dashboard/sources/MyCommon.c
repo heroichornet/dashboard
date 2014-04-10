@@ -48,6 +48,7 @@ void main_init(){
 
 	#if HAS_BUZZER
 	buzzer_init();
+	TIMER_Timer3_OCR3C_on();
 	#endif
 	
 	#if HAS_LEDS

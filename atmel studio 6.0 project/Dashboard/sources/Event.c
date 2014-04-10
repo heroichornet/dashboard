@@ -6,12 +6,16 @@
  */
 
 
+#include <util/delay_basic.h>
 #include "../includes/Event.h"
 #include "../includes/GlobalIncludes.h"
 #include <stdlib.h>
 #include "../includes/Led.h"
 #include "../includes/Button.h"
 #include "../includes/Display.h"
+#include "../includes/Buzzer.h"
+
+
 
 
 
@@ -58,18 +62,12 @@ void Dashboard(void){
 			/* Frame 1 */
 			CANStartRx(&dashboard_rx);
 			
-			
-		return;
+			return;
 		break;
 		case EVENT_10HZ:
 			
 
-			if(((PORTD>>3)&1)==1){
-					PORTD&=~(1<<3);
-			}else{
-					PORTD|=(1<<3);
-			}
-			
+
 			//CAN Stuff
 			//Fill TX Frame
 			dashboard_10_data.dataStruct.ERRORCODE=0xFF;
@@ -96,9 +94,31 @@ void Dashboard(void){
 		case EVENT_50HZ:
 			/* Multiplex */
 			#if HAS_BUTTONS
-				button_multiplex_cycle();						
+				button_multiplex_cycle();	
+				
+					
 			#endif	
 			
+		return;
+		break;
+		case EVENT_4HZ:
+	
+		if(buzz_cycles!=0){
+			if(buzzer_count<=2){
+				buzzer_off();
+				buzzer_count--;
+			}else{
+				buzzer_count--;
+			}
+			if(buzzer_count==0){
+				buzzer_count=4;
+				buzzer_on();
+				buzz_cycles--;
+			}
+		}else{
+			buzzer_off();
+		}								
+				
 		return;
 		break;
 		case EVENT_CANERROR:
@@ -116,7 +136,15 @@ void Dashboard(void){
 			/*if(selected_menu!=dashboard_rx_general_data.dataStruct.REQUEST_ID){
 				display_update(DISPLAY_MENU_ERROR,ERROR_BAD_REQUEST_ID,0,0,0,0);
 			}*/
+			uint8_t id=dashboard_rx_general_data.dataStruct.REQUEST_ID;
 			
+			if(id=0xFF){
+				buzzer_buzz_ready_to_drive();
+				display_update(DISPLAY_MENU_TSAL,0,0,0,0,0);
+				break;
+			}
+
+
 			display_update(dashboard_rx_general_data.dataStruct.REQUEST_ID,dashboard_rx_general_data.dataStruct.VALUE1,dashboard_rx_general_data.dataStruct.VALUE2,dashboard_rx_general_data.dataStruct.VALUE3,dashboard_rx_general_data.dataStruct.VALUE4,dashboard_rx_general_data.dataStruct.VALUE5);
 		
 

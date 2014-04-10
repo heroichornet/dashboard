@@ -10,6 +10,8 @@
 #ifndef BUZZER_H_
 #define BUZZER_H_
 
+extern uint8_t buzzer_count;
+extern uint8_t buzz_cycles;
 
 /* Buzzer ist on PINA0 */
 

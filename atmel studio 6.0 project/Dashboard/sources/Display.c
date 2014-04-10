@@ -38,13 +38,14 @@ display_line_t display_line_cel_temp={' ','M','I','N',' ',' ','C','E','L','L','T
 display_line_t display_line_lv_voltage={' ',' ',' ',' ','L','V',' ','V','O','L','T','A','G','E',' ',' ',' ',' ',' ',' '};
 display_line_t display_line_motor_power_front={' ',' ','M','O','T','O','R',' ','P','O','W','E','R',' ','F','R','O','N','T',' '};
 display_line_t display_line_motor_power_rear={ ' ',' ','M','O','T','O','R',' ','P','O','W','E','R',' ','R','E','A','R',' ',' '};
-display_line_t display_line_motor_temp_front={' ','L',' ',' ',' ','M','O','T','O','R','T','E','M','P','.',' ',' ',' ','R',' '};
+display_line_t display_line_motor_temp_front={ ' ',' ','M','O','T','O','R',' ','T','E','M','P','.',' ','F','R','O','N','T',' '};
 display_line_t display_line_motor_temp_rear={ ' ',' ','M','O','T','O','R',' ','T','E','M','P','.',' ','R','E','A','R',' ',' '};
 display_line_t display_line_traction_control={' ',' ','T','R','A','C','T','I','O','N',' ','C','O','N','T','R','O','L',' ',' '};
 display_line_t display_line_torque_vectoring={' ',' ','T','O','R','Q','U','E',' ',' ','V','E','C','T','O','R','I','N','G',' '};
 display_line_t display_line_accleration_mode={ ' ',' ','A','C','C','E','L','E','R','A','T','I','O','N',' ','M','O','D','E',' '};
 display_line_t display_line_buttons_pressed={ ' ',' ','B','U','T','T','O','N',' ','P','R','E','S','S','E','D',' ',' ',' ',' '};
 display_line_t display_line_blank={' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
+display_line_t display_line_tsal={' ',' ','R','E','A','D','Y',' ',' ','T','O',' ','D','R','I','V','E',' ',' ',' '};
 	
 
 /* Character Generator Ram (CGRAM)
@@ -170,7 +171,8 @@ void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t va
 	
 	switch(request_id){
 		case DISPLAY_MENU_HOME:
-				display_write_display_lines(display_line_home,display_line_blank);
+				display_make_display_line_blank(dpl);
+				display_write_display_lines(display_line_home,dpl);
 			break;
 		case DISPLAY_MENU_ERROR:
 				display_make_display_line_error(dpl,value1);
@@ -193,7 +195,7 @@ void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t va
 				display_write_display_lines(display_line_lv_voltage,dpl);
 			break;
 		case DISPLAY_MENU_MOTOR_TEMP_REAR:
-				display_make_display_line_percent_bar(dpl,value1);
+				display_make_display_line_motor_temp(dpl,value1,value2);
 				display_write_display_lines(display_line_motor_temp_rear,dpl);
 			break;
 		case DISPLAY_MENU_MOTOR_TEMP_FRONT:
@@ -219,6 +221,10 @@ void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t va
 		case DISPLAY_MENU_BUTTON_TEST:
 				display_make_display_line_button_test(dpl,value1);
 				display_write_display_lines(display_line_buttons_pressed,dpl);
+			break;
+		case DISPLAY_MENU_TSAL:
+				display_make_display_line_blank(dpl);
+				display_write_display_lines(display_line_tsal,dpl);
 			break;
 		default:
 			break;		
@@ -395,16 +401,25 @@ void display_make_display_line_button_test(char* dpl,uint8_t b1,uint8_t b2){
 	
 }	
 
+void display_make_display_line_blank(char *dpl){
+	display_line_t blank={' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
+	memcpy(dpl,blank,20);
+}
+
 void display_up( void )
 {
 	selected_menu++;
-	selected_menu%=(DISPLAY_MENU_NUMBER+1);
+	selected_menu%=(DISPLAY_MENU_NUMBER);
 	display_update(selected_menu,0,0,0,0,0);
+
 }
 
 void display_down( void )
 {
 	selected_menu--;
-	selected_menu%=(DISPLAY_MENU_NUMBER+1);
+	if(selected_menu==0){
+		selected_menu=DISPLAY_MENU_NUMBER;
+	}
 	display_update(selected_menu,0,0,0,0,0);
+
 }
