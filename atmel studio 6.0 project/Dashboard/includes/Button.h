@@ -14,6 +14,9 @@ uint16_t button_pressed_previous;
 uint16_t button_pressed_current;
 
 
+extern uint8_t button_key1;
+extern uint8_t button_key2;
+
 
 /* Buttons on Steering Wheel */
 

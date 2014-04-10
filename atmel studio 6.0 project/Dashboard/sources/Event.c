@@ -70,12 +70,8 @@ void Dashboard(void){
 
 			//CAN Stuff
 			//Fill TX Frame
-			dashboard_10_data.dataStruct.ERRORCODE=0xFF;
-			dashboard_10_data.dataStruct.REQUEST_ID=selected_menu;
-			dashboard_10_data.dataStruct.KEYS_1=0xFF;
-			dashboard_10_data.dataStruct.KEYS_2=0xFF;			
-			// Send tx Frame
-			CANAddSendData(&dashboard_10_tx);
+
+	
 						
 	
 			//Led Update 
@@ -94,10 +90,21 @@ void Dashboard(void){
 		case EVENT_50HZ:
 			/* Multiplex */
 			#if HAS_BUTTONS
-				button_multiplex_cycle();	
-				
-					
+				button_multiplex_cycle();				
 			#endif	
+
+			
+			dashboard_10_data.dataStruct.REQUEST_ID=selected_menu;
+			
+			
+			dashboard_10_data.dataStruct.KEYS_1=button_key1;
+
+			dashboard_10_data.dataStruct.KEYS_2=button_key2;
+
+			
+			// Send tx Frame
+			CANAddSendData(&dashboard_10_tx);
+			
 			
 		return;
 		break;

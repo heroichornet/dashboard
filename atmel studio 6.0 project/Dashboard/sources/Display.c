@@ -45,7 +45,7 @@ display_line_t display_line_torque_vectoring={' ',' ','T','O','R','Q','U','E',' 
 display_line_t display_line_accleration_mode={ ' ',' ','A','C','C','E','L','E','R','A','T','I','O','N',' ','M','O','D','E',' '};
 display_line_t display_line_buttons_pressed={ ' ',' ','B','U','T','T','O','N',' ','P','R','E','S','S','E','D',' ',' ',' ',' '};
 display_line_t display_line_blank={' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
-display_line_t display_line_tsal={' ',' ','R','E','A','D','Y',' ',' ','T','O',' ','D','R','I','V','E',' ',' ',' '};
+display_line_t display_line_tsal={' ',' ',' ','R','E','A','D','Y',' ',' ','T','O',' ','D','R','I','V','E',' ',' '};
 	
 
 /* Character Generator Ram (CGRAM)
@@ -417,8 +417,10 @@ void display_up( void )
 void display_down( void )
 {
 	selected_menu--;
-	if(selected_menu==0){
+	if(selected_menu==0||selected_menu>DISPLAY_MENU_NUMBER){
+		display_update(selected_menu,0,0,0,0,0);
 		selected_menu=DISPLAY_MENU_NUMBER;
+		return;
 	}
 	display_update(selected_menu,0,0,0,0,0);
 
