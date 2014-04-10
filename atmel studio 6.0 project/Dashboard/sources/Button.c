@@ -93,8 +93,12 @@ void button_multiplex_cycle(void){
 
 void button_read_col(uint8_t col){
 		
+<<<<<<< HEAD
 		#define BUTTON_COUNTER_VALUE 7
 		
+=======
+
+>>>>>>> 0e82b04c077ebee295b519b855b0a9cee92311ad
 		uint8_t r1=0;
 		uint8_t r2=0;
 		uint8_t r3=0;
@@ -107,6 +111,7 @@ void button_read_col(uint8_t col){
 		
 		if(!((r1>>ROW_1_PIN)&1)){
 			button_state[0+col*BUTTON_ROW_NUMBER]=1;
+<<<<<<< HEAD
 			button_counter[0+col*BUTTON_ROW_NUMBER]=BUTTON_COUNTER_VALUE;
 			button_press[0+col*BUTTON_ROW_NUMBER]=1;
 		}else{
@@ -116,6 +121,10 @@ void button_read_col(uint8_t col){
 			}else{
 				button_counter[0+col*BUTTON_ROW_NUMBER]--;
 			};
+=======
+		}else{
+			button_state[0+col*BUTTON_ROW_NUMBER]=0;
+>>>>>>> 0e82b04c077ebee295b519b855b0a9cee92311ad
 		}
 	
 		/* ROW 2 READ */
@@ -123,6 +132,7 @@ void button_read_col(uint8_t col){
 		r2=PINE;
 		if(!((r2>>ROW_2_PIN)&1)){		
 			button_state[1+col*BUTTON_ROW_NUMBER]=1;
+<<<<<<< HEAD
 			button_counter[1+col*BUTTON_ROW_NUMBER]=BUTTON_COUNTER_VALUE;
 			button_press[1+col*BUTTON_ROW_NUMBER]=1;
 		}else{
@@ -132,6 +142,10 @@ void button_read_col(uint8_t col){
 			}else{
 				button_counter[1+col*BUTTON_ROW_NUMBER]--;
 			};
+=======
+		}else{
+			button_state[1+col*BUTTON_ROW_NUMBER]=0;
+>>>>>>> 0e82b04c077ebee295b519b855b0a9cee92311ad
 		}
 		
 		/* ROW 3 READ */
@@ -139,6 +153,7 @@ void button_read_col(uint8_t col){
 		r3=PINC;
 		if(!((r3>>ROW_3_PIN)&1)){	
 			button_state[2+col*BUTTON_ROW_NUMBER]=1;
+<<<<<<< HEAD
 			button_counter[2+col*BUTTON_ROW_NUMBER]=BUTTON_COUNTER_VALUE;
 			button_press[2+col*BUTTON_ROW_NUMBER]=1;
 		}else{
@@ -148,12 +163,17 @@ void button_read_col(uint8_t col){
 			}else{			
 				button_counter[2+col*BUTTON_ROW_NUMBER]--;
 			};				
+=======
+		}else{
+			button_state[2+col*BUTTON_ROW_NUMBER]=0;
+>>>>>>> 0e82b04c077ebee295b519b855b0a9cee92311ad
 		}
 		
 		/* ROW 3 READ */
 				
 		r4=PINC;
 		if(!((r4>>ROW_4_PIN)&1)){
+<<<<<<< HEAD
 			button_state[3+col*BUTTON_ROW_NUMBER]=1
 			if(button_counter[3+col*BUTTON_ROW_NUMBER]==BUTTON_ROW_NUMBER){
 				button_press[3+col*BUTTON_ROW_NUMBER]==0;
@@ -171,6 +191,15 @@ void button_read_col(uint8_t col){
 		}
 		
 
+=======
+			button_state[3+col*BUTTON_ROW_NUMBER]=1;
+		}else{
+			button_state[3+col*BUTTON_ROW_NUMBER]=0;
+		}
+		
+
+
+>>>>>>> 0e82b04c077ebee295b519b855b0a9cee92311ad
 	
 }/*end button_read_rows */
 

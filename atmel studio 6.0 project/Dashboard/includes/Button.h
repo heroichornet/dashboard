@@ -34,8 +34,12 @@ uint16_t button_pressed_current;
 
 
 uint8_t button_state[12];
+<<<<<<< HEAD
 uint8_t button_counter[12];
 uint8_t button_press[12];
+=======
+
+>>>>>>> 0e82b04c077ebee295b519b855b0a9cee92311ad
 /*
 	  col1¦col2 ¦col3 ¦
 row1---0--¦--1--¦--2--¦
