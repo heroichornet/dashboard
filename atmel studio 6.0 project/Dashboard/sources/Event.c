@@ -67,20 +67,9 @@ void Dashboard(void){
 		case EVENT_10HZ:
 			
 
-
-			//CAN Stuff
-			//Fill TX Frame
-
 	
 						
 	
-			//Led Update 
-			led_state_set(led_state);
-							
-		
-			//update menu
-			
-			uint8_t i=0;
 			
 
 
@@ -150,8 +139,41 @@ void Dashboard(void){
 				display_update(DISPLAY_MENU_TSAL,0,0,0,0,0);
 				break;
 			}
-
-
+			
+			if(dashboard_rx_general_data.dataStruct.LEDS&1){
+				led_set(LED_ID_AMS);
+			}else{
+				led_clear(LED_ID_AMS);
+			}
+			if((dashboard_rx_general_data.dataStruct.LEDS>>1)&1){
+				led_set(LED_ID_LV_LOW);
+			}else{
+				led_set(LED_ID_LV_LOW);
+			}
+			if((dashboard_rx_general_data.dataStruct.LEDS>>2)&1){
+				led_set(LED_ID_IMD);
+			}else{
+				led_clear(LED_ID_IMD);
+			}	
+			if((dashboard_rx_general_data.dataStruct.LEDS>>3)&1){
+				led_set(LED_ID_OK);
+			}else{
+				led_clear(LED_ID_OK);			
+			}
+			if((dashboard_rx_general_data.dataStruct.LEDS>>4)&1){
+				led_set(LED_ID_BRAKE);
+			}else{
+				led_clear(LED_ID_BRAKE);
+			}
+			if((dashboard_rx_general_data.dataStruct.LEDS>>5)&1){
+				buzzer_buzz_ready_to_drive();
+			}
+			if((dashboard_rx_general_data.dataStruct.LEDS>>6)&1){
+				led_set(LED_ID_START);
+			}else{
+				led_clear(LED_ID_START);							
+			}
+				
 			display_update(dashboard_rx_general_data.dataStruct.REQUEST_ID,dashboard_rx_general_data.dataStruct.VALUE1,dashboard_rx_general_data.dataStruct.VALUE2,dashboard_rx_general_data.dataStruct.VALUE3,dashboard_rx_general_data.dataStruct.VALUE4,dashboard_rx_general_data.dataStruct.VALUE5);
 		
 
