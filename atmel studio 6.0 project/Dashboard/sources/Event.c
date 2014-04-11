@@ -65,9 +65,6 @@ void Dashboard(void){
 			return;
 		break;
 		case EVENT_10HZ:
-			
-
-	
 						
 	
 			
@@ -134,41 +131,42 @@ void Dashboard(void){
 			}*/
 			uint8_t id=dashboard_rx_general_data.dataStruct.REQUEST_ID;
 			
-			if(id=0xFF){
+			if(id==0xFF){
 				buzzer_buzz_ready_to_drive();
 				display_update(DISPLAY_MENU_TSAL,0,0,0,0,0);
 				break;
 			}
 			
-			if(dashboard_rx_general_data.dataStruct.LEDS&1){
+			uint8_t leds=dashboard_rx_general_data.dataStruct.LEDS;
+			if(leds&1){
 				led_set(LED_ID_AMS);
 			}else{
 				led_clear(LED_ID_AMS);
 			}
-			if((dashboard_rx_general_data.dataStruct.LEDS>>1)&1){
+			if((leds>>1)&1){
 				led_set(LED_ID_LV_LOW);
 			}else{
 				led_set(LED_ID_LV_LOW);
 			}
-			if((dashboard_rx_general_data.dataStruct.LEDS>>2)&1){
+			if((leds>>2)&1){
 				led_set(LED_ID_IMD);
 			}else{
 				led_clear(LED_ID_IMD);
 			}	
-			if((dashboard_rx_general_data.dataStruct.LEDS>>3)&1){
+			if((leds>>3)&1){
 				led_set(LED_ID_OK);
 			}else{
 				led_clear(LED_ID_OK);			
 			}
-			if((dashboard_rx_general_data.dataStruct.LEDS>>4)&1){
+			if((leds>>4)&1){
 				led_set(LED_ID_BRAKE);
 			}else{
 				led_clear(LED_ID_BRAKE);
 			}
-			if((dashboard_rx_general_data.dataStruct.LEDS>>5)&1){
+			if((leds>>5)&1){
 				buzzer_buzz_ready_to_drive();
 			}
-			if((dashboard_rx_general_data.dataStruct.LEDS>>6)&1){
+			if((leds>>6)&1){
 				led_set(LED_ID_START);
 			}else{
 				led_clear(LED_ID_START);							

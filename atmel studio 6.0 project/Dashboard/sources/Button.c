@@ -262,28 +262,22 @@ void buttons_react(void){
 	
 	
 	button_key1=0;
-	if(button_press[BUTTON_ID_TMS]){
-		button_press[BUTTON_ID_TMS]=0;
+	if(button_state[BUTTON_ID_TMS]){
 		button_key1|=1;
 	}
-	if(button_press[BUTTON_ID_TV]){
-		button_press[BUTTON_ID_TV]=0;
+	if(button_state[BUTTON_ID_TV]){
 		button_key1|=1<<1;
 	}
-	if(button_press[BUTTON_ID_TC]){
-		button_press[BUTTON_ID_TC]=0;
+	if(button_state[BUTTON_ID_TC]){
 		button_key1|=1<<2;
 	}
-	if(button_press[BUTTON_ID_RECUP]){
-		button_press[BUTTON_ID_RECUP]=0;
+	if(button_state[BUTTON_ID_RECUP]){
 		button_key1|=1<<3;
 	}
-	if(button_press[BUTTON_ID_KOBI]){
-		button_press[BUTTON_ID_KOBI]=0;
+	if(button_state[BUTTON_ID_KOBI]){
 		button_key1|=1<<4;
 	}
-	if(button_press[BUTTON_ID_AD]){
-		button_press[BUTTON_ID_AD]=0;
+	if(button_state[BUTTON_ID_AD]){
 		button_key1|=1<<5;
 	}
 	
