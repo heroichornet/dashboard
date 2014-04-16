@@ -44,7 +44,8 @@ EVENT_Handle EventGetNextEvent(void){
 	return e;
 }
 
-
+uint8_t count=0;
+uint8_t j=0;
 void Dashboard(void){
 	
 	switch(event_queue[event_queue_tail]){
@@ -62,18 +63,36 @@ void Dashboard(void){
 			/* Frame 1 */
 			CANStartRx(&dashboard_rx);
 			
+
 			return;
 		break;
 		case EVENT_10HZ:
-						
-	
-			
 
-
-			
-		return;
-		break;
 		case EVENT_50HZ:
+				count++;
+				if(count==50){
+					#define INSTRUCTION_BRIGHTNESS_100 (0b0000111000)
+					#define INSTRUCTION_BRIGHTNESS_75 (0b0000111001)
+					#define INSTRUCTION_BRIGHTNESS_50 (0b0000111010)
+					#define INSTRUCTION_BRIGHTNESS_25 (0b0000111011)
+					
+					display_update(DISPLAY_MENU_HOME,0,0,0,0,0);
+					
+					if(j==0){
+						display_write_instruction(INSTRUCTION_BRIGHTNESS_100);
+					}else if(j==1){
+						display_write_instruction(INSTRUCTION_BRIGHTNESS_75);
+					}else if(j==2){
+						display_write_instruction(INSTRUCTION_BRIGHTNESS_50);						
+					}else if(j==3){
+						display_write_instruction(INSTRUCTION_BRIGHTNESS_25);
+						j=-1;
+					}
+					j++;
+					count=0;
+				}
+				return;
+				break;
 			/* Multiplex */
 			#if HAS_BUTTONS
 				button_multiplex_cycle();				

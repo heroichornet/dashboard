@@ -5,7 +5,7 @@
     <ProjectVersion>6.0</ProjectVersion>
     <ToolchainName>com.Atmel.AVRGCC8</ToolchainName>
     <ProjectGuid>{42ef384e-4bf2-489d-99ba-8df9a84a4c4a}</ProjectGuid>
-    <avrdevice>AT90CAN32</avrdevice>
+    <avrdevice>AT90CAN128</avrdevice>
     <avrdeviceseries>none</avrdeviceseries>
     <OutputType>StaticLibrary</OutputType>
     <Language>C</Language>
@@ -35,13 +35,13 @@
       </OverrideVtorValue>
       <Channel>
         <host>127.0.0.1</host>
-        <port>51504</port>
+        <port>51594</port>
         <ssl>False</ssl>
       </Channel>
       <ToolOptions>
         <InterfaceName>JTAG</InterfaceName>
         <InterfaceProperties>
-          <JtagDbgClock>39570</JtagDbgClock>
+          <JtagDbgClock>250000</JtagDbgClock>
           <JtagProgClock>1000000</JtagProgClock>
           <IspClock>150000</IspClock>
           <JtagInChain>false</JtagInChain>
