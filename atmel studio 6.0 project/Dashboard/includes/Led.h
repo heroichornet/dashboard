@@ -22,8 +22,8 @@ uint16_t led_state;
 
 /* Error LEDS */
 
-#define LED_ID_AMS				(0)
-#define LED_ID_LV_LOW			(1)
+#define LED_ID_AMS				(1)
+#define LED_ID_LV_LOW			(10)
 #define LED_ID_IMD				(2)
 #define LED_ID_OK				(3)
 #define LED_ID_BRAKE			(4)
@@ -36,20 +36,8 @@ uint16_t led_state;
 #define LED_ID_RECUP			(7)
 #define LED_ID_KOBI				(8)
 #define LED_ID_AD				(9)
-#define LED_ID_START			(10)
+#define LED_ID_START			(0)
 
-
-#define LED_PIN_AMS				(1)
-#define LED_PIN_TV				(1)
-#define LED_PIN_TC				(2)
-#define LED_PIN_RECUP			(3)
-#define LED_PIN_KOBI			(4)
-#define LED_PIN_AD				(2)
-#define LED_PIN_LV_LOW			(4)
-#define LED_PIN_IMD				(0)
-#define LED_PIN_BRAKE			(1)
-#define LED_PIN_OK				(0)
-#define LED_PIN_START			(7)
 
 
 

@@ -16,30 +16,30 @@ void led_init(void){
 	
 	// Set Data Direction of LED I/O Pins 
 	
-	DDRC|=(0x01)<<LED_PIN_AMS;/* set data direction to output*/
-	DDRA|=(0x01)<<LED_PIN_TV;/* set data direction to output*/
-	DDRA|=(0x01)<<LED_PIN_RECUP;/* set data direction to output*/
-	DDRA|=(0x01)<<LED_PIN_KOBI;/* set data direction to output*/
-	DDRG|=(0x01)<<LED_PIN_AD;/* set data direction to output*/
-	DDRC|=(0x01)<<LED_PIN_LV_LOW;/* set data direction to output*/
-	DDRC|=(0x01)<<LED_PIN_IMD;/* set data direction to output*/
-	DDRG|=(0x01)<<LED_PIN_BRAKE;/* set data direction to output*/
-	DDRG|=(0x01)<<LED_PIN_OK;/* set data direction to output*/
-	DDRD|=(0x01)<<LED_PIN_START;/* set data direction to output*/
-	DDRA|=(0x01)<<LED_PIN_TC;/* set data direction to output*/
+	DDRC|=(0x01)<<(7);/* set data direction to output*/
+	DDRA|=(0x01)<<(1);/* set data direction to output*/
+	DDRA|=(0x01)<<(3);/* set data direction to output*/
+	DDRA|=(0x01)<<(4);/* set data direction to output*/
+	DDRG|=(0x01)<<(2);/* set data direction to output*/
+	DDRC|=(0x01)<<(4);/* set data direction to output*/
+	DDRC|=(0x01)<<(0);/* set data direction to output*/
+	DDRG|=(0x01)<<(1);/* set data direction to output*/
+	DDRG|=(0x01)<<(1);/* set data direction to output*/
+	DDRD|=(0x01)<<(1);/* set data direction to output*/
+	DDRA|=(0x01)<<(2);/* set data direction to output*/
 	
 	// Set I/O Pins High (all leds on)	
-	PORTC|=(0x01)<<LED_PIN_AMS;	/* turn on led */
-	PORTA|=(0x01)<<LED_PIN_TV;/* turn on led */
-	PORTA|=(0x01)<<LED_PIN_RECUP;/* turn on led */
-	PORTA|=(0x01)<<LED_PIN_KOBI;/* turn on led */
-	PORTG|=(0x01)<<LED_PIN_AD;/* turn on led */
-	PORTC|=(0x01)<<LED_PIN_LV_LOW;/* turn on led */
-	PORTC|=(0x01)<<LED_PIN_IMD;/* turn on led */
-	PORTG|=(0x01)<<LED_PIN_BRAKE;/* turn on led */
-	PORTG|=(0x01)<<LED_PIN_OK;/* turn on led */
-	PORTD|=(0x01)<<LED_PIN_START;/* turn on led */
-	PORTA|=(0x01)<<LED_PIN_TC;/* turn on led*/
+	PORTC|=(0x01)<<(7);	/* turn on led */
+	PORTA|=(0x01)<<(1);/* turn on led */
+	PORTA|=(0x01)<<(3);/* turn on led */
+	PORTA|=(0x01)<<(4);/* turn on led */
+	PORTG|=(0x01)<<(2);/* turn on led */
+	PORTC|=(0x01)<<(4);/* turn on led */
+	PORTC|=(0x01)<<(0);/* turn on led */
+	PORTG|=(0x01)<<(1);/* turn on led */
+	PORTG|=(0x01)<<(1);/* turn on led */
+	PORTD|=(0x01)<<(1);/* turn on led */
+	PORTA|=(0x01)<<(2);/* turn on led*/
 	
 	
 	led_state=0xFFFF;
@@ -52,37 +52,37 @@ void led_set(uint8_t led_id){
 	
 	switch(led_id){
 		case LED_ID_AMS:
-				PORTC|=(0x01)<<LED_PIN_AMS;	/* turn on led */
+				PORTC|=(0x01)<<(7);	/* turn on led */
 			break;
 		case LED_ID_TV:
-				PORTA|=(0x01)<<LED_PIN_TV;/* turn on led */
+				PORTA|=(0x01)<<(1);/* turn on led */
 			break;
 		case LED_ID_RECUP:
-				PORTA|=(0x01)<<LED_PIN_RECUP;/* turn on led */
+				PORTA|=(0x01)<<(3);/* turn on led */
 			break;
 		case LED_ID_KOBI:
-				PORTA|=(0x01)<<LED_PIN_KOBI;/* turn on led */
+				PORTA|=(0x01)<<(4);/* turn on led */
 				break;
 		case LED_ID_AD:
-				PORTG|=(0x01)<<LED_PIN_AD;/* turn on led */
+				PORTG|=(0x01)<<(2);/* turn on led */
 				break;
 		case LED_ID_LV_LOW:
-				PORTC|=(0x01)<<LED_PIN_LV_LOW;/* turn on led */
+				PORTC|=(0x01)<<(4);/* turn on led */
 				break;
 		case LED_ID_IMD:
-				PORTC|=(0x01)<<LED_PIN_IMD;/* turn on led */
+				PORTC|=(0x01)<<(0);/* turn on led */
 				break;
 		case LED_ID_BRAKE:
-				PORTG|=(0x01)<<LED_PIN_BRAKE;/* turn on led */
+				PORTG|=(0x01)<<(1);/* turn on led */
 				break;
 		case LED_ID_OK:
-				PORTG|=(0x01)<<LED_PIN_OK;/* turn on led */
+				PORTG|=(0x01)<<(1);/* turn on led */
 				break;
 		case LED_ID_START:
-				PORTD|=(0x01)<<LED_PIN_START;/* turn on led */
+				PORTD|=(0x01)<<(1);/* turn on led */
 				break;
 		case LED_ID_TC:
-				PORTA|=(0x01)<<LED_PIN_TC;/* turn on led*/
+				PORTA|=(0x01)<<(2);/* turn on led*/
 		default:
 				break;
 		}				
@@ -95,37 +95,37 @@ void led_clear(uint8_t led_id){
 	
 	switch(led_id){
 		case LED_ID_AMS:
-				PORTC&=~(1<<LED_PIN_AMS);	/* turn off led */
+				PORTC&=~(1<<(7));	/* turn off led */
 				break;
 		case LED_ID_TV:
-				PORTA&=~(1<<LED_PIN_TV);/* turn off led */
+				PORTA&=~(1<<(1));/* turn off led */
 				break;
 		case LED_ID_RECUP:
-				PORTA&=~(1<<LED_PIN_RECUP);/* turn off led */
+				PORTA&=~(1<<(3));/* turn off led */
 				break;
 		case LED_ID_KOBI:
-				PORTA&=~(1<<LED_PIN_KOBI);/* turn off led */
+				PORTA&=~(1<<(4));/* turn off led */
 				break;
 		case LED_ID_AD:
-				PORTG&=~(1<<LED_PIN_AD);/* turn off led */
+				PORTG&=~(1<<(2));/* turn off led */
 				break;
 		case LED_ID_LV_LOW:
-				PORTC&=~(0x01)<<LED_PIN_LV_LOW;/* turn off led */
+				PORTC&=~(1<<(4));/* turn off led */
 				break;
 		case LED_ID_IMD:
-				PORTC&=~(1<<LED_PIN_IMD);/* turn off led */
+				PORTC&=~(1<<(0));/* turn off led */
 				break;
 		case LED_ID_BRAKE:
-				PORTG&=~(0x01)<<LED_PIN_BRAKE;/* turn off led */
+				PORTG&=~(1<<(1));/* turn off led */
 				break;
 		case LED_ID_OK:
-				PORTG&=~(1<<LED_PIN_OK);/* turn off led */
+				PORTG&=~(1<<(1));/* turn off led */
 				break;
 		case LED_ID_START:
-				PORTD&=~(1<<LED_PIN_START);/* turn off led */
+				PORTD&=~(1<<(1));/* turn off led */
 				break;
 		case LED_ID_TC:
-				PORTA|=(0x01)<<LED_PIN_TC;/* turn off led*/
+				PORTA&=~(1<<(2));/* turn off led*/
 		default:
 				break;
 	}			
@@ -136,37 +136,37 @@ uint8_t led_is_set(uint8_t led_id){
 	
 	switch(led_id){
 		case LED_ID_AMS:
-			return 0x01==(PORTC>>LED_PIN_AMS);	
+			return 0x01==(PORTC>>(7));	
 			break;
 		case LED_ID_TV:
-			return 0x01==(PORTA>>LED_PIN_TV);
+			return 0x01==(PORTA>>(1));
 			break;
 		case LED_ID_RECUP:
-			return 0x01==(PORTA>>LED_PIN_RECUP);
+			return 0x01==(PORTA>>(3));
 			break;
 		case LED_ID_KOBI:
-			return 0x01==(PORTA>>LED_PIN_KOBI);
+			return 0x01==(PORTA>>(4));
 			break;
 		case LED_ID_AD:
-			return 0x01==(PORTA>>LED_PIN_AD);
+			return 0x01==(PORTA>>(2));
 			break;
 		case LED_ID_LV_LOW:
-			return 0x01==(PORTC>>LED_PIN_LV_LOW);
+			return 0x01==(PORTC>>(4));
 			break;
 		case LED_ID_IMD:
-			return 0x01==(PORTC>>LED_PIN_IMD);
+			return 0x01==(PORTC>>(0));
 			break;
 		case LED_ID_BRAKE:
-			return 0x01==(PORTG>>LED_PIN_BRAKE);
+			return 0x01==(PORTG>>(1));
 			break;
 		case LED_ID_OK:
-			return 0x01==(PORTG>>LED_PIN_OK);
+			return 0x01==(PORTG>>(1));
 			break;
 		case LED_ID_START:
-			return 0x01==(PORTD>>LED_PIN_START);
+			return 0x01==(PORTD>>(1));
 			break;
 		case LED_ID_TC:
-			return 0x01==(PORTA>>LED_PIN_TC);
+			return 0x01==(PORTA>>(2));
 			break;
 		default:
 		break;

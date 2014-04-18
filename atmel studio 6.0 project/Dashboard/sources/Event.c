@@ -44,7 +44,9 @@ EVENT_Handle EventGetNextEvent(void){
 	return e;
 }
 
-
+uint8_t i=0;
+uint8_t j=0;
+uint8_t k=0;
 void Dashboard(void){
 	
 	switch(event_queue[event_queue_tail]){
@@ -62,6 +64,11 @@ void Dashboard(void){
 			/* Frame 1 */
 			CANStartRx(&dashboard_rx);
 			
+			uint8_t j=0;
+			for(j;j<12;j++){
+					led_clear(j);
+			}
+				
 			return;
 		break;
 		case EVENT_10HZ:
@@ -74,6 +81,9 @@ void Dashboard(void){
 		return;
 		break;
 		case EVENT_50HZ:
+		
+	
+		
 			/* Multiplex */
 			#if HAS_BUTTONS
 				button_multiplex_cycle();				
@@ -86,11 +96,11 @@ void Dashboard(void){
 			dashboard_10_data.dataStruct.KEYS_1=button_key1;
 
 			dashboard_10_data.dataStruct.KEYS_2=button_key2;
-
+			
 			
 			// Send tx Frame
 			CANAddSendData(&dashboard_10_tx);
-			
+		
 			
 		return;
 		break;
