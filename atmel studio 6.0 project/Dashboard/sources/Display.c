@@ -17,7 +17,7 @@
 #include "../includes/ErrorCodes.h"
 
 #define SPI_START_PORT (PORTB)
-#define SPI_START_PIN (4)
+#define SPI_START_PIN (0)
 #define SPI_START_DDR (DDRB)
 
 /* Display Data Ram (DDRAM)
@@ -46,15 +46,6 @@ display_line_t display_line_accleration_mode={ ' ',' ','A','C','C','E','L','E','
 display_line_t display_line_buttons_pressed={ ' ',' ','B','U','T','T','O','N',' ','P','R','E','S','S','E','D',' ',' ',' ',' '};
 display_line_t display_line_blank={' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
 display_line_t display_line_tsal={' ',' ',' ','R','E','A','D','Y',' ',' ','T','O',' ','D','R','I','V','E',' ',' '};
-
-#define DISPLAY_PAUSE_CHAR 0b10100000
-display_line_t display_line_all_on={DISPLAY_PAUSE_CHAR,DISPLAY_PAUSE_CHAR,DISPLAY_PAUSE_CHAR,DISPLAY_PAUSE_CHAR,DISPLAY_PAUSE_CHAR,
-	DISPLAY_PAUSE_CHAR,DISPLAY_PAUSE_CHAR,DISPLAY_PAUSE_CHAR,DISPLAY_PAUSE_CHAR,DISPLAY_PAUSE_CHAR,
-	DISPLAY_PAUSE_CHAR,DISPLAY_PAUSE_CHAR,DISPLAY_PAUSE_CHAR,DISPLAY_PAUSE_CHAR,DISPLAY_PAUSE_CHAR,
-	DISPLAY_PAUSE_CHAR,DISPLAY_PAUSE_CHAR,DISPLAY_PAUSE_CHAR,DISPLAY_PAUSE_CHAR,DISPLAY_PAUSE_CHAR,
-	DISPLAY_PAUSE_CHAR,DISPLAY_PAUSE_CHAR,DISPLAY_PAUSE_CHAR,DISPLAY_PAUSE_CHAR,DISPLAY_PAUSE_CHAR,
-	DISPLAY_PAUSE_CHAR,DISPLAY_PAUSE_CHAR,DISPLAY_PAUSE_CHAR,DISPLAY_PAUSE_CHAR,DISPLAY_PAUSE_CHAR,
-	DISPLAY_PAUSE_CHAR,DISPLAY_PAUSE_CHAR,DISPLAY_PAUSE_CHAR,DISPLAY_PAUSE_CHAR};
 	
 
 /* Character Generator Ram (CGRAM)
@@ -80,9 +71,9 @@ display_line_t display_line_all_on={DISPLAY_PAUSE_CHAR,DISPLAY_PAUSE_CHAR,DISPLA
 #define INSTRUCTION_DISPLAY_RIGHT_SHIFT (0x1C)
 #define INSTRUCTION_DDRAM_ADDRESS_SET(x) ((0x80)|(x))
 #define INSTRUCTION_BRIGHTNESS_100 (0b0000111000)
-#define INSTRUCTION_BRIGHTNESS_75 (0b0000111001)
-#define INSTRUCTION_BRIGHTNESS_50 (0b0000111010)
-#define INSTRUCTION_BRIGHTNESS_25 (0b0000111011)
+#define INSTRUCTION_BRIGHTNESS_75 (0b0000111000)
+#define INSTRUCTION_BRIGHTNESS_50 (0b0000111000)
+#define INSTRUCTION_BRIGHTNESS_25 (0b0000111000)
 #define INSTRUCTION_DISPLAY_ON (0x0C)
 #define INSTRUCTION_CURSOR_LEFT_SHIFT (0b0000010000)
 #define INSTRUCTION_CURSOR_RIGHT_SHIFT (0b0000010100)
@@ -166,20 +157,12 @@ void display_init(void){
 	/* turn display on */
 	display_write_instruction(INSTRUCTION_DISPLAY_ON);
 	
-	
-	/* set brightness to max*/
+	/* set brigthness to max*/
 	display_write_instruction(INSTRUCTION_BRIGHTNESS_100);
-	
-	display_write_display_lines(display_line_blank,display_line_blank);
-	display_write_display_lines(display_line_all_on,display_line_all_on);
-	
+
 	/* set menu to home */
 	display_update(DISPLAY_MENU_HOME,0,0,0,0,0);
 	
-	
-	/*test*/
-
-
 	
 }
 
