@@ -45,7 +45,7 @@ EVENT_Handle EventGetNextEvent(void){
 }
 
 uint8_t i=0;
-uint8_t j=0;
+uint8_t leds=1;
 uint8_t k=0;
 void Dashboard(void){
 	
@@ -81,8 +81,6 @@ void Dashboard(void){
 		return;
 		break;
 		case EVENT_50HZ:
-		
-	
 		
 			/* Multiplex */
 			#if HAS_BUTTONS
@@ -139,24 +137,20 @@ void Dashboard(void){
 			/*if(selected_menu!=dashboard_rx_general_data.dataStruct.REQUEST_ID){
 				display_update(DISPLAY_MENU_ERROR,ERROR_BAD_REQUEST_ID,0,0,0,0);
 			}*/
-			uint8_t id=dashboard_rx_general_data.dataStruct.REQUEST_ID;
 			
-			if(id==0xFF){
-				buzzer_buzz_ready_to_drive();
-				display_update(DISPLAY_MENU_TSAL,0,0,0,0,0);
-				break;
-			}
-			
+			uint8_t id=dashboard_rx_general_data.dataStruct.REQUEST_ID;	
 			uint8_t leds=dashboard_rx_general_data.dataStruct.LEDS;
+			
+			
 			if(leds&1){
-				led_set(LED_ID_AMS);
+				led_set(LED_ID_START);
 			}else{
-				led_clear(LED_ID_AMS);
+				led_clear(LED_ID_START);
 			}
 			if((leds>>1)&1){
 				led_set(LED_ID_LV_LOW);
 			}else{
-				led_set(LED_ID_LV_LOW);
+				led_clear(LED_ID_LV_LOW);
 			}
 			if((leds>>2)&1){
 				led_set(LED_ID_IMD);
@@ -177,9 +171,9 @@ void Dashboard(void){
 				buzzer_buzz_ready_to_drive();
 			}
 			if((leds>>6)&1){
-				led_set(LED_ID_START);
+				led_set(LED_ID_AMS);
 			}else{
-				led_clear(LED_ID_START);							
+				led_clear(LED_ID_AMS);							
 			}
 				
 			display_update(id,dashboard_rx_general_data.dataStruct.VALUE1,dashboard_rx_general_data.dataStruct.VALUE2,dashboard_rx_general_data.dataStruct.VALUE3,dashboard_rx_general_data.dataStruct.VALUE4,dashboard_rx_general_data.dataStruct.VALUE5);

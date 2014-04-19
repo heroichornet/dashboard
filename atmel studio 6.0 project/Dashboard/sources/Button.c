@@ -224,17 +224,12 @@ void buttons_react(void){
 	}
 	
 	/* LEDS on BUTTONS */
-	if(button_state[BUTTON_ID_TC]){
+	if(button_state[BUTTON_ID_TV]){
 		led_set(LED_ID_TC);
 	}else{
 		led_clear(LED_ID_TC);
 	}
-	if(button_state[BUTTON_ID_TMS]){
-		led_set(LED_ID_AMS);
-	}else{
-		led_clear(LED_ID_AMS);
-	}
-	if(button_state[BUTTON_ID_TV]){
+	if(button_state[BUTTON_ID_TC]){
 		led_set(LED_ID_TV);
 	}else{
 		led_clear(LED_ID_TV);
@@ -246,13 +241,13 @@ void buttons_react(void){
 		led_clear(LED_ID_RECUP);
 	}
 	
-	if(button_state[BUTTON_ID_KOBI]){
+	if(button_state[BUTTON_ID_AD]){
 		led_set(LED_ID_KOBI);
 	}else{
 		led_clear(LED_ID_KOBI);
 	}
 	
-	if(button_state[BUTTON_ID_AD]){
+	if(button_state[BUTTON_ID_KOBI]){
 		led_set(LED_ID_AD);
 	}else{
 		led_clear(LED_ID_AD);

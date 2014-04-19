@@ -31,8 +31,8 @@ uint16_t led_state;
 
 /* Button LEDS */
 
-#define LED_ID_TV				(5)
-#define LED_ID_TC				(6)
+#define LED_ID_TV				(6)
+#define LED_ID_TC				(5)
 #define LED_ID_RECUP			(7)
 #define LED_ID_KOBI				(8)
 #define LED_ID_AD				(9)
