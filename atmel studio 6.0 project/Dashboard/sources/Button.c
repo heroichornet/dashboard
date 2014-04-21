@@ -277,6 +277,7 @@ void buttons_react(void){
 	}
 	
 	button_key2=0;
+	
 	if(button_state[BUTTON_ID_PLUS]){
 		button_key2|=1<<1;
 	}

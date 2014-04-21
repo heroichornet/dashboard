@@ -46,6 +46,7 @@ display_line_t display_line_accleration_mode={ ' ',' ','A','C','C','E','L','E','
 display_line_t display_line_buttons_pressed={ ' ',' ','B','U','T','T','O','N',' ','P','R','E','S','S','E','D',' ',' ',' ',' '};
 display_line_t display_line_blank={' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
 display_line_t display_line_tsal={' ',' ',' ','R','E','A','D','Y',' ',' ','T','O',' ','D','R','I','V','E',' ',' '};
+display_line_t display_line_starting={' ',' ',' ','S','T','A','R','T','I','N','G',' ','U','P',' ',' ',' ',' ',' ',' '};
 	
 
 /* Character Generator Ram (CGRAM)
@@ -425,4 +426,12 @@ void display_down( void )
 	selected_menu--;	
 	return;
 
+}
+
+void display_starting(uint8_t percent){
+	char * dpl=display_line_blank;
+	
+	display_make_display_line_percent(dpl,percent);
+	display_write_display_lines(display_line_starting,dpl);
+	
 }

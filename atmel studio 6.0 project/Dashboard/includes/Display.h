@@ -79,7 +79,7 @@ void display_plus(void);
 
 void display_minus(void);
 
-
+void display_starting(uint8_t);
 
 
 

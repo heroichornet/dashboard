@@ -17,6 +17,12 @@
 
 
 
+#define DASHBOARD_STATE_STARTING (0)
+#define DASHBOARD_STATE_RUNNING	 (1)
+
+uint8_t dashboard_state=DASHBOARD_STATE_STARTING;
+
+uint8_t start_up_count=0;
 
 
 EVENT_Handle event_queue[EVENT_QUEUE_SIZE];
@@ -44,9 +50,8 @@ EVENT_Handle EventGetNextEvent(void){
 	return e;
 }
 
-uint8_t i=0;
-uint8_t leds=1;
-uint8_t k=0;
+
+
 void Dashboard(void){
 	
 	switch(event_queue[event_queue_tail]){
@@ -72,15 +77,23 @@ void Dashboard(void){
 			return;
 		break;
 		case EVENT_10HZ:
-						
-	
-			
-
-
+			if(dashboard_state!=DASHBOARD_STATE_STARTING) return;
+		
+			start_up_count++;
+		
+			if((start_up_count%6)==0){
+				display_starting((60/start_up_count));
+			}
+		
+			if(start_up_count==60){
+				dashboard_state=DASHBOARD_STATE_RUNNING;
+			}				
 			
 		return;
 		break;
 		case EVENT_50HZ:
+		
+		if(dashboard_state!=DASHBOARD_STATE_RUNNING) return;
 		
 			/* Multiplex */
 			#if HAS_BUTTONS
