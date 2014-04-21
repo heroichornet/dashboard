@@ -134,9 +134,6 @@ void Dashboard(void){
 			// ToDo use RX to build display
 			CANGetData(&dashboard_rx);
 			// check for communication error
-			/*if(selected_menu!=dashboard_rx_general_data.dataStruct.REQUEST_ID){
-				display_update(DISPLAY_MENU_ERROR,ERROR_BAD_REQUEST_ID,0,0,0,0);
-			}*/
 			
 			uint8_t id=dashboard_rx_general_data.dataStruct.REQUEST_ID;	
 			uint8_t leds=dashboard_rx_general_data.dataStruct.LEDS;

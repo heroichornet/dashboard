@@ -16,5 +16,6 @@ To-Do
 - lcd branch
 - menu amz to menu torque vectoring takes two clicks
 - ~~menu left and menu right wrong way around~~
-- soc to amz takes to clicks
-- amz skipped from soc to torque but not from torque to soc
+- ~~soc to amz takes to clicks~~
+- ~~amz skipped from soc to torque but not from torque to soc~~
+- update error codes and messages

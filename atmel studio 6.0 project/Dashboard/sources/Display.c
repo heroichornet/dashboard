@@ -410,18 +410,19 @@ void display_up( void )
 {
 	selected_menu++;
 	selected_menu%=(DISPLAY_MENU_NUMBER);
-	display_update(selected_menu,0,0,0,0,0);
-
+	if(selected_menu==0) selected_menu=1;
+	
+	return;
 }
 
 void display_down( void )
 {
-	selected_menu--;
-	if(selected_menu==0||selected_menu>DISPLAY_MENU_NUMBER){
-		display_update(selected_menu,0,0,0,0,0);
-		selected_menu=DISPLAY_MENU_NUMBER;
+	if((selected_menu==1)||(selected_menu==0)){
+		selected_menu=(DISPLAY_MENU_NUMBER-1);
 		return;
 	}
-	display_update(selected_menu,0,0,0,0,0);
+	
+	selected_menu--;	
+	return;
 
 }
