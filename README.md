@@ -14,7 +14,7 @@ To-Do
 - select your player menu
 - acceleration mode
 - lcd branch
-- menu amz to menu torque vectoring takes two clicks
+- ~~menu amz to menu torque vectoring takes two clicks~~
 - ~~menu left and menu right wrong way around~~
 - ~~soc to amz takes to clicks~~
 - ~~amz skipped from soc to torque but not from torque to soc~~
