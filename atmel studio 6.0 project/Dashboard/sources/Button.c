@@ -287,6 +287,20 @@ void buttons_react(void){
 	if(button_state[BUTTON_ID_FLAPPY_DRS]){
 		button_key2|=1<<2;
 	}
+	
+	if(button_state[BUTTON_ID_FLAPPY_RADIO]){
+		button_key2|=1<<3;
+	}
+	
+	if(button_state[BUTTON_ID_UP]){
+		button_key2|=1<<4;
+	}
+	
+	if(button_state[BUTTON_ID_DOWN]){
+		button_key2|=1<<5;
+	}
+
+
 
 	
 }
