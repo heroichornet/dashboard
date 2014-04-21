@@ -215,12 +215,12 @@ void buttons_react(void){
 	
 	if(button_press[BUTTON_ID_UP]){
 		button_press[BUTTON_ID_UP]=0;
-		display_up();
+		display_down();
 	}
 	
 	if(button_press[BUTTON_ID_DOWN]){
 		button_press[BUTTON_ID_DOWN]=0;
-		display_down();		
+		display_up();		
 	}
 	
 	/* LEDS on BUTTONS */
