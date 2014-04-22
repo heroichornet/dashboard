@@ -53,6 +53,7 @@ display_line_t display_line_buttons_pressed={ ' ',' ','B','U','T','T','O','N',' 
 display_line_t display_line_blank={' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
 display_line_t display_line_tsal={' ',' ',' ','R','E','A','D','Y',' ',' ','T','O',' ','D','R','I','V','E',' ',' '};
 display_line_t display_line_starting={'<','<',' ',' ',' ','S','T','A','R','T','I','N','G',' ','U','P',' ',' ','>','>'};
+display_line_t display_line_brake_balance={'L',' ','B','R','A','K','E',' ','B','A','L','A','N','C','E',' ',' ',' ',' ','R'};
 
 /* Players */
 
@@ -270,6 +271,10 @@ void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t va
 		case DISPLAY_MENU_SELECT_PLAYER:
 				display_make_display_line_select_player(dpl,value1);
 				display_write_display_lines(display_line_player_select,dpl);
+			break;
+		case DISPLAY_MENU_BRAKE_BALANCE:
+				 display_make_display_line_brake_balance(dpl,value1);
+				 display_write_display_lines(display_line_brake_balance,dpl);
 			break;
 		default:
 			break;		
@@ -558,7 +563,7 @@ void display_starting(uint8_t percent){
 	
 }
 
-display_make_display_line_select_player(dpl,value1){
+void display_make_display_line_select_player(char *dpl,uint8_t value1){
 	
 	#define DISPLAY_PLAYER_MARIO (0)
 	#define DISPLAY_PLAYER_LUIGI (1)
@@ -590,3 +595,26 @@ display_make_display_line_select_player(dpl,value1){
 			break;
 	}
 }
+
+
+void display_make_display_line_brake_balance(char *dpl,uint8_t percent){
+	if(percent>100) return; //illegal
+	
+	uint8_t compliment_percent=100-percent;	
+	
+	
+	#define GET_DEC_POS2_BRAKE_BALANCE(x) (char)(0b00110000+((x/10)%10))
+	#define GET_DEC_POS1_BRAKE_BALANCE(x) (char)(0b00110000+(x%10))
+	
+	display_line_t template={' ','a','b','%',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','c','d','%',' '};
+	
+	
+	template[1]=GET_DEC_POS2_BRAKE_BALANCE(percent);
+	template[2]=GET_DEC_POS1_BRAKE_BALANCE(percent);
+	template[16]=GET_DEC_POS2_BRAKE_BALANCE(compliment_percent);
+	template[17]=GET_DEC_POS1_BRAKE_BALANCE(compliment_percent);
+	
+	memcpy(dpl,template,20);
+	
+}
+	
