@@ -6355,13 +6355,13 @@ void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t va
     22fa:	08 f0       	brcs	.+2      	; 0x22fe <display_update+0x4e>
     22fc:	91 c0       	rjmp	.+290    	; 0x2420 <display_update+0x170>
     22fe:	84 c0       	rjmp	.+264    	; 0x2408 <display_update+0x158>
-    2300:	8d 30       	cpi	r24, 0x0D	; 13
+    2300:	8e 30       	cpi	r24, 0x0E	; 14
     2302:	09 f4       	brne	.+2      	; 0x2306 <display_update+0x56>
     2304:	a5 c0       	rjmp	.+330    	; 0x2450 <display_update+0x1a0>
-    2306:	8e 30       	cpi	r24, 0x0E	; 14
+    2306:	8f 30       	cpi	r24, 0x0F	; 15
     2308:	09 f4       	brne	.+2      	; 0x230c <display_update+0x5c>
     230a:	ae c0       	rjmp	.+348    	; 0x2468 <display_update+0x1b8>
-    230c:	8c 30       	cpi	r24, 0x0C	; 12
+    230c:	8b 30       	cpi	r24, 0x0B	; 11
     230e:	09 f0       	breq	.+2      	; 0x2312 <display_update+0x62>
     2310:	b5 c0       	rjmp	.+362    	; 0x247c <display_update+0x1cc>
     2312:	0b c0       	rjmp	.+22     	; 0x232a <display_update+0x7a>
@@ -6678,7 +6678,7 @@ void display_up( void )
     24da:	80 91 c1 05 	lds	r24, 0x05C1
     24de:	8f 5f       	subi	r24, 0xFF	; 255
 	selected_menu%=(DISPLAY_MENU_NUMBER);
-    24e0:	6b e0       	ldi	r22, 0x0B	; 11
+    24e0:	6d e0       	ldi	r22, 0x0D	; 13
     24e2:	0e 94 7c 17 	call	0x2ef8	; 0x2ef8 <__udivmodqi4>
     24e6:	90 93 c1 05 	sts	0x05C1, r25
 	if(selected_menu==0) selected_menu=1;
@@ -6699,7 +6699,7 @@ void display_down( void )
     24fa:	82 30       	cpi	r24, 0x02	; 2
     24fc:	20 f4       	brcc	.+8      	; 0x2506 <display_down+0x10>
 		selected_menu=(DISPLAY_MENU_NUMBER-1);
-    24fe:	8a e0       	ldi	r24, 0x0A	; 10
+    24fe:	8c e0       	ldi	r24, 0x0C	; 12
     2500:	80 93 c1 05 	sts	0x05C1, r24
 		return;
     2504:	08 95       	ret
