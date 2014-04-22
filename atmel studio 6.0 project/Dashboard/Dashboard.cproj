@@ -149,6 +149,9 @@
     <Compile Include="includes\Led.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="includes\MessageCodes.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="includes\MyCommon.h">
       <SubType>compile</SubType>
     </Compile>

@@ -32,6 +32,7 @@ uint8_t display_ddram_bottom_row[28];
 
 display_line_t display_line_home={' ',' ',' ',' ',' ','A','M','Z',' ','g','r','i','m','s','e','l',' ',' ',' ',' '};
 display_line_t display_line_error={' ',' ',' ',' ',' ',' ',' ','E','R','R','O','R',' ',' ',' ',' ',' ',' '};
+display_line_t display_line_message={' ',' ',' ',' ',' ',',' ','M','E','S','S','A','G','E',' ',' ',' ',' ',' '};
 display_line_t display_line_soc={' ',' ','S','T','A','T','E',' ','O','F',' ','C','H','A','R','G','E',' ',' ',' '};
 display_line_t display_line_min_cv_max={'M','I','N',' ',' ','C','E','L','L','V','O','L','T','A','G','E',' ','M','A','X'};
 display_line_t display_line_cel_temp={' ','M','I','N',' ',' ','C','E','L','L','T','E','M','P',' ',' ','M','A','X',' '};
@@ -363,11 +364,14 @@ void display_make_display_line_error(char * dpl,uint8_t error_code){
 		case ERROR_SC_DOWN:
 			memcpy(dpl,display_line_error_sc_down,20);
 			break;
-		case ERROR_PRE_MASTER:
-			memcpy(dpl,display_line_error_pre_master,20);
+		case ERROR_PRE_ENRE:
+			memcpy(dpl,display_line_error_pre_enre,20);
 			break;
 		case ERROR_PRE_BOTS:
-			memcpy(dpl,display_line_error_unknown_code,20);
+			memcpy(dpl,display_line_error_pre_bots,20);
+			break;
+		case ERROR_BOTS:
+			memcpy(dpl,display_line_error_bots,20);
 			break;
 		case ERROR_HVDI:
 			memcpy(dpl,display_line_error_hvdi,20);
@@ -381,12 +385,51 @@ void display_make_display_line_error(char * dpl,uint8_t error_code){
 		case ERRROR_PBD:
 			memcpy(dpl,display_line_error_bpd,20);
 			break;
-		case ERROR_BAD_REQUEST_ID:
-			memcpy(dpl,display_line_error_bad_request_id,20);
+		case ERROR_MISSING_MCM_REAR:
+			memcpy(dpl,display_line_error_missing_mcm_rear,20);
+			break;
+		case ERROR_MISSING_MCM_FRONT:
+			memcpy(dpl,display_line_error_missing_mcm_front,20);
+			break;
+		case ERROR_MISSING_MCM_LVB:
+			memcpy(dpl,display_line_error_missing_mcm_lvb,20);
+			break;
+		case ERROR_MISSING_MCM_AB:
+			memcpy(dpl,display_line_error_missing_mcm_ab,20);
+			break;
+		case ERROR_MISSING_MC_LEFT:
+			memcpy(dpl,display_line_error_missing_mc_left,20);
+			break;
+		case ERROR_MISSING_MC_RIGHT:
+			memcpy(dpl,display_line_error_missing_mc_right,20);
+			break;
+		case ERROR_MISSING_SHUNT:
+			memcpy(dpl,display_line_error_missing_shunt,20);
+			break;
 		default:
 			memcpy(dpl,display_line_error_unknown_code,20);
 		break;
 	}
+	
+	/* switch case for categories */
+	switch((error_code/10)*10){
+		case ERROR_BMS:
+			memcpy(dpl,display_line_error_bms,20);
+			break;
+		case ERROR_MC:
+			memcpy(dpl,display_line_error_mc,20);
+			break;
+		case ERROR_MCM_A:
+			memcpy(dpl,display_line_error_mcm,20);
+			break;
+		case ERROR_MCM_B:
+			memcpy(dpl,display_line_error_mcm,20);
+			break;
+		default:
+			break;
+	}			
+		
+	
 	
 	dpl[1]=GET_DEC_POS3_ERROR(error_code);
 	dpl[2]=GET_DEC_POS2_ERROR(error_code);
