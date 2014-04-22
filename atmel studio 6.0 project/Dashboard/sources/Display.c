@@ -32,7 +32,7 @@ uint8_t display_ddram_bottom_row[28];
 
 display_line_t display_line_home={' ',' ',' ',' ',' ','A','M','Z',' ','g','r','i','m','s','e','l',' ',' ',' ',' '};
 display_line_t display_line_error={' ',' ',' ',' ',' ',' ',' ','E','R','R','O','R',' ',' ',' ',' ',' ',' '};
-display_line_t display_line_message={' ',' ',' ',' ',' ',',' ','M','E','S','S','A','G','E',' ',' ',' ',' ',' '};
+display_line_t display_line_message={' ',' ',' ',' ',' ',' ',' ','M','E','S','S','A','G','E',' ',' ',' ',' ',' '};
 display_line_t display_line_soc={' ',' ','S','T','A','T','E',' ','O','F',' ','C','H','A','R','G','E',' ',' ',' '};
 display_line_t display_line_min_cv_max={'M','I','N',' ',' ','C','E','L','L','V','O','L','T','A','G','E',' ','M','A','X'};
 display_line_t display_line_cel_temp={' ','M','I','N',' ',' ','C','E','L','L','T','E','M','P',' ',' ','M','A','X',' '};
