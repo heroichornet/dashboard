@@ -29,18 +29,11 @@ void led_init(void){
 	DDRA|=(0x01)<<(2);/* set data direction to output*/
 	
 	// Set I/O Pins High (all leds on)	
-	
-	PORTD|=(0x01)<<(7);	/* turn on led */
-	PORTA|=(0x01)<<(1);/* turn on led */
-	PORTA|=(0x01)<<(3);/* turn on led */
-	PORTA|=(0x01)<<(4);/* turn on led */
-	PORTG|=(0x01)<<(2);/* turn on led */
-	PORTC|=(0x01)<<(4);/* turn on led */
-	PORTC|=(0x01)<<(0);/* turn on led */
-	PORTG|=(0x01)<<(1);/* turn on led */
-	PORTG|=(0x01)<<(0);/* turn on led */
-	PORTC|=(0x01)<<(1);/* turn on led */
-	PORTA|=(0x01)<<(2);/* turn on led*/
+
+	uint8_t j=0;
+	for(j;j<12;j++){
+			led_clear(j);
+	}
 	
 	
 	led_state=0xFFFF;

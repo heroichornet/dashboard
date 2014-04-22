@@ -161,6 +161,9 @@
     <Compile Include="includes\spi_lib.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="includes\Startup.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="includes\Timer.h">
       <SubType>compile</SubType>
     </Compile>
@@ -204,6 +207,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="sources\spi_lib.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sources\Startup.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="sources\Timer.c">

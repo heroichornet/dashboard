@@ -19,3 +19,5 @@ To-Do
 - ~~soc to amz takes to clicks~~
 - ~~amz skipped from soc to torque but not from torque to soc~~
 - update error codes and messages
+- swap drs and radio button
+- clean project

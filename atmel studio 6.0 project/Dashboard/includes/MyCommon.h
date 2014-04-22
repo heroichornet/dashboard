@@ -14,6 +14,11 @@
 #include "GlobalIncludes.h"
 
 
+#define DASHBOARD_STATE_STARTING (0)
+#define DASHBOARD_STATE_RUNNING	 (1)
+
+uint8_t dashboard_state;
+
 
 void main_init(void);
 void main_deinit(void);

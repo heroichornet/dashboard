@@ -17,7 +17,8 @@
 
 void main_init(){
 
-
+	dashboard_state=DASHBOARD_STATE_STARTING;
+	
 	ports_init();
 	
 	CANInit();

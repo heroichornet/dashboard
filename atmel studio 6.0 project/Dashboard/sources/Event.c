@@ -6,7 +6,6 @@
  */
 
 
-#include <util/delay_basic.h>
 #include "../includes/Event.h"
 #include "../includes/GlobalIncludes.h"
 #include <stdlib.h>
@@ -14,15 +13,10 @@
 #include "../includes/Button.h"
 #include "../includes/Display.h"
 #include "../includes/Buzzer.h"
+#include "../includes/Startup.h"
+#include "../includes/MyCommon.h"
 
 
-
-#define DASHBOARD_STATE_STARTING (0)
-#define DASHBOARD_STATE_RUNNING	 (1)
-
-uint8_t dashboard_state=DASHBOARD_STATE_STARTING;
-
-uint8_t start_up_count=0;
 
 
 EVENT_Handle event_queue[EVENT_QUEUE_SIZE];
@@ -68,26 +62,13 @@ void Dashboard(void){
 			/* start Rx */
 			/* Frame 1 */
 			CANStartRx(&dashboard_rx);
-			
-			uint8_t j=0;
-			for(j;j<12;j++){
-					led_clear(j);
-			}
+		
 				
 			return;
 		break;
 		case EVENT_10HZ:
 			if(dashboard_state!=DASHBOARD_STATE_STARTING) return;
-		
-			start_up_count++;
-		
-			if((start_up_count%6)==0){
-				display_starting((60/start_up_count));
-			}
-		
-			if(start_up_count==60){
-				dashboard_state=DASHBOARD_STATE_RUNNING;
-			}				
+			startup_sequence();
 			
 		return;
 		break;

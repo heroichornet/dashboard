@@ -50,6 +50,7 @@ C_SRCS +=  \
 ../sources/MyCommon.c \
 ../sources/Radio.c \
 ../sources/spi_lib.c \
+../sources/Startup.c \
 ../sources/Timer.c \
 ../sources/WatchDog.c
 
@@ -74,6 +75,7 @@ sources/Led.o \
 sources/MyCommon.o \
 sources/Radio.o \
 sources/spi_lib.o \
+sources/Startup.o \
 sources/Timer.o \
 sources/WatchDog.o
 
@@ -92,6 +94,7 @@ sources/Led.o \
 sources/MyCommon.o \
 sources/Radio.o \
 sources/spi_lib.o \
+sources/Startup.o \
 sources/Timer.o \
 sources/WatchDog.o
 
@@ -110,6 +113,7 @@ sources/Led.d \
 sources/MyCommon.d \
 sources/Radio.d \
 sources/spi_lib.d \
+sources/Startup.d \
 sources/Timer.d \
 sources/WatchDog.d
 
@@ -128,6 +132,7 @@ sources/Led.d \
 sources/MyCommon.d \
 sources/Radio.d \
 sources/spi_lib.d \
+sources/Startup.d \
 sources/Timer.d \
 sources/WatchDog.d
 
@@ -141,6 +146,8 @@ ADDITIONAL_DEPENDENCIES:=
 OUTPUT_FILE_DEP:= ./makedep.mk
 
 # AVR32/GNU C Compiler
+
+
 
 
 

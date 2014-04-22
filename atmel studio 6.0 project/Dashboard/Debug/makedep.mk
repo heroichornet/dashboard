@@ -28,6 +28,8 @@ sources\Radio.c
 
 sources\spi_lib.c
 
+sources\Startup.c
+
 sources\Timer.c
 
 sources\WatchDog.c
