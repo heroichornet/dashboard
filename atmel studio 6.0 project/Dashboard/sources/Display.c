@@ -15,6 +15,7 @@
 #include "../includes/Display.h"
 #include "../includes/spi_lib.h"
 #include "../includes/ErrorCodes.h"
+#include "../includes/MessageCodes.h"
 
 #define SPI_START_PORT (PORTB)
 #define SPI_START_PIN (0)
@@ -177,8 +178,12 @@ void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t va
 				display_write_display_lines(display_line_home,dpl);
 			break;
 		case DISPLAY_MENU_ERROR:
-				display_make_display_line_error(dpl,value1);
-				display_write_display_lines(display_line_error,dpl);
+				display_make_display_line_error_or_message(dpl,value1);
+				if(value1>=200){// is message
+					display_write_display_lines(display_line_message,dpl);
+				}else{ //is error
+					display_write_display_lines(display_line_error,dpl);
+				}				
 			break;
 		case DISPLAY_MENU_SOC:
 				display_make_display_line_percent(dpl,value1);
@@ -351,13 +356,13 @@ void display_make_display_line_motor_temp(dpl,value1,value2){
 	
 } /*end display_make_display_line_motor_temp*/
 
-void display_make_display_line_error(char * dpl,uint8_t error_code){
+void display_make_display_line_error_or_message(char * dpl,uint8_t code){
 	
 	#define GET_DEC_POS3_ERROR(x) (char)(0b00110000+(x/100))
 	#define GET_DEC_POS2_ERROR(x) (char)(0b00110000+((x/10)%10))
 	#define GET_DEC_POS1_ERROR(x) (char)(0b00110000+((x)%10))
 		
-	switch(error_code){
+	switch(code){
 		case ERRROR_NONE:
 			memcpy(dpl,display_line_error_none,20);
 			break;
@@ -406,13 +411,37 @@ void display_make_display_line_error(char * dpl,uint8_t error_code){
 		case ERROR_MISSING_SHUNT:
 			memcpy(dpl,display_line_error_missing_shunt,20);
 			break;
+		case MESSAGE_STARTING_TS:
+			memcpy(dpl,display_line_message_starting_ts,20);
+			break;
+		case MESSAGE_CHECK_MS:
+			memcpy(dpl,display_line_message_check_ms,20);
+			break;
+		case MESSAGE_PRECHARGING:
+			memcpy(dpl,display_line_message_precharged,20);
+			break;
+		case MESSAGE_STARTING_MOTOR_CONTROLLER:
+			memcpy(dpl,display_line_message_precharged,20);
+			break;
+		case MESSAGE_READY_2_DRIVE:
+			memcpy(dpl,display_line_message_ready_2_drive,20);
+			break;
+		case MESSAGE_ENRE_FAIL:
+			memcpy(dpl,display_line_message_enre_fail,20);
+			break;
+		case MESSAGE_MS_OPEN:
+			memcpy(dpl,display_line_message_ms_open,20);
+			break;
+		case MESSAGE_PRECHARGE_FAIL:
+			memcpy(dpl,display_line_message_mc_fail,20);
+			break;
 		default:
 			memcpy(dpl,display_line_error_unknown_code,20);
 		break;
 	}
 	
 	/* switch case for categories */
-	switch((error_code/10)*10){
+	switch((code/10)*10){
 		case ERROR_BMS:
 			memcpy(dpl,display_line_error_bms,20);
 			break;
@@ -427,13 +456,15 @@ void display_make_display_line_error(char * dpl,uint8_t error_code){
 			break;
 		default:
 			break;
-	}			
+	}	
+	
+		
 		
 	
 	
-	dpl[1]=GET_DEC_POS3_ERROR(error_code);
-	dpl[2]=GET_DEC_POS2_ERROR(error_code);
-	dpl[3]=GET_DEC_POS1_ERROR(error_code);
+	dpl[1]=GET_DEC_POS3_ERROR(code);
+	dpl[2]=GET_DEC_POS2_ERROR(code);
+	dpl[3]=GET_DEC_POS1_ERROR(code);
 	
 } /*end display_make_display_error*/
 

@@ -43,7 +43,8 @@ sources/Display.d sources/Display.o: ../sources/Display.c \
  ../sources/../includes/..\includes\/Error.h \
  ../sources/../includes/..\includes\/CAN.h \
  ../sources/../includes/..\includes\/Timer.h \
- ../sources/../includes/ErrorCodes.h
+ ../sources/../includes/ErrorCodes.h \
+ ../sources/../includes/MessageCodes.h
 
 c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/include/stdint.h:
 
@@ -138,3 +139,5 @@ c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.
 ../sources/../includes/..\includes\/Timer.h:
 
 ../sources/../includes/ErrorCodes.h:
+
+../sources/../includes/MessageCodes.h:
