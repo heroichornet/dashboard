@@ -22,3 +22,9 @@ To-Do
 - ~~wap drs and radio button~~
 - clean project
 - correct macros naming
+- SOC to Torque takes 2 clicks and visa versa
+- start up problems
+-- shows percent, shouldn't
+-- leds not counting up
+-- doesn't change to AMZ when finished
+-- accleration mode doesn't show
