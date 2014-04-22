@@ -197,8 +197,10 @@ void led_percent_bar(uint8_t percent){
 	uint8_t rp=percent/10; //rounded percent
 	
 	
-	//clear all leds
-	led_clear_all();
+	if(rp<19){
+		//clear all leds
+		led_clear_all();
+	}
 	
 	if(rp>19){
 		// turn on IMD and AD

@@ -74,7 +74,7 @@ void Dashboard(void){
 		break;
 		case EVENT_50HZ:
 		
-		if(dashboard_state!=DASHBOARD_STATE_RUNNING) return;
+			if(dashboard_state!=DASHBOARD_STATE_RUNNING) return;
 		
 			/* Multiplex */
 			#if HAS_BUTTONS
@@ -97,25 +97,26 @@ void Dashboard(void){
 		return;
 		break;
 		case EVENT_4HZ:
+			if(dashboard_state!=DASHBOARD_STATE_RUNNING) return;
 	
-		if(buzz_cycles!=0){
-			if(buzzer_count<=2){
-				buzzer_off();
-				buzzer_count--;
+			if(buzz_cycles!=0){
+				if(buzzer_count<=2){
+					buzzer_off();
+					buzzer_count--;
+				}else{
+					buzzer_count--;
+				}
+				if(buzzer_count==0){
+					buzzer_count=4;
+					buzzer_on();
+					buzz_cycles--;
+				}
 			}else{
-				buzzer_count--;
-			}
-			if(buzzer_count==0){
-				buzzer_count=4;
-				buzzer_on();
-				buzz_cycles--;
-			}
-		}else{
-			buzzer_off();
-		}								
+				buzzer_off();
+			}								
 				
-		return;
-		break;
+			return;
+			break;
 		case EVENT_CANERROR:
 			/* Catch Can Errors*/
 			CANAbortCMD();
@@ -125,6 +126,7 @@ void Dashboard(void){
 			CANSendNext();
 		break;
 		case EVENT_CANRX:
+			if(dashboard_state!=DASHBOARD_STATE_RUNNING) return;
 			// ToDo use RX to build display
 			CANGetData(&dashboard_rx);
 			// check for communication error

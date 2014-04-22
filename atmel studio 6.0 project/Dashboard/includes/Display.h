@@ -56,6 +56,7 @@ display_string_t display_string;
 #define DISPLAY_MENU_TORQUE_VECTORING	(10)
 #define DISPLAY_MENU_ACCLERATION_MODE	(11)
 #define DISPLAY_MENU_ERROR				(12)
+#define DISPLAY_MENU_SELECT_PLAYER		(13)
 
 
 #define DISPLAY_MENU_BUTTON_TEST		(14)

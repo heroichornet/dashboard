@@ -53,6 +53,17 @@ display_line_t display_line_buttons_pressed={ ' ',' ','B','U','T','T','O','N',' 
 display_line_t display_line_blank={' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
 display_line_t display_line_tsal={' ',' ',' ','R','E','A','D','Y',' ',' ','T','O',' ','D','R','I','V','E',' ',' '};
 display_line_t display_line_starting={'<','<',' ',' ',' ','S','T','A','R','T','I','N','G',' ','U','P',' ',' ','>','>'};
+
+/* Players */
+
+display_line_t display_line_player_select={' ','S','E','L','E','C','T',' ','Y','O','U','R',' ','P','L','A','Y','E','R',' '};
+display_line_t display_line_player_yoshi={' ',' ',' ',' ','>','Y','O','S','H','I',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
+display_line_t display_line_player_mario={' ',' ',' ',' ','>','M','A','R','I','O',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
+display_line_t display_line_player_luigi={' ',' ',' ',' ','>','L','U','I','G','I',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
+display_line_t display_line_player_bowser={' ',' ',' ',' ','>','B','O','W','S','E','R',' ',' ',' ',' ',' ',' ',' ',' ',' '};
+display_line_t display_line_player_donkey_kong={' ',' ',' ',' ','>','D','O','N','K','E','Y','-','K','O','N','G',' ',' ',' ',' '};
+display_line_t display_line_player_princess_peach={' ',' ',' ',' ','>','P','R','I','N','C','E','S','S',' ','P','E','A','C','H',' '};
+	
 	
 
 /* Character Generator Ram (CGRAM)
@@ -199,7 +210,8 @@ void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t va
 							display_write_display_lines(display_line_accleration_mode_ready,dpl);
 						break;
 					case 3: // acceleration GO GO GO
-							display_write_display_lines(display_line_accleration_mode_go_go,display_line_blank);
+							display_make_display_line_blank(dpl);
+							display_write_display_lines(display_line_accleration_mode_go_go,dpl);
 						break;
 					default:
 						break;					
@@ -253,6 +265,10 @@ void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t va
 		case DISPLAY_MENU_TSAL:
 				display_make_display_line_blank(dpl);
 				display_write_display_lines(display_line_tsal,dpl);
+			break;
+		case DISPLAY_MENU_SELECT_PLAYER:
+				display_make_display_line_select_player(dpl,value1);
+				display_write_display_lines(display_line_player_select,dpl);
 			break;
 		default:
 			break;		
@@ -529,4 +545,37 @@ void display_starting(uint8_t percent){
 	display_make_display_line_percent(dpl,percent);
 	display_write_display_lines(display_line_starting,dpl);
 	
+}
+
+display_make_display_line_select_player(dpl,value1){
+	
+	#define DISPLAY_PLAYER_MARIO (0)
+	#define DISPLAY_PLAYER_LUIGI (1)
+	#define DISPLAY_PLAYER_YOSHI (2)
+	#define DISPLAY_PLAYER_DKONG (3)
+	#define DISPLAY_PLAYER_PPEACH (4)
+	#define DISPLAY_PLAYER_BOWSER (5)
+	
+	switch(value1){
+		case DISPLAY_PLAYER_MARIO:
+			memcpy(dpl,display_line_player_mario,20);
+			break;
+		case DISPLAY_PLAYER_LUIGI:
+			memcpy(dpl,display_line_player_luigi,20);
+			break;
+		case DISPLAY_PLAYER_YOSHI:
+			memcpy(dpl,display_line_player_yoshi,20);
+			break;
+		case DISPLAY_PLAYER_DKONG:
+			memcpy(dpl,display_line_player_donkey_kong,20);
+			break;
+		case DISPLAY_PLAYER_PPEACH:
+			memcpy(dpl,display_line_player_princess_peach,20);
+			break;
+		case DISPLAY_PLAYER_BOWSER:
+			memcpy(dpl,display_line_player_bowser,20);
+			break;
+		default:
+			break;
+	}
 }
