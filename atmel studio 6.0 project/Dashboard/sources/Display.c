@@ -181,7 +181,8 @@ void display_init(void){
 	/* set menu to home */
 	display_update(DISPLAY_MENU_HOME,0,0,0,0,0,0);
 	
-	
+	/* init last menu before error to none */
+	selected_menu_pre_error=255;	
 }
 
 void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t value3, uint8_t value4, uint8_t value5,uint8_t error){
@@ -193,7 +194,7 @@ void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t va
 				display_write_display_lines(display_line_home,dpl);
 			break;
 		case DISPLAY_MENU_ERROR:
-				display_make_display_line_error_or_message(dpl,value1);
+				display_make_display_line_error_or_message(dpl,error);
 				if(value1>=200){// is message
 					display_write_display_lines(display_line_message,dpl);
 				}else{ //is error
@@ -520,7 +521,12 @@ void display_make_display_line_blank(char *dpl){
 
 void display_up( void )
 {
-	selected_menu++;
+	if((selected_menu==DISPLAY_MENU_ERROR)&&(selected_menu_pre_error!=255)){
+		selected_menu=selected_menu_pre_error;
+		selected_menu_pre_error=255;
+	}else{
+		selected_menu++;
+	}		
 	selected_menu%=(DISPLAY_MENU_NUMBER);
 	if(selected_menu==0) selected_menu=1;
 	
@@ -534,7 +540,12 @@ void display_down( void )
 		return;
 	}
 	
-	selected_menu--;	
+	if((selected_menu==DISPLAY_MENU_ERROR)&&(selected_menu_pre_error!=255)){
+		selected_menu=selected_menu_pre_error;
+		selected_menu_pre_error=255;
+	}else{
+		selected_menu--;	
+	}	
 	return;
 
 }

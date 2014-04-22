@@ -191,42 +191,38 @@ uint16_t led_state_return(void){
 
 
 
-void led_percent_bar(uint8_t percent){
-//input between 0 and 100 , rounded to 10%
-
-	uint8_t rp=percent/10; //rounded percent
+void led_percent_bar(uint8_t percent){	
 	
-	
-	if(rp<19){
+	if(percent<19){
 		//clear all leds
 		led_clear_all();
 	}
 	
-	if(rp>19){
+	if(percent>19){
 		// turn on IMD and AD
 		led_set(LED_ID_IMD);
 		led_set(LED_ID_AD);
 	}
 	
-	if(rp>39){
+	if(percent>39){
 		// turn on LV LOW and KOBI	
 		led_set(LED_ID_LV_LOW);
 		led_set(LED_ID_KOBI);
 	}		
 	
-	if(rp>59){
+	if(percent>59){
 		//turn on AMS and RECUP
 		led_set(LED_ID_AMS);
 		led_set(LED_ID_RECUP);
 	}		
 	
-	if(rp>79){
+	if(percent>79){
 		//turn on OK and TV
 		led_set(LED_ID_OK);
 		led_set(LED_ID_TV);
 	}
 	
-	if(rp>99){
+	if(percent>99){
 		//turn on Brake and TC
 		led_set(LED_ID_BRAKE);
 		led_set(LED_ID_TC);
