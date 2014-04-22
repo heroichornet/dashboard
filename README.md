@@ -12,7 +12,7 @@ To-Do
 - change to error menu on error change
 - fix bug which kicks in after 20min 
 - select your player menu
-- acceleration mode
+- acceleration mode tested and works
 - lcd branch
 - ~~menu amz to menu torque vectoring takes two clicks~~
 - ~~menu left and menu right wrong way around~~

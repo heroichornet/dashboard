@@ -14,8 +14,7 @@
 
 #include "../includes/Display.h"
 #include "../includes/spi_lib.h"
-#include "../includes/ErrorCodes.h"
-#include "../includes/MessageCodes.h"
+#include "../includes/ErrorAndMessageCodes.h"
 
 #define SPI_START_PORT (PORTB)
 #define SPI_START_PIN (0)

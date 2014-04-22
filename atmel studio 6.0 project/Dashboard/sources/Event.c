@@ -131,6 +131,7 @@ void Dashboard(void){
 			
 			uint8_t id=dashboard_rx_general_data.dataStruct.REQUEST_ID;	
 			uint8_t leds=dashboard_rx_general_data.dataStruct.LEDS;
+			uint8_t error_code=dashboard_rx_general_data.dataStruct.ERRCODE;
 			
 			
 			if(leds&1){

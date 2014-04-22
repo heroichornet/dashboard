@@ -34,6 +34,7 @@ typedef char display_string_t[40];
 typedef char display_line_t[20];
 
 uint8_t selected_menu;
+uint8_t selected_menu_pre_error;
 display_string_t display_string;	
 	
 
