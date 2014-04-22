@@ -137,7 +137,7 @@
     <Compile Include="includes\Error.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="includes\ErrorCodes.h">
+    <Compile Include="includes\ErrorAndMessageCodes.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="includes\Event.h">
@@ -147,9 +147,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="includes\Led.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="includes\MessageCodes.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="includes\MyCommon.h">
