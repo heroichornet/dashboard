@@ -28,16 +28,8 @@ void led_init(void){
 	DDRC|=(0x01)<<(1);/* set data direction to output*/
 	DDRA|=(0x01)<<(2);/* set data direction to output*/
 	
-	// Set I/O Pins High (all leds on)	
-
-	uint8_t j=0;
-	for(j;j<12;j++){
-			led_clear(j);
-	}
-	
-	
-	led_state=0xFFFF;
-	led_state_set(led_state);
+	// turn off all leds to start with	
+	led_clear_all();
 	
 }
 
@@ -197,3 +189,55 @@ uint16_t led_state_return(void){
 }
 
 
+
+
+void led_percent_bar(uint8_t percent){
+//input between 0 and 100 , rounded to 10%
+
+	uint8_t rp=percent/10; //rounded percent
+	
+	
+	//clear all leds
+	led_clear_all();
+	
+	if(rp>19){
+		// turn on IMD and AD
+		led_set(LED_ID_IMD);
+		led_set(LED_ID_AD);
+	}
+	
+	if(rp>39){
+		// turn on LV LOW and KOBI	
+		led_set(LED_ID_LV_LOW);
+		led_set(LED_ID_KOBI);
+	}		
+	
+	if(rp>59){
+		//turn on AMS and RECUP
+		led_set(LED_ID_AMS);
+		led_set(LED_ID_RECUP);
+	}		
+	
+	if(rp>79){
+		//turn on OK and TV
+		led_set(LED_ID_OK);
+		led_set(LED_ID_TV);
+	}
+	
+	if(rp>99){
+		//turn on Brake and TC
+		led_set(LED_ID_BRAKE);
+		led_set(LED_ID_TC);
+	}		
+		
+	
+	
+	
+}
+
+void led_clear_all(void){
+	uint8_t j=0;
+	for(j;j<12;j++){
+		led_clear(j);
+	}
+}

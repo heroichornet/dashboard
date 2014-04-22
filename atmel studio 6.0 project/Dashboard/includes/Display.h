@@ -54,15 +54,15 @@ display_string_t display_string;
 #define DISPLAY_MENU_MOTOR_POWER_REAR	(8)
 #define DISPLAY_MENU_TRACTION_CONTROL	(9)
 #define DISPLAY_MENU_TORQUE_VECTORING	(10)
-#define DISPLAY_MENU_ERROR				(11)
-#define DISPLAY_MENU_ACCLERATION_MODE	(12)
+#define DISPLAY_MENU_ACCLERATION_MODE	(11)
+#define DISPLAY_MENU_ERROR				(12)
 
 
 #define DISPLAY_MENU_BUTTON_TEST		(14)
 #define DISPLAY_MENU_TSAL				(15)
 
 
-void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t value3, uint8_t value4, uint8_t value5);
+void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t value3, uint8_t value4, uint8_t value5,uint8_t error);
 
 void display_show(display_string_t s);
 

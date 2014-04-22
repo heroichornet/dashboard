@@ -45,11 +45,14 @@ display_line_t display_line_motor_temp_front={ ' ',' ','M','O','T','O','R',' ','
 display_line_t display_line_motor_temp_rear={ ' ',' ','M','O','T','O','R',' ','T','E','M','P','.',' ','R','E','A','R',' ',' '};
 display_line_t display_line_traction_control={' ',' ','T','R','A','C','T','I','O','N',' ','C','O','N','T','R','O','L',' ',' '};
 display_line_t display_line_torque_vectoring={' ',' ','T','O','R','Q','U','E',' ',' ','V','E','C','T','O','R','I','N','G',' '};
-display_line_t display_line_accleration_mode={ ' ',' ','A','C','C','E','L','E','R','A','T','I','O','N',' ','M','O','D','E',' '};
+display_line_t display_line_accleration_mode={ ' ',' ','A','C','C','E','L','E','R','A','T','I','O','N',' ','M','O','D','E',' '};	
+display_line_t display_line_accleration_mode_normal={ ' ',' ','N','O','R','M','A','L',' ','D','R','I','V','E',' ',' ',' ',' ',' ',' '};
+display_line_t display_line_accleration_mode_ready={ ' ','A','C','C','E','L','E','R','A','T','I','O','N',' ','R','E','A','D','Y',' '};	
+display_line_t display_line_accleration_mode_go_go={' ', ' ','<','<','G','O','!',' ','G','O','!',' ','G','O','!','>','>',' ',' ',' '};		
 display_line_t display_line_buttons_pressed={ ' ',' ','B','U','T','T','O','N',' ','P','R','E','S','S','E','D',' ',' ',' ',' '};
 display_line_t display_line_blank={' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
 display_line_t display_line_tsal={' ',' ',' ','R','E','A','D','Y',' ',' ','T','O',' ','D','R','I','V','E',' ',' '};
-display_line_t display_line_starting={' ',' ',' ','S','T','A','R','T','I','N','G',' ','U','P',' ',' ',' ',' ',' ',' '};
+display_line_t display_line_starting={'<','<',' ',' ',' ','S','T','A','R','T','I','N','G',' ','U','P',' ',' ','>','>'};
 	
 
 /* Character Generator Ram (CGRAM)
@@ -165,12 +168,12 @@ void display_init(void){
 	display_write_instruction(INSTRUCTION_BRIGHTNESS_100);
 
 	/* set menu to home */
-	display_update(DISPLAY_MENU_HOME,0,0,0,0,0);
+	display_update(DISPLAY_MENU_HOME,0,0,0,0,0,0);
 	
 	
 }
 
-void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t value3, uint8_t value4, uint8_t value5){
+void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t value3, uint8_t value4, uint8_t value5,uint8_t error){
 	char * dpl=display_line_blank;
 	
 	switch(request_id){
@@ -185,6 +188,23 @@ void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t va
 				}else{ //is error
 					display_write_display_lines(display_line_error,dpl);
 				}				
+			break;
+		case DISPLAY_MENU_ACCLERATION_MODE:
+				switch(value1){
+					case 1: // normal drive
+							display_write_display_lines(display_line_accleration_mode,display_line_accleration_mode_normal);
+						break;
+					case 2: // Ready, both buttons pressed, show break percent
+							display_make_display_line_percent_bar(dpl,value1);
+							display_write_display_lines(display_line_accleration_mode_ready,dpl);
+						break;
+					case 3: // acceleration GO GO GO
+							display_write_display_lines(display_line_accleration_mode_go_go,display_line_blank);
+						break;
+					default:
+						break;					
+				}
+				
 			break;
 		case DISPLAY_MENU_SOC:
 				display_make_display_line_percent(dpl,value1);

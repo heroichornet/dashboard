@@ -23,8 +23,13 @@ To-Do
 - clean project
 - correct macros naming
 - SOC to Torque takes 2 clicks and visa versa
-- start up problems
--- shows percent, shouldn't
+
+
+start up problems
+-----------------
+
+--~~shows percent, shouldn't~~
 -- leds not counting up
--- doesn't change to AMZ when finished
--- accleration mode doesn't show
+--~~doesn't change to AMZ when finished~~
+-- acceleration mode doesn't show
+-- error mode doesn't show in menu
