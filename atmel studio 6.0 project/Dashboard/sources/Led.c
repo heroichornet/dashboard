@@ -212,7 +212,7 @@ void led_percent_bar(uint8_t percent){
 	
 	if(percent>59){
 		//turn on AMS and RECUP
-		led_set(LED_ID_AMS);
+		led_set(LED_ID_START);
 		led_set(LED_ID_RECUP);
 	}		
 	

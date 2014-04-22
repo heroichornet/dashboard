@@ -25,5 +25,7 @@ void startup_sequence(void){
 				dashboard_state=DASHBOARD_STATE_RUNNING;
 				selected_menu=DISPLAY_MENU_HOME;
 				display_update(selected_menu,0,0,0,0,0,0);
+				//clear all leds
+				led_clear_all();
 			}
 }			

@@ -170,7 +170,7 @@ void Dashboard(void){
 				led_clear(LED_ID_AMS);							
 			}
 			
-			if((display_current_error!=error_code)&(error_code!=0)){
+			if((display_current_error!=error_code)&(error_code!=0)&(error_code!=255)){
 				display_current_error=error_code;
 				selected_menu_pre_error=selected_menu;
 				selected_menu=DISPLAY_MENU_ERROR;
