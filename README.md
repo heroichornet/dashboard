@@ -24,7 +24,7 @@ To-Do
 - clean project
 - correct macros naming
 - ~~SOC to Torque takes 2 clicks and visa versa~~
-- brake balance menu
+- ~~brake balance menu~~
 
 start up problems
 -----------------
