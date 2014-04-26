@@ -51,7 +51,8 @@ display_line_t display_line_accleration_mode_ready={ ' ','A','C','C','E','L','E'
 display_line_t display_line_accleration_mode_go_go={' ', ' ','<','<','G','O','!',' ','G','O','!',' ','G','O','!','>','>',' ',' ',' '};		
 display_line_t display_line_buttons_pressed={ ' ',' ','B','U','T','T','O','N',' ','P','R','E','S','S','E','D',' ',' ',' ',' '};
 display_line_t display_line_blank={' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
-display_line_t display_line_tsal={' ',' ',' ','R','E','A','D','Y',' ',' ','T','O',' ','D','R','I','V','E',' ',' '};
+display_line_t display_line_tsal1={' ',' ',' ',' ',' ',' ','R','E','A','D','Y',' ',' ','T','O',' ',' ',' ',' ',' '};
+display_line_t display_line_tsal2={' ',' ',' ',' ',' ',' ',' ',' ','D','R','I','V','E',' ',' ',' ',' ',' ',' ',' '};
 display_line_t display_line_starting={'<','<',' ',' ',' ','S','T','A','R','T','I','N','G',' ','U','P',' ',' ','>','>'};
 display_line_t display_line_brake_balance={'L',' ','B','R','A','K','E',' ','B','A','L','A','N','C','E',' ',' ',' ',' ','R'};
 
@@ -265,8 +266,7 @@ void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t va
 				display_write_display_lines(display_line_buttons_pressed,dpl);
 			break;
 		case DISPLAY_MENU_TSAL:
-				display_make_display_line_blank(dpl);
-				display_write_display_lines(display_line_tsal,dpl);
+				display_write_display_lines(display_line_tsal1,display_line_tsal2);
 			break;
 		case DISPLAY_MENU_SELECT_PLAYER:
 				display_make_display_line_select_player(dpl,value1);
@@ -401,6 +401,14 @@ void display_make_display_line_motor_temp(dpl,value1,value2){
 
 void display_make_display_line_error_or_message(char * dpl,uint8_t code){
 	
+	uint8_t bpd;
+	if((code>9)&&(code<20)){
+		bpd=1;
+		code=code-10;
+	}else{
+		bpd=0;
+	}
+	
 	#define GET_DEC_POS3_ERROR(x) (char)(0b00110000+(x/100))
 	#define GET_DEC_POS2_ERROR(x) (char)(0b00110000+((x/10)%10))
 	#define GET_DEC_POS1_ERROR(x) (char)(0b00110000+((x)%10))
@@ -432,6 +440,15 @@ void display_make_display_line_error_or_message(char * dpl,uint8_t code){
 			break;
 		case ERRROR_PBD:
 			memcpy(dpl,display_line_error_bpd,20);
+			break;
+		case ERROR_BMS_UNDERVOLTAGE:
+			memcpy(dpl,display_line_bms_undervoltage,20);
+			break;
+		case ERROR_BMS_OVERCURRENT:
+			memcpy(dpl,display_line_bms_overcurrent,20);
+			break;
+		case ERROR_BMS_OVERTEMP:
+			memcpy(dpl,display_line_bms_overtemp,20);
 			break;
 		case ERROR_MISSING_MCM_REAR:
 			memcpy(dpl,display_line_error_missing_mcm_rear,20);
@@ -483,6 +500,11 @@ void display_make_display_line_error_or_message(char * dpl,uint8_t code){
 		break;
 	}
 	
+	if(bpd){
+		dpl[19]='P';
+		dpl[19]='+';		
+	}
+	
 	/* switch case for categories */
 	switch((code/10)*10){
 		case ERROR_BMS:
@@ -500,9 +522,6 @@ void display_make_display_line_error_or_message(char * dpl,uint8_t code){
 		default:
 			break;
 	}	
-	
-		
-		
 	
 	
 	dpl[1]=GET_DEC_POS3_ERROR(code);

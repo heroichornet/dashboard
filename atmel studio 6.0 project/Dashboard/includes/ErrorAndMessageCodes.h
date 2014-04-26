@@ -21,6 +21,9 @@
 #define ERRROR_PBD (11)
 
 #define ERROR_BMS (20)
+#define ERROR_BMS_UNDERVOLTAGE (21)
+#define ERROR_BMS_OVERCURRENT (22)
+#define ERROR_BMS_OVERTEMP (23)
 
 #define ERROR_MC (30)
 
@@ -45,7 +48,7 @@ display_line_t display_line_error_unknown_code={'#','X','X','X',' ','U','N','K',
 display_line_t display_line_error_pre_enre={'#','X','X','X',' ','P','R','E',' ','E','N','R','E',' ',' ',' ',' ',' ',' '};
 display_line_t display_line_error_pre_bots={'#','X','X','X',' ','P','R','E',' ','B','O','T','S',' ',' ',' ',' ',' ',' '};
 display_line_t display_line_error_bots={'#','X','X','X',' ','B','O','T','S',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
-display_line_t display_line_error_hvdi={'#','X','X','X',' ','H','V','D','I',' ','I','N','T','E','R','U','P','T',' '};
+display_line_t display_line_error_hvdi={'#','X','X','X',' ','H','V','D','I','I','N','T','E','R','U','P','T',' ',' ',};
 display_line_t display_line_error_imd={'#','X','X','X',' ','I','M','D',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
 display_line_t display_line_error_imdf={'#','X','X','X',' ','I','M','D','F',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
 display_line_t display_line_error_bpd={'#','X','X','X',' ','B','R','A','K','E',' ','P','.','D','.',' ',' ',' ',' '};
@@ -53,6 +56,12 @@ display_line_t display_line_error_bad_request_id={'#','X','X','X',' ','B','A','D
 display_line_t display_line_error_bms={'#','X','X','X',' ','B','M','S',' ','E','R','R','O','R',' ',' ',' ',' ',' '};
 display_line_t display_line_error_mc={'#','X','X','X',' ','M','C',' ','E','R','R','O','R',' ',' ',' ',' ',' ',' '};
 display_line_t display_line_error_mcm={'#','X','X','X',' ','M','C','M',' ','E','R','R','O','R',' ',' ',' ',' ',' '};
+	
+/* Bms error strings */
+display_line_t display_line_bms_undervoltage={'#','X','X','X',' ','B','M','S',' ','U','N','D','E','R','V','O','L','T','.'};
+display_line_t display_line_bms_overcurrent={'#','X','X','X',' ','B','M','S',' ','O','V','E','R','C','U','R','R','N','T'};
+display_line_t display_line_bms_overtemp={'#','X','X','X',' ','B','M','S',' ','O','V','E','R','T','E','M','P',' ',' '};
+
 
 /* missing hardware errors */
 display_line_t display_line_error_missing_mcm_rear={'#','X','X','X',' ','M','I','S','S','I','N','G',' ','M','C','M','R',' ',' '};
