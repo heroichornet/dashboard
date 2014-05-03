@@ -33,7 +33,7 @@ void buzzer_off( void )
 
 void buzzer_buzz_ready_to_drive(){
 	buzzer_on();
-	buzz_cycles=3;
+	buzz_cycles=6;
 	buzzer_count=4;	
 }
 

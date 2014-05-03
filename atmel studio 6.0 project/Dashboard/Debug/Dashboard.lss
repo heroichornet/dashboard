@@ -1225,8 +1225,8 @@ void buzzer_off( void )
 void buzzer_buzz_ready_to_drive(){
 	buzzer_on();
      70e:	0e 94 83 03 	call	0x706	; 0x706 <buzzer_on>
-	buzz_cycles=3;
-     712:	83 e0       	ldi	r24, 0x03	; 3
+	buzz_cycles=6;
+     712:	86 e0       	ldi	r24, 0x06	; 6
      714:	80 93 f2 06 	sts	0x06F2, r24
 	buzzer_count=4;	
      718:	84 e0       	ldi	r24, 0x04	; 4
