@@ -162,6 +162,7 @@ void Dashboard(void){
 				led_clear(LED_ID_BRAKE);
 			}
 			if((leds>>5)&1){
+				if(buzz_cycles!=0) return; // buzzer already buzzing
 				buzzer_buzz_ready_to_drive();
 			}
 			if((leds>>6)&1){
@@ -170,7 +171,7 @@ void Dashboard(void){
 				led_clear(LED_ID_AMS);							
 			}
 			
-			if((display_current_error!=error_code)&(error_code!=0)&(error_code!=255)){
+			if((display_current_error!=error_code)&(error_code!=0)){
 				display_current_error=error_code;
 				selected_menu_pre_error=selected_menu;
 				selected_menu=DISPLAY_MENU_ERROR;
