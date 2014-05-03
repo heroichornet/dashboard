@@ -197,7 +197,7 @@ void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t va
 			break;
 		case DISPLAY_MENU_ERROR:
 				display_make_display_line_error_or_message(dpl,error);
-				if(value1>=200){// is message
+				if(error>=200){// is message
 					display_write_display_lines(display_line_message,dpl);
 				}else{ //is error
 					display_write_display_lines(display_line_error,dpl);
@@ -450,6 +450,12 @@ void display_make_display_line_error_or_message(char * dpl,uint8_t code){
 		case ERROR_BMS_OVERTEMP:
 			memcpy(dpl,display_line_bms_overtemp,20);
 			break;
+		case ERROR_THROTTLE_FAIL:
+			memcpy(dpl,display_line_throttle_fail,20);
+			break;
+		case ERROR_BRAKE_FORCE_FAIL:
+			memcpy(dpl,display_line_brake_force_fail,20);
+			break;
 		case ERROR_MISSING_MCM_REAR:
 			memcpy(dpl,display_line_error_missing_mcm_rear,20);
 			break;
@@ -471,6 +477,9 @@ void display_make_display_line_error_or_message(char * dpl,uint8_t code){
 		case ERROR_MISSING_SHUNT:
 			memcpy(dpl,display_line_error_missing_shunt,20);
 			break;
+		case ERROR_AIRror:
+			memcpy(dpl,display_line_air_ror,20);
+			break;
 		case MESSAGE_STARTING_TS:
 			memcpy(dpl,display_line_message_starting_ts,20);
 			break;
@@ -478,6 +487,9 @@ void display_make_display_line_error_or_message(char * dpl,uint8_t code){
 			memcpy(dpl,display_line_message_check_ms,20);
 			break;
 		case MESSAGE_PRECHARGING:
+			memcpy(dpl,display_line_message_precharging,20);
+			break;
+		case MESSAGE_PRECHARGED:
 			memcpy(dpl,display_line_message_precharged,20);
 			break;
 		case MESSAGE_STARTING_MOTOR_CONTROLLER:
@@ -485,6 +497,12 @@ void display_make_display_line_error_or_message(char * dpl,uint8_t code){
 			break;
 		case MESSAGE_READY_2_DRIVE:
 			memcpy(dpl,display_line_message_ready_2_drive,20);
+			break;
+		case MESSAGE_MANUAL_MC:
+			memcpy(dpl,display_line_message_manual_mc,20);
+			break;
+		case MESSAGE_PRECHARGE_ONLY:
+			memcpy(dpl,display_line_message_precharge_only,20);
 			break;
 		case MESSAGE_ENRE_FAIL:
 			memcpy(dpl,display_line_message_enre_fail,20);

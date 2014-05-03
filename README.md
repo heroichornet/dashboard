@@ -10,5 +10,5 @@ To-Do
 - fix bug which kicks in after 20min 
 - clean project
 - correct macros naming
-
+- "Error" instead of "Message
 
