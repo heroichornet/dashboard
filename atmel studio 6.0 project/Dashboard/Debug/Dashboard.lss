@@ -8652,9 +8652,9 @@ void startup_sequence(void){
     2ede:	0e 94 a4 16 	call	0x2d48	; 0x2d48 <led_percent_bar>
 			}
 			
-			if(start_up_count>=60){
+			if(start_up_count>=69){
     2ee2:	80 91 9a 06 	lds	r24, 0x069A
-    2ee6:	8c 33       	cpi	r24, 0x3C	; 60
+    2ee6:	85 34       	cpi	r24, 0x45	; 69
     2ee8:	80 f0       	brcs	.+32     	; 0x2f0a <startup_sequence+0x80>
 				dashboard_state=DASHBOARD_STATE_RUNNING;
     2eea:	81 e0       	ldi	r24, 0x01	; 1

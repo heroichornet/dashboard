@@ -21,7 +21,7 @@ void startup_sequence(void){
 				led_percent_bar((start_up_count/6)*10);
 			}
 			
-			if(start_up_count>=60){
+			if(start_up_count>=69){
 				dashboard_state=DASHBOARD_STATE_RUNNING;
 				selected_menu=DISPLAY_MENU_HOME;
 				display_update(selected_menu,0,0,0,0,0,0);
