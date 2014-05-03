@@ -493,8 +493,14 @@ void display_make_display_line_error_or_message(char * dpl,uint8_t code){
 			memcpy(dpl,display_line_message_ms_open,20);
 			break;
 		case MESSAGE_PRECHARGE_FAIL:
+			memcpy(dpl,display_line_message_precharge_fail,20);
+			break;
+		case MESSAGE_MC_FAIL:
 			memcpy(dpl,display_line_message_mc_fail,20);
 			break;
+		case MESSAGE_BOOT_UP:
+				memcpy(dpl,display_line_message_boot_up,20);
+				break;
 		default:
 			memcpy(dpl,display_line_error_unknown_code,20);
 		break;
@@ -505,11 +511,12 @@ void display_make_display_line_error_or_message(char * dpl,uint8_t code){
 		dpl[19]='+';		
 	}
 	
+	if((code>23)&&(code<30)){ // General BMS ERROR
+			memcpy(dpl,display_line_error_bms,20);
+	}
+	
 	/* switch case for categories */
 	switch((code/10)*10){
-		case ERROR_BMS:
-			memcpy(dpl,display_line_error_bms,20);
-			break;
 		case ERROR_MC:
 			memcpy(dpl,display_line_error_mc,20);
 			break;

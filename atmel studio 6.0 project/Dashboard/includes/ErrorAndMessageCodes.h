@@ -85,7 +85,7 @@ display_line_t display_line_error_missing_shunt={'#','X','X','X',' ','M','I','S'
 #define MESSAGE_ENRE_FAIL (201)
 #define MESSAGE_MS_OPEN (202)
 #define MESSAGE_PRECHARGE_FAIL (203)
-#define MESSAGE_MOTORCONTROLLER_FAIL (204)
+#define MESSAGE_MC_FAIL (204)
 
 
 #define MESSAGE_BOOT_UP (255)
@@ -101,6 +101,7 @@ display_line_t display_line_message_enre_fail={'#','X','X','X',' ',' ',' ','E','
 display_line_t display_line_message_ms_open={'#','X','X','X',' ',' ',' ','M','S',' ','O','P','E','N',' ',' ',' ',' ',' ',' '};
 display_line_t display_line_message_precharge_fail={'#','X','X','X',' ',' ',' ','P','R','E',' ','C','H','R','G',' ','F','A','I','L'};	
 display_line_t display_line_message_mc_fail={'#','X','X','X',' ',' ',' ','M','C',' ','F','A','I','L',' ',' ',' ',' ',' ',' '};	
+display_line_t display_line_message_boot_up={'#','X','X','X',' ',' ',' ','B','O','O','T',' ','U','P',' ',' ',' ',' ',' ',' '};	
 	
 	
 

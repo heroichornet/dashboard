@@ -127,7 +127,7 @@ void Dashboard(void){
 		break;
 		case EVENT_CANRX:
 			if(dashboard_state!=DASHBOARD_STATE_RUNNING) return;
-			// ToDo use RX to build display
+
 			CANGetData(&dashboard_rx);
 			// check for communication error
 			
