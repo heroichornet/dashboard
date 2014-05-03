@@ -20,7 +20,7 @@
 #define ERROR_IMDF (7)
 #define ERRROR_PBD (10)
 
-#define ERROR_BMS (20)
+#define ERROR_BMS_RELAY (20)
 #define ERROR_BMS_UNDERVOLTAGE (21)
 #define ERROR_BMS_OVERCURRENT (22)
 #define ERROR_BMS_OVERTEMP (23)
@@ -58,6 +58,7 @@ display_line_t display_line_error_imdf={'#','X','X','X',' ','I','M','D','F',' ',
 display_line_t display_line_error_bpd={'#','X','X','X',' ','B','R','A','K','E',' ','P','.','D','.',' ',' ',' ',' '};
 display_line_t display_line_error_bad_request_id={'#','X','X','X',' ','B','A','D','R','E','Q','U','E','S','T',' ','I','D',' '};
 display_line_t display_line_error_bms={'#','X','X','X',' ','B','M','S',' ','E','R','R','O','R',' ',' ',' ',' ',' '};
+display_line_t display_line_error_bms_relay={'#','X','X','X',' ','B','M','S',' ','R','E','L','A','Y',' ',' ',' ',' ',' '};
 display_line_t display_line_error_mc={'#','X','X','X',' ','M','C',' ','E','R','R','O','R',' ',' ',' ',' ',' ',' '};
 display_line_t display_line_error_mcm={'#','X','X','X',' ','M','C','M',' ','E','R','R','O','R',' ',' ',' ',' ',' '};
 	

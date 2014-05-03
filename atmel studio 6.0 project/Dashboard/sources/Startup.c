@@ -16,12 +16,12 @@ uint8_t start_up_count=0;
 void startup_sequence(void){
 			start_up_count++;
 			
-			if((start_up_count%6)==0){
+			if(((start_up_count%6)==0)){
 				display_starting((start_up_count/6)*10);
 				led_percent_bar((start_up_count/6)*10);
 			}
 			
-			if(start_up_count>=69){
+			if(start_up_count>=65){
 				dashboard_state=DASHBOARD_STATE_RUNNING;
 				selected_menu=DISPLAY_MENU_HOME;
 				display_update(selected_menu,0,0,0,0,0,0);

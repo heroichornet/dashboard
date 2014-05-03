@@ -197,7 +197,7 @@ void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t va
 			break;
 		case DISPLAY_MENU_ERROR:
 				display_make_display_line_error_or_message(dpl,error);
-				if(error>=200){// is message
+				if(error>=100){// is message
 					display_write_display_lines(display_line_message,dpl);
 				}else{ //is error
 					display_write_display_lines(display_line_error,dpl);
@@ -441,6 +441,9 @@ void display_make_display_line_error_or_message(char * dpl,uint8_t code){
 		case ERRROR_PBD:
 			memcpy(dpl,display_line_error_bpd,20);
 			break;
+		case ERROR_BMS_RELAY:
+			memcpy(dpl,display_line_error_bms_relay,20);
+			break;			
 		case ERROR_BMS_UNDERVOLTAGE:
 			memcpy(dpl,display_line_bms_undervoltage,20);
 			break;
