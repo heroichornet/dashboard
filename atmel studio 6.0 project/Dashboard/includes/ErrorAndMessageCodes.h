@@ -18,7 +18,7 @@
 #define ERROR_HVDI (5)
 #define ERROR_IMD (6)
 #define ERROR_IMDF (7)
-#define ERRROR_PBD (11)
+#define ERRROR_PBD (10)
 
 #define ERROR_BMS (20)
 #define ERROR_BMS_UNDERVOLTAGE (21)
@@ -36,8 +36,8 @@
 #define ERROR_MISSING_MCM_FRONT (91)
 #define ERROR_MISSING_MCM_LVB (92)
 #define ERROR_MISSING_MCM_AB (93)
-#define ERROR_MISSING_MC_RIGHT (94)
-#define ERROR_MISSING_MC_LEFT (95)
+#define ERROR_MISSING_MC_LEFT (94)
+#define ERROR_MISSING_MC_RIGHT (95)
 #define ERROR_MISSING_SHUNT (96)
 
 
@@ -79,11 +79,16 @@ display_line_t display_line_error_missing_shunt={'#','X','X','X',' ','M','I','S'
 #define MESSAGE_PRECHARGED (104)
 #define MESSAGE_STARTING_MOTOR_CONTROLLER (105)
 #define MESSAGE_READY_2_DRIVE (106)
+#define MESSAGE_MANUAL_MC (107)
+#define MESSAGE_PRECHARGE_ONLY (108)
+
 #define MESSAGE_ENRE_FAIL (201)
 #define MESSAGE_MS_OPEN (202)
 #define MESSAGE_PRECHARGE_FAIL (203)
 #define MESSAGE_MOTORCONTROLLER_FAIL (204)
 
+
+#define MESSAGE_BOOT_UP (255)
 
 /* Message Strings */
 display_line_t display_line_message_starting_ts={'#','X','X','X',' ',' ',' ','S','T','A','R','T','I','N','G',' ','T','S',' ',' '};
