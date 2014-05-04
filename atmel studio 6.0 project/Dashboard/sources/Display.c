@@ -562,7 +562,11 @@ void display_make_display_line_error_or_message(char * dpl,uint8_t code){
 	
 	
 	dpl[1]=GET_DEC_POS3_ERROR(code);
-	dpl[2]=GET_DEC_POS2_ERROR(code);
+	if(bpd){
+		dpl[2]='1';
+	}else{
+		dpl[2]=GET_DEC_POS2_ERROR(code);
+	}	
 	dpl[3]=GET_DEC_POS1_ERROR(code);
 	
 } /*end display_make_display_error*/
