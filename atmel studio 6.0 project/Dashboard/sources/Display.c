@@ -429,6 +429,9 @@ void display_make_display_line_error_or_message(char * dpl,uint8_t code){
 		case ERROR_BOTS:
 			memcpy(dpl,display_line_error_bots,20);
 			break;
+		case ERROR_BMS_RELAY:
+				memcpy(dpl,display_line_error_bms_relay,20);
+				break;
 		case ERROR_HVDI:
 			memcpy(dpl,display_line_error_hvdi,20);
 			break;
@@ -440,18 +443,18 @@ void display_make_display_line_error_or_message(char * dpl,uint8_t code){
 			break;
 		case ERRROR_PBD:
 			memcpy(dpl,display_line_error_bpd,20);
-			break;
-		case ERROR_BMS_RELAY:
-			memcpy(dpl,display_line_error_bms_relay,20);
-			break;			
+			break;		
 		case ERROR_BMS_UNDERVOLTAGE:
-			memcpy(dpl,display_line_bms_undervoltage,20);
+			memcpy(dpl,display_line_error_bms_undervoltage,20);
 			break;
 		case ERROR_BMS_OVERCURRENT:
-			memcpy(dpl,display_line_bms_overcurrent,20);
+			memcpy(dpl,display_line_error_bms_overcurrent,20);
 			break;
 		case ERROR_BMS_OVERTEMP:
-			memcpy(dpl,display_line_bms_overtemp,20);
+			memcpy(dpl,display_line_error_bms_overtemp,20);
+			break;
+		case ERROR_DISCHARGE_TEMP:
+			memcpy(dpl,display_line_error_bms_dischargetemp,20);
 			break;
 		case ERROR_THROTTLE_FAIL:
 			memcpy(dpl,display_line_throttle_fail,20);
@@ -480,8 +483,14 @@ void display_make_display_line_error_or_message(char * dpl,uint8_t code){
 		case ERROR_MISSING_SHUNT:
 			memcpy(dpl,display_line_error_missing_shunt,20);
 			break;
+		case ERROR_AIRp_meltdown:
+			memcpy(dpl,display_line_error_airp_melt_down,20);
+			break;
+		case ERROR_AIRn_meltdown:
+			memcpy(dpl,display_line_error_airn_melt_down,20);
+			break;
 		case ERROR_AIRror:
-			memcpy(dpl,display_line_air_ror,20);
+			memcpy(dpl,display_line_error_air_ror,20);
 			break;
 		case MESSAGE_STARTING_TS:
 			memcpy(dpl,display_line_message_starting_ts,20);

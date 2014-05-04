@@ -15,15 +15,17 @@
 #define ERROR_PRE_ENRE (2)
 #define ERROR_BOTS (3)
 #define ERROR_PRE_BOTS (4)
-#define ERROR_HVDI (5)
-#define ERROR_IMD (6)
-#define ERROR_IMDF (7)
+#define ERROR_BMS_RELAY (5)
+#define ERROR_HVDI (6)
+#define ERROR_IMD (7)
+#define ERROR_IMDF (8)
 #define ERRROR_PBD (10)
 
-#define ERROR_BMS_RELAY (20)
+
 #define ERROR_BMS_UNDERVOLTAGE (21)
 #define ERROR_BMS_OVERCURRENT (22)
 #define ERROR_BMS_OVERTEMP (23)
+#define ERROR_DISCHARGE_TEMP (24)
 
 #define ERROR_MC (30) // 30 bis 39
 
@@ -42,7 +44,10 @@
 #define ERROR_MISSING_MC_RIGHT (95)
 #define ERROR_MISSING_SHUNT (96)
 
-#define ERROR_AIRror (99) // Airs verschweisst
+/* Error AIR */
+#define ERROR_AIRp_meltdown (97)
+#define ERROR_AIRn_meltdown (98)
+#define ERROR_AIRror (99) 
 
 
 /* error Strings */
@@ -63,9 +68,10 @@ display_line_t display_line_error_mc={'#','X','X','X',' ','M','C',' ','E','R','R
 display_line_t display_line_error_mcm={'#','X','X','X',' ','M','C','M',' ','E','R','R','O','R',' ',' ',' ',' ',' '};
 	
 /* Bms error strings */
-display_line_t display_line_bms_undervoltage={'#','X','X','X',' ','B','M','S',' ','U','N','D','E','R','V','O','L','T','.'};
-display_line_t display_line_bms_overcurrent={'#','X','X','X',' ','B','M','S',' ','O','V','E','R','C','U','R','R','N','T'};
-display_line_t display_line_bms_overtemp={'#','X','X','X',' ','B','M','S',' ','O','V','E','R','T','E','M','P',' ',' '};
+display_line_t display_line_error_bms_undervoltage={'#','X','X','X',' ','B','M','S',' ','U','N','D','E','R','V','O','L','T','.'};
+display_line_t display_line_error_bms_overcurrent={'#','X','X','X',' ','B','M','S',' ','O','V','E','R','C','U','R','R','N','T'};
+display_line_t display_line_error_bms_overtemp={'#','X','X','X',' ','B','M','S',' ','O','V','E','R','T','E','M','P',' ',' '};
+display_line_t display_line_error_bms_dischargetemp={'#','X','X','X',' ','D','I','S','C','H','A','R','G','E',' ','T','E','M','P'};
 
 
 /* further errors */
@@ -83,7 +89,11 @@ display_line_t display_line_error_missing_mc_right={'#','X','X','X',' ','M','I',
 display_line_t display_line_error_missing_shunt={'#','X','X','X',' ','M','I','S','S','I','N','G',' ','S','H','U','N','T',' '};
 
 
-display_line_t display_line_air_ror={'#','X','X','X',' ','A','I','R','r','o','r',' ',' ',' ',' ',' ',' ',' ',' '};
+/* AIR Errors */
+display_line_t display_line_error_air_ror={'#','X','X','X',' ','A','I','R','r','o','r',' ','T','e','r','r','o','r',' '};
+display_line_t display_line_error_airp_melt_down={'#','X','X','X',' ','A','I','R','p',' ',' M','E','L','T','D','O','W','N',' '};
+display_line_t display_line_error_airn_melt_down={'#','X','X','X',' ','A','I','R','n',' ',' M','E','L','T','D','O','W','N',' '};
+
 
 
 #define MESSAGE_STARTING_TS (101)
