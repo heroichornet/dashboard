@@ -279,28 +279,28 @@ void buttons_react(void){
 	button_key2=0;
 	
 	if(button_state[BUTTON_ID_PLUS]){
-		button_key2|=1<<1;
+		button_key2|=1;
 	}
 	if(button_state[BUTTON_ID_MINUS]){
-		button_key2|=1;
+		button_key2|=1<<1;
 	}
 	
 	if(button_state[BUTTON_ID_FLAPPY_RADIO]){
-		button_key2|=1<<2;
+		button_key2|=1<<3;
 	}
 		
 	
 	if(button_state[BUTTON_ID_FLAPPY_DRS]){
-		button_key2|=1<<3;
+		button_key2|=1<<2;
 	}
 	
 
 	if(button_state[BUTTON_ID_UP]){
-		button_key2|=1<<4;
+		button_key2|=1<<5;
 	}
 	
 	if(button_state[BUTTON_ID_DOWN]){
-		button_key2|=1<<5;
+		button_key2|=1<<4;
 	}
 
 
