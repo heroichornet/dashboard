@@ -24,8 +24,8 @@ extern uint8_t button_key2;
 #define BUTTON_ID_FLAPPY_RADIO (1)
 #define BUTTON_ID_PLUS (4)
 #define BUTTON_ID_MINUS (5)
-#define BUTTON_ID_UP (8)
-#define BUTTON_ID_DOWN (9)
+#define BUTTON_ID_UP (9)
+#define BUTTON_ID_DOWN (8)
 
 /* Buttons on Dashboard */
 #define BUTTON_ID_TMS (2)

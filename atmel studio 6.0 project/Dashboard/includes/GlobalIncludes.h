@@ -88,7 +88,7 @@
 #define HAS_LEDS    (1)
 #define HAS_BUTTONS (1)
 #define HAS_DISPLAY (1)
-#define HAS_RADIO	(0)
+#define HAS_RADIO	(1)
 		
 // Activate/deactivate CAN components
 

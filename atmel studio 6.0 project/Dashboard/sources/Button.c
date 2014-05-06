@@ -223,6 +223,8 @@ void buttons_react(void){
 		display_up();		
 	}
 	
+	
+	
 	/* LEDS on BUTTONS */
 	if(button_state[BUTTON_ID_TV]){
 		led_set(LED_ID_TC);
@@ -252,6 +254,12 @@ void buttons_react(void){
 	}else{
 		led_clear(LED_ID_AD);
 	}
+	
+	if(button_state[BUTTON_ID_FLAPPY_RADIO]){
+		radio_on();
+	}else{
+		radio_off();
+	}		
 		
 		
 	
@@ -296,11 +304,11 @@ void buttons_react(void){
 	
 
 	if(button_state[BUTTON_ID_UP]){
-		button_key2|=1<<5;
+		button_key2|=1<<4;
 	}
 	
 	if(button_state[BUTTON_ID_DOWN]){
-		button_key2|=1<<4;
+		button_key2|=1<<5;
 	}
 
 
