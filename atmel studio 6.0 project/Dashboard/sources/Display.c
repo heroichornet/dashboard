@@ -346,7 +346,7 @@ void display_make_display_line_min_av_max_temp(char* dpl,uint8_t min_i,uint8_t a
 	#define GET_DEC_POS3_TEMP(x) (char)(0b00110000+((x)%10))
 	
 	
-	display_line_t dpl_volt={GET_DEC_POS1_TEMP(min_i),GET_DEC_POS2_TEMP(min_i),GET_DEC_POS3_TEMP(min_i),'°','C',' ',' ',GET_DEC_POS1_TEMP(av_i),GET_DEC_POS2_TEMP(av_i),GET_DEC_POS3_TEMP(av_i),'°','C',' ',' ',' ',GET_DEC_POS1_TEMP(max_i),GET_DEC_POS2_TEMP(max_i),GET_DEC_POS3_TEMP(max_i),'°','C'};
+	display_line_t dpl_volt={' ',GET_DEC_POS2_TEMP(min_i),GET_DEC_POS3_TEMP(min_i),'°','C',' ',' ',' ',GET_DEC_POS2_TEMP(av_i),GET_DEC_POS3_TEMP(av_i),'°','C',' ',' ',' ',' ',GET_DEC_POS2_TEMP(max_i),GET_DEC_POS3_TEMP(max_i),'°','C'};
 	memcpy(dpl,dpl_volt,20);
 }/* end display_make_display_line_min_av_max_temp*/
 

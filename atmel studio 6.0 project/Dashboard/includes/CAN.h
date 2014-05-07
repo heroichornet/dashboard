@@ -30,7 +30,6 @@ st_cmd_t* CANGetCurrentTx(void);
 void CANSendNext(void);
 void CANAbortCMD(void);
 
-U8 test();
 
 #endif
 /* CAN_INTERFACE_H_ */
