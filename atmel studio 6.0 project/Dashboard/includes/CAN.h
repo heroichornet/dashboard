@@ -13,11 +13,12 @@
 #include "..\includes\adc_drv.h"
 #include "..\includes\CAN.h"
 
-#define CAN_QUEUE_SIZE 5
+#define CAN_QUEUE_SIZE 8
 
 typedef enum {
 	CAN_Ready,
-	CAN_Send
+	CAN_Send,
+	CAN_Pending
 } CAN_Queue_Status;
 
 void CANInit(void);
@@ -28,8 +29,8 @@ void CANAddSendData(st_cmd_t* Tx);
 st_cmd_t* CANGetCurrentTx(void);
 void CANSendNext(void);
 void CANAbortCMD(void);
-//void CANSendDataWait(st_cmd_t* Tx);
-void CANRestartReceive(st_cmd_t* Rx);
+
+U8 test();
 
 #endif
 /* CAN_INTERFACE_H_ */

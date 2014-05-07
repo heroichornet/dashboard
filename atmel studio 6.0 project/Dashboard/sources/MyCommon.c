@@ -21,6 +21,8 @@ void main_init(){
 	
 	ports_init();
 	
+	Timer0_init(TMR0_PRESCALER);
+	
 	CANInit();
 
 	#if HAS_50HZ|HAS_200HZ|HAS_50HZ

@@ -121,6 +121,9 @@ void Dashboard(void){
 			/* Catch Can Errors*/
 			CANAbortCMD();
 		return;
+		case EVENT_CANTIMEOUT:
+			CANAbortCMD();	
+			AddError(ERROR_CANTIMEOUT);
 		break;
 		case EVENT_CANTX:
 			CANSendNext();

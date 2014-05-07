@@ -30,19 +30,18 @@ st_cmd_t* can_rx;
 
 ISR(CANIT_vect){
 	U8 interrupts=CANSTMOB;
-	if(interrupts&(1<<AERR)){
-		EventAddEvent(EVENT_CANERROR);
-		CANSTMOB&=~(1<<AERR);
-	}
 	if(interrupts&(1<<TXOK)){
 		EventAddEvent(EVENT_CANTX);
 		CANSTMOB&=~(1<<TXOK);
-	}
-	if(interrupts&(1<<RXOK)){
-		EventAddEvent(EVENT_CANRX);
-		//can_get_status(RxT);
-		//CANSTMOB&=~(1<<RXOK);
-		CANGIE&=~(1<<ENIT);
+	}else{
+		if(interrupts&(1<<RXOK)){
+			EventAddEvent(EVENT_CANRX);
+			CANGIE&=~(1<<ENIT);
+		}else{
+			CANSTMOB=0x00;
+			CANGIE&=~(1<<ENERR);
+			EventAddEvent(EVENT_CANERROR);
+		}
 	}
 	return;
 }
@@ -50,7 +49,7 @@ ISR(CANIT_vect){
 void CANInit(void){
 	can_init(CAN_BAUDRATE);
 	CANSTMOB=0;
-	CANGIE|=((1<<ENRX)|(1<<ENTX)|(1<<ENERR)|(1<<ENIT));
+	CANGIE=((1<<ENRX)|(1<<ENTX)|(1<<ENIT));
 	CANIE1=0x7F;
 	CANIE2=0xFF;
 	can_queue_head=0;
@@ -59,12 +58,12 @@ void CANInit(void){
 	can_rx=0;
 }
 
-void CANGetStruct(st_cmd_t* st,U8* datapt, U16 ID, U8 length){
+void CANGetStruct(st_cmd_t* st,U8* datapt, U16 ID, U8 lenght){
 	st->pt_data=datapt;
 	st->ctrl.ide=0;
 	st->ctrl.rtr=0;
 	st->id.std=ID;
-	st->dlc=length;
+	st->dlc=lenght;
 	st->id_mask=0x07FF;
 }
 
@@ -77,23 +76,41 @@ void CANStartRx(st_cmd_t* Rx){
 void CANGetData(st_cmd_t* Rx){
 	can_get_status(Rx);
 	CANGIE|=(1<<ENIT);
+	if(can_Status==CAN_Pending){
+		can_Status=CAN_Send;
+		CANSend();
+	}
 }
 
 void CANSendData(void){
 	if(can_queue_head!=can_queue_tail){
 		if(can_rx!=0){
+			CANGIE&=~(1<<ENRX);
 			can_rx->cmd=CMD_ABORT;
 			can_cmd(can_rx);
+			while(can_get_status(can_rx)==CAN_STATUS_NOT_COMPLETED);
 		}
-		can_queue[can_queue_tail]->cmd=CMD_TX_DATA;
-		if(can_cmd(can_queue[can_queue_tail])!=CAN_CMD_ACCEPTED){
-			AddError(ERROR_CAN_ACCEPTED);
-		}else{
+		if(CANGIE&(1<<ENIT)){
 			can_Status=CAN_Send;
-		}		
+			CANSend();
+		}else{
+			can_Status=CAN_Pending;
+		}	
 	}else if(can_rx!=0){
 		can_rx->cmd=CMD_RX_DATA;
 		can_cmd(can_rx);
+		CANGIE|=(1<<ENRX);
+	}
+}
+
+void CANSend(void){
+	can_queue[can_queue_tail]->cmd=CMD_TX_DATA;
+	if(can_cmd(can_queue[can_queue_tail])!=CAN_CMD_ACCEPTED){
+		can_Status=CAN_Ready;
+		AddError(ERROR_CAN_ACCEPTED);
+	}else{
+		CANGIE|=(1<<ENERR);
+		Timer0_Start();
 	}
 }
 
@@ -114,6 +131,10 @@ st_cmd_t* CANGetCurrentTx(void){
 }
 
 void CANSendNext(void){
+	Timer0_Stop();
+#ifdef WDT_DELAY
+	wdt_reset();
+#endif
 	can_queue[can_queue_tail]->cmd = CMD_ABORT;
 	can_cmd(can_queue[can_queue_tail]);
 	can_Status=CAN_Ready;
@@ -122,8 +143,9 @@ void CANSendNext(void){
 }
 
 void CANAbortCMD(void){
-	if(can_Status==CAN_Send){
-		can_queue[can_queue_tail]->cmd = CMD_ABORT;
+	if((can_Status==CAN_Send)||(can_Status==CAN_Pending)){
+		Timer0_Stop();
+		can_queue[can_queue_tail]->cmd=CMD_ABORT;
 		can_cmd(can_queue[can_queue_tail]);
 		AddError(ERROR_CAN_SEND);
 		can_Status=CAN_Ready;
@@ -131,34 +153,4 @@ void CANAbortCMD(void){
 	}
 }
 
-/*void CANSendDataWait(st_cmd_t* Tx){
-	U16 whilecounter = 0;
-	U8 canstate = 0;
-	Tx->cmd=CMD_TX_DATA;
-	if(can_cmd(Tx)!=CAN_CMD_ACCEPTED){
-		PORTA=PORTA|0x08;
-	}
-	canstate = can_get_status(Tx);
-	while(canstate == CAN_STATUS_NOT_COMPLETED)
-	{
-		whilecounter++;
-		if(whilecounter > 65000)
-		{
-			Tx->cmd = CMD_ABORT;
-			can_cmd(Tx);
-		}
-		canstate = can_get_status(Tx);
-	};
-	if(canstate == CAN_STATUS_ERROR)
-	{
-	}
-}*/
-
-void CANRestartReceive(st_cmd_t* Rx){// Braucht es fieleicht nicht
-	Rx->cmd = CMD_ABORT;
-	can_cmd(Rx);
-	while(can_get_status(Rx) == CAN_STATUS_NOT_COMPLETED);
-	Rx->cmd = CMD_RX_DATA;
-	can_cmd(Rx);
-}
 

@@ -54,6 +54,7 @@
 #define ADC_NUM_AVGS	(1)
 
 // Timer Defines
+#define TMR0_PRESCALER		((1<<CS02) | (0<<CS01) | (0<<CS00)) //1 Tick = PRSC/OSC_CLCK= 64 / 16MHz = 0.5 us
 #define TMR1_PRESCALER		((0<<CS32) | (1<<CS31) | (0<<CS30)) //1 Tick = PRSC/OSC_CLCK= 8 / 12MHz = 666.67 ns
 #define OCR1A_PERIOD_CNT	(0x7530) // 20ms/50Hz		
 #define OCR1B_PERIOD_CNT	(0xEA60) // 40ms/25Hz

@@ -115,11 +115,6 @@ display_line_t display_line_player_princess_peach={' ',' ',' ',' ','>','P','R','
 uint8_t address_counter; 
 
 
-display_string_t test={'0','1','2','3','4','5','6','7','8','9',
-					 'A','B','C','D','E','F','G','H','I','J'};
-
-
-
 
 void display_write_data(uint8_t data){
 	SPI_START_PORT&=~(1<<SPI_START_PIN);

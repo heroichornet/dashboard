@@ -27,18 +27,19 @@
 /* | Global Variables				| */
 /* +--------------------------------+ */
 
+static U8 Timer0_Prescaler;
 
 /* +--------------------------------+ */
 /* | Interrupt Service Routines		| */
 /* +--------------------------------+ */
 
-ISR(TIMER0_COMP_vect){
+
+ISR(TIMER0_OVF_vect){
+	EventAddEvent(EVENT_CANTIMEOUT);
+	TCCR0A=0x00;
 	return;
 }
 
-ISR(TIMER0_OVF_vect){
-	return;
-}
 
 ISR(TIMER1_COMPA_vect){
 	OCR1A+=OCR1A_PERIOD_CNT;
@@ -84,6 +85,22 @@ ISR(TIMER3_OVF_vect){}
 /* +--------------------------------+ */
 /* | CODE							| */
 /* +--------------------------------+ */
+
+void Timer0_init(U8 prescaler){
+	Timer0_Prescaler=prescaler;
+	TCCR0A=0x00;
+	TIMSK0=0x01;
+}
+
+void Timer0_Start(){
+	TCNT0=0x00;
+	TCCR0A=Timer0_Prescaler;
+}
+
+void Timer0_Stop(){
+	TCCR0A=0x00;
+}
+
 void Timer1_init(U8 prescaler, Bool interruptOverflow){
 	/*
 	000 no Clock source
