@@ -15,17 +15,17 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   5 .debug_aranges 000002c0  00000000  00000000  00004288  2**3
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00005bbe  00000000  00000000  00004548  2**0
+  6 .debug_info   00005bcb  00000000  00000000  00004548  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000016ce  00000000  00000000  0000a106  2**0
+  7 .debug_abbrev 000016ce  00000000  00000000  0000a113  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00001ee7  00000000  00000000  0000b7d4  2**0
+  8 .debug_line   00001ee7  00000000  00000000  0000b7e1  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000cdc  00000000  00000000  0000d6bc  2**2
+  9 .debug_frame  00000cdc  00000000  00000000  0000d6c8  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000018c8  00000000  00000000  0000e398  2**0
+ 10 .debug_str    000018c8  00000000  00000000  0000e3a4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000034f0  00000000  00000000  0000fc60  2**0
+ 11 .debug_loc    000034f0  00000000  00000000  0000fc6c  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -1239,8 +1239,8 @@ void buzzer_off( void )
 void buzzer_buzz_ready_to_drive(){
 	buzzer_on();
      720:	0e 94 8c 03 	call	0x718	; 0x718 <buzzer_on>
-	buzz_cycles=6;
-     724:	86 e0       	ldi	r24, 0x06	; 6
+	buzz_cycles=18;
+     724:	82 e1       	ldi	r24, 0x12	; 18
      726:	80 93 06 07 	sts	0x0706, r24
 	buzzer_count=4;	
      72a:	84 e0       	ldi	r24, 0x04	; 4
@@ -6021,9 +6021,9 @@ void display_make_display_line_error_or_message(char * dpl,uint8_t code){
     2180:	59 c0       	rjmp	.+178    	; 0x2234 <display_make_display_line_error_or_message+0x2fa>
 			break;
 		case MESSAGE_STARTING_MOTOR_CONTROLLER:
-			memcpy(dpl,display_line_message_precharged,20);
+			memcpy(dpl,display_line_message_starting_motor_controller,20);
     2182:	fe 01       	movw	r30, r28
-    2184:	a8 e4       	ldi	r26, 0x48	; 72
+    2184:	a4 e3       	ldi	r26, 0x34	; 52
     2186:	b4 e0       	ldi	r27, 0x04	; 4
     2188:	84 e1       	ldi	r24, 0x14	; 20
     218a:	0d 90       	ld	r0, X+

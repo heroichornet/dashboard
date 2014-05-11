@@ -500,7 +500,7 @@ void display_make_display_line_error_or_message(char * dpl,uint8_t code){
 			memcpy(dpl,display_line_message_precharged,20);
 			break;
 		case MESSAGE_STARTING_MOTOR_CONTROLLER:
-			memcpy(dpl,display_line_message_precharged,20);
+			memcpy(dpl,display_line_message_starting_motor_controller,20);
 			break;
 		case MESSAGE_READY_2_DRIVE:
 			memcpy(dpl,display_line_message_ready_2_drive,20);

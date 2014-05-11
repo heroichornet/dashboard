@@ -21,7 +21,6 @@ extern uint8_t buzz_cycles;
 void buzzer_init(void);
 void buzzer_on(void);
 void buzzer_off(void);
-void buzzer_buzz(uint8_t time_ms);
 void buzzer_puls(uint8_t freq_ms, uint8_t time_ms);
 
 
