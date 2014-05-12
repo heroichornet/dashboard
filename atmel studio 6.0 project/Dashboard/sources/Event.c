@@ -67,6 +67,8 @@ void Dashboard(void){
 			return;
 		break;
 		case EVENT_10HZ:
+
+		
 			if(dashboard_state!=DASHBOARD_STATE_STARTING) return;
 			startup_sequence();
 			
@@ -75,7 +77,7 @@ void Dashboard(void){
 		case EVENT_50HZ:
 		
 			if(dashboard_state!=DASHBOARD_STATE_RUNNING) return;
-		
+				display_update(DISPLAY_MENU_HOME,0,0,0,0,0,0);
 			/* Multiplex */
 			#if HAS_BUTTONS
 				button_multiplex_cycle();				
