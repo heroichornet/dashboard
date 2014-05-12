@@ -34,8 +34,8 @@ uint8_t display_ddram_bottom_row[28];
 /* Display Strings*/
 
 display_line_t display_line_home={' ',' ',' ',' ',' ','A','M','Z',' ','g','r','i','m','s','e','l',' ',' ',' ',' '};
-display_line_t display_line_error={' ',' ',' ',' ',' ',' ',' ','E','R','R','O','R',' ',' ',' ',' ',' ',' '};
-display_line_t display_line_message={' ',' ',' ',' ',' ',' ',' ','M','E','S','S','A','G','E',' ',' ',' ',' ',' '};
+display_line_t display_line_error={' ',' ',' ',' ',' ',' ',' ','E','R','R','O','R',' ',' ',' ',' ',' ',' ',' ',' '};
+display_line_t display_line_message={' ',' ',' ',' ',' ',' ',' ','M','E','S','S','A','G','E',' ',' ',' ',' ',' ',' '};
 display_line_t display_line_soc={' ',' ','S','T','A','T','E',' ','O','F',' ','C','H','A','R','G','E',' ',' ',' '};
 display_line_t display_line_min_cv_max={'M','I','N',' ',' ','C','E','L','L','V','O','L','T','A','G','E',' ','M','A','X'};
 display_line_t display_line_cel_temp={' ','M','I','N',' ',' ','C','E','L','L','T','E','M','P',' ',' ','M','A','X',' '};
@@ -129,8 +129,7 @@ display_line_t display_line_player_princess_peach={' ',' ',' ',' ','>','P','R','
 
 uint8_t address_counter; 
 
-//#DEFINE DISPLAY_WRITE_DELAY (850)
-#define DISPLAY_WRITE_DELAY (1500)
+#define DISPLAY_WRITE_DELAY (850)
 
 void display_write_data(uint8_t data){
 	SPI_START_PORT&=~(1<<SPI_START_PIN);
@@ -209,7 +208,7 @@ void display_init(void){
 	//display_write_instruction(INSTRUCTION_BRIGHTNESS_100);
 
 	/* set menu to home */
-	display_update(DISPLAY_MENU_HOME,0,0,0,0,0,0);
+	//display_update(DISPLAY_MENU_HOME,0,0,0,0,0,0);
 	
 	/* init last menu before error to none */
 	selected_menu_pre_error=255;	
