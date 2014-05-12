@@ -44,6 +44,7 @@ EVENT_Handle EventGetNextEvent(void){
 	return e;
 }
 
+uint8_t i=0;
 
 
 void Dashboard(void){
@@ -67,17 +68,26 @@ void Dashboard(void){
 			return;
 		break;
 		case EVENT_10HZ:
-
-		
-			if(dashboard_state!=DASHBOARD_STATE_STARTING) return;
-			startup_sequence();
-			
+			if(dashboard_state==DASHBOARD_STATE_RUNNING){
+				
+				if(i==3){
+					selected_menu++;
+					display_update(selected_menu,90,0,0,0,0,0);
+					if(selected_menu==14) selected_menu=0;
+					i=0;
+				}else{
+					i++;
+				};					
+					
+			}else{			
+				startup_sequence();
+			}			
 		return;
 		break;
 		case EVENT_50HZ:
 		
 			if(dashboard_state!=DASHBOARD_STATE_RUNNING) return;
-				display_update(DISPLAY_MENU_HOME,0,0,0,0,0,0);
+
 			/* Multiplex */
 			#if HAS_BUTTONS
 				button_multiplex_cycle();				

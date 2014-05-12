@@ -11,10 +11,12 @@
 #include <stdint.h>
 #include <avr/io.h>
 #include <string.h>
+#include <avr/delay.h>
 
 #include "../includes/spi_lib.h"
 #include "../includes/Display.h"
 #include "../includes/ErrorAndMessageCodes.h"
+
 
 
 #define SPI_START_PORT (PORTB)
@@ -81,9 +83,11 @@ display_line_t display_line_player_princess_peach={' ',' ',' ',' ','>','P','R','
 /* Instructions */
 
 
+/* OLD INSTRUCTIONS */
+/*
 #define INSTRUCTION_CLEAR_DISPLAY (0x01)
 #define INSTRUCTION_CURSOR_HOME (0x02)
-#define INSTRUCTION_ENTRY_MODE_SET (0x06) /* S=0, I/D=1 */
+#define INSTRUCTION_ENTRY_MODE_SET (0x06) // S=0, I/D=1 
 #define INSTRUCTION_DISPLAY_AC_UP (0x14)
 #define INSTRUCTION_DISPLAY_AC_DOWN (0x10)
 #define INSTRUCTION_DISPLAY_LEFT_SHIFT (0x18)
@@ -96,12 +100,24 @@ display_line_t display_line_player_princess_peach={' ',' ',' ',' ','>','P','R','
 #define INSTRUCTION_DISPLAY_ON (0x0C)
 #define INSTRUCTION_CURSOR_LEFT_SHIFT (0b0000010000)
 #define INSTRUCTION_CURSOR_RIGHT_SHIFT (0b0000010100)
+*/
 
-/* Start Bit */
+/* Start Bit 
 #define START_BITS_READ_INSTRUCTION (0xF8|0x04|0x00)
 #define	START_BITS_READ_DATA (0xF8|0x04|0x02)
 #define	START_BITS_WRITE_INSTRUCTION (0xF8|0x00|0x00)
 #define START_BITS_WRITE_DATA (0xF8|0x00|0x02)
+*/
+
+/* LCD Instructions */
+
+#define INSTRUCTION_PREFIX (0xFE)
+#define INSTRUCTION_DISPLAY_ON (0x41)
+#define INSTRUCTION_DISPLAY_CLEAR (0x51)
+#define INSTRUCTION_CURSOR_HOME (0x45)
+#define INSTRUCTION_CURSOR_RIGHT_SHIFT (0x4A)
+
+
 
 
 /* Address Counter (AC) 
@@ -113,33 +129,46 @@ display_line_t display_line_player_princess_peach={' ',' ',' ',' ','>','P','R','
 
 uint8_t address_counter; 
 
-
+//#DEFINE DISPLAY_WRITE_DELAY (850)
+#define DISPLAY_WRITE_DELAY (1500)
 
 void display_write_data(uint8_t data){
 	SPI_START_PORT&=~(1<<SPI_START_PIN);
-	spi_putchar(START_BITS_WRITE_DATA);
 	spi_putchar(data);
+	_delay_us(DISPLAY_WRITE_DELAY);
 	SPI_START_PORT|=(1<<SPI_START_PIN);
+
 }
 
 void display_write_instruction(uint8_t inst){
 	SPI_START_PORT&=~(1<<SPI_START_PIN);
-	spi_putchar(START_BITS_WRITE_INSTRUCTION);
+	spi_putchar(INSTRUCTION_PREFIX);
 	spi_putchar(inst);
+	_delay_us(DISPLAY_WRITE_DELAY);
 	SPI_START_PORT|=(1<<SPI_START_PIN);
+
+}
+
+void display_write_long_instruction(uint8_t inst,uint8_t inst2){
+	SPI_START_PORT&=~(1<<SPI_START_PIN);
+	spi_putchar(INSTRUCTION_PREFIX);
+	spi_putchar(inst);
+	spi_putchar(inst2);
+	_delay_us(DISPLAY_WRITE_DELAY);
+	SPI_START_PORT|=(1<<SPI_START_PIN);
+
 }
 
 void display_write_display_lines(display_line_t s1,display_line_t s2){
 	int i;
-	display_write_instruction(INSTRUCTION_CURSOR_HOME);	// cursor to pos 1
+	display_write_instruction(INSTRUCTION_CURSOR_HOME);	
+	display_write_instruction(INSTRUCTION_DISPLAY_CLEAR);
+	display_write_long_instruction(0x45,00);
 	for(i=0;i<20;i++){
 		display_write_data(s1[i]);
-	}
+	}			
+	display_write_long_instruction(0x45,40);
 	
-	for(int i=0;i<20;i++){
-		display_write_instruction(INSTRUCTION_CURSOR_RIGHT_SHIFT);	// cursor to second line
-	};
-			
 	for(i=0;i<20;i++){
 		display_write_data(s2[i]);
 	}	
@@ -156,7 +185,7 @@ void display_init(void){
 		/* chip select toggle is no */
 		/* clock rate index is 0 */
 		/* clock rate is CPU clock, so 12MHz and 16Mhz withe new quarz */
-	spi_init(SPI_MASTER|SPI_MSB_FIRST|SPI_DATA_MODE_3|SPI_CLKIO_BY_64);
+	spi_init(SPI_MASTER|SPI_MSB_FIRST|SPI_DATA_MODE_3|SPI_CLKIO_BY_128);
 	Spi_disable_it();	
 	Spi_select_master_mode();
 
@@ -170,9 +199,14 @@ void display_init(void){
 	
 	/* turn display on */
 	display_write_instruction(INSTRUCTION_DISPLAY_ON);
+	display_write_instruction(INSTRUCTION_DISPLAY_CLEAR);
+	
+	display_write_instruction(INSTRUCTION_CURSOR_HOME);
+		
+	//display_write_long_instruction(0x53,0x08); // Full brightness backlight
 	
 	/* set brigthness to max*/
-	display_write_instruction(INSTRUCTION_BRIGHTNESS_100);
+	//display_write_instruction(INSTRUCTION_BRIGHTNESS_100);
 
 	/* set menu to home */
 	display_update(DISPLAY_MENU_HOME,0,0,0,0,0,0);
@@ -316,11 +350,11 @@ void display_make_display_line_percent_bar(char * dpl,uint8_t percent){
 
 	int i;
 	for(i=0;i<((percent/10)%11);i++){
-		display_line_percent[i+4]=(char)0b00010110;
+		display_line_percent[i+4]=(char)0b11111111;
 	}
 	
 	for(i;i<10;i++){
-		display_line_percent[i+4]=0b00101010;
+		display_line_percent[i+4]=' ';
 	}
 	i++;
 	if(GET_DEC_POS1_PERCENT_BAR(percent)==1){
@@ -345,7 +379,7 @@ void display_make_display_line_min_av_max_temp(char* dpl,uint8_t min_i,uint8_t a
 	#define GET_DEC_POS3_TEMP(x) (char)(0b00110000+((x)%10))
 	
 	
-	display_line_t dpl_volt={' ',GET_DEC_POS2_TEMP(min_i),GET_DEC_POS3_TEMP(min_i),'°','C',' ',' ',' ',GET_DEC_POS2_TEMP(av_i),GET_DEC_POS3_TEMP(av_i),'°','C',' ',' ',' ',' ',GET_DEC_POS2_TEMP(max_i),GET_DEC_POS3_TEMP(max_i),'°','C'};
+	display_line_t dpl_volt={' ',GET_DEC_POS2_TEMP(min_i),GET_DEC_POS3_TEMP(min_i),0b11011111,'C',' ',' ',' ',GET_DEC_POS2_TEMP(av_i),GET_DEC_POS3_TEMP(av_i),0b11011111,'C',' ',' ',' ',' ',GET_DEC_POS2_TEMP(max_i),GET_DEC_POS3_TEMP(max_i),0b11011111,'C'};
 	memcpy(dpl,dpl_volt,20);
 }/* end display_make_display_line_min_av_max_temp*/
 
@@ -388,7 +422,7 @@ void display_make_display_line_motor_temp(dpl,value1,value2){
 	}	
 		
 			
-	display_line_t dpl_volt={' ',pos_1a,pos_2a,GET_DEC_POS1_MOTOR_TEMP(value1),'°','C',' ',' ',' ',' ',' ',' ',' ',' ',pos_1b,pos_1b,GET_DEC_POS3_MOTOR_TEMP(value2),'°','C',' '};
+	display_line_t dpl_volt={' ',pos_1a,pos_2a,GET_DEC_POS1_MOTOR_TEMP(value1),0b11011111,'C',' ',' ',' ',' ',' ',' ',' ',' ',pos_1b,pos_1b,GET_DEC_POS3_MOTOR_TEMP(value2),0b11011111,'C',' '};
 	memcpy(dpl,dpl_volt,20);
 	
 } /*end display_make_display_line_motor_temp*/
