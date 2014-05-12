@@ -17,9 +17,8 @@
 #include "../includes/ErrorAndMessageCodes.h"
 
 
-
 #define SPI_START_PORT (PORTB)
-#define SPI_START_PIN (0)
+#define SPI_START_PIN (4)
 #define SPI_START_DDR (DDRB)
 
 /* Display Data Ram (DDRAM)

@@ -6747,7 +6747,7 @@ void display_write_data(uint8_t data){
     2566:	cf 93       	push	r28
     2568:	c8 2f       	mov	r28, r24
 	SPI_START_PORT&=~(1<<SPI_START_PIN);
-    256a:	28 98       	cbi	0x05, 0	; 5
+    256a:	2c 98       	cbi	0x05, 4	; 5
 	spi_putchar(START_BITS_WRITE_DATA);
     256c:	8a ef       	ldi	r24, 0xFA	; 250
     256e:	0e 94 e6 17 	call	0x2fcc	; 0x2fcc <spi_putchar>
@@ -6755,7 +6755,7 @@ void display_write_data(uint8_t data){
     2572:	8c 2f       	mov	r24, r28
     2574:	0e 94 e6 17 	call	0x2fcc	; 0x2fcc <spi_putchar>
 	SPI_START_PORT|=(1<<SPI_START_PIN);
-    2578:	28 9a       	sbi	0x05, 0	; 5
+    2578:	2c 9a       	sbi	0x05, 4	; 5
 }
     257a:	cf 91       	pop	r28
     257c:	08 95       	ret
@@ -6766,7 +6766,7 @@ void display_write_instruction(uint8_t inst){
     257e:	cf 93       	push	r28
     2580:	c8 2f       	mov	r28, r24
 	SPI_START_PORT&=~(1<<SPI_START_PIN);
-    2582:	28 98       	cbi	0x05, 0	; 5
+    2582:	2c 98       	cbi	0x05, 4	; 5
 	spi_putchar(START_BITS_WRITE_INSTRUCTION);
     2584:	88 ef       	ldi	r24, 0xF8	; 248
     2586:	0e 94 e6 17 	call	0x2fcc	; 0x2fcc <spi_putchar>
@@ -6774,7 +6774,7 @@ void display_write_instruction(uint8_t inst){
     258a:	8c 2f       	mov	r24, r28
     258c:	0e 94 e6 17 	call	0x2fcc	; 0x2fcc <spi_putchar>
 	SPI_START_PORT|=(1<<SPI_START_PIN);
-    2590:	28 9a       	sbi	0x05, 0	; 5
+    2590:	2c 9a       	sbi	0x05, 4	; 5
 }
     2592:	cf 91       	pop	r28
     2594:	08 95       	ret
@@ -7224,9 +7224,9 @@ void display_init(void){
 	
 	/*toggle button init */
 	SPI_START_DDR|=(1<<SPI_START_PIN);
-    2826:	20 9a       	sbi	0x04, 0	; 4
+    2826:	24 9a       	sbi	0x04, 4	; 4
 	SPI_START_PORT|=(1<<SPI_START_PIN);
-    2828:	28 9a       	sbi	0x05, 0	; 5
+    2828:	2c 9a       	sbi	0x05, 4	; 5
 	
 	/* turn display on */
 	display_write_instruction(INSTRUCTION_DISPLAY_ON);
