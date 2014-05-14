@@ -67,6 +67,7 @@ void Dashboard(void){
 			return;
 		break;
 		case EVENT_10HZ:
+		
 			if(dashboard_state!=DASHBOARD_STATE_STARTING) return;
 			startup_sequence();
 			

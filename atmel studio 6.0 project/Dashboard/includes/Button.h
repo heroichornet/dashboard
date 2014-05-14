@@ -20,10 +20,10 @@ extern uint8_t button_key2;
 
 /* Buttons on Steering Wheel */
 
-#define BUTTON_ID_FLAPPY_DRS (0)
-#define BUTTON_ID_FLAPPY_RADIO (1)
-#define BUTTON_ID_PLUS (4)
-#define BUTTON_ID_MINUS (5)
+#define BUTTON_ID_FLAPPY_DRS (4)
+#define BUTTON_ID_FLAPPY_RADIO (5)
+#define BUTTON_ID_PLUS (0)
+#define BUTTON_ID_MINUS (1)
 #define BUTTON_ID_UP (9)
 #define BUTTON_ID_DOWN (8)
 

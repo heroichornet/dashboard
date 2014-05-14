@@ -18,9 +18,9 @@
 
 
 
-#define SPI_START_PORT (PORTB)
-#define SPI_START_PIN (0)
-#define SPI_START_DDR (DDRB)
+#define SPI_START_PORT (PORTA)
+#define SPI_START_PIN (5)
+#define SPI_START_DDR (DDRA)
 
 /* Display Data Ram (DDRAM)
  * 0x00 till 0x27

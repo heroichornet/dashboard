@@ -749,7 +749,7 @@ void buttons_react(void){
 	}
 	
 	if(button_state[BUTTON_ID_FLAPPY_RADIO]){
-     4cc:	80 91 98 07 	lds	r24, 0x0798
+     4cc:	80 91 9c 07 	lds	r24, 0x079C
      4d0:	88 23       	and	r24, r24
      4d2:	19 f0       	breq	.+6      	; 0x4da <buttons_react+0x9c>
 		radio_on();
@@ -823,7 +823,7 @@ void buttons_react(void){
      54a:	10 92 04 07 	sts	0x0704, r1
 	
 	if(button_state[BUTTON_ID_PLUS]){
-     54e:	80 91 9b 07 	lds	r24, 0x079B
+     54e:	80 91 97 07 	lds	r24, 0x0797
      552:	88 23       	and	r24, r24
      554:	19 f0       	breq	.+6      	; 0x55c <buttons_react+0x11e>
 		button_key2|=1;
@@ -831,7 +831,7 @@ void buttons_react(void){
      558:	80 93 04 07 	sts	0x0704, r24
 	}
 	if(button_state[BUTTON_ID_MINUS]){
-     55c:	80 91 9c 07 	lds	r24, 0x079C
+     55c:	80 91 98 07 	lds	r24, 0x0798
      560:	88 23       	and	r24, r24
      562:	29 f0       	breq	.+10     	; 0x56e <buttons_react+0x130>
 		button_key2|=1<<1;
@@ -841,7 +841,7 @@ void buttons_react(void){
 	}
 	
 	if(button_state[BUTTON_ID_FLAPPY_RADIO]){
-     56e:	80 91 98 07 	lds	r24, 0x0798
+     56e:	80 91 9c 07 	lds	r24, 0x079C
      572:	88 23       	and	r24, r24
      574:	29 f0       	breq	.+10     	; 0x580 <buttons_react+0x142>
 		button_key2|=1<<3;
@@ -852,7 +852,7 @@ void buttons_react(void){
 		
 	
 	if(button_state[BUTTON_ID_FLAPPY_DRS]){
-     580:	80 91 97 07 	lds	r24, 0x0797
+     580:	80 91 9b 07 	lds	r24, 0x079B
      584:	88 23       	and	r24, r24
      586:	29 f0       	breq	.+10     	; 0x592 <buttons_react+0x154>
 		button_key2|=1<<2;
@@ -6740,7 +6740,7 @@ void display_write_data(uint8_t data){
     2558:	cf 93       	push	r28
     255a:	c8 2f       	mov	r28, r24
 	SPI_START_PORT&=~(1<<SPI_START_PIN);
-    255c:	28 98       	cbi	0x05, 0	; 5
+    255c:	15 98       	cbi	0x02, 5	; 2
 	spi_putchar(START_BITS_WRITE_DATA);
     255e:	8a ef       	ldi	r24, 0xFA	; 250
     2560:	0e 94 e2 17 	call	0x2fc4	; 0x2fc4 <spi_putchar>
@@ -6748,7 +6748,7 @@ void display_write_data(uint8_t data){
     2564:	8c 2f       	mov	r24, r28
     2566:	0e 94 e2 17 	call	0x2fc4	; 0x2fc4 <spi_putchar>
 	SPI_START_PORT|=(1<<SPI_START_PIN);
-    256a:	28 9a       	sbi	0x05, 0	; 5
+    256a:	15 9a       	sbi	0x02, 5	; 2
 }
     256c:	cf 91       	pop	r28
     256e:	08 95       	ret
@@ -6759,7 +6759,7 @@ void display_write_instruction(uint8_t inst){
     2570:	cf 93       	push	r28
     2572:	c8 2f       	mov	r28, r24
 	SPI_START_PORT&=~(1<<SPI_START_PIN);
-    2574:	28 98       	cbi	0x05, 0	; 5
+    2574:	15 98       	cbi	0x02, 5	; 2
 	spi_putchar(START_BITS_WRITE_INSTRUCTION);
     2576:	88 ef       	ldi	r24, 0xF8	; 248
     2578:	0e 94 e2 17 	call	0x2fc4	; 0x2fc4 <spi_putchar>
@@ -6767,7 +6767,7 @@ void display_write_instruction(uint8_t inst){
     257c:	8c 2f       	mov	r24, r28
     257e:	0e 94 e2 17 	call	0x2fc4	; 0x2fc4 <spi_putchar>
 	SPI_START_PORT|=(1<<SPI_START_PIN);
-    2582:	28 9a       	sbi	0x05, 0	; 5
+    2582:	15 9a       	sbi	0x02, 5	; 2
 }
     2584:	cf 91       	pop	r28
     2586:	08 95       	ret
@@ -7217,9 +7217,9 @@ void display_init(void){
 	
 	/*toggle button init */
 	SPI_START_DDR|=(1<<SPI_START_PIN);
-    2818:	20 9a       	sbi	0x04, 0	; 4
+    2818:	0d 9a       	sbi	0x01, 5	; 1
 	SPI_START_PORT|=(1<<SPI_START_PIN);
-    281a:	28 9a       	sbi	0x05, 0	; 5
+    281a:	15 9a       	sbi	0x02, 5	; 2
 	
 	/* turn display on */
 	display_write_instruction(INSTRUCTION_DISPLAY_ON);
@@ -7567,6 +7567,7 @@ void Dashboard(void){
     29ee:	ee c0       	rjmp	.+476    	; 0x2bcc <Dashboard+0x258>
 		break;
 		case EVENT_10HZ:
+		
 			if(dashboard_state!=DASHBOARD_STATE_STARTING) return;
     29f0:	80 91 47 07 	lds	r24, 0x0747
     29f4:	88 23       	and	r24, r24
