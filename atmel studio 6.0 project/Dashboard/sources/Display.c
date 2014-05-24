@@ -353,12 +353,12 @@ void display_make_display_line_min_av_max_temp(char* dpl,uint8_t min_i,uint8_t a
 
 
 void display_make_display_line_lv_voltage(char *dpl,uint8_t value1){
-	#define GET_DEC_POS1_LV_VOLT(x) (char)(0b00110000+(x/10))
-	#define GET_DEC_POS2_LV_VOLT(x) (char)(0b00110000+((x)%10))
-	#define GET_DEC_POS3_VOLT(x) (char)(0b00110000+((x)%100))
+	#define GET_DEC_POS1_LV_VOLT(x) (char)(0b00110000+(x/100))
+	#define GET_DEC_POS2_LV_VOLT(x) (char)(0b00110000+((x/10)%10))
+	#define GET_DEC_POS3_LV_VOLT(x) (char)(0b00110000+((x)%10))
 		
 		
-	display_line_t dpl_volt={' ',' ',' ',' ',' ',' ',' ',GET_DEC_POS1_TEMP(value1),GET_DEC_POS2_TEMP(value1),'.',GET_DEC_POS3_TEMP(value1),'V',' ',' ',' ',' ',' ',' ',' ',' '};
+	display_line_t dpl_volt={' ',' ',' ',' ',' ',' ',' ',GET_DEC_POS1_LV_VOLT(value1),GET_DEC_POS2_LV_VOLT(value1),'.',GET_DEC_POS3_LV_VOLT(value1),'V',' ',' ',' ',' ',' ',' ',' ',' '};
 	memcpy(dpl,dpl_volt,20);
 	
 } /*end display_make_display_line_lv_voltage */
@@ -389,7 +389,7 @@ void display_make_display_line_motor_temp(dpl,value1,value2){
 	}	
 		
 			
-	display_line_t dpl_volt={' ',pos_1a,pos_2a,GET_DEC_POS1_MOTOR_TEMP(value1),'°','C',' ',' ',' ',' ',' ',' ',' ',' ',pos_1b,pos_1b,GET_DEC_POS3_MOTOR_TEMP(value2),'°','C',' '};
+	display_line_t dpl_volt={' ',pos_1a,pos_2a,GET_DEC_POS3_MOTOR_TEMP(value1),'°','C',' ',' ',' ',' ',' ',' ',' ',' ',pos_1b,pos_1b,GET_DEC_POS3_MOTOR_TEMP(value2),'°','C',' '};
 	memcpy(dpl,dpl_volt,20);
 	
 } /*end display_make_display_line_motor_temp*/
