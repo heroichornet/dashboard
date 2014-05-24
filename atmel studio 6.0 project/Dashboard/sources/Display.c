@@ -55,6 +55,8 @@ display_line_t display_line_tsal1={' ',' ',' ',' ',' ',' ','R','E','A','D','Y','
 display_line_t display_line_tsal2={' ',' ',' ',' ',' ',' ',' ',' ','D','R','I','V','E',' ',' ',' ',' ',' ',' ',' '};
 display_line_t display_line_starting={'<','<',' ',' ',' ','S','T','A','R','T','I','N','G',' ','U','P',' ',' ','>','>'};
 display_line_t display_line_brake_balance={'L',' ','B','R','A','K','E',' ','B','A','L','A','N','C','E',' ',' ',' ',' ','R'};
+display_line_t display_line_inverter_temperature={'M','A','X',' ','I','N','V','E','R','T','E','R','T','E','M','P',' ','A','V','E'};
+
 
 /* Players */
 
@@ -271,6 +273,9 @@ void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t va
 				 display_make_display_line_brake_balance(dpl,value1);
 				 display_write_display_lines(display_line_brake_balance,dpl);
 			break;
+		case DISPLAY_MENU_INVERTER_TEMP:
+				display_make_display_line_inverter_temp(dpl,value1,value2);
+				display_write_display_lines(display_line_inverter_temperature,dpl);
 		default:
 			break;		
 	}/* end switch */
@@ -393,6 +398,8 @@ void display_make_display_line_motor_temp(dpl,value1,value2){
 	memcpy(dpl,dpl_volt,20);
 	
 } /*end display_make_display_line_motor_temp*/
+
+
 
 void display_make_display_line_error_or_message(char * dpl,uint8_t code){
 	
@@ -672,4 +679,34 @@ void display_make_display_line_brake_balance(char *dpl,uint8_t percent){
 	memcpy(dpl,template,20);
 	
 }
+
+void display_make_display_line_inverter_temp(dpl,value1,value2){
 	
+	#define GET_DEC_POS1_INVERTER_TEMP(x) (char)(0b00110000+(x/100))
+	#define GET_DEC_POS2_INVERTER_TEMP(x) (char)(0b00110000+((x/10)%10))
+	#define GET_DEC_POS3_INVERTER_TEMP(x) (char)(0b00110000+((x)%10))
+	
+	char pos_1a=GET_DEC_POS1_INVERTER_TEMP(value1);
+	char pos_2a=GET_DEC_POS2_INVERTER_TEMP(value1);
+	char pos_1b=GET_DEC_POS1_INVERTER_TEMP(value2);
+	char pos_2b=GET_DEC_POS2_INVERTER_TEMP(value2);
+	
+	if(pos_1a=='0'){
+		pos_1a=' ';
+		if(pos_2a=='0'){
+			pos_2a=' ';
+		}
+	}
+	
+	if(pos_1b=='0'){
+		pos_1b=' ';
+		if(pos_2b=='0'){
+			pos_2b=' ';
+		}
+	}
+	
+	
+display_line_t dpl_volt={' ',pos_1a,pos_2a,GET_DEC_POS3_INVERTER_TEMP(value1),'°','C',' ',' ',' ',' ',' ',' ',' ',' ',pos_1b,pos_1b,GET_DEC_POS3_INVERTER_TEMP(value2),'°','C',' '};
+memcpy(dpl,dpl_volt,20);
+
+} /*end display_make_display_line_inverter_temp*/

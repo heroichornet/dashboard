@@ -58,6 +58,7 @@ display_string_t display_string;
 #define DISPLAY_MENU_ERROR				(12)
 #define DISPLAY_MENU_SELECT_PLAYER		(13)
 #define DISPLAY_MENU_BRAKE_BALANCE		(14)
+#define	DISPLAY_MENU_INVERTER_TEMP		(15)
 
 
 #define DISPLAY_MENU_BUTTON_TEST		(51)
