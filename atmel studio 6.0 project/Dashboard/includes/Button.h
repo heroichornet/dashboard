@@ -29,10 +29,10 @@ extern uint8_t button_key2;
 
 /* Buttons on Dashboard */
 #define BUTTON_ID_TMS (2)
-#define BUTTON_ID_RECUP (3)
-#define BUTTON_ID_TC (6)
+#define BUTTON_ID_RECUP (10)
+#define BUTTON_ID_TC (3)
 #define BUTTON_ID_KOBI (7)
-#define BUTTON_ID_TV (10)
+#define BUTTON_ID_TV (6)
 #define BUTTON_ID_AD (11)
 
 
