@@ -432,8 +432,8 @@ void display_make_display_line_error_or_message(char * dpl,uint8_t code){
 			memcpy(dpl,display_line_error_bots,20);
 			break;
 		case ERROR_BMS_RELAY:
-				memcpy(dpl,display_line_error_bms_relay,20);
-				break;
+			memcpy(dpl,display_line_error_bms_relay,20);
+			break;
 		case ERROR_HVDI:
 			memcpy(dpl,display_line_error_hvdi,20);
 			break;
@@ -457,6 +457,15 @@ void display_make_display_line_error_or_message(char * dpl,uint8_t code){
 			break;
 		case ERROR_DISCHARGE_TEMP:
 			memcpy(dpl,display_line_error_bms_dischargetemp,20);
+			break;
+		case ERROR_TOTAL_VOLTAGE_LOW:
+			memcpy(dpl,display_line_error_total_voltage_low,20);
+			break;
+		case ERROR_SHUNT_VOLTAGE_LOW:
+			memcpy(dpl,display_line_error_shunt_voltage_low,20);
+			break;
+		case ERROR_DC_LINK_VOLTAGE_LOW:
+			memcpy(dpl,display_line_error_dc_link_voltage_low,20);
 			break;
 		case ERROR_THROTTLE_FAIL:
 			memcpy(dpl,display_line_throttle_fail,20);
@@ -530,9 +539,15 @@ void display_make_display_line_error_or_message(char * dpl,uint8_t code){
 		case MESSAGE_MC_FAIL:
 			memcpy(dpl,display_line_message_mc_fail,20);
 			break;
+		case MESSAGE_LV_LOW:
+			memcpy(dpl,display_line_message_lv_low,20);
+			break;
+		case MESSAGE_LV_CRITICAL:
+			memcpy(dpl,display_line_message_lv_critical,20);
+			break;		
 		case MESSAGE_BOOT_UP:
-				memcpy(dpl,display_line_message_boot_up,20);
-				break;
+			memcpy(dpl,display_line_message_boot_up,20);
+			break;
 		default:
 			memcpy(dpl,display_line_error_unknown_code,20);
 		break;

@@ -40,7 +40,7 @@ display_string_t display_string;
 	
 
 
-#define DISPLAY_MENU_NUMBER				(15)
+#define DISPLAY_MENU_NUMBER				(16)
 
 
 #define DISPLAY_MENU_HOME				(0)
