@@ -39,8 +39,8 @@ display_line_t display_line_soc={' ',' ','S','T','A','T','E',' ','O','F',' ','C'
 display_line_t display_line_min_cv_max={'M','I','N',' ',' ','C','E','L','L','V','O','L','T','A','G','E',' ','M','A','X'};
 display_line_t display_line_cel_temp={' ','M','I','N',' ',' ','C','E','L','L','T','E','M','P',' ',' ','M','A','X',' '};
 display_line_t display_line_lv_voltage={' ',' ',' ',' ','L','V',' ','V','O','L','T','A','G','E',' ',' ',' ',' ',' ',' '};
-display_line_t display_line_motor_power_front={' ',' ','M','O','T','O','R',' ','P','O','W','E','R',' ','F','R','O','N','T',' '};
-display_line_t display_line_motor_power_rear={ ' ',' ','M','O','T','O','R',' ','P','O','W','E','R',' ','R','E','A','R',' ',' '};
+display_line_t display_line_motor_power_front={' ',' ','M','O','T','O','R',' ','T','O','R','Q','U','E',' ','F','R','O','N','T'};
+display_line_t display_line_motor_power_rear={ ' ',' ','M','O','T','O','R',' ','T','O','R','Q','U','E',' ','R','E','A','R',' '};
 display_line_t display_line_motor_temp_front={ ' ',' ','M','O','T','O','R',' ','T','E','M','P','.',' ','F','R','O','N','T',' '};
 display_line_t display_line_motor_temp_rear={ ' ',' ','M','O','T','O','R',' ','T','E','M','P','.',' ','R','E','A','R',' ',' '};
 display_line_t display_line_traction_control={' ',' ','T','R','A','C','T','I','O','N',' ','C','O','N','T','R','O','L',' ',' '};
@@ -273,9 +273,6 @@ void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t va
 				 display_make_display_line_brake_balance(dpl,value1);
 				 display_write_display_lines(display_line_brake_balance,dpl);
 			break;
-		case DISPLAY_MENU_INVERTER_TEMP:
-				display_make_display_line_inverter_temp(dpl,value1,value2);
-				display_write_display_lines(display_line_inverter_temperature,dpl);
 		default:
 			break;		
 	}/* end switch */
@@ -368,7 +365,7 @@ void display_make_display_line_lv_voltage(char *dpl,uint8_t value1){
 	
 } /*end display_make_display_line_lv_voltage */
 
-void display_make_display_line_motor_temp(dpl,value1,value2){
+void display_make_display_line_motor_temp(char *dpl,uint8_t value1,uint8_t value2){
 	
 	#define GET_DEC_POS1_MOTOR_TEMP(x) (char)(0b00110000+(x/100))
 	#define GET_DEC_POS2_MOTOR_TEMP(x) (char)(0b00110000+((x/10)%10))		
@@ -394,7 +391,7 @@ void display_make_display_line_motor_temp(dpl,value1,value2){
 	}	
 		
 			
-	display_line_t dpl_volt={' ',pos_1a,pos_2a,GET_DEC_POS3_MOTOR_TEMP(value1),'°','C',' ',' ',' ',' ',' ',' ',' ',' ',pos_1b,pos_1b,GET_DEC_POS3_MOTOR_TEMP(value2),'°','C',' '};
+	display_line_t dpl_volt={' ',pos_1a,pos_2a,GET_DEC_POS3_MOTOR_TEMP(value1),'°','C',' ',' ',' ',' ',' ',' ',' ',' ',pos_1b,pos_2b,GET_DEC_POS3_MOTOR_TEMP(value2),'°','C',' '};
 	memcpy(dpl,dpl_volt,20);
 	
 } /*end display_make_display_line_motor_temp*/
