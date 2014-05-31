@@ -206,7 +206,7 @@ void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t va
 							display_write_display_lines(display_line_accleration_mode,display_line_accleration_mode_normal);
 						break;
 					case 2: // Ready, both buttons pressed, show break percent
-							display_make_display_line_percent_bar(dpl,value1);
+							display_make_display_line_percent_bar(dpl,value2);
 							display_write_display_lines(display_line_accleration_mode_ready,dpl);
 						break;
 					case 3: // acceleration GO GO GO
