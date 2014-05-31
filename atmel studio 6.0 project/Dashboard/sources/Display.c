@@ -186,6 +186,7 @@ void display_init(void){
 
 void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t value3, uint8_t value4, uint8_t value5,uint8_t error){
 	char * dpl=display_line_blank;
+	char * dpl2=display_line_blank;
 	
 	switch(request_id){
 		case DISPLAY_MENU_HOME:
@@ -219,8 +220,9 @@ void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t va
 				
 			break;
 		case DISPLAY_MENU_SOC:
-				display_make_display_line_percent(dpl,value1);
-				display_write_display_lines(display_line_soc,dpl);
+				display_make_soc_line1(dpl,value1,value2,value3,value4);
+				display_make_soc_line2(dpl2,value1,value2,value3,value4);
+				display_write_display_lines(dpl,dpl2);
 			break;
 		case DISPLAY_MENU_MIN_AV_MAX_VOLT:
 				display_make_display_line_min_av_max_volt(dpl,value1,value2,value3);
@@ -732,3 +734,105 @@ display_line_t dpl_volt={' ',pos_1a,pos_2a,GET_DEC_POS3_INVERTER_TEMP(value1),'°
 memcpy(dpl,dpl_volt,20);
 
 } /*end display_make_display_line_inverter_temp*/
+
+/******************************************
+* SOC OVERVIEW MENU
+******************************************/
+
+uint8_t menu_values_subid1[3]={0,0,0};
+uint8_t menu_values_subid2[3]={0,0,0};
+
+void display_make_soc_line1(char* dpl,uint8_t subid,uint8_t value2,uint8_t value3,uint8_t value4){
+	if(subid=2){// use archived
+		value2=menu_values_subid1[0];
+		value3=menu_values_subid1[1];
+		value4=menu_values_subid1[2];
+	}else{ // use sent and archive current
+		menu_values_subid1[0]=value2;// SOC
+		menu_values_subid1[1]=value3;// volt av.
+		menu_values_subid1[2]=value4;// volt min.
+	}
+	
+	
+	/* make SOC */
+	uint8_t soc_1=GET_DEC_POS1_PERCENT(value2);
+	uint8_t soc_2=GET_DEC_POS2_PERCENT(value2);
+	uint8_t soc_3=GET_DEC_POS3_PERCENT(value2);
+	
+	if(soc_1=='0'){
+		soc_1=' ';
+		if(soc_2=='0'){
+			soc_2=' ';
+		}
+	}
+	
+	/* volt average */
+	uint8_t volt_av_1=GET_DEC_POS1_VOLT(value3);
+	uint8_t volt_av_2=GET_DEC_POS2_VOLT(value3);
+	uint8_t volt_av_3=GET_DEC_POS3_VOLT(value3);
+
+	
+	/* volt min */
+	
+	uint8_t volt_min_1=GET_DEC_POS1_VOLT(value4);
+	uint8_t volt_min_2=GET_DEC_POS2_VOLT(value4);
+	uint8_t volt_min_3=GET_DEC_POS3_VOLT(value4);
+
+	display_line_t dpl_soc1={'V',volt_av_1,'.',volt_av_2,volt_av_3,'/',volt_min_1,'.',volt_min_2,volt_min_3,' ','S','O','C',':',soc_1,soc_2,soc_3,'%'};
+		
+	memcpy(dpl,dpl_soc1,20);
+}
+
+
+void display_make_soc_line2(char* dpl,uint8_t subid,uint8_t value2,uint8_t value3,uint8_t value4){
+	if(subid=1){// use archived
+		value2=menu_values_subid2[0];
+		value3=menu_values_subid2[1];
+		value4=menu_values_subid2[2];
+	}else{ // use sent and archive current
+		menu_values_subid2[0]=value2;// Akkutemp
+		menu_values_subid2[1]=value3;// motortemp
+		menu_values_subid2[2]=value4;// invertertemp
+	}
+	
+	
+	/* make akku temp */
+	uint8_t akku_1=GET_DEC_POS1_MOTOR_TEMP(value2);
+	uint8_t akku_2=GET_DEC_POS2_MOTOR_TEMP(value2);
+	uint8_t akku_3=GET_DEC_POS3_MOTOR_TEMP(value2);
+	
+	if(akku_1=='0'){
+		akku_1=' ';
+		if(akku_2=='0'){
+			akku_2=' ';
+		}
+	}
+	
+	/* make motor temp */
+	uint8_t motor_1=GET_DEC_POS1_MOTOR_TEMP(value3);
+	uint8_t motor_2=GET_DEC_POS2_MOTOR_TEMP(value3);
+	uint8_t motor_3=GET_DEC_POS3_MOTOR_TEMP(value3);
+	
+	if(motor_1=='0'){
+		motor_1=' ';
+		if(motor_2=='0'){
+			motor_2=' ';
+		}
+	}
+	
+	/* make inverter temp */
+	uint8_t inverter_1=GET_DEC_POS1_MOTOR_TEMP(value4);
+	uint8_t inverter_2=GET_DEC_POS2_MOTOR_TEMP(value4);
+	uint8_t inverter_3=GET_DEC_POS3_MOTOR_TEMP(value4);
+		
+	if(akku_1=='0'){
+		akku_1=' ';
+		if(akku_2=='0'){
+			akku_2=' ';
+		}
+	}
+
+	display_line_t dpl_soc2={'A',':',akku_1,akku_2,akku_3,' ',' ','M',':',motor_1,motor_2,motor_3,' ',' ','I',':',inverter_1,inverter_2,inverter_3,' '};
+		
+	memcpy(dpl,dpl_soc2,20);
+}
