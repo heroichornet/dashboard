@@ -70,7 +70,9 @@ void main_init(){
 	radio_init();
 	#endif
 	
+	#if HAS_WATCHDOG
 	InitWDT();
+	#endif
 	
 	EventAddEvent(EVENT_INIT);
 	

@@ -74,20 +74,19 @@ void Dashboard(void){
 		return;
 		break;
 		case EVENT_50HZ:
-		
+			
+			// Check if State Machine in Running State
 			if(dashboard_state!=DASHBOARD_STATE_RUNNING) return;
 		
-			/* Multiplex */
+			// Multiplex
 			#if HAS_BUTTONS
 				button_multiplex_cycle();				
 			#endif	
 
-			
+			// gather data
 			dashboard_10_data.dataStruct.REQUEST_ID=selected_menu;
-			
-			
+					
 			dashboard_10_data.dataStruct.KEYS_1=button_key1;
-
 			dashboard_10_data.dataStruct.KEYS_2=button_key2;
 			
 			
@@ -130,16 +129,18 @@ void Dashboard(void){
 			CANSendNext();
 		break;
 		case EVENT_CANRX:
+		
+			// Check if State Machine in Running State
 			if(dashboard_state!=DASHBOARD_STATE_RUNNING) return;
 
+			// Get CAN Data
 			CANGetData(&dashboard_rx);
-			// check for communication error
 			
 			uint8_t id=dashboard_rx_general_data.dataStruct.REQUEST_ID;	
 			uint8_t leds=dashboard_rx_general_data.dataStruct.LEDS;
 			uint8_t error_code=dashboard_rx_general_data.dataStruct.ERRCODE;
 			
-			
+			// React to CAN Data
 			if(leds&1){
 				led_set(LED_ID_START);
 			}else{
@@ -175,7 +176,7 @@ void Dashboard(void){
 				led_clear(LED_ID_AMS);							
 			}
 			
-			if((display_current_error!=error_code)&(error_code!=0)){
+			if((display_current_error!=error_code)&(error_code!=0)){ // If error code has changed, swap menu to error menu
 				display_current_error=error_code;
 				selected_menu_pre_error=selected_menu;
 				selected_menu=DISPLAY_MENU_ERROR;

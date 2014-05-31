@@ -20,10 +20,15 @@
 
 int main(void){	
 
+	#define HAS_WATCHDOG (0)
+	
 	main_init();
 	
 	while(1){	
-		wdt_reset();
+		#if HAS_WATCHDOG
+			wdt_reset();
+		#endif
+		
 		EventHandleEvent();
 	};
 

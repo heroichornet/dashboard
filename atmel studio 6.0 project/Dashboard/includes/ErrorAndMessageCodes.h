@@ -26,6 +26,9 @@
 #define ERROR_BMS_OVERCURRENT (22)
 #define ERROR_BMS_OVERTEMP (23)
 #define ERROR_DISCHARGE_TEMP (24)
+#define ERROR_TOTAL_VOLTAGE_LOW (25)
+#define ERROR_SHUNT_VOLTAGE_LOW (26)
+#define	ERROR_DC_LINK_VOLTAGE_LOW (27)
 
 #define ERROR_MC (30) // 30 bis 39
 
@@ -66,6 +69,9 @@ display_line_t display_line_error_bms={'#','X','X','X',' ','B','M','S',' ','E','
 display_line_t display_line_error_bms_relay={'#','X','X','X',' ','B','M','S',' ','R','E','L','A','Y',' ',' ',' ',' ',' '};
 display_line_t display_line_error_mc={'#','X','X','X',' ','M','C',' ','E','R','R','O','R',' ',' ',' ',' ',' ',' '};
 display_line_t display_line_error_mcm={'#','X','X','X',' ','M','C','M',' ','E','R','R','O','R',' ',' ',' ',' ',' '};
+display_line_t display_line_error_total_voltage_low={'#','X','X','X',' ','T','O','T',' ','V','O','L','T','A','G','E',' ','L','O','W'};	
+display_line_t display_line_error_shunt_voltage_low={'#','X','X','X',' ','S','H','U','N','T',' ','V','O','L','T','.',' ','L','O','W'};	
+display_line_t display_line_error_dc_link_voltage_low={'#','X','X','X',' ','D','C','L','I','N','K',' ','V','O','L','T',' ','L','O','W'};	
 	
 /* Bms error strings */
 display_line_t display_line_error_bms_undervoltage={'#','X','X','X',' ','B','M','S',' ','U','N','D','E','R','V','O','L','T','.'};
@@ -109,6 +115,8 @@ display_line_t display_line_error_airn_melt_down={'#','X','X','X',' ','A','I','R
 #define MESSAGE_MS_OPEN (202)
 #define MESSAGE_PRECHARGE_FAIL (203)
 #define MESSAGE_MC_FAIL (204)
+#define MESSAGE_LV_LOW (205)
+#define MESSAGE_LV_CRITICAL (206)
 
 
 #define MESSAGE_BOOT_UP (255)
@@ -127,6 +135,8 @@ display_line_t display_line_message_ms_open={'#','X','X','X',' ',' ',' ','M','S'
 display_line_t display_line_message_precharge_fail={'#','X','X','X',' ',' ',' ','P','R','E',' ','C','H','R','G',' ','F','A','I','L'};	
 display_line_t display_line_message_mc_fail={'#','X','X','X',' ',' ',' ','M','C',' ','F','A','I','L',' ',' ',' ',' ',' ',' '};	
 display_line_t display_line_message_boot_up={'#','X','X','X',' ',' ',' ','B','O','O','T',' ','U','P',' ',' ',' ',' ',' ',' '};	
+display_line_t display_line_message_lv_low={'#','X','X','X',' ',' ',' ','L','V',' ','L','O','W',' ',' ',' ',' ',' ',' ',' '};	
+display_line_t display_line_message_lv_critical={'#','X','X','X',' ',' ',' ','L','V',' ','C','R','I','T','I','C','A','L',' ',' '};	
 	
 	
 

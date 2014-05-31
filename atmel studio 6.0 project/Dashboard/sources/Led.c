@@ -201,13 +201,13 @@ void led_percent_bar(uint8_t percent){
 	if(percent>19){
 		// turn on IMD and AD
 		led_set(LED_ID_IMD);
-		led_set(LED_ID_AD);
+		led_set(LED_ID_KOBI);
 	}
 	
 	if(percent>39){
 		// turn on LV LOW and KOBI	
 		led_set(LED_ID_LV_LOW);
-		led_set(LED_ID_KOBI);
+		led_set(LED_ID_AD);
 	}		
 	
 	if(percent>59){
@@ -219,13 +219,14 @@ void led_percent_bar(uint8_t percent){
 	if(percent>79){
 		//turn on OK and TV
 		led_set(LED_ID_OK);
-		led_set(LED_ID_TV);
+		led_set(LED_ID_TC);
 	}
 	
 	if(percent>99){
 		//turn on Brake and TC
 		led_set(LED_ID_BRAKE);
-		led_set(LED_ID_TC);
+		led_set(LED_ID_TV);
+
 	}		
 		
 	

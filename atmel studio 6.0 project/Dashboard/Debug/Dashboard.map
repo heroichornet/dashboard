@@ -179,7 +179,7 @@ LOAD c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x3496
+.text           0x00000000     0x381c
  *(.vectors)
  .vectors       0x00000000       0x94 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr5/crtcan32.o
                 0x00000000                __vector_default
@@ -266,7 +266,7 @@ LOAD c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1
                 0x00000338                __vector_20
  .text          0x0000033c        0xc main.o
                 0x0000033c                main
- .text          0x00000348      0x3ca sources/Button.o
+ .text          0x00000348      0x3de sources/Button.o
                 0x00000348                button_read_col
                 0x0000041a                col1_input_high
                 0x00000420                col2_input_high
@@ -275,143 +275,147 @@ LOAD c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1
                 0x00000432                col2_low
                 0x00000438                col3_low
                 0x0000043e                buttons_react
-                0x000005b8                button_init
-                0x000005fa                button_multiplex_cycle
-                0x00000704                button_get_button_state
- .text          0x00000712       0x20 sources/Buzzer.o
-                0x00000712                buzzer_init
-                0x00000718                buzzer_on
-                0x0000071c                buzzer_off
-                0x00000720                buzzer_buzz_ready_to_drive
- .text          0x00000732      0x2da sources/CAN.o
-                0x00000732                CANSend
-                0x00000772                __vector_18
-                0x000007fa                CANInit
-                0x0000082c                CANGetStruct
-                0x0000084e                CANStartRx
-                0x0000086a                CANGetData
-                0x0000088c                CANSendData
-                0x0000091a                CANAddSendData
-                0x00000968                CANGetCurrentTx
-                0x0000097c                CANSendNext
-                0x000009be                CANAbortCMD
- .text          0x00000a0c      0x516 sources/can_drv.o
-                0x00000a0c                can_clear_all_mob
-                0x00000a30                can_get_mob_free
-                0x00000a70                can_get_mob_status
-                0x00000a96                can_get_data
-                0x00000ada                can_auto_baudrate
-                0x00000eec                Can_conf_bt_flex
-                0x00000efc                can_fixed_baudrate
- .text          0x00000f22      0xd80 sources/can_lib.o
-                0x00000f6a                can_init
-                0x00000f88                can_off
-                0x00000f94                can_cmd
-                0x00001b48                can_get_status
- .text          0x00001ca2      0xc46 sources/Display.o
-                0x00001ca2                display_make_display_line_percent
-                0x00001d0a                display_make_display_line_min_av_max_volt
-                0x00001d9a                display_make_display_line_percent_bar
-                0x00001e82                display_make_display_line_min_av_max_temp
-                0x00001ee8                display_make_display_line_lv_voltage
-                0x00001f3a                display_make_display_line_error_or_message
-                0x000022f2                display_make_display_line_button_test
-                0x000022fe                display_make_display_line_blank
-                0x00002348                display_make_display_line_select_player
-                0x000023e4                display_make_display_line_brake_balance
-                0x0000247a                display_make_display_line_motor_temp
-                0x00002558                display_write_data
-                0x00002570                display_write_instruction
-                0x00002588                display_write_display_lines
-                0x000025f2                display_update
-                0x000027fc                display_init
-                0x00002848                display_set_display_string
-                0x0000285c                display_up
-                0x00002898                display_down
-                0x000028c8                display_starting
- .text          0x000028e8       0x2a sources/Error.o
-                0x000028e8                InitError
-                0x000028f6                AddError
-                0x00002906                ClearErrors
- .text          0x00002912      0x2ec sources/Event.o
-                0x00002912                EventInit
-                0x0000291c                EventAddEvent
-                0x00002958                EventGetNextEvent
-                0x00002974                Dashboard
-                0x00002bd8                EventHandleEvent
- .text          0x00002bfe      0x30c sources/Led.o
-                0x00002bfe                led_init
-                0x00002c1a                led_set
-                0x00002c8a                led_clear
-                0x00002cfa                led_clear_all
-                0x00002d0e                led_is_set
-                0x00002e08                led_toggle
-                0x00002e26                led_state_set
-                0x00002e70                led_state_return
-                0x00002eaa                led_percent_bar
- .text          0x00002f0a       0x80 sources/MyCommon.o
-                0x00002f0a                main_deinit
-                0x00002f0c                ports_init
-                0x00002f3c                main_init
- .text          0x00002f8a        0xe sources/Radio.o
-                0x00002f8a                radio_init
-                0x00002f90                radio_on
-                0x00002f94                radio_off
- .text          0x00002f98       0x5e sources/spi_lib.o
-                0x00002f98                spi_init
-                0x00002fbe                spi_test_hit
-                0x00002fc4                spi_putchar
-                0x00002fce                spi_getchar
-                0x00002fd8                spi_transmit_master
- .text          0x00002ff6       0x8a sources/Startup.o
-                0x00002ff6                startup_sequence
- .text          0x00003080      0x380 sources/Timer.o
-                0x00003080                __vector_17
-                0x000030cc                __vector_12
-                0x00003126                __vector_13
-                0x00003180                __vector_14
-                0x000031da                __vector_28
-                0x00003234                __vector_29
-                0x0000328e                __vector_30
-                0x000032e8                __vector_15
-                0x000032fc                __vector_31
-                0x00003310                Timer0_init
-                0x0000331e                Timer0_Start
-                0x00003328                Timer0_Stop
-                0x0000332c                Timer1_init
-                0x00003336                Timer3_init
-                0x00003340                TIMER_Timer1_OCR1A_on
-                0x00003360                TIMER_Timer1_OCR1B_on
-                0x00003380                TIMER_Timer1_OCR1C_on
-                0x000033a0                TIMER_Timer3_OCR3A_on
-                0x000033c0                TIMER_Timer3_OCR3B_on
-                0x000033e0                TIMER_Timer3_OCR3C_on
- .text          0x00003400       0x2c sources/WatchDog.o
-                0x00003400                InitWDT
-                0x00003418                CheckWDT
- .text          0x0000342c        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_udivmodqi4.o)
- .text          0x0000342c        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_divmodhi4.o)
- .text          0x0000342c        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_exit.o)
- .text          0x0000342c        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_copy_data.o)
- .text          0x0000342c        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_clear_bss.o)
- .text          0x0000342c        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_udivmodhi4.o)
-                0x0000342c                . = ALIGN (0x2)
+                0x000005cc                button_init
+                0x0000060e                button_multiplex_cycle
+                0x00000718                button_get_button_state
+ .text          0x00000726       0x20 sources/Buzzer.o
+                0x00000726                buzzer_init
+                0x0000072c                buzzer_on
+                0x00000730                buzzer_off
+                0x00000734                buzzer_buzz_ready_to_drive
+ .text          0x00000746      0x2da sources/CAN.o
+                0x00000746                CANSend
+                0x00000786                __vector_18
+                0x0000080e                CANInit
+                0x00000840                CANGetStruct
+                0x00000862                CANStartRx
+                0x0000087e                CANGetData
+                0x000008a0                CANSendData
+                0x0000092e                CANAddSendData
+                0x0000097c                CANGetCurrentTx
+                0x00000990                CANSendNext
+                0x000009d2                CANAbortCMD
+ .text          0x00000a20      0x516 sources/can_drv.o
+                0x00000a20                can_clear_all_mob
+                0x00000a44                can_get_mob_free
+                0x00000a84                can_get_mob_status
+                0x00000aaa                can_get_data
+                0x00000aee                can_auto_baudrate
+                0x00000f00                Can_conf_bt_flex
+                0x00000f10                can_fixed_baudrate
+ .text          0x00000f36      0xd80 sources/can_lib.o
+                0x00000f7e                can_init
+                0x00000f9c                can_off
+                0x00000fa8                can_cmd
+                0x00001b5c                can_get_status
+ .text          0x00001cb6      0xfb8 sources/Display.o
+                0x00001cb6                display_make_display_line_min_av_max_volt
+                0x00001d46                display_make_display_line_percent_bar
+                0x00001e2e                display_make_display_line_min_av_max_temp
+                0x00001e94                display_make_display_line_lv_voltage
+                0x00001ee6                display_make_display_line_error_or_message
+                0x000022f8                display_make_display_line_button_test
+                0x00002304                display_make_display_line_blank
+                0x0000234e                display_make_display_line_select_player
+                0x000023ea                display_make_display_line_brake_balance
+                0x00002480                display_make_soc_line1
+                0x0000259a                display_make_soc_line2
+                0x0000267c                display_make_display_line_motor_temp
+                0x00002756                display_write_data
+                0x0000276e                display_write_instruction
+                0x00002786                display_write_display_lines
+                0x000027f0                display_update
+                0x00002a2a                display_init
+                0x00002a76                display_set_display_string
+                0x00002a8a                display_make_display_line_percent
+                0x00002af2                display_up
+                0x00002b2e                display_overview
+                0x00002b36                display_down
+                0x00002b66                display_starting
+                0x00002b86                display_make_display_line_inverter_temp
+ .text          0x00002c6e       0x2a sources/Error.o
+                0x00002c6e                InitError
+                0x00002c7c                AddError
+                0x00002c8c                ClearErrors
+ .text          0x00002c98      0x2ec sources/Event.o
+                0x00002c98                EventInit
+                0x00002ca2                EventAddEvent
+                0x00002cde                EventGetNextEvent
+                0x00002cfa                Dashboard
+                0x00002f5e                EventHandleEvent
+ .text          0x00002f84      0x30c sources/Led.o
+                0x00002f84                led_init
+                0x00002fa0                led_set
+                0x00003010                led_clear
+                0x00003080                led_clear_all
+                0x00003094                led_is_set
+                0x0000318e                led_toggle
+                0x000031ac                led_state_set
+                0x000031f6                led_state_return
+                0x00003230                led_percent_bar
+ .text          0x00003290       0x80 sources/MyCommon.o
+                0x00003290                main_deinit
+                0x00003292                ports_init
+                0x000032c2                main_init
+ .text          0x00003310        0xe sources/Radio.o
+                0x00003310                radio_init
+                0x00003316                radio_on
+                0x0000331a                radio_off
+ .text          0x0000331e       0x5e sources/spi_lib.o
+                0x0000331e                spi_init
+                0x00003344                spi_test_hit
+                0x0000334a                spi_putchar
+                0x00003354                spi_getchar
+                0x0000335e                spi_transmit_master
+ .text          0x0000337c       0x8a sources/Startup.o
+                0x0000337c                startup_sequence
+ .text          0x00003406      0x380 sources/Timer.o
+                0x00003406                __vector_17
+                0x00003452                __vector_12
+                0x000034ac                __vector_13
+                0x00003506                __vector_14
+                0x00003560                __vector_28
+                0x000035ba                __vector_29
+                0x00003614                __vector_30
+                0x0000366e                __vector_15
+                0x00003682                __vector_31
+                0x00003696                Timer0_init
+                0x000036a4                Timer0_Start
+                0x000036ae                Timer0_Stop
+                0x000036b2                Timer1_init
+                0x000036bc                Timer3_init
+                0x000036c6                TIMER_Timer1_OCR1A_on
+                0x000036e6                TIMER_Timer1_OCR1B_on
+                0x00003706                TIMER_Timer1_OCR1C_on
+                0x00003726                TIMER_Timer3_OCR3A_on
+                0x00003746                TIMER_Timer3_OCR3B_on
+                0x00003766                TIMER_Timer3_OCR3C_on
+ .text          0x00003786       0x2c sources/WatchDog.o
+                0x00003786                InitWDT
+                0x0000379e                CheckWDT
+ .text          0x000037b2        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_udivmodqi4.o)
+ .text          0x000037b2        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_divmodhi4.o)
+ .text          0x000037b2        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_exit.o)
+ .text          0x000037b2        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_copy_data.o)
+ .text          0x000037b2        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_clear_bss.o)
+ .text          0x000037b2        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_udivmodhi4.o)
+                0x000037b2                . = ALIGN (0x2)
  *(.text.*)
- .text.libgcc   0x0000342c       0x18 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_udivmodqi4.o)
-                0x0000342c                __udivmodqi4
- .text.libgcc   0x00003444       0x26 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_divmodhi4.o)
-                0x00003444                _div
-                0x00003444                __divmodhi4
- .text.libgcc   0x0000346a        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x0000346a        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_copy_data.o)
- .text.libgcc   0x0000346a        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_clear_bss.o)
- .text.libgcc   0x0000346a       0x28 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_udivmodhi4.o)
-                0x0000346a                __udivmodhi4
-                0x00003492                . = ALIGN (0x2)
+ .text.libgcc   0x000037b2       0x18 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_udivmodqi4.o)
+                0x000037b2                __udivmodqi4
+ .text.libgcc   0x000037ca       0x26 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_divmodhi4.o)
+                0x000037ca                _div
+                0x000037ca                __divmodhi4
+ .text.libgcc   0x000037f0        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x000037f0        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_copy_data.o)
+ .text.libgcc   0x000037f0        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x000037f0       0x28 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_udivmodhi4.o)
+                0x000037f0                __udivmodhi4
+                0x00003818                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00003492        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_exit.o)
-                0x00003492                _exit
-                0x00003492                exit
+ .fini9         0x00003818        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_exit.o)
+                0x00003818                _exit
+                0x00003818                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -430,11 +434,11 @@ LOAD c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00003492        0x4 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_exit.o)
+ .fini0         0x00003818        0x4 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00003496                _etext = .
+                0x0000381c                _etext = .
 
-.data           0x00800100      0x604 load address 0x00003496
+.data           0x00800100      0x67c load address 0x0000381c
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800100        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr5/crtcan32.o
@@ -444,7 +448,7 @@ LOAD c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1
  .data          0x00800100        0x0 sources/CAN.o
  .data          0x00800100        0x0 sources/can_drv.o
  .data          0x00800100        0x0 sources/can_lib.o
- .data          0x00800100      0x604 sources/Display.o
+ .data          0x00800100      0x67c sources/Display.o
                 0x0080013c                display_line_player_princess_peach
                 0x00800150                display_line_player_donkey_kong
                 0x00800164                display_line_player_bowser
@@ -452,171 +456,179 @@ LOAD c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1
                 0x0080018c                display_line_player_mario
                 0x008001a0                display_line_player_yoshi
                 0x008001b4                display_line_player_select
-                0x008001c8                display_line_brake_balance
-                0x008001dc                display_line_starting
-                0x008001f0                display_line_tsal2
-                0x00800204                display_line_tsal1
-                0x00800218                display_line_blank
-                0x0080022c                display_line_buttons_pressed
-                0x00800240                display_line_accleration_mode_go_go
-                0x00800254                display_line_accleration_mode_ready
-                0x00800268                display_line_accleration_mode_normal
-                0x0080027c                display_line_accleration_mode
-                0x00800290                display_line_torque_vectoring
-                0x008002a4                display_line_traction_control
-                0x008002b8                display_line_motor_temp_rear
-                0x008002cc                display_line_motor_temp_front
-                0x008002e0                display_line_motor_power_rear
-                0x008002f4                display_line_motor_power_front
-                0x00800308                display_line_lv_voltage
-                0x0080031c                display_line_cel_temp
-                0x00800330                display_line_min_cv_max
-                0x00800344                display_line_soc
-                0x00800358                display_line_message
-                0x0080036c                display_line_error
-                0x00800380                display_line_home
-                0x00800394                display_line_message_boot_up
-                0x008003a8                display_line_message_mc_fail
-                0x008003bc                display_line_message_precharge_fail
-                0x008003d0                display_line_message_ms_open
-                0x008003e4                display_line_message_enre_fail
-                0x008003f8                display_line_message_precharge_only
-                0x0080040c                display_line_message_manual_mc
-                0x00800420                display_line_message_ready_2_drive
-                0x00800434                display_line_message_starting_motor_controller
-                0x00800448                display_line_message_precharged
-                0x0080045c                display_line_message_precharging
-                0x00800470                display_line_message_check_ms
-                0x00800484                display_line_message_starting_ts
-                0x00800498                display_line_error_airn_melt_down
-                0x008004ac                display_line_error_airp_melt_down
-                0x008004c0                display_line_error_air_ror
-                0x008004d4                display_line_error_missing_shunt
-                0x008004e8                display_line_error_missing_mc_right
-                0x008004fc                display_line_error_missing_mc_left
-                0x00800510                display_line_error_missing_mcm_ab
-                0x00800524                display_line_error_missing_mcm_lvb
-                0x00800538                display_line_error_missing_mcm_front
-                0x0080054c                display_line_error_missing_mcm_rear
-                0x00800560                display_line_brake_force_fail
-                0x00800574                display_line_throttle_fail
-                0x00800588                display_line_error_bms_dischargetemp
-                0x0080059c                display_line_error_bms_overtemp
-                0x008005b0                display_line_error_bms_overcurrent
-                0x008005c4                display_line_error_bms_undervoltage
-                0x008005d8                display_line_error_mcm
-                0x008005ec                display_line_error_mc
-                0x00800600                display_line_error_bms_relay
-                0x00800614                display_line_error_bms
-                0x00800628                display_line_error_bad_request_id
-                0x0080063c                display_line_error_bpd
-                0x00800650                display_line_error_imdf
-                0x00800664                display_line_error_imd
-                0x00800678                display_line_error_hvdi
-                0x0080068c                display_line_error_bots
-                0x008006a0                display_line_error_pre_bots
-                0x008006b4                display_line_error_pre_enre
-                0x008006c8                display_line_error_unknown_code
-                0x008006dc                display_line_error_sc_down
-                0x008006f0                display_line_error_none
- .data          0x00800704        0x0 sources/Error.o
- .data          0x00800704        0x0 sources/Event.o
- .data          0x00800704        0x0 sources/Led.o
- .data          0x00800704        0x0 sources/MyCommon.o
- .data          0x00800704        0x0 sources/Radio.o
- .data          0x00800704        0x0 sources/spi_lib.o
- .data          0x00800704        0x0 sources/Startup.o
- .data          0x00800704        0x0 sources/Timer.o
- .data          0x00800704        0x0 sources/WatchDog.o
- .data          0x00800704        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_udivmodqi4.o)
- .data          0x00800704        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_divmodhi4.o)
- .data          0x00800704        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_exit.o)
- .data          0x00800704        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_copy_data.o)
- .data          0x00800704        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_clear_bss.o)
- .data          0x00800704        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_udivmodhi4.o)
+                0x008001c8                display_line_inverter_temperature
+                0x008001dc                display_line_brake_balance
+                0x008001f0                display_line_starting
+                0x00800204                display_line_tsal2
+                0x00800218                display_line_tsal1
+                0x0080022c                display_line_blank
+                0x00800240                display_line_buttons_pressed
+                0x00800254                display_line_accleration_mode_go_go
+                0x00800268                display_line_accleration_mode_ready
+                0x0080027c                display_line_accleration_mode_normal
+                0x00800290                display_line_accleration_mode
+                0x008002a4                display_line_torque_vectoring
+                0x008002b8                display_line_traction_control
+                0x008002cc                display_line_motor_temp_rear
+                0x008002e0                display_line_motor_temp_front
+                0x008002f4                display_line_motor_power_rear
+                0x00800308                display_line_motor_power_front
+                0x0080031c                display_line_lv_voltage
+                0x00800330                display_line_cel_temp
+                0x00800344                display_line_min_cv_max
+                0x00800358                display_line_soc
+                0x0080036c                display_line_message
+                0x00800380                display_line_error
+                0x00800394                display_line_home
+                0x008003a8                display_line_message_lv_critical
+                0x008003bc                display_line_message_lv_low
+                0x008003d0                display_line_message_boot_up
+                0x008003e4                display_line_message_mc_fail
+                0x008003f8                display_line_message_precharge_fail
+                0x0080040c                display_line_message_ms_open
+                0x00800420                display_line_message_enre_fail
+                0x00800434                display_line_message_precharge_only
+                0x00800448                display_line_message_manual_mc
+                0x0080045c                display_line_message_ready_2_drive
+                0x00800470                display_line_message_starting_motor_controller
+                0x00800484                display_line_message_precharged
+                0x00800498                display_line_message_precharging
+                0x008004ac                display_line_message_check_ms
+                0x008004c0                display_line_message_starting_ts
+                0x008004d4                display_line_error_airn_melt_down
+                0x008004e8                display_line_error_airp_melt_down
+                0x008004fc                display_line_error_air_ror
+                0x00800510                display_line_error_missing_shunt
+                0x00800524                display_line_error_missing_mc_right
+                0x00800538                display_line_error_missing_mc_left
+                0x0080054c                display_line_error_missing_mcm_ab
+                0x00800560                display_line_error_missing_mcm_lvb
+                0x00800574                display_line_error_missing_mcm_front
+                0x00800588                display_line_error_missing_mcm_rear
+                0x0080059c                display_line_brake_force_fail
+                0x008005b0                display_line_throttle_fail
+                0x008005c4                display_line_error_bms_dischargetemp
+                0x008005d8                display_line_error_bms_overtemp
+                0x008005ec                display_line_error_bms_overcurrent
+                0x00800600                display_line_error_bms_undervoltage
+                0x00800614                display_line_error_dc_link_voltage_low
+                0x00800628                display_line_error_shunt_voltage_low
+                0x0080063c                display_line_error_total_voltage_low
+                0x00800650                display_line_error_mcm
+                0x00800664                display_line_error_mc
+                0x00800678                display_line_error_bms_relay
+                0x0080068c                display_line_error_bms
+                0x008006a0                display_line_error_bad_request_id
+                0x008006b4                display_line_error_bpd
+                0x008006c8                display_line_error_imdf
+                0x008006dc                display_line_error_imd
+                0x008006f0                display_line_error_hvdi
+                0x00800704                display_line_error_bots
+                0x00800718                display_line_error_pre_bots
+                0x0080072c                display_line_error_pre_enre
+                0x00800740                display_line_error_unknown_code
+                0x00800754                display_line_error_sc_down
+                0x00800768                display_line_error_none
+ .data          0x0080077c        0x0 sources/Error.o
+ .data          0x0080077c        0x0 sources/Event.o
+ .data          0x0080077c        0x0 sources/Led.o
+ .data          0x0080077c        0x0 sources/MyCommon.o
+ .data          0x0080077c        0x0 sources/Radio.o
+ .data          0x0080077c        0x0 sources/spi_lib.o
+ .data          0x0080077c        0x0 sources/Startup.o
+ .data          0x0080077c        0x0 sources/Timer.o
+ .data          0x0080077c        0x0 sources/WatchDog.o
+ .data          0x0080077c        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_udivmodqi4.o)
+ .data          0x0080077c        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_divmodhi4.o)
+ .data          0x0080077c        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_exit.o)
+ .data          0x0080077c        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_copy_data.o)
+ .data          0x0080077c        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_clear_bss.o)
+ .data          0x0080077c        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_udivmodhi4.o)
  *(.data*)
  *(.rodata)
  *(.rodata*)
  *(.gnu.linkonce.d*)
-                0x00800704                . = ALIGN (0x2)
-                0x00800704                _edata = .
-                0x00800704                PROVIDE (__data_end, .)
+                0x0080077c                . = ALIGN (0x2)
+                0x0080077c                _edata = .
+                0x0080077c                PROVIDE (__data_end, .)
 
-.bss            0x00800704      0x127
-                0x00800704                PROVIDE (__bss_start, .)
+.bss            0x0080077c      0x12d
+                0x0080077c                PROVIDE (__bss_start, .)
  *(.bss)
- .bss           0x00800704        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr5/crtcan32.o
- .bss           0x00800704        0x0 main.o
- .bss           0x00800704        0x2 sources/Button.o
-                0x00800704                button_key2
-                0x00800705                button_key1
- .bss           0x00800706        0x2 sources/Buzzer.o
-                0x00800706                buzz_cycles
-                0x00800707                buzzer_count
- .bss           0x00800708        0x0 sources/CAN.o
- .bss           0x00800708        0x0 sources/can_drv.o
- .bss           0x00800708        0x0 sources/can_lib.o
- .bss           0x00800708        0x0 sources/Display.o
- .bss           0x00800708        0x2 sources/Error.o
- .bss           0x0080070a       0x30 sources/Event.o
- .bss           0x0080073a        0x0 sources/Led.o
- .bss           0x0080073a        0x0 sources/MyCommon.o
- .bss           0x0080073a        0x0 sources/Radio.o
- .bss           0x0080073a        0x0 sources/spi_lib.o
- .bss           0x0080073a        0x1 sources/Startup.o
-                0x0080073a                start_up_count
- .bss           0x0080073b        0x1 sources/Timer.o
- .bss           0x0080073c        0x0 sources/WatchDog.o
- .bss           0x0080073c        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_udivmodqi4.o)
- .bss           0x0080073c        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_divmodhi4.o)
- .bss           0x0080073c        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_exit.o)
- .bss           0x0080073c        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_copy_data.o)
- .bss           0x0080073c        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_clear_bss.o)
- .bss           0x0080073c        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_udivmodhi4.o)
+ .bss           0x0080077c        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr5/crtcan32.o
+ .bss           0x0080077c        0x0 main.o
+ .bss           0x0080077c        0x2 sources/Button.o
+                0x0080077c                button_key2
+                0x0080077d                button_key1
+ .bss           0x0080077e        0x2 sources/Buzzer.o
+                0x0080077e                buzz_cycles
+                0x0080077f                buzzer_count
+ .bss           0x00800780        0x0 sources/CAN.o
+ .bss           0x00800780        0x0 sources/can_drv.o
+ .bss           0x00800780        0x0 sources/can_lib.o
+ .bss           0x00800780        0x6 sources/Display.o
+                0x00800780                menu_values_subid2
+                0x00800783                menu_values_subid1
+ .bss           0x00800786        0x2 sources/Error.o
+ .bss           0x00800788       0x30 sources/Event.o
+ .bss           0x008007b8        0x0 sources/Led.o
+ .bss           0x008007b8        0x0 sources/MyCommon.o
+ .bss           0x008007b8        0x0 sources/Radio.o
+ .bss           0x008007b8        0x0 sources/spi_lib.o
+ .bss           0x008007b8        0x1 sources/Startup.o
+                0x008007b8                start_up_count
+ .bss           0x008007b9        0x1 sources/Timer.o
+ .bss           0x008007ba        0x0 sources/WatchDog.o
+ .bss           0x008007ba        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_udivmodqi4.o)
+ .bss           0x008007ba        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_divmodhi4.o)
+ .bss           0x008007ba        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_exit.o)
+ .bss           0x008007ba        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_copy_data.o)
+ .bss           0x008007ba        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_clear_bss.o)
+ .bss           0x008007ba        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_udivmodhi4.o)
  *(.bss*)
  *(COMMON)
- COMMON         0x0080073c       0x24 main.o
-                0x0080073c                led_pins
-                0x00800747                dashboard_state
-                0x00800748                led_state
-                0x0080074a                led_port
-                0x00800755                led_dd
- COMMON         0x00800760       0x6b sources/Button.o
-                0x00800760                selected_menu_pre_error
-                0x00800761                display_string
-                0x00800789                button_counter
-                0x00800795                button_pressed_previous
-                0x00800797                button_state
-                0x008007a3                selected_menu
-                0x008007a4                button_previous_state
-                0x008007b0                button_press
-                0x008007bc                button_pressed_current
-                0x008007be                button_released
-                0x008007ca                display_current_error
- COMMON         0x008007cb       0x15 sources/CAN.o
-                0x008007cb                can_queue
-                0x008007db                can_queue_head
-                0x008007dc                can_Status
-                0x008007dd                can_queue_tail
-                0x008007de                can_rx
- COMMON         0x008007e0       0x39 sources/Display.o
-                0x008007e0                display_ddram_bottom_row
-                0x008007fc                display_ddram_top_row
-                0x00800818                address_counter
- COMMON         0x00800819       0x12 sources/Event.o
-                0x00800819                event_queue
-                0x00800829                event_queue_head
-                0x0080082a                event_queue_tail
-                0x0080082b                PROVIDE (__bss_end, .)
-                0x00003496                __data_load_start = LOADADDR (.data)
-                0x00003a9a                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x008007ba       0x24 main.o
+                0x008007ba                led_pins
+                0x008007c5                dashboard_state
+                0x008007c6                led_state
+                0x008007c8                led_port
+                0x008007d3                led_dd
+ COMMON         0x008007de       0x6b sources/Button.o
+                0x008007de                selected_menu_pre_error
+                0x008007df                display_string
+                0x00800807                button_counter
+                0x00800813                button_pressed_previous
+                0x00800815                button_state
+                0x00800821                selected_menu
+                0x00800822                button_previous_state
+                0x0080082e                button_press
+                0x0080083a                button_pressed_current
+                0x0080083c                button_released
+                0x00800848                display_current_error
+ COMMON         0x00800849       0x15 sources/CAN.o
+                0x00800849                can_queue
+                0x00800859                can_queue_head
+                0x0080085a                can_Status
+                0x0080085b                can_queue_tail
+                0x0080085c                can_rx
+ COMMON         0x0080085e       0x39 sources/Display.o
+                0x0080085e                display_ddram_bottom_row
+                0x0080087a                display_ddram_top_row
+                0x00800896                address_counter
+ COMMON         0x00800897       0x12 sources/Event.o
+                0x00800897                event_queue
+                0x008008a7                event_queue_head
+                0x008008a8                event_queue_tail
+                0x008008a9                PROVIDE (__bss_end, .)
+                0x0000381c                __data_load_start = LOADADDR (.data)
+                0x00003e98                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0080082b        0x0
-                0x0080082b                PROVIDE (__noinit_start, .)
+.noinit         0x008008a9        0x0
+                0x008008a9                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x0080082b                PROVIDE (__noinit_end, .)
-                0x0080082b                _end = .
-                0x0080082b                PROVIDE (__heap_start, .)
+                0x008008a9                PROVIDE (__noinit_end, .)
+                0x008008a9                _end = .
+                0x008008a9                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -719,83 +731,83 @@ LOAD c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x5bcb
+.debug_info     0x00000000     0x5fb9
  *(.debug_info)
  .debug_info    0x00000000      0x40c main.o
- .debug_info    0x0000040c      0x4a1 sources/Button.o
- .debug_info    0x000008ad       0xfa sources/Buzzer.o
- .debug_info    0x000009a7      0x6b9 sources/CAN.o
- .debug_info    0x00001060      0x69b sources/can_drv.o
- .debug_info    0x000016fb      0x4ce sources/can_lib.o
- .debug_info    0x00001bc9     0x1417 sources/Display.o
- .debug_info    0x00002fe0      0x429 sources/Error.o
- .debug_info    0x00003409      0x796 sources/Event.o
- .debug_info    0x00003b9f      0x272 sources/Led.o
- .debug_info    0x00003e11      0x545 sources/MyCommon.o
- .debug_info    0x00004356       0xa8 sources/Radio.o
- .debug_info    0x000043fe      0x452 sources/spi_lib.o
- .debug_info    0x00004850      0x483 sources/Startup.o
- .debug_info    0x00004cd3      0x5df sources/Timer.o
- .debug_info    0x000052b2      0x3eb sources/WatchDog.o
- .debug_info    0x0000569d       0xdd c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_udivmodqi4.o)
- .debug_info    0x0000577a       0xdd c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_divmodhi4.o)
- .debug_info    0x00005857       0xdd c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_exit.o)
- .debug_info    0x00005934       0xdd c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_copy_data.o)
- .debug_info    0x00005a11       0xdd c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_clear_bss.o)
- .debug_info    0x00005aee       0xdd c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_udivmodhi4.o)
+ .debug_info    0x0000040c      0x4be sources/Button.o
+ .debug_info    0x000008ca       0xfa sources/Buzzer.o
+ .debug_info    0x000009c4      0x6b9 sources/CAN.o
+ .debug_info    0x0000107d      0x69b sources/can_drv.o
+ .debug_info    0x00001718      0x4ce sources/can_lib.o
+ .debug_info    0x00001be6     0x17e8 sources/Display.o
+ .debug_info    0x000033ce      0x429 sources/Error.o
+ .debug_info    0x000037f7      0x796 sources/Event.o
+ .debug_info    0x00003f8d      0x272 sources/Led.o
+ .debug_info    0x000041ff      0x545 sources/MyCommon.o
+ .debug_info    0x00004744       0xa8 sources/Radio.o
+ .debug_info    0x000047ec      0x452 sources/spi_lib.o
+ .debug_info    0x00004c3e      0x483 sources/Startup.o
+ .debug_info    0x000050c1      0x5df sources/Timer.o
+ .debug_info    0x000056a0      0x3eb sources/WatchDog.o
+ .debug_info    0x00005a8b       0xdd c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_udivmodqi4.o)
+ .debug_info    0x00005b68       0xdd c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_divmodhi4.o)
+ .debug_info    0x00005c45       0xdd c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_exit.o)
+ .debug_info    0x00005d22       0xdd c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_copy_data.o)
+ .debug_info    0x00005dff       0xdd c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_clear_bss.o)
+ .debug_info    0x00005edc       0xdd c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_udivmodhi4.o)
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev   0x00000000     0x16ce
+.debug_abbrev   0x00000000     0x170e
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x11a main.o
- .debug_abbrev  0x0000011a      0x160 sources/Button.o
- .debug_abbrev  0x0000027a       0x81 sources/Buzzer.o
- .debug_abbrev  0x000002fb      0x1c9 sources/CAN.o
- .debug_abbrev  0x000004c4      0x1e4 sources/can_drv.o
- .debug_abbrev  0x000006a8      0x1d3 sources/can_lib.o
- .debug_abbrev  0x0000087b      0x2ad sources/Display.o
- .debug_abbrev  0x00000b28      0x14b sources/Error.o
- .debug_abbrev  0x00000c73      0x1ba sources/Event.o
- .debug_abbrev  0x00000e2d      0x115 sources/Led.o
- .debug_abbrev  0x00000f42      0x169 sources/MyCommon.o
- .debug_abbrev  0x000010ab       0x4c sources/Radio.o
- .debug_abbrev  0x000010f7      0x179 sources/spi_lib.o
- .debug_abbrev  0x00001270      0x155 sources/Startup.o
- .debug_abbrev  0x000013c5      0x173 sources/Timer.o
- .debug_abbrev  0x00001538      0x11e sources/WatchDog.o
- .debug_abbrev  0x00001656       0x14 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_udivmodqi4.o)
- .debug_abbrev  0x0000166a       0x14 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_divmodhi4.o)
- .debug_abbrev  0x0000167e       0x14 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_exit.o)
- .debug_abbrev  0x00001692       0x14 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_copy_data.o)
- .debug_abbrev  0x000016a6       0x14 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_clear_bss.o)
- .debug_abbrev  0x000016ba       0x14 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_udivmodhi4.o)
+ .debug_abbrev  0x0000011a      0x171 sources/Button.o
+ .debug_abbrev  0x0000028b       0x81 sources/Buzzer.o
+ .debug_abbrev  0x0000030c      0x1c9 sources/CAN.o
+ .debug_abbrev  0x000004d5      0x1e4 sources/can_drv.o
+ .debug_abbrev  0x000006b9      0x1d3 sources/can_lib.o
+ .debug_abbrev  0x0000088c      0x2dc sources/Display.o
+ .debug_abbrev  0x00000b68      0x14b sources/Error.o
+ .debug_abbrev  0x00000cb3      0x1ba sources/Event.o
+ .debug_abbrev  0x00000e6d      0x115 sources/Led.o
+ .debug_abbrev  0x00000f82      0x169 sources/MyCommon.o
+ .debug_abbrev  0x000010eb       0x4c sources/Radio.o
+ .debug_abbrev  0x00001137      0x179 sources/spi_lib.o
+ .debug_abbrev  0x000012b0      0x155 sources/Startup.o
+ .debug_abbrev  0x00001405      0x173 sources/Timer.o
+ .debug_abbrev  0x00001578      0x11e sources/WatchDog.o
+ .debug_abbrev  0x00001696       0x14 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_udivmodqi4.o)
+ .debug_abbrev  0x000016aa       0x14 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_divmodhi4.o)
+ .debug_abbrev  0x000016be       0x14 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_exit.o)
+ .debug_abbrev  0x000016d2       0x14 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_copy_data.o)
+ .debug_abbrev  0x000016e6       0x14 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_clear_bss.o)
+ .debug_abbrev  0x000016fa       0x14 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_udivmodhi4.o)
 
-.debug_line     0x00000000     0x1ee7
+.debug_line     0x00000000     0x1f5c
  *(.debug_line)
  .debug_line    0x00000000      0x130 main.o
- .debug_line    0x00000130      0x1e4 sources/Button.o
- .debug_line    0x00000314      0x10a sources/Buzzer.o
- .debug_line    0x0000041e      0x1f5 sources/CAN.o
- .debug_line    0x00000613      0x312 sources/can_drv.o
- .debug_line    0x00000925      0x303 sources/can_lib.o
- .debug_line    0x00000c28      0x32b sources/Display.o
- .debug_line    0x00000f53       0xfa sources/Error.o
- .debug_line    0x0000104d      0x1c8 sources/Event.o
- .debug_line    0x00001215      0x186 sources/Led.o
- .debug_line    0x0000139b      0x17a sources/MyCommon.o
- .debug_line    0x00001515       0xe1 sources/Radio.o
- .debug_line    0x000015f6      0x17b sources/spi_lib.o
- .debug_line    0x00001771      0x146 sources/Startup.o
- .debug_line    0x000018b7      0x191 sources/Timer.o
- .debug_line    0x00001a48      0x133 sources/WatchDog.o
- .debug_line    0x00001b7b       0x92 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_udivmodqi4.o)
- .debug_line    0x00001c0d       0x99 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_divmodhi4.o)
- .debug_line    0x00001ca6       0x88 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_exit.o)
- .debug_line    0x00001d2e       0x91 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_copy_data.o)
- .debug_line    0x00001dbf       0x8e c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_clear_bss.o)
- .debug_line    0x00001e4d       0x9a c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_udivmodhi4.o)
+ .debug_line    0x00000130      0x1ed sources/Button.o
+ .debug_line    0x0000031d      0x10a sources/Buzzer.o
+ .debug_line    0x00000427      0x1f5 sources/CAN.o
+ .debug_line    0x0000061c      0x312 sources/can_drv.o
+ .debug_line    0x0000092e      0x303 sources/can_lib.o
+ .debug_line    0x00000c31      0x397 sources/Display.o
+ .debug_line    0x00000fc8       0xfa sources/Error.o
+ .debug_line    0x000010c2      0x1c8 sources/Event.o
+ .debug_line    0x0000128a      0x186 sources/Led.o
+ .debug_line    0x00001410      0x17a sources/MyCommon.o
+ .debug_line    0x0000158a       0xe1 sources/Radio.o
+ .debug_line    0x0000166b      0x17b sources/spi_lib.o
+ .debug_line    0x000017e6      0x146 sources/Startup.o
+ .debug_line    0x0000192c      0x191 sources/Timer.o
+ .debug_line    0x00001abd      0x133 sources/WatchDog.o
+ .debug_line    0x00001bf0       0x92 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_udivmodqi4.o)
+ .debug_line    0x00001c82       0x99 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_divmodhi4.o)
+ .debug_line    0x00001d1b       0x88 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_exit.o)
+ .debug_line    0x00001da3       0x91 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_copy_data.o)
+ .debug_line    0x00001e34       0x8e c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_clear_bss.o)
+ .debug_line    0x00001ec2       0x9a c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1.95/avrtoolchain/bin/../lib/gcc/avr/4.6.2/avr5\libgcc.a(_udivmodhi4.o)
 
-.debug_frame    0x00000000      0xcdc
+.debug_frame    0x00000000      0xd78
  *(.debug_frame)
  .debug_frame   0x00000000       0x24 main.o
  .debug_frame   0x00000024       0xec sources/Button.o
@@ -803,65 +815,65 @@ LOAD c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1
  .debug_frame   0x00000164      0x118 sources/CAN.o
  .debug_frame   0x0000027c       0xf0 sources/can_drv.o
  .debug_frame   0x0000036c       0xa8 sources/can_lib.o
- .debug_frame   0x00000414      0x230 sources/Display.o
- .debug_frame   0x00000644       0x44 sources/Error.o
- .debug_frame   0x00000688       0x8c sources/Event.o
- .debug_frame   0x00000714       0xf0 sources/Led.o
- .debug_frame   0x00000804       0x44 sources/MyCommon.o
- .debug_frame   0x00000848       0x44 sources/Radio.o
- .debug_frame   0x0000088c       0x80 sources/spi_lib.o
- .debug_frame   0x0000090c       0x38 sources/Startup.o
- .debug_frame   0x00000944      0x364 sources/Timer.o
- .debug_frame   0x00000ca8       0x34 sources/WatchDog.o
+ .debug_frame   0x00000414      0x2cc sources/Display.o
+ .debug_frame   0x000006e0       0x44 sources/Error.o
+ .debug_frame   0x00000724       0x8c sources/Event.o
+ .debug_frame   0x000007b0       0xf0 sources/Led.o
+ .debug_frame   0x000008a0       0x44 sources/MyCommon.o
+ .debug_frame   0x000008e4       0x44 sources/Radio.o
+ .debug_frame   0x00000928       0x80 sources/spi_lib.o
+ .debug_frame   0x000009a8       0x38 sources/Startup.o
+ .debug_frame   0x000009e0      0x364 sources/Timer.o
+ .debug_frame   0x00000d44       0x34 sources/WatchDog.o
 
-.debug_str      0x00000000     0x18c8
+.debug_str      0x00000000     0x1ae1
  *(.debug_str)
  .debug_str     0x00000000      0x2dd main.o
                                 0x31f (size before relaxing)
- .debug_str     0x000002dd      0x1b2 sources/Button.o
-                                0x2cf (size before relaxing)
- .debug_str     0x0000048f       0x69 sources/Buzzer.o
+ .debug_str     0x000002dd      0x1c3 sources/Button.o
+                                0x2e0 (size before relaxing)
+ .debug_str     0x000004a0       0x69 sources/Buzzer.o
                                 0x139 (size before relaxing)
- .debug_str     0x000004f8      0x24e sources/CAN.o
+ .debug_str     0x00000509      0x24e sources/CAN.o
                                 0x520 (size before relaxing)
- .debug_str     0x00000746      0x19f sources/can_drv.o
+ .debug_str     0x00000757      0x19f sources/can_drv.o
                                 0x4bb (size before relaxing)
- .debug_str     0x000008e5       0x6d sources/can_lib.o
+ .debug_str     0x000008f6       0x6d sources/can_lib.o
                                 0x34e (size before relaxing)
- .debug_str     0x00000952      0xb5e sources/Display.o
-                                0xf15 (size before relaxing)
- .debug_str     0x000014b0       0x53 sources/Error.o
+ .debug_str     0x00000963      0xd66 sources/Display.o
+                               0x112e (size before relaxing)
+ .debug_str     0x000016c9       0x53 sources/Error.o
                                 0x38f (size before relaxing)
- .debug_str     0x00001503       0xba sources/Event.o
+ .debug_str     0x0000171c       0xba sources/Event.o
                                 0x5fa (size before relaxing)
- .debug_str     0x000015bd       0x94 sources/Led.o
+ .debug_str     0x000017d6       0x94 sources/Led.o
                                 0x198 (size before relaxing)
- .debug_str     0x00001651       0x42 sources/MyCommon.o
+ .debug_str     0x0000186a       0x42 sources/MyCommon.o
                                 0x470 (size before relaxing)
- .debug_str     0x00001693       0x13 sources/Radio.o
+ .debug_str     0x000018ac       0x13 sources/Radio.o
                                 0x101 (size before relaxing)
- .debug_str     0x000016a6       0x6a sources/spi_lib.o
+ .debug_str     0x000018bf       0x6a sources/spi_lib.o
                                 0x33c (size before relaxing)
- .debug_str     0x00001710       0x24 sources/Startup.o
+ .debug_str     0x00001929       0x24 sources/Startup.o
                                 0x396 (size before relaxing)
- .debug_str     0x00001734      0x16d sources/Timer.o
+ .debug_str     0x0000194d      0x16d sources/Timer.o
                                 0x4dd (size before relaxing)
- .debug_str     0x000018a1       0x27 sources/WatchDog.o
+ .debug_str     0x00001aba       0x27 sources/WatchDog.o
                                 0x374 (size before relaxing)
 
-.debug_loc      0x00000000     0x34f0
+.debug_loc      0x00000000     0x3b0e
  *(.debug_loc)
  .debug_loc     0x00000000      0x152 sources/Button.o
  .debug_loc     0x00000152      0x1b3 sources/CAN.o
  .debug_loc     0x00000305      0x8a5 sources/can_drv.o
  .debug_loc     0x00000baa      0x3f1 sources/can_lib.o
- .debug_loc     0x00000f9b     0x1acc sources/Display.o
- .debug_loc     0x00002a67       0x2b sources/Error.o
- .debug_loc     0x00002a92      0x140 sources/Event.o
- .debug_loc     0x00002bd2      0x286 sources/Led.o
- .debug_loc     0x00002e58       0x42 sources/spi_lib.o
- .debug_loc     0x00002e9a       0x49 sources/Startup.o
- .debug_loc     0x00002ee3      0x60d sources/Timer.o
+ .debug_loc     0x00000f9b     0x20ea sources/Display.o
+ .debug_loc     0x00003085       0x2b sources/Error.o
+ .debug_loc     0x000030b0      0x140 sources/Event.o
+ .debug_loc     0x000031f0      0x286 sources/Led.o
+ .debug_loc     0x00003476       0x42 sources/spi_lib.o
+ .debug_loc     0x000034b8       0x49 sources/Startup.o
+ .debug_loc     0x00003501      0x60d sources/Timer.o
 
 .debug_macinfo
  *(.debug_macinfo)
