@@ -185,8 +185,8 @@ void display_init(void){
 }
 
 void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t value3, uint8_t value4, uint8_t value5,uint8_t error){
-	char * dpl=display_line_blank;
-	char * dpl2=display_line_blank;
+	char dpl={' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
+	char dpl2={' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
 	
 	switch(request_id){
 		case DISPLAY_MENU_HOME:
@@ -275,9 +275,6 @@ void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t va
 				 display_make_display_line_brake_balance(dpl,value1);
 				 display_write_display_lines(display_line_brake_balance,dpl);
 			break;
-		case DISPLAY_MENU_INVERTER_TEMP:
-				display_make_display_line_inverter_temp(dpl,value1,value2);
-				display_write_display_lines(display_line_inverter_temperature,dpl);
 		default:
 			break;		
 	}/* end switch */

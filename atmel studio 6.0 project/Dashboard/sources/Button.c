@@ -223,7 +223,7 @@ void buttons_react(void){
 		display_up();		
 	}
 	
-	if(button_press[BUTTON_ID_DOWN]&&button_state[BUTTON_ID_UP]){
+	if(button_press[BUTTON_ID_PLUS]&&button_state[BUTTON_ID_MINUS]){
 		display_overview();
 	}		
 		
