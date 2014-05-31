@@ -615,6 +615,12 @@ void display_up( void )
 	return;
 }
 
+void display_overview( void )
+{
+	selected_menu=DISPLAY_MENU_SOC;	
+	return;
+}
+
 void display_down( void )
 {
 	if((selected_menu==1)||(selected_menu==0)){
@@ -631,6 +637,7 @@ void display_down( void )
 	return;
 
 }
+
 
 void display_starting(uint8_t percent){
 	char * dpl=display_line_blank;

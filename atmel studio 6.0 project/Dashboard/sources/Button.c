@@ -223,24 +223,28 @@ void buttons_react(void){
 		display_up();		
 	}
 	
+	if(button_press[BUTTON_ID_DOWN]&&button_state[BUTTON_ID_UP]){
+		display_overview();
+	}		
+		
 	
 	
 	/* LEDS on BUTTONS */
 	if(button_state[BUTTON_ID_TV]){
-		led_set(LED_ID_TV);
-	}else{
-		led_clear(LED_ID_TV);
-	}
-	if(button_state[BUTTON_ID_TC]){
 		led_set(LED_ID_TC);
 	}else{
 		led_clear(LED_ID_TC);
 	}
-	
-	if(button_state[BUTTON_ID_RECUP]){
+	if(button_state[BUTTON_ID_TC]){
 		led_set(LED_ID_RECUP);
 	}else{
 		led_clear(LED_ID_RECUP);
+	}
+	
+	if(button_state[BUTTON_ID_RECUP]){
+		led_set(LED_ID_TV);
+	}else{
+		led_clear(LED_ID_TV);
 	}
 	
 	if(button_state[BUTTON_ID_AD]){
