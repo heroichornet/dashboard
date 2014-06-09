@@ -7000,11 +7000,11 @@ void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t va
 						break;
     26ac:	c0 c0       	rjmp	.+384    	; 0x282e <display_update+0x202>
 					case 2: // Ready, both buttons pressed, show break percent
-							display_make_display_line_percent_bar(dpl,value1);
+							display_make_display_line_percent_bar(dpl,value2);
     26ae:	cc e2       	ldi	r28, 0x2C	; 44
     26b0:	d2 e0       	ldi	r29, 0x02	; 2
     26b2:	ce 01       	movw	r24, r28
-    26b4:	62 e0       	ldi	r22, 0x02	; 2
+    26b4:	64 2f       	mov	r22, r20
     26b6:	70 e0       	ldi	r23, 0x00	; 0
     26b8:	0e 94 d8 0e 	call	0x1db0	; 0x1db0 <display_make_display_line_percent_bar>
 							display_write_display_lines(display_line_accleration_mode_ready,dpl);
