@@ -5,7 +5,7 @@ sources/MyCommon.d sources/MyCommon.o: ../sources/MyCommon.c \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/inttypes.h \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/include/stdint.h \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/stdint.h \
- c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/iocan128.h \
+ c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/iocan32.h \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/iocanxx.h \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/portpins.h \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/common.h \
@@ -22,8 +22,8 @@ sources/MyCommon.d sources/MyCommon.o: ../sources/MyCommon.c \
  ../sources/../includes/..\includes\GlobalIncludes.h \
  ../sources/../includes/Watchdog.h \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/wdt.h \
- ../sources/../includes/GlobalIncludes.h ../sources/../includes/Event.h \
- ../sources/../includes/can_drv.h ../sources/../includes/can_lib.h \
+ ../sources/../includes/Event.h ../sources/../includes/can_drv.h \
+ ../sources/../includes/can_lib.h \
  ../sources/../includes/..\includes\can_drv.h \
  ../sources/../includes/..\includes\at90can_drv.h \
  ../sources/../includes/..\includes\compiler.h \
@@ -33,7 +33,9 @@ sources/MyCommon.d sources/MyCommon.o: ../sources/MyCommon.c \
  ../sources/../includes/..\includes\/compiler.h \
  ../sources/../includes/..\includes\/dvk90can1_board.h \
  ../sources/../includes/..\includes\CAN.h ../sources/../includes/Error.h \
- ../sources/../includes/Timer.h
+ ../sources/../includes/Timer.h ../sources/../includes/GlobalIncludes.h \
+ ../sources/../includes/Buzzer.h ../sources/../includes/Led.h \
+ ../sources/../includes/Button.h
 
 ../sources/../includes/MyCommon.h:
 
@@ -47,7 +49,7 @@ c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.
 
 c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/stdint.h:
 
-c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/iocan128.h:
+c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/iocan32.h:
 
 c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/iocanxx.h:
 
@@ -83,8 +85,6 @@ c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.
 
 c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.95\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/wdt.h:
 
-../sources/../includes/GlobalIncludes.h:
-
 ../sources/../includes/Event.h:
 
 ../sources/../includes/can_drv.h:
@@ -112,3 +112,11 @@ c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.1.
 ../sources/../includes/Error.h:
 
 ../sources/../includes/Timer.h:
+
+../sources/../includes/GlobalIncludes.h:
+
+../sources/../includes/Buzzer.h:
+
+../sources/../includes/Led.h:
+
+../sources/../includes/Button.h:

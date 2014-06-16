@@ -106,6 +106,9 @@ display_line_t display_line_player_princess_peach={' ',' ',' ',' ','>','P','R','
 #define	START_BITS_WRITE_INSTRUCTION (0xF8|0x00|0x00)
 #define START_BITS_WRITE_DATA (0xF8|0x00|0x02)
 
+/* for toggling dot in Overview */
+uint8_t toggle_dot=0;
+
 
 /* Address Counter (AC) 
 *	 with DDRAM: 
@@ -139,7 +142,7 @@ void display_write_display_lines(display_line_t s1,display_line_t s2){
 		display_write_data(s1[i]);
 	}
 	
-	for(int i=0;i<20;i++){
+	for(i=0;i<20;i++){
 		display_write_instruction(INSTRUCTION_CURSOR_RIGHT_SHIFT);	// cursor to second line
 	};
 			
@@ -148,6 +151,28 @@ void display_write_display_lines(display_line_t s1,display_line_t s2){
 	}	
 }
 
+void display_write_top_line(display_line_t s1){
+	int i;
+	display_write_instruction(INSTRUCTION_CURSOR_HOME);	// cursor to pos 1
+	for(i=0;i<20;i++){
+		display_write_data(s1[i]);
+	}
+	
+}
+
+void display_write_bottom_line(display_line_t s1){
+	int i;
+	display_write_instruction(INSTRUCTION_CURSOR_HOME);	// cursor to pos 1
+	
+	for(i=0;i<40;i++){
+		display_write_instruction(INSTRUCTION_CURSOR_RIGHT_SHIFT);	// cursor to second line
+	};
+	
+	for(i=0;i<20;i++){
+		display_write_data(s1[i]);
+	}
+	
+}
 
 void display_init(void){
 	/* SPI */
@@ -219,8 +244,16 @@ void display_update(uint8_t request_id, uint8_t value1,uint8_t value2,uint8_t va
 				
 			break;
 		case DISPLAY_MENU_SOC:
-				display_make_display_line_percent(dpl,value1);
-				display_write_display_lines(display_line_soc,dpl);
+				if(value1==1){
+						display_make_soc_line1(dpl,value2,value3,value4,toggle_dot);
+						display_write_top_line(dpl);
+						toggle_dot=0;
+				}else if(value1==2){
+						display_make_soc_line2(dpl,value2,value3,value4);
+						display_write_bottom_line(dpl);
+						toggle_dot=1;
+				}
+
 			break;
 		case DISPLAY_MENU_MIN_AV_MAX_VOLT:
 				display_make_display_line_min_av_max_volt(dpl,value1,value2,value3);
@@ -723,17 +756,8 @@ memcpy(dpl,dpl_volt,20);
 
 } /*end display_make_display_line_inverter_temp*/
 
-void display_make_soc_line1(char* dpl,uint8_t subid,uint8_t value2,uint8_t value3,uint8_t value4){
-	if(subid=2){// use archived
-	value2=menu_values_subid1[0];
-	value3=menu_values_subid1[1];
-	value4=menu_values_subid1[2];
-}else{ // use sent and archive current
-menu_values_subid1[0]=value2;// SOC
-menu_values_subid1[1]=value3;// volt av.
-menu_values_subid1[2]=value4;// volt min.
-	}
-	
+void display_make_soc_line1(char* dpl,uint8_t value2,uint8_t value3,uint8_t value4,uint8_t toggle_dot){
+
 	
 	/* make SOC */
 	uint8_t soc_1=GET_DEC_POS1_PERCENT(value2);
@@ -760,21 +784,15 @@ menu_values_subid1[2]=value4;// volt min.
 	uint8_t volt_min_3=GET_DEC_POS3_VOLT(value4);
 
 	display_line_t dpl_soc1={'V',volt_av_1,'.',volt_av_2,volt_av_3,'/',volt_min_1,'.',volt_min_2,volt_min_3,' ','S','O','C',':',soc_1,soc_2,soc_3,'%'};
-		
+	
+	if(toggle_dot==1){
+		dpl_soc1[14]=' ';
+	}
 	memcpy(dpl,dpl_soc1,20);
 }
 
 
-void display_make_soc_line2(char* dpl,uint8_t subid,uint8_t value2,uint8_t value3,uint8_t value4){
-		if(subid=1){// use archived
-			value2=menu_values_subid2[0];
-			value3=menu_values_subid2[1];
-			value4=menu_values_subid2[2];
-		}else{ // use sent and archive current
-			menu_values_subid2[0]=value2;// Akkutemp
-			menu_values_subid2[1]=value3;// motortemp
-			menu_values_subid2[2]=value4;// invertertemp
-		}
+void display_make_soc_line2(char* dpl,uint8_t value2,uint8_t value3,uint8_t value4){
 		
 		
 		/* make akku temp */
@@ -789,8 +807,7 @@ void display_make_soc_line2(char* dpl,uint8_t subid,uint8_t value2,uint8_t value
 			}
 		}
 		
-		/* make motor temp */
-		uint8_t motor_1=GET_DEC_POS1_MOTOR_TEMP(value3);
+		/* make motor temp */		uint8_t motor_1=GET_DEC_POS1_MOTOR_TEMP(value3);
 		uint8_t motor_2=GET_DEC_POS2_MOTOR_TEMP(value3);
 		uint8_t motor_3=GET_DEC_POS3_MOTOR_TEMP(value3);
 		
@@ -806,10 +823,10 @@ void display_make_soc_line2(char* dpl,uint8_t subid,uint8_t value2,uint8_t value
 		uint8_t inverter_2=GET_DEC_POS2_MOTOR_TEMP(value4);
 		uint8_t inverter_3=GET_DEC_POS3_MOTOR_TEMP(value4);
 			
-		if(akku_1=='0'){
-			akku_1=' ';
-			if(akku_2=='0'){
-				akku_2=' ';
+		if(inverter_1=='0'){
+			inverter_1=' ';
+			if(inverter_2=='0'){
+				inverter_2=' ';
 			}
 		}
 	

@@ -38,7 +38,6 @@ SUBDIRS :=  \
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../main.c \
-../sources/adc.c \
 ../sources/Button.c \
 ../sources/Buzzer.c \
 ../sources/CAN.c \
@@ -49,6 +48,9 @@ C_SRCS +=  \
 ../sources/Event.c \
 ../sources/Led.c \
 ../sources/MyCommon.c \
+../sources/Radio.c \
+../sources/spi_lib.c \
+../sources/Startup.c \
 ../sources/Timer.c \
 ../sources/WatchDog.c
 
@@ -61,7 +63,6 @@ ASM_SRCS +=
 
 OBJS +=  \
 main.o \
-sources/adc.o \
 sources/Button.o \
 sources/Buzzer.o \
 sources/CAN.o \
@@ -72,13 +73,15 @@ sources/Error.o \
 sources/Event.o \
 sources/Led.o \
 sources/MyCommon.o \
+sources/Radio.o \
+sources/spi_lib.o \
+sources/Startup.o \
 sources/Timer.o \
 sources/WatchDog.o
 
 
 OBJS_AS_ARGS +=  \
 main.o \
-sources/adc.o \
 sources/Button.o \
 sources/Buzzer.o \
 sources/CAN.o \
@@ -89,13 +92,15 @@ sources/Error.o \
 sources/Event.o \
 sources/Led.o \
 sources/MyCommon.o \
+sources/Radio.o \
+sources/spi_lib.o \
+sources/Startup.o \
 sources/Timer.o \
 sources/WatchDog.o
 
 
 C_DEPS +=  \
 main.d \
-sources/adc.d \
 sources/Button.d \
 sources/Buzzer.d \
 sources/CAN.d \
@@ -106,13 +111,15 @@ sources/Error.d \
 sources/Event.d \
 sources/Led.d \
 sources/MyCommon.d \
+sources/Radio.d \
+sources/spi_lib.d \
+sources/Startup.d \
 sources/Timer.d \
 sources/WatchDog.d
 
 
 C_DEPS_AS_ARGS +=  \
 main.d \
-sources/adc.d \
 sources/Button.d \
 sources/Buzzer.d \
 sources/CAN.d \
@@ -123,6 +130,9 @@ sources/Error.d \
 sources/Event.d \
 sources/Led.d \
 sources/MyCommon.d \
+sources/Radio.d \
+sources/spi_lib.d \
+sources/Startup.d \
 sources/Timer.d \
 sources/WatchDog.d
 
@@ -165,16 +175,20 @@ OUTPUT_FILE_DEP:= ./makedep.mk
 
 
 
+
+
+
+
 ./%.o: .././%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : (AVR_8_bit_GNU_Toolchain_3.4.1_830) 4.6.2
-	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\AVRGCC\3.4.1.95\AVRToolchain\bin\avr-gcc.exe$(QUOTE) -funsigned-char -funsigned-bitfields -Os -fpack-struct -fshort-enums -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"  -mmcu=at90can128   -o"$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\AVRGCC\3.4.1.95\AVRToolchain\bin\avr-gcc.exe$(QUOTE) -funsigned-char -funsigned-bitfields -Os -fpack-struct -fshort-enums -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"  -mmcu=at90can32   -o"$@" "$<" 
 	@echo Finished building: $<
 
 sources/%.o: ../sources/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : (AVR_8_bit_GNU_Toolchain_3.4.1_830) 4.6.2
-	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\AVRGCC\3.4.1.95\AVRToolchain\bin\avr-gcc.exe$(QUOTE) -funsigned-char -funsigned-bitfields -Os -fpack-struct -fshort-enums -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"  -mmcu=at90can128   -o"$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\AVRGCC\3.4.1.95\AVRToolchain\bin\avr-gcc.exe$(QUOTE) -funsigned-char -funsigned-bitfields -Os -fpack-struct -fshort-enums -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"  -mmcu=at90can32   -o"$@" "$<" 
 	@echo Finished building: $<
 
 

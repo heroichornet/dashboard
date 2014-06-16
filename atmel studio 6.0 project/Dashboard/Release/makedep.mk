@@ -4,8 +4,6 @@
 
 main.c
 
-sources\adc.c
-
 sources\Button.c
 
 sources\Buzzer.c
@@ -25,6 +23,12 @@ sources\Event.c
 sources\Led.c
 
 sources\MyCommon.c
+
+sources\Radio.c
+
+sources\spi_lib.c
+
+sources\Startup.c
 
 sources\Timer.c
 
